@@ -1,39 +1,30 @@
-import {blockContent} from './common/blockContent'
-
 export const event = {
   title: 'Event',
   name: 'event',
   type: 'document',
   fields: [
     {
+      title: 'Title',
       name: 'title',
       type: 'string',
-      title: 'Title',
+      validation: (Rule: any) => Rule.required(),
     },
     {
-      name: 'dateTime',
       title: 'Date and Time',
+      name: 'dateTime',
       type: 'datetime',
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: 'doorTime',
       title: 'Door Time',
+      name: 'doorTime',
       type: 'string',
     },
-    {
-      title: 'Poster',
-      name: 'poster',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    blockContent({title: 'Description', name: 'description'}),
     {
       name: 'links',
       title: 'Links',
       type: 'array',
+      validation: (Rule: any) => Rule.required(),
       of: [
         {
           type: 'object',
@@ -43,11 +34,13 @@ export const event = {
               name: 'copy',
               type: 'string',
               title: 'Copy',
+              validation: (Rule: any) => Rule.required(),
             },
             {
               name: 'url',
               type: 'url',
               title: 'URL',
+              validation: (Rule: any) => Rule.required(),
             },
           ],
         },

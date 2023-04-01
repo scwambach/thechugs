@@ -1,6 +1,6 @@
-export const globalInfo = {
-  title: 'Global Info',
-  name: 'globalInfo',
+export const release = {
+  name: 'release',
+  title: 'Release',
   type: 'document',
   fields: [
     {
@@ -17,8 +17,14 @@ export const globalInfo = {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      title: 'Site Image',
-      name: 'siteImage',
+      title: 'Release Date',
+      name: 'releaseDate',
+      type: 'datetime',
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
+      title: 'Cover Art',
+      name: 'coverArt',
       type: 'image',
       options: {
         hotspot: true,
@@ -26,23 +32,21 @@ export const globalInfo = {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      title: 'Contact Info',
-      name: 'contactInfo',
-      type: 'object',
+      title: 'Links',
+      name: 'links',
+      type: 'array',
       validation: (Rule: any) => Rule.required(),
-      fields: [
+      of: [
         {
-          title: 'Email',
-          name: 'email',
-          type: 'string',
-          validation: (Rule: any) => Rule.required(),
-        },
-        {
-          title: 'Socials',
-          name: 'socials',
-          type: 'array',
-          validation: (Rule: any) => Rule.required(),
-          of: [
+          title: 'Link',
+          name: 'link',
+          type: 'object',
+          fields: [
+            {
+              title: 'Copy',
+              name: 'copy',
+              type: 'string',
+            },
             {
               title: 'URL',
               name: 'url',
