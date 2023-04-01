@@ -1,7 +1,8 @@
 const Footer = () => {
+  const currentYear = new Date().getFullYear()
   return (
     <footer>
-      <p>&copy; 2023 My Website</p>
+      <p>&copy; {currentYear} My Website</p>
     </footer>
   )
 }
