@@ -8,6 +8,7 @@ interface ImageProps {
   sizes?: string
   src: string
   width?: number
+  className?: string
 }
 
 const ResponsiveImage = ({
@@ -18,9 +19,13 @@ const ResponsiveImage = ({
   sizes,
   src,
   width,
+  className,
 }: ImageProps) => {
   return (
-    <div data-label={`${isBackground ? 'background' : 'image'}-container`}>
+    <div
+      data-label={`${isBackground ? 'background' : 'image'}-container`}
+      className={className || undefined}
+    >
       <Image
         src={src}
         alt={alt}
