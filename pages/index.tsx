@@ -9,7 +9,7 @@ const today = dayjs(new Date()).format('YYYY-MM-DD')
 
 export default function Home({ data }: { data: HomePageProps }) {
   return (
-    <Layout>
+    <Layout {...data.site}>
       <HeroBanner {...data.banner} />
     </Layout>
   )

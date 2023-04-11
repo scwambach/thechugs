@@ -4,6 +4,20 @@ export interface ImageProps {
     _ref: string
     _type: string
   }
+  crop?: {
+    _type: string
+    bottom: number
+    left: number
+    right: number
+    top: number
+  }
+  hotspot?: {
+    _type: string
+    height: number
+    width: number
+    x: number
+    y: number
+  }
 }
 
 export interface LinkProps {
@@ -20,14 +34,16 @@ export interface BannerProps {
   video: string
 }
 
-export interface SitProps {
+export interface ContactProps {
+  email: string
+  socials: string[]
+}
+export interface SiteProps {
   title: string
-  description?: string
+  children?: React.ReactNode
+  description: string
   siteImage: ImageProps
-  contactInfo: {
-    email: string
-    socials: string[]
-  }
+  contactInfo: ContactProps
 }
 
 export interface ProductProps {
@@ -63,7 +79,7 @@ export interface HomePageProps {
   title: string
   banner: BannerProps
   imageGallery: ImageProps[]
-  site: SitProps
+  site: SiteProps
   products: ProductProps[]
   releases: ReleaseProps[]
   events: EventProps[]
