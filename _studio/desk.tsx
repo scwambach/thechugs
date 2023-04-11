@@ -1,19 +1,41 @@
 // @ts-nocheck
 import {deskTool} from 'sanity/desk'
-
+import {
+  AiFillHome,
+  AiFillVideoCamera,
+  AiOutlineCalendar,
+  AiOutlineShoppingCart,
+} from 'react-icons/ai'
+import {BiAlbum} from 'react-icons/bi'
+import {BsGlobe} from 'react-icons/bs'
 export const desk = deskTool({
   structure: (S) =>
     S.list()
       .title('Base')
       .items([
         S.listItem()
-          .title('Global Info')
-          .child(S.document().schemaType('globalInfo').documentId('globalInfo')),
-        S.listItem().title('Videos').child(S.documentTypeList('video').title('Videos')),
-        S.listItem().title('Events').child(S.documentTypeList('event').title('Events')),
-        S.listItem().title('Releases').child(S.documentTypeList('release').title('Releases')),
-        S.listItem()
           .title('Home Page')
-          .child(S.document().schemaType('homePage').documentId('homePage')),
+          .child(S.document().schemaType('homePage').documentId('homePage'))
+          .icon(AiFillHome),
+        S.listItem()
+          .title('Videos')
+          .child(S.documentTypeList('video').title('Videos'))
+          .icon(AiFillVideoCamera),
+        S.listItem()
+          .title('Events')
+          .child(S.documentTypeList('event').title('Events'))
+          .icon(AiOutlineCalendar),
+        S.listItem()
+          .title('Products')
+          .child(S.documentTypeList('product').title('Products'))
+          .icon(AiOutlineShoppingCart),
+        S.listItem()
+          .title('Releases')
+          .child(S.documentTypeList('release').title('Releases'))
+          .icon(BiAlbum),
+        S.listItem()
+          .title('Global Info')
+          .child(S.document().schemaType('globalInfo').documentId('globalInfo'))
+          .icon(BsGlobe),
       ]),
 })

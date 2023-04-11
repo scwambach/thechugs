@@ -14,11 +14,21 @@ export const event = {
       name: 'dateTime',
       type: 'datetime',
       validation: (Rule: any) => Rule.required(),
+      options: {
+        dateFormat: 'MM/DD/YYYY',
+        timeFormat: 'hh:mmA',
+      },
     },
     {
       title: 'Door Time',
       name: 'doorTime',
-      type: 'string',
+      type: 'datetime',
+      options: {
+        dateFormat: 'MM/DD/YYYY',
+        timeFormat: 'hh:mmA',
+      },
+      description:
+        "The date doesn't matter, just the time. However, it'd be nice if it was the same day as the event. So... ya know... just do that.",
     },
     {
       name: 'links',

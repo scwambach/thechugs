@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "fullstack": "concurrently \"yarn dev\" \"cd _studio && yarn dev\"",
+    "deploy": "concurrently \"git push\" \"cd _studio && sanity deploy\"",
     "check-format": "prettier --write .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js"
   },
@@ -21,6 +23,7 @@
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
     "sweetalert2": "^11.7.2",
     "sweetalert2-react-content": "^5.0.7",
     "typescript": "4.9.5"
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "autoprefixer": "^10.4.13",
+    "concurrently": "^8.0.1",
     "eslint-config-prettier": "^8.6.0",
     "husky": "^8.0.3",
     "prettier": "^2.8.3",

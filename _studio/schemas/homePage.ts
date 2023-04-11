@@ -4,6 +4,12 @@ export const homePage = {
   type: 'document',
   fields: [
     {
+      title: 'Title',
+      name: 'title',
+      type: 'string',
+      readOnly: true,
+    },
+    {
       title: 'Banner',
       name: 'banner',
       type: 'object',
@@ -43,6 +49,9 @@ export const homePage = {
       name: 'imageGallery',
       type: 'array',
       validation: (Rule: any) => Rule.required(),
+      options: {
+        layout: 'grid',
+      },
       of: [
         {
           title: 'Image',

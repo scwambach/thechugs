@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 import {desk} from './desk'
+import {media} from 'sanity-plugin-media'
 
 export default defineConfig({
   name: 'default',
@@ -10,7 +11,7 @@ export default defineConfig({
   projectId: 'o0jv7xwk',
   dataset: 'production',
 
-  plugins: [desk, visionTool()],
+  plugins: [desk, visionTool(), media()],
 
   schema: {
     types: schemaTypes,
