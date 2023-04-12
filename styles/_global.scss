@@ -59,3 +59,20 @@ table {
     border-bottom: 2px solid $black;
   }
 }
+
+.unstyled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    @media screen and (min-width: ($lg)) {
+      color: $blue;
+    }
+  }
+}

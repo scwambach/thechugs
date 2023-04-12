@@ -15,7 +15,7 @@ const Seo = ({ title, description, favicon, image }: SeoProps) => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href={favicon} />
+      <link rel="icon" href="/favicon.png" />
       <meta name="theme-color" content="#000000" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
