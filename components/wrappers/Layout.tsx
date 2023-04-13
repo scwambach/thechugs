@@ -55,7 +55,7 @@ const Layout = ({
       <Seo
         title={title}
         description={description}
-        favicon="/favicon.ico"
+        favicon="/favicon.png"
         image={siteImage}
       />
       <a className="skip-to-content" href="#main-content">
