@@ -2,9 +2,13 @@ header {
   position: fixed;
   z-index: 100;
   width: 100%;
+
   @media screen and (max-width: ($smd - 1)) {
     height: 0;
+    bottom: 0;
+    left: 0;
   }
+
   &.open {
     @media screen and (max-width: ($smd - 1)) {
       height: auto;
@@ -20,7 +24,7 @@ header {
     }
 
     @media screen and (max-width: ($smd - 1)) {
-      height: 100vh;
+      height: calc(100vh - 150px);
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -56,10 +60,10 @@ header {
   .toggle {
     background-color: $gold;
     padding: 1rem;
-    border-radius: 15px;
+    border-bottom-left-radius: 15px;
     position: fixed;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0;
+    right: 0;
     cursor: pointer;
     width: 60px;
 
