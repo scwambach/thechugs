@@ -1,4 +1,3 @@
-import { location } from './../_studio/schemas/location'
 export interface ImageProps {
   _type: string
   asset: {
