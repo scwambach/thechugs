@@ -5,9 +5,15 @@ import { SocialSelector } from '@components/modules/SocialSelector'
 import { colors } from '@utils/settings'
 import { ContactProps } from '@utils/types'
 import { useState } from 'react'
+import useWishlistState from "@hooks/useWishlistState";
+import useSnipcartCount from "@hooks/useSnipcartCount";
 
 const Header = ({ socials }: ContactProps) => {
   const [open, setOpen] = useState<boolean>(false)
+  const { hasItems } = useWishlistState();
+  const { cart } = useSnipcartCount();
+  const cartHasItems = cart.items.count !== 0;
+
   return (
     <header className={open ? 'open' : undefined}>
       <button
@@ -102,6 +108,11 @@ const Header = ({ socials }: ContactProps) => {
               href="#contact"
             >
               <DynamicIcon color={colors.white} size={25} name="email" />
+            </a>
+          </li>
+          <li>
+            <a className="snipcart-checkout">
+              <DynamicIcon faIcons={true} color={colors.white} size={25} name="cart" />
             </a>
           </li>
         </ul>

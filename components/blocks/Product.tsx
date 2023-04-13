@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import useWishlistDispatch from "../../hooks/useWishlistDispatch";
-import useWishlistState from "../../hooks/useWishlistState";
+import useWishlistDispatch from "@hooks/useWishlistDispatch";
+import useWishlistState from "@hooks/useWishlistState";
 
 import VariantPicker from "../modules/VariantPicker";
 

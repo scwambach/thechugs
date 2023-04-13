@@ -3,18 +3,23 @@ import { HeroBanner } from '@components/blocks/HeroBanner'
 import * as React from "react";
 import { GetStaticProps } from "next";
 import shuffle from "lodash.shuffle";
+import { BannerProps, SiteProps } from '@utils/types'
+import { printful } from "@lib/printful-client";
+import { formatVariantName } from "@lib/format-variant-name";
+import { PrintfulProduct } from "@utils/storeTypes";
+import ProductGrid from "@components/blocks/ProductGrid";
+import dayjs from 'dayjs';
+import { client } from '@utils/client';
+import { HOMEPAGE_QUERY } from 'queries/homePage'
 
-import { printful } from "../lib/printful-client";
-import { formatVariantName } from "../lib/format-variant-name";
-import { PrintfulProduct } from "../utils/storeTypes";
-
-import ProductGrid from "../components/blocks/ProductGrid";
-
-type IndexPageProps = {
+const today = dayjs(new Date()).format('YYYY-MM-DD')
+export interface StorePageProps {
+  banner: BannerProps
+  site: SiteProps
   products: PrintfulProduct[];
-};
+}
 
-export default function Store({ data }: { data: any }) {
+export default function Store({ data }: { data: StorePageProps }) {
   return (
     <Layout {...data.site}>
       <HeroBanner {...data.banner} />
@@ -25,13 +30,23 @@ export default function Store({ data }: { data: any }) {
           </h1>
         </div>
 
-        <ProductGrid products={products} />
+        <ProductGrid products={data.products} />
       </>
     </Layout>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const data = await client.fetch(HOMEPAGE_QUERY, {
+    today,
+  })
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
   const { result: productIds } = await printful.get("sync/products");
 
   const allProducts = await Promise.all(
@@ -50,7 +65,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      products: shuffle(products),
+      data: {
+        ...data,
+        products: shuffle(products),
+      }
     },
   };
 };

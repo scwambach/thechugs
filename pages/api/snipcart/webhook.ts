@@ -1,8 +1,8 @@
 import type { NextApiResponse } from "next";
 
-import createOrder from "../../../lib/create-order";
+import createOrder from "@lib/create-order";
 
-import type { SnipcartRequest, SnipcartWebhookEvent } from "../../../utils/storeTypes";
+import type { SnipcartRequest, SnipcartWebhookEvent } from "@utils/storeTypes";
 
 export default async function handler(
   req: SnipcartRequest,

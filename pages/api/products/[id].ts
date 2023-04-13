@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { printful } from "../../../lib/printful-client";
+import { printful } from "@lib/printful-client";
 
 type Data = {
   id: string;

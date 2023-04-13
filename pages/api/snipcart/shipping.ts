@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { printful } from "../../../lib/printful-client";
+import { printful } from "@lib/printful-client";
 import type {
   SnipcartShippingRate,
   PrintfulShippingItem,
-} from "../../../utils/storeTypes";
+} from "@utils/storeTypes";
 
 interface SnipcartRequest extends NextApiRequest {
   body: {

@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from "react";
 
-import { hasSnipcart } from "../lib/has-snipcart";
+import { hasSnipcart } from "@lib/has-snipcart";
 
 const initialState = {
   cart: {
