@@ -207,7 +207,7 @@ $midWidth: $width / 1.5;
     display: inline-block;
     white-space: nowrap;
     border-bottom: 2px solid $text;
-    padding: 1rem;
+    padding: 0.4rem 1rem;
     width: 50%;
 
     @media screen and (max-width: ($sm - 1)) {
