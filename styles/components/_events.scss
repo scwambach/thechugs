@@ -126,7 +126,7 @@ $midWidth: $width / 1.5;
   .title {
     font-family: $heading-family;
     font-size: 1.2em;
-    border-bottom: 2px solid $text;
+    border-bottom: 2px dashed $light-gray;
     padding: 0.4rem 0;
     height: 100%;
     display: flex;
@@ -184,7 +184,7 @@ $midWidth: $width / 1.5;
   }
 
   .link {
-    border-bottom: 2px solid $text;
+    border-bottom: 2px dashed $light-gray;
     padding: 0.4rem 0;
     @media screen and (max-width: ($mlg - 1)) {
       padding-right: 0.4rem;
@@ -206,7 +206,7 @@ $midWidth: $width / 1.5;
   .doorTime {
     display: inline-block;
     white-space: nowrap;
-    border-bottom: 2px solid $text;
+    border-bottom: 2px dashed $light-gray;
     padding: 0.4rem 1rem;
     width: 50%;
 
