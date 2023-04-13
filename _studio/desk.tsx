@@ -8,6 +8,7 @@ import {
 } from 'react-icons/ai'
 import {BiAlbum} from 'react-icons/bi'
 import {BsGlobe} from 'react-icons/bs'
+import {FaMapMarkerAlt} from 'react-icons/fa'
 export const desk = deskTool({
   structure: (S) =>
     S.list()
@@ -25,6 +26,10 @@ export const desk = deskTool({
           .title('Events')
           .child(S.documentTypeList('event').title('Events'))
           .icon(AiOutlineCalendar),
+        S.listItem()
+          .title('Locations')
+          .child(S.documentTypeList('location').title('Locations'))
+          .icon(FaMapMarkerAlt),
         S.listItem()
           .title('Products')
           .child(S.documentTypeList('product').title('Products'))

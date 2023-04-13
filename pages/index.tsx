@@ -4,6 +4,7 @@ import { client } from '@utils/client'
 import { HOMEPAGE_QUERY } from 'queries/homePage'
 import { HomePageProps } from '@utils/types'
 import { HeroBanner } from '@components/blocks/HeroBanner'
+import { Events } from '@components/blocks/Events'
 
 const today = dayjs(new Date()).format('YYYY-MM-DD')
 
@@ -11,6 +12,7 @@ export default function Home({ data }: { data: HomePageProps }) {
   return (
     <Layout {...data.site}>
       <HeroBanner {...data.banner} />
+      <Events events={data.events} />
     </Layout>
   )
 }

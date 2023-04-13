@@ -29,9 +29,21 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     links,
   },
   "events": *[_type == "event" && ((_id in path('drafts.**')) == false) && dateTime >= $today] | order(dateTime asc) {
+    _id,
     title,
     dateTime,
     doorTime,
+    otherBands[] -> {
+      _id,
+      bandName,
+      link
+    },
+    location -> {
+      link,
+      title,
+      address,
+      cityStateZip,
+    },
     links
   },
   "videos": *[_type == "video" && ((_id in path('drafts.**')) == false)] | order(releaseDate desc) {

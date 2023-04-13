@@ -1,3 +1,4 @@
+import { location } from './../_studio/schemas/location'
 export interface ImageProps {
   _type: string
   asset: {
@@ -61,9 +62,23 @@ export interface ReleaseProps {
   links: LinkProps[]
 }
 
+export interface LocationProps {
+  address: string
+  cityStateZip: string
+  link: string
+  title: string
+}
+
 export interface EventProps {
+  _id: string
   dateTime: string
   doorTime?: string
+  otherBands?: {
+    _id: string
+    bandName: string
+    link?: string
+  }[]
+  location: LocationProps
   links: LinkProps[]
   title: string
 }

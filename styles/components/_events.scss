@@ -1,0 +1,241 @@
+$width: 150px;
+$midWidth: $width / 1.5;
+
+.events {
+  padding: $component-padding;
+  position: relative;
+
+  @media screen and (min-width: ($mlg)) {
+    font-size: 1rem;
+  }
+
+  @media screen and (min-width: ($lg)) {
+    font-size: 1.2rem;
+  }
+
+  ul {
+    li {
+      display: flex;
+      width: 100%;
+      margin-bottom: 3rem;
+
+      @media screen and (max-width: ($mlg - 1)) {
+        flex-wrap: wrap;
+      }
+
+      + li {
+        border-top: 2px solid $gold;
+        padding-top: 3rem;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .section {
+    width: 50%;
+    border-right: 2px solid $text;
+
+    &:first-of-type {
+      display: flex;
+      flex-direction: column;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      @media screen and (max-width: ($mlg - 1)) {
+        width: calc(100% - $width);
+      }
+
+      @media screen and (max-width: ($sm - 1)) {
+        width: calc(100% - $midWidth);
+      }
+    }
+
+    &:nth-last-of-type(2) {
+      width: $midWidth;
+      @media screen and (min-width: ($lg)) {
+        width: $width;
+      }
+
+      @media screen and (max-width: ($mlg - 1)) {
+        width: $width;
+      }
+
+      @media screen and (max-width: ($sm - 1)) {
+        width: $midWidth;
+      }
+    }
+
+    &:last-of-type {
+      width: calc(50% - ($midWidth / 2));
+      border-right: none;
+
+      @media screen and (min-width: ($lg)) {
+        width: calc(50% - ($width / 2));
+      }
+
+      @media screen and (max-width: ($mlg - 1)) {
+        width: 100%;
+        border-top: 2px solid $text;
+      }
+    }
+  }
+  .date {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0.4rem 0;
+    width: $midWidth;
+
+    @media screen and (min-width: ($lg)) {
+      width: $width;
+    }
+
+    @media screen and (max-width: ($mlg - 1)) {
+      width: $width;
+    }
+
+    @media screen and (max-width: ($sm - 1)) {
+      width: $midWidth;
+    }
+
+    .month {
+      font-size: 1.5em;
+      font-weight: bold;
+      font-family: $heading-family;
+      text-transform: uppercase;
+      color: $red;
+
+      @media screen and (min-width: ($lg)) {
+        font-size: 2em;
+      }
+    }
+  }
+
+  .title,
+  .link {
+    display: block;
+  }
+
+  .title {
+    font-family: $heading-family;
+    font-size: 1.2em;
+    border-bottom: 2px solid $text;
+    padding: 0.4rem 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: ($mlg - 1)) {
+      padding-right: 0.4rem;
+    }
+
+    @media screen and (max-width: ($sm - 1)) {
+      font-size: 1em;
+    }
+
+    ul {
+      font-size: 0.7em;
+      &:before {
+        content: 'with: ';
+        margin-right: 0.3rem;
+      }
+
+      .bullet {
+        margin: 0.3rem;
+      }
+
+      li {
+        margin: 0;
+        width: auto;
+        display: inline-block;
+        border: 0;
+        padding: 0;
+
+        a {
+          color: $text;
+          text-transform: lowercase;
+
+          &:hover {
+            @media screen and (min-width: ($md)) {
+              color: $red;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .loc {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    @media screen and (max-width: ($sm - 1)) {
+      font-size: 0.8rem;
+    }
+  }
+
+  .link {
+    border-bottom: 2px solid $text;
+    padding: 0.4rem 0;
+    @media screen and (max-width: ($mlg - 1)) {
+      padding-right: 0.4rem;
+    }
+  }
+
+  .mapLink {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.4rem 0;
+    align-items: center;
+    @media screen and (max-width: ($mlg - 1)) {
+      padding-right: 0.4rem;
+    }
+  }
+
+  .showTime,
+  .doorTime {
+    display: inline-block;
+    white-space: nowrap;
+    border-bottom: 2px solid $text;
+    padding: 1rem;
+    width: 50%;
+
+    @media screen and (max-width: ($sm - 1)) {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
+
+  .showTime {
+    border-right: 2px solid $text;
+
+    @media screen and (max-width: ($mlg - 1)) {
+      padding-left: 0;
+    }
+
+    @media screen and (max-width: ($sm - 1)) {
+      border-right: 0;
+    }
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 0.3rem;
+
+    @media screen and (max-width: ($mlg - 1)) {
+      padding: 1rem 0;
+    }
+  }
+}

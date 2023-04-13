@@ -51,6 +51,7 @@ h4,
 h5,
 h6 {
   font-weight: 800;
+  font-family: $heading-family;
 }
 
 .text-4xl {
@@ -153,7 +154,10 @@ a {
   }
 
   &:visited {
-    color: $red;
+    color: $blue;
+    &:hover {
+      color: $red;
+    }
   }
 }
 
