@@ -25,22 +25,64 @@ const Header = ({ socials }: ContactProps) => {
         <nav id="mainNav">
           <ul className="unstyled">
             <li>
-              <a href="#events">events</a>
+              <a
+                onClick={() => {
+                  setOpen(false)
+                }}
+                href="#events"
+              >
+                events
+              </a>
             </li>
             <li>
-              <a href="#music">music</a>
+              <a
+                onClick={() => {
+                  setOpen(false)
+                }}
+                href="#music"
+              >
+                music
+              </a>
             </li>
             <li>
-              <a href="#releases">releases</a>
+              <a
+                onClick={() => {
+                  setOpen(false)
+                }}
+                href="#releases"
+              >
+                releases
+              </a>
             </li>
             <li>
-              <a href="#images">images</a>
+              <a
+                onClick={() => {
+                  setOpen(false)
+                }}
+                href="#images"
+              >
+                images
+              </a>
             </li>
             <li>
-              <a href="#videos">videos</a>
+              <a
+                onClick={() => {
+                  setOpen(false)
+                }}
+                href="#videos"
+              >
+                videos
+              </a>
             </li>
             <li>
-              <a href="#contact">contact</a>
+              <a
+                onClick={() => {
+                  setOpen(false)
+                }}
+                href="#contact"
+              >
+                contact
+              </a>
             </li>
           </ul>
         </nav>
@@ -53,7 +95,12 @@ const Header = ({ socials }: ContactProps) => {
             </li>
           ))}
           <li>
-            <a href="#contact">
+            <a
+              onClick={() => {
+                setOpen(false)
+              }}
+              href="#contact"
+            >
               <DynamicIcon color={colors.white} size={25} name="email" />
             </a>
           </li>

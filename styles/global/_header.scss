@@ -10,10 +10,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-delay: 0.3s;
   }
 
   &.open {
     @media screen and (max-width: ($smd - 1)) {
+      transition-delay: 0s;
       height: 100%;
     }
   }
