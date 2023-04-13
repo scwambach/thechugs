@@ -5,6 +5,7 @@ import { HOMEPAGE_QUERY } from 'queries/homePage'
 import { HomePageProps } from '@utils/types'
 import { HeroBanner } from '@components/blocks/HeroBanner'
 import { Events } from '@components/blocks/Events'
+import { ImageGallery } from '@components/blocks/ImageGallery'
 
 const today = dayjs(new Date()).format('YYYY-MM-DD')
 
@@ -13,6 +14,7 @@ export default function Home({ data }: { data: HomePageProps }) {
     <Layout {...data.site}>
       <HeroBanner {...data.banner} />
       <Events events={data.events} />
+      <ImageGallery images={data.imageGallery} />
     </Layout>
   )
 }

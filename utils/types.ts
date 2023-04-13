@@ -1,4 +1,5 @@
 export interface ImageProps {
+  _key?: string
   _type: string
   asset: {
     _ref: string

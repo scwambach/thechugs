@@ -6,9 +6,7 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     logo,
     heading,
   },
-  imageGallery[] {
-    image,
-  },
+  imageGallery,
   "site": *[_type == "globalInfo"][0] {
     title,
     description,
