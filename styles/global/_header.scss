@@ -5,13 +5,16 @@ header {
 
   @media screen and (max-width: ($smd - 1)) {
     height: 0;
-    bottom: 0;
+    top: 0;
     left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &.open {
     @media screen and (max-width: ($smd - 1)) {
-      height: auto;
+      height: 100%;
     }
   }
 
@@ -24,7 +27,6 @@ header {
     }
 
     @media screen and (max-width: ($smd - 1)) {
-      height: calc(100vh - 150px);
       display: flex;
       align-items: center;
       flex-direction: column;
