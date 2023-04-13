@@ -26,22 +26,22 @@ const Layout = ({
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setHasWindow(true)
-    }
 
-    window.onscroll = () => {
-      if (window.oldScroll < window.scrollY && window.scrollY > 100) {
-        setScrollingDown(true)
-      } else if (window.scrollY < 100) {
-        setScrollingDown(false)
+      window.onscroll = () => {
+        if (window.oldScroll < window.scrollY && window.scrollY > 100) {
+          setScrollingDown(true)
+        } else if (window.scrollY < 100) {
+          setScrollingDown(false)
+        }
+
+        window.oldScroll = window.scrollY
       }
 
-      window.oldScroll = window.scrollY
-    }
-
-    setWindowWidth(window.innerWidth)
-    window.addEventListener('resize', () => {
       setWindowWidth(window.innerWidth)
-    })
+      window.addEventListener('resize', () => {
+        setWindowWidth(window.innerWidth)
+      })
+    }
   }, [])
 
   return (

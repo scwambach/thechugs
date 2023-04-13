@@ -1,10 +1,133 @@
 header {
   position: fixed;
   z-index: 100;
-  display: flex;
-  justify-content: space-between;
   width: 100%;
-  padding: 1rem;
+  @media screen and (max-width: ($smd - 1)) {
+    height: 0;
+  }
+  &.open {
+    @media screen and (max-width: ($smd - 1)) {
+      height: auto;
+    }
+  }
+
+  > div {
+    @media screen and (min-width: ($smd)) {
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    @media screen and (max-width: ($smd - 1)) {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      pointer-events: none;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+
+      &.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    nav {
+      ul {
+        &:last-child {
+          @media screen and (max-width: ($smd - 1)) {
+            flex-direction: column;
+            font-size: 2rem;
+            gap: 0.5rem;
+            margin: 0 0 2rem;
+            font-family: $heading-family;
+          }
+        }
+      }
+    }
+  }
+
+  .toggle {
+    background-color: $gold;
+    padding: 1rem;
+    border-radius: 15px;
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    width: 60px;
+
+    &.active {
+      &:before {
+        transform: scale(350);
+      }
+
+      span {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(7px, 6px);
+        }
+
+        &:nth-child(2) {
+          transform: scale(0);
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(9px, -9px);
+        }
+      }
+    }
+
+    &:before {
+      content: '';
+      position: fixed;
+      background: $gold;
+      width: 10px;
+      height: 10px;
+      display: block;
+      pointer-events: none;
+      top: 1.2rem;
+      right: 1.2rem;
+      border-radius: 100%;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+      transform: scale(1);
+      z-index: -1;
+    }
+
+    span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: $white;
+      border-radius: 20px;
+      position: relative;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+
+      &:nth-child(1) {
+        transform: rotate(0deg);
+      }
+
+      &:nth-child(2) {
+        transform: scale(1);
+        margin: 0.5rem 0;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(0deg);
+      }
+    }
+
+    @media screen and (min-width: ($smd)) {
+      display: none;
+    }
+  }
 
   ul {
     display: flex;
