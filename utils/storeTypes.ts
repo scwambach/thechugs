@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type { NextApiRequest } from "next";
 
 declare global {
