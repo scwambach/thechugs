@@ -28,7 +28,7 @@ export default async function handler(
       price: result.retail_price,
       url: `/api/products/${id}`,
     });
-  } catch ({ error }) {
+  } catch (error: any) {
     console.log(error);
     res.status(404).json({
       errors: [
