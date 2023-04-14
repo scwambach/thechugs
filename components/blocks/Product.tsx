@@ -32,8 +32,10 @@ const Product = (product: any) => {
     currency: activeVariant.currency,
   }).format(activeVariant.retail_price);
 
+  //@ts-ignore
   const addToWishlist = () => addItem(product);
 
+  //@ts-ignore
   const onWishlist = isSaved(id);
 
   return (
