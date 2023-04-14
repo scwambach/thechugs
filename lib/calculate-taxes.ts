@@ -97,7 +97,7 @@ const calculateTaxes = async (
       ],
     });
     //@ts-ignore
-  } catch ({ error }) {
+  } catch (error: any) {
     console.log(error);
     res.status(200).json({
       errors: [
