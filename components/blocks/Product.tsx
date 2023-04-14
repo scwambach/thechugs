@@ -7,7 +7,7 @@ import useWishlistState from "@hooks/useWishlistState";
 
 import VariantPicker from "../modules/VariantPicker";
 
-const Product = (product) => {
+const Product = (product: any) => {
   const { addItem } = useWishlistDispatch();
   const { isSaved } = useWishlistState();
 
@@ -24,7 +24,7 @@ const Product = (product) => {
   );
 
   const activeVariantFile = activeVariant.files.find(
-    ({ type }) => type === "preview"
+    ({ type }: { type: any }) => type === "preview"
   );
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
@@ -83,7 +83,7 @@ const Product = (product) => {
       <div className="p-3 flex flex-col sm:flex-row justify-center items-center">
         <VariantPicker
           value={activeVariantExternalId}
-          onChange={({ target: { value } }) =>
+          onChange={({ target: { value } }: { target: any }) =>
             setActiveVariantExternalId(value)
           }
           variants={variants}
