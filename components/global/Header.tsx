@@ -111,7 +111,9 @@ const Header = ({ socials }: ContactProps) => {
           <li>
             <a className="snipcart-checkout">
               <DynamicIcon faIcons={true} color={colors.white} size={25} name="cart" />
-              {cartHasItems && <span />}
+              {cartHasItems &&
+                <span />
+              }
             </a>
           </li>
         </ul>
