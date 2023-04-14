@@ -20,7 +20,7 @@ const Product = (product: any) => {
   );
 
   const activeVariant = variants.find(
-    (v) => v.external_id === activeVariantExternalId
+    (v: any) => v.external_id === activeVariantExternalId
   );
 
   const activeVariantFile = activeVariant.files.find(
