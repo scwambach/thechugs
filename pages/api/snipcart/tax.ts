@@ -69,7 +69,7 @@ export default async function handler(
   };
 
   const items: PrintfulShippingItem[] = cartItems.map(
-    (item): PrintfulShippingItem => ({
+    (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,
     })
