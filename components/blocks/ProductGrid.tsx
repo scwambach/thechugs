@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Product from "./Product";
 
 const ProductGrid = ({ products }) => {

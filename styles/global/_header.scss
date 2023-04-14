@@ -150,6 +150,7 @@ header {
 
   a {
     color: $white;
+    position: relative;
     text-decoration: none;
 
     &:hover {
@@ -167,11 +168,23 @@ header {
         background-color: $gold;
       }
     }
+
     &:visited {
       color: $white;
       &:hover {
         color: $red;
       }
+    }
+
+    > span {
+      background-color: $red;
+      border-radius: 50%;
+      display: block;
+      height: 10px;
+      width: 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 }

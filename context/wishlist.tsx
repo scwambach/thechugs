@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { createContext, useReducer, useEffect } from "react";
 
 import useLocalStorage from "@hooks/useLocalStorage";
