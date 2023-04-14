@@ -1,6 +1,6 @@
 import * as SiIcons from '@meronex/icons/si'
 import * as FaIcons from '@meronex/icons/fa'
-import { AiOutlineMail } from '@meronex/icons/ai'
+import { AiOutlineMail, AiOutlineShoppingCart } from '@meronex/icons/ai'
 import { colors } from '@utils/settings'
 
 interface Props {
@@ -22,6 +22,8 @@ function DynamicIcon({
   const IconComponent = faIcons ? FaIcons[name] : SiIcons[name]
   if (name === 'email') {
     return <AiOutlineMail size={size} color={color} className={className} />
+  } else if (name ==='cart') {
+    return <AiOutlineShoppingCart size={size} color={color} className={className} />
   }
 
   if (!IconComponent) {

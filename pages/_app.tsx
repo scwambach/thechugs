@@ -1,6 +1,11 @@
 import '@styles/main.scss'
+import { WishlistProvider } from 'context/wishlist'
 import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <WishlistProvider>
+      <Component {...pageProps} />
+    </WishlistProvider>
+  )
 }
