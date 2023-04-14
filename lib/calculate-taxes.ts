@@ -74,7 +74,7 @@ const calculateTaxes = async (
   };
 
   const items: PrintfulShippingItem[] = cartItems.map(
-    (item): PrintfulShippingItem => ({
+    (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,
     })
@@ -96,6 +96,7 @@ const calculateTaxes = async (
         },
       ],
     });
+    //@ts-ignore
   } catch ({ error }) {
     console.log(error);
     res.status(200).json({

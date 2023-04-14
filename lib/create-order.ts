@@ -24,7 +24,7 @@ const createOrder = async ({
   };
 
   const printfulItems: PrintfulShippingItem[] = items.map(
-    (item): PrintfulShippingItem => ({
+    (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,
     })

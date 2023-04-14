@@ -61,7 +61,7 @@ export default async function handler(
   };
 
   const items: PrintfulShippingItem[] = cartItems.map(
-    (item): PrintfulShippingItem => ({
+    (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,
     })
@@ -74,13 +74,14 @@ export default async function handler(
     });
 
     res.status(200).json({
-      rates: result.map((rate) => ({
+      rates: result.map((rate: any) => ({
         cost: rate.rate,
         description: rate.name,
         userDefinedId: rate.id,
         guaranteedDaysToDelivery: rate.maxDeliveryDays,
       })),
     });
+    //@ts-ignore
   } catch ({ error }) {
     console.log(error);
     res.status(200).json({

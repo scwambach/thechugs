@@ -51,6 +51,7 @@ export const WishlistProvider: React.FC<{ children?: React.ReactNode }> = ({
     "items-wishlist",
     JSON.stringify(initialState)
   );
+  //@ts-ignore
   const [state, dispatch] = useReducer(reducer, JSON.parse(savedWishlist));
 
   useEffect(() => {
@@ -62,14 +63,17 @@ export const WishlistProvider: React.FC<{ children?: React.ReactNode }> = ({
 
     const existing = state.items.find((i: PrintfulProduct) => i.id === item.id);
 
+    //@ts-ignore
     if (existing) return dispatch({ type: REMOVE_PRODUCT, payload: item.id });
 
+    //@ts-ignore
     dispatch({ type: ADD_PRODUCT, payload: item });
   };
 
   const removeItem = (id: PrintfulProduct["id"]) => {
     if (!id) return;
 
+    //@ts-ignore
     dispatch({ type: REMOVE_PRODUCT, payload: id });
   };
 
@@ -79,6 +83,7 @@ export const WishlistProvider: React.FC<{ children?: React.ReactNode }> = ({
   const hasItems = state.items.length > 0;
 
   return (
+    //@ts-ignore
     <WishlistDispatchContext.Provider value={{ addItem, removeItem }}>
       <WishlistStateContext.Provider value={{ ...state, isSaved, hasItems }}>
         {children}
