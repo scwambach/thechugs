@@ -9,6 +9,7 @@ const nextConfig = {
     SANITY_ID: process.env.SANITY_ID,
     SANITY_DATASET: process.env.SANITY_DATASET,
   },
+  exclude: ["_studio/**/*"],
 }
 
 module.exports = nextConfig

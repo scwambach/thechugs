@@ -1,5 +1,5 @@
-$width: 150px;
-$midWidth: $width / 1.5;
+$width: 130px;
+$midWidth: $width / 1.2;
 
 .events {
   padding: $component-padding;
@@ -15,9 +15,12 @@ $midWidth: $width / 1.5;
 
   ul {
     li {
-      display: flex;
       width: 100%;
       margin-bottom: 3rem;
+
+      @media screen and (min-width: ($xs)) {
+        display: flex;
+      }
 
       @media screen and (max-width: ($mlg - 1)) {
         flex-wrap: wrap;
@@ -40,22 +43,7 @@ $midWidth: $width / 1.5;
     width: 50%;
     border-right: 2px solid $text;
 
-    &:first-of-type {
-      display: flex;
-      flex-direction: column;
-      flex-direction: column;
-      justify-content: space-evenly;
-
-      @media screen and (max-width: ($mlg - 1)) {
-        width: calc(100% - $width);
-      }
-
-      @media screen and (max-width: ($sm - 1)) {
-        width: calc(100% - $midWidth);
-      }
-    }
-
-    &:nth-last-of-type(2) {
+    &:nth-of-type(1) {
       width: $midWidth;
       @media screen and (min-width: ($lg)) {
         width: $width;
@@ -68,9 +56,35 @@ $midWidth: $width / 1.5;
       @media screen and (max-width: ($sm - 1)) {
         width: $midWidth;
       }
+
+      @media screen and (max-width: ($xs - 1)) {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid $text;
+      }
     }
 
-    &:last-of-type {
+    &:nth-of-type(2) {
+      display: flex;
+      flex-direction: column;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      @media screen and (max-width: ($mlg - 1)) {
+        width: calc(100% - $width);
+      }
+
+      @media screen and (max-width: ($sm - 1)) {
+        width: calc(100% - $midWidth);
+      }
+
+      @media screen and (max-width: ($xs - 1)) {
+        width: 100%;
+        border-right: none;
+      }
+    }
+
+    &:nth-of-type(3) {
       width: calc(50% - ($midWidth / 2));
       border-right: none;
 
@@ -84,14 +98,17 @@ $midWidth: $width / 1.5;
       }
     }
   }
+
   .date {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 0.4rem 0;
-    width: $midWidth;
+    @media screen and (min-width: ($xs)) {
+      width: $midWidth;
+      padding: 0.4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
 
     @media screen and (min-width: ($lg)) {
       width: $width;
@@ -105,6 +122,10 @@ $midWidth: $width / 1.5;
       width: $midWidth;
     }
 
+    @media screen and (max-width: ($xs - 1)) {
+      width: 100%;
+    }
+
     .month {
       font-size: 1.5em;
       font-weight: bold;
@@ -114,6 +135,11 @@ $midWidth: $width / 1.5;
 
       @media screen and (min-width: ($lg)) {
         font-size: 2em;
+      }
+
+      @media screen and (max-width: ($xs - 1)) {
+        width: 100%;
+        margin-right: 1rem;
       }
     }
   }
@@ -127,7 +153,7 @@ $midWidth: $width / 1.5;
     font-family: $heading-family;
     font-size: 1.2em;
     border-bottom: 2px dashed $light-gray;
-    padding: 0.4rem 0;
+    padding: 0.4rem 1rem;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -138,6 +164,11 @@ $midWidth: $width / 1.5;
 
     @media screen and (max-width: ($sm - 1)) {
       font-size: 1em;
+    }
+
+    @media screen and (max-width: ($xs - 1)) {
+      padding: 0.4rem 0;
+      font-size: 1.2em;
     }
 
     ul {
@@ -185,9 +216,15 @@ $midWidth: $width / 1.5;
 
   .link {
     border-bottom: 2px dashed $light-gray;
-    padding: 0.4rem 0;
+    padding: 0.4rem 1rem;
+
     @media screen and (max-width: ($mlg - 1)) {
       padding-right: 0.4rem;
+    }
+
+    @media screen and (max-width: ($xs - 1)) {
+      padding: 0.4rem 0;
+      font-size: 1.2em;
     }
   }
 
@@ -195,10 +232,16 @@ $midWidth: $width / 1.5;
     display: flex;
     gap: 0.5rem;
     width: 100%;
-    padding: 0.4rem 0;
+    padding: 0.4rem 1rem;
     align-items: center;
+
     @media screen and (max-width: ($mlg - 1)) {
       padding-right: 0.4rem;
+    }
+
+    @media screen and (max-width: ($xs - 1)) {
+      padding: 0.4rem 0;
+      font-size: 1.2em;
     }
   }
 
@@ -208,6 +251,7 @@ $midWidth: $width / 1.5;
     white-space: nowrap;
     border-bottom: 2px dashed $light-gray;
     padding: 0.4rem 1rem;
+    line-height: 1.8em;
     width: 50%;
 
     @media screen and (max-width: ($sm - 1)) {
