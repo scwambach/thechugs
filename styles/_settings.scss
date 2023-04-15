@@ -25,9 +25,9 @@ $color: $black;
 $background-color: $white;
 
 @mixin componentSpacing {
-  margin: 5rem 0;
+  margin: 10rem 0;
 
   @media screen and (max-width: ($lg - 1)) {
-    margin: 3rem 0;
+    margin: 5rem 0;
   }
 }
