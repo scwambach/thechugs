@@ -2,7 +2,7 @@ $width: 130px;
 $midWidth: $width / 1.2;
 
 .events {
-  padding: $component-padding;
+  @include componentSpacing;
   position: relative;
 
   @media screen and (min-width: ($mlg)) {
@@ -26,9 +26,17 @@ $midWidth: $width / 1.2;
         flex-wrap: wrap;
       }
 
+      @media screen and (max-width: ($md - 1)) {
+        margin-bottom: 2rem;
+      }
+
       + li {
         border-top: 2px solid $gold;
         padding-top: 3rem;
+
+        @media screen and (max-width: ($md - 1)) {
+          padding-top: 2.5rem;
+        }
       }
     }
   }
@@ -279,7 +287,7 @@ $midWidth: $width / 1.2;
     gap: 0.3rem;
 
     @media screen and (max-width: ($mlg - 1)) {
-      padding: 1rem 0;
+      padding: 1rem 0 0;
     }
   }
 }
