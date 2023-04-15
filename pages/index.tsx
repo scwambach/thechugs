@@ -6,6 +6,7 @@ import { HomePageProps } from '@utils/types'
 import { HeroBanner } from '@components/blocks/HeroBanner'
 import { Events } from '@components/blocks/Events'
 import { ImageGallery } from '@components/blocks/ImageGallery'
+import { Music } from '@components/blocks/Music'
 
 const today = dayjs(new Date()).format('YYYY-MM-DD')
 
@@ -13,6 +14,7 @@ export default function Home({ data }: { data: HomePageProps }) {
   return (
     <Layout {...data.site}>
       <HeroBanner {...data.banner} />
+      <Music />
       <Events events={data.events} />
       <ImageGallery images={data.imageGallery} />
     </Layout>
