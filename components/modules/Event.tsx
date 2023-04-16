@@ -12,7 +12,7 @@ const Event = ({
 // otherBands,
 EventProps) => {
   return (
-    <>
+    <div>
       <span className="section">
         <span className="date">
           <span className="month">{moment(dateTime).format('MMM')}</span>
@@ -80,7 +80,7 @@ EventProps) => {
           ))}
         </span>
       </span> */}
-    </>
+    </div>
   )
 }
 
