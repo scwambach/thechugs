@@ -17,15 +17,10 @@ const Event = ({
   const [door, setDoor] = useState<string>()
 
   useEffect(() => {
-    const month = moment(dateTime).format('MMM')
-    const day = moment(dateTime).format('DD, YYYY')
-    const time = moment(dateTime).format('hh:mm A')
-    const door = moment(doorTime).format('hh:mm A')
-
-    setMonth(month)
-    setDay(day)
-    setTime(time)
-    setDoor(door)
+    setMonth(moment(dateTime).format('MMM'))
+    setDay(moment(dateTime).format('DD, YYYY'))
+    setTime(moment(dateTime).format('hh:mm A'))
+    setDoor(moment(doorTime).format('hh:mm A'))
   }, [])
   return (
     <>
