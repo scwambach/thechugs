@@ -15,12 +15,12 @@ const Event = ({
   // const day = moment(dateTime).format('DD, YYYY')
   return (
     <>
-      <div className="section">
+      {/* <div className="section">
         <span className="date">
-          {/* <span className="month">{month}</span>
-          {day} */}
+          <span className="month">{month}</span>
+          {day}
         </span>
-      </div>
+      </div> */}
       <div className="section">
         <span className="title">
           {title}
