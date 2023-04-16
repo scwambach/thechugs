@@ -11,14 +11,14 @@ const Event = ({
   doorTime,
   otherBands,
 }: EventProps) => {
-  const month = moment(dateTime).format('MMM')
-  const day = moment(dateTime).format('DD, YYYY')
+  // const month = moment(dateTime).format('MMM')
+  // const day = moment(dateTime).format('DD, YYYY')
   return (
     <>
       <div className="section">
         <span className="date">
-          <span className="month">{month}</span>
-          {day}
+          {/* <span className="month">{month}</span>
+          {day} */}
         </span>
       </div>
       <div className="section">
