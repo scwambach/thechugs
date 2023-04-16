@@ -1,5 +1,5 @@
 import { EventProps } from '@utils/types'
-import moment from 'moment'
+// import moment from 'moment'
 import { Fragment } from 'react'
 import { FiMapPin } from 'react-icons/fi'
 
@@ -65,11 +65,11 @@ const Event = ({
       <div className="section">
         <span className="showTime">
           <strong>Starts @: </strong>
-          {moment(dateTime).format('hh:mm A')}
+          {/* {moment(dateTime).format('hh:mm A')} */}
         </span>
         <span className="doorTime">
           <strong>Doors @: </strong>
-          {moment(doorTime).format('hh:mm A')}
+          {/* {moment(doorTime).format('hh:mm A')} */}
         </span>
         <span className="links">
           {links.map(({ _key, copy, url }, index: number) => (
