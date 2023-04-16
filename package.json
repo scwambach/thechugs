@@ -7,8 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fullstack": "concurrently \"yarn dev\" \"cd _studio && yarn dev\"",
-    "deploy": "concurrently \"git push\" \"cd _studio && sanity deploy\"",
     "check-format": "prettier --write .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js"
   },
@@ -39,7 +37,6 @@
     "@types/lodash.shuffle": "^4.2.7",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "autoprefixer": "^10.4.13",
-    "concurrently": "^8.0.1",
     "eslint-config-prettier": "^8.6.0",
     "husky": "^8.0.3",
     "prettier": "^2.8.3",
