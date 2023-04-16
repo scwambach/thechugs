@@ -1,6 +1,6 @@
 import { EventProps } from '@utils/types'
 import moment from 'moment'
-import { Fragment } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { FiMapPin } from 'react-icons/fi'
 
 const Event = ({
@@ -11,10 +11,22 @@ const Event = ({
   doorTime,
   otherBands,
 }: EventProps) => {
-  const month = moment(dateTime).format('MMM')
-  const day = moment(dateTime).format('DD, YYYY')
-  const time = moment(dateTime).format('hh:mm A')
-  const door = moment(doorTime).format('hh:mm A')
+  const [month, setMonth] = useState<string>()
+  const [day, setDay] = useState<string>()
+  const [time, setTime] = useState<string>()
+  const [door, setDoor] = useState<string>()
+
+  useEffect(() => {
+    const month = moment(dateTime).format('MMM')
+    const day = moment(dateTime).format('DD, YYYY')
+    const time = moment(dateTime).format('hh:mm A')
+    const door = moment(doorTime).format('hh:mm A')
+
+    setMonth(month)
+    setDay(day)
+    setTime(time)
+    setDoor(door)
+  }, [])
   return (
     <>
       <div className="section">
