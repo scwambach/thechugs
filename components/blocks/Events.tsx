@@ -1,7 +1,7 @@
 import { Container } from '@components/modules/Container'
 import { breakpoints } from '@utils/settings'
 import { EventProps } from '@utils/types'
-import { Event } from '@components/modules/Event'
+// import { Event } from '@components/modules/Event'
 
 const Events = ({ events }: { events: EventProps[] }) => {
   return (
@@ -10,7 +10,8 @@ const Events = ({ events }: { events: EventProps[] }) => {
         <ul className="unstyled">
           {events.map((event) => (
             <li key={event._id}>
-              <Event {...event} />
+              test
+              {/* <Event {...event} /> */}
             </li>
           ))}
         </ul>
