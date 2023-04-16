@@ -1,22 +1,22 @@
 import { Layout } from '@components/wrappers/Layout'
 import { HeroBanner } from '@components/blocks/HeroBanner'
-import * as React from "react";
-import { GetStaticProps } from "next";
-import shuffle from "lodash.shuffle";
+import * as React from 'react'
+import { GetStaticProps } from 'next'
+import shuffle from 'lodash.shuffle'
 import { BannerProps, SiteProps } from '@utils/types'
-import { printful } from "@lib/printful-client";
-import { formatVariantName } from "@lib/format-variant-name";
-import { PrintfulProduct } from "@utils/storeTypes";
-import ProductGrid from "@components/blocks/ProductGrid";
-import dayjs from 'dayjs';
-import { client } from '@utils/client';
+import { printful } from '@lib/printful-client'
+import { formatVariantName } from '@lib/format-variant-name'
+import { PrintfulProduct } from '@utils/storeTypes'
+import ProductGrid from '@components/blocks/ProductGrid'
+import moment from 'moment'
+import { client } from '@utils/client'
 import { HOMEPAGE_QUERY } from 'queries/homePage'
 
-const today = dayjs(new Date()).format('YYYY-MM-DD')
+const today = moment(new Date()).format('YYYY-MM-DD')
 export interface StorePageProps {
   banner: BannerProps
   site: SiteProps
-  products: PrintfulProduct[];
+  products: PrintfulProduct[]
 }
 
 export default function Store({ data }: { data: StorePageProps }) {
@@ -47,14 +47,16 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }
 
-  const { result: productIds } = await printful.get("sync/products");
+  const { result: productIds } = await printful.get('sync/products')
 
   const allProducts = await Promise.all(
-    productIds.map(async ({ id }: { id: any}) => await printful.get(`sync/products/${id}`))
-  );
+    productIds.map(
+      async ({ id }: { id: any }) => await printful.get(`sync/products/${id}`)
+    )
+  )
 
   const products: PrintfulProduct[] = allProducts.map(
-    ({ result: { sync_product, sync_variants } }: { result: any}) => ({
+    ({ result: { sync_product, sync_variants } }: { result: any }) => ({
       ...sync_product,
       //@ts-ignore
       variants: sync_variants.map(({ name, ...variant }) => ({
@@ -62,14 +64,14 @@ export const getStaticProps: GetStaticProps = async () => {
         ...variant,
       })),
     })
-  );
+  )
 
   return {
     props: {
       data: {
         ...data,
         products: shuffle(products),
-      }
+      },
     },
-  };
-};
+  }
+}

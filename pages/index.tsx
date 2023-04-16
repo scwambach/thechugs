@@ -1,4 +1,4 @@
-import dayjs from 'dayjs'
+import moment from 'moment'
 import { Layout } from '@components/wrappers/Layout'
 import { client } from '@utils/client'
 import { HOMEPAGE_QUERY } from 'queries/homePage'
@@ -8,7 +8,7 @@ import { Events } from '@components/blocks/Events'
 import { ImageGallery } from '@components/blocks/ImageGallery'
 import { Music } from '@components/blocks/Music'
 
-const today = dayjs(new Date()).format('YYYY-MM-DD')
+const today = moment(new Date()).format('YYYY-MM-DD')
 
 export default function Home({ data }: { data: HomePageProps }) {
   return (

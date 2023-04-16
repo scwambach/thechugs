@@ -1,5 +1,5 @@
 import { EventProps } from '@utils/types'
-import dayjs from 'dayjs'
+import moment from 'moment'
 import { Fragment } from 'react'
 import { FiMapPin } from 'react-icons/fi'
 
@@ -15,8 +15,8 @@ const Event = ({
     <>
       <div className="section">
         <span className="date">
-          <span className="month">{dayjs(dateTime).format('MMM')}</span>
-          {dayjs(dateTime).format('DD, YYYY')}
+          <span className="month">{moment(dateTime).format('MMM')}</span>
+          {moment(dateTime).format('DD, YYYY')}
         </span>
       </div>
       <div className="section">
@@ -63,11 +63,11 @@ const Event = ({
       <div className="section">
         <span className="showTime">
           <strong>Starts @: </strong>
-          {dayjs(dateTime).format('hh:mm A')}
+          {moment(dateTime).format('hh:mm A')}
         </span>
         <span className="doorTime">
           <strong>Doors @: </strong>
-          {dayjs(doorTime).format('hh:mm A')}
+          {moment(doorTime).format('hh:mm A')}
         </span>
         <span className="links">
           {links.map(({ _key, copy, url }, index: number) => (
