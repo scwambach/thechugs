@@ -1,14 +1,14 @@
 import { EventProps } from '@utils/types'
 import moment from 'moment'
-import { Fragment } from 'react'
+// import { Fragment } from 'react'
 import { FiMapPin } from 'react-icons/fi'
 
 const Event = ({
   dateTime,
-  links,
+  // links,
   location,
   title,
-  doorTime,
+  // doorTime,
   otherBands,
 }: EventProps) => {
   return (
@@ -60,7 +60,7 @@ const Event = ({
           </a>
         </span>
       </span>
-      <span className="section">
+      {/* <span className="section">
         <span className="showTime">
           <strong>Starts @: </strong>
           {moment(dateTime).format('hh:mm A')}
@@ -79,7 +79,7 @@ const Event = ({
             </Fragment>
           ))}
         </span>
-      </span>
+      </span> */}
     </>
   )
 }
