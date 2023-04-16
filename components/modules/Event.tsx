@@ -1,12 +1,12 @@
 import { EventProps } from '@utils/types'
 import moment from 'moment'
 // import { Fragment } from 'react'
-import { FiMapPin } from 'react-icons/fi'
+// import { FiMapPin } from 'react-icons/fi'
 
 const Event = ({
   dateTime,
   // links,
-  location,
+  // location,
   title,
   // doorTime,
   otherBands,
@@ -39,7 +39,7 @@ const Event = ({
             </ul>
           )}
         </span>
-        <span className="loc">
+        {/* <span className="loc">
           <a
             className="link"
             target="_blank"
@@ -58,7 +58,7 @@ const Event = ({
             <FiMapPin />
             Find It Here
           </a>
-        </span>
+        </span> */}
       </span>
       {/* <span className="section">
         <span className="showTime">
