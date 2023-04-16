@@ -39,7 +39,7 @@ const Event = ({
             </ul>
           )}
         </span>
-        <span className="loc">
+        <div className="loc">
           <a
             className="link"
             target="_blank"
@@ -58,7 +58,7 @@ const Event = ({
             <FiMapPin />
             Find It Here
           </a>
-        </span>
+        </div>
       </div>
       <div className="section">
         <span className="showTime">
@@ -69,7 +69,7 @@ const Event = ({
           <strong>Doors @: </strong>
           {moment(doorTime).format('hh:mm A')}
         </span>
-        <span className="links">
+        <div className="links">
           {links.map(({ _key, copy, url }, index: number) => (
             <Fragment key={_key}>
               {index > 0 && <span className="bullet">&bull;</span>}
@@ -78,7 +78,7 @@ const Event = ({
               </a>
             </Fragment>
           ))}
-        </span>
+        </div>
       </div>
     </>
   )
