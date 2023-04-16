@@ -1,10 +1,10 @@
 import { EventProps } from '@utils/types'
-import moment from 'moment'
+// import moment from 'moment'
 // import { Fragment } from 'react'
 // import { FiMapPin } from 'react-icons/fi'
 
 const Event = ({
-  dateTime,
+  // dateTime,
   // links,
   // location,
   title,
@@ -13,12 +13,12 @@ const Event = ({
 EventProps) => {
   return (
     <div>
-      <span className="section">
+      {/* <span className="section">
         <span className="date">
           <span className="month">{moment(dateTime).format('MMM')}</span>
           {moment(dateTime).format('DD, YYYY')}
         </span>
-      </span>
+      </span> */}
       <span className="section">
         <span className="title">
           {title}
