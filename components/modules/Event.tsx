@@ -1,7 +1,7 @@
 import { EventProps } from '@utils/types'
 import moment from 'moment'
 import { Fragment } from 'react'
-// import { FiMapPin } from 'react-icons/fi'
+import { FiMapPin } from 'react-icons/fi'
 
 const Event = ({
   dateTime,
@@ -13,13 +13,13 @@ const Event = ({
 }: EventProps) => {
   return (
     <>
-      <div className="section">
+      <span className="section">
         <span className="date">
           <span className="month">{moment(dateTime).format('MMM')}</span>
           {moment(dateTime).format('DD, YYYY')}
         </span>
-      </div>
-      <div className="section">
+      </span>
+      <span className="section">
         <span className="title">
           {title}
           {otherBands && (
@@ -55,12 +55,12 @@ const Event = ({
             className="mapLink"
             href={`https://www.google.com/maps/place/${location.address} ${location.cityStateZip}`}
           >
-            {/* <FiMapPin /> */}
+            <FiMapPin />
             Find It Here
           </a>
         </span>
-      </div>
-      <div className="section">
+      </span>
+      <span className="section">
         <span className="showTime">
           <strong>Starts @: </strong>
           {moment(dateTime).format('hh:mm A')}
@@ -79,7 +79,7 @@ const Event = ({
             </Fragment>
           ))}
         </span>
-      </div>
+      </span>
     </>
   )
 }
