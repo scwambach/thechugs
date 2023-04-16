@@ -1,5 +1,5 @@
 import { EventProps } from '@utils/types'
-// import moment from 'moment'
+import moment from 'moment'
 import { Fragment } from 'react'
 import { FiMapPin } from 'react-icons/fi'
 
@@ -11,16 +11,18 @@ const Event = ({
   doorTime,
   otherBands,
 }: EventProps) => {
-  // const month = moment(dateTime).format('MMM')
-  // const day = moment(dateTime).format('DD, YYYY')
+  const month = moment(dateTime).format('MMM')
+  const day = moment(dateTime).format('DD, YYYY')
+  const time = moment(dateTime).format('hh:mm A')
+  const door = moment(doorTime).format('hh:mm A')
   return (
     <>
-      {/* <div className="section">
+      <div className="section">
         <span className="date">
           <span className="month">{month}</span>
           {day}
         </span>
-      </div> */}
+      </div>
       <div className="section">
         <span className="title">
           {title}
@@ -65,11 +67,11 @@ const Event = ({
       <div className="section">
         <span className="showTime">
           <strong>Starts @: </strong>
-          {/* {moment(dateTime).format('hh:mm A')} */}
+          {time}
         </span>
         <span className="doorTime">
           <strong>Doors @: </strong>
-          {/* {moment(doorTime).format('hh:mm A')} */}
+          {door}
         </span>
         <span className="links">
           {links.map(({ _key, copy, url }, index: number) => (
