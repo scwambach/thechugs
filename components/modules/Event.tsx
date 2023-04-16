@@ -1,28 +1,30 @@
 import { EventProps } from '@utils/types'
-// import moment from 'moment'
-// import { Fragment } from 'react'
-// import { FiMapPin } from 'react-icons/fi'
+import moment from 'moment'
+import { Fragment } from 'react'
+import { FiMapPin } from 'react-icons/fi'
 
 const Event = ({
-  // dateTime,
-  // links,
-  // location,
+  dateTime,
+  links,
+  location,
   title,
-}: // doorTime,
-// otherBands,
-EventProps) => {
+  doorTime,
+  otherBands,
+}: EventProps) => {
+  const month = moment(dateTime).format('MMM')
+  const day = moment(dateTime).format('DD, YYYY')
   return (
-    <div>
-      {/* <span className="section">
+    <>
+      <div className="section">
         <span className="date">
-          <span className="month">{moment(dateTime).format('MMM')}</span>
-          {moment(dateTime).format('DD, YYYY')}
+          <span className="month">{month}</span>
+          {day}
         </span>
-      </span> */}
-      <span className="section">
+      </div>
+      <div className="section">
         <span className="title">
           {title}
-          {/* {otherBands && (
+          {otherBands && (
             <ul className="unstyled">
               {otherBands.map(({ _id, bandName, link }, index: number) => (
                 <li key={_id}>
@@ -37,9 +39,9 @@ EventProps) => {
                 </li>
               ))}
             </ul>
-          )} */}
+          )}
         </span>
-        {/* <span className="loc">
+        <span className="loc">
           <a
             className="link"
             target="_blank"
@@ -58,9 +60,9 @@ EventProps) => {
             <FiMapPin />
             Find It Here
           </a>
-        </span> */}
-      </span>
-      {/* <span className="section">
+        </span>
+      </div>
+      <div className="section">
         <span className="showTime">
           <strong>Starts @: </strong>
           {moment(dateTime).format('hh:mm A')}
@@ -79,8 +81,8 @@ EventProps) => {
             </Fragment>
           ))}
         </span>
-      </span> */}
-    </div>
+      </div>
+    </>
   )
 }
 
