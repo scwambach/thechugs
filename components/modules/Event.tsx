@@ -8,9 +8,9 @@ const Event = ({
   // links,
   // location,
   title,
-  // doorTime,
-  otherBands,
-}: EventProps) => {
+}: // doorTime,
+// otherBands,
+EventProps) => {
   return (
     <>
       <span className="section">
@@ -22,7 +22,7 @@ const Event = ({
       <span className="section">
         <span className="title">
           {title}
-          {otherBands && (
+          {/* {otherBands && (
             <ul className="unstyled">
               {otherBands.map(({ _id, bandName, link }, index: number) => (
                 <li key={_id}>
@@ -37,7 +37,7 @@ const Event = ({
                 </li>
               ))}
             </ul>
-          )}
+          )} */}
         </span>
         {/* <span className="loc">
           <a
