@@ -21,6 +21,19 @@ export interface ImageProps {
   }
 }
 
+export interface SanityImageProps {
+  _id?: string
+  _key?: string
+  alt?: string
+  aspectRatio: number
+  crop?: any
+  height: number
+  hotspot?: any
+  lqip: string
+  reference: ImageProps
+  url: string
+  width: number
+}
 export interface LinkProps {
   _key: string
   _type: string
@@ -30,7 +43,7 @@ export interface LinkProps {
 
 export interface BannerProps {
   heading: string
-  image: ImageProps
+  image: SanityImageProps
   logo: ImageProps
   video: string
 }
@@ -93,7 +106,7 @@ export interface VideoProps {
 export interface HomePageProps {
   title: string
   banner: BannerProps
-  imageGallery: ImageProps[]
+  imageGallery: SanityImageProps[]
   site: SiteProps
   products: ProductProps[]
   releases: ReleaseProps[]

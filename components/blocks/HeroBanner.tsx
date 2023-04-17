@@ -1,3 +1,4 @@
+import { BlurImage } from '@components/modules/BlurImage'
 import { ResponsiveImage } from '@components/modules/ResponsiveImage'
 import { BannerProps } from '@utils/types'
 import { urlFor } from '@utils/urlFor'
@@ -44,12 +45,7 @@ const HeroBanner = ({ heading, image, logo, video }: BannerProps) => {
               height="100%"
             />
           )}
-          <ResponsiveImage
-            src={`${urlFor(image).width(2000).quality(75).saturation(-100)}`}
-            lqip={`${urlFor(image).width(10).quality(10).saturation(-100)}`}
-            alt=""
-            isBackground
-          />
+          <BlurImage grayscale isBackground {...image} />
         </div>
 
         <div className="logo">

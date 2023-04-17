@@ -16,6 +16,7 @@ export default function Home({ data }: { data: HomePageProps }) {
       <HeroBanner {...data.banner} />
       <Music />
       <Events events={data.events} />
+
       <ImageGallery images={data.imageGallery} />
     </Layout>
   )

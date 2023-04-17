@@ -1,12 +1,56 @@
+const imageQuery = ({
+  name,
+  fieldName,
+}: {
+  name: string
+  fieldName?: string
+}) => {
+  return `
+  "${fieldName || name}": {
+    "reference": ${name},
+    "url": ${name}.asset->url,
+    "lqip": ${name}.asset->metadata.lqip,
+    "alt": ${name}.asset->altText,
+    "caption": ${name}.asset->description,
+    "crop": ${name}.crop,
+    "hotspot": ${name}.hotspot,
+    "height": ${name}.asset->metadata.dimensions.height,
+    "width": ${name}.asset->metadata.dimensions.width,
+    "aspectRatio": ${name}.asset->metadata.dimensions.aspectRatio,
+  }
+  `
+}
+
+export const assetQuery = () => {
+  return `
+    "reference": {
+      asset,
+      "crop": crop,
+      "hotspot": hotspot,
+    },
+    "url": asset->url,
+    "lqip": asset->metadata.lqip,
+    "alt": asset->altText,
+    "caption": asset->description,
+    "crop": crop,
+    "hotspot": hotspot,
+    "height": asset->metadata.dimensions.height,
+    "width": asset->metadata.dimensions.width,
+    "aspectRatio": asset->metadata.dimensions.aspectRatio,
+  `
+}
+
 export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
   title,
   banner {
     video,
-    image,
     logo,
     heading,
+    ${imageQuery({ name: 'image' })},
   },
-  imageGallery,
+  imageGallery[] {
+    ${assetQuery()}
+  },
   "site": *[_type == "globalInfo"][0] {
     title,
     description,
