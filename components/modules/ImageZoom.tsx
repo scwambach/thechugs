@@ -21,11 +21,7 @@ const ImageZoom = ({ img }: { img: SanityImageProps }) => {
       isZoomed={isZoomed}
       onZoomChange={handleZoomChange}
     >
-      <BlurImage
-        {...img}
-        blur={isZoomed ? undefined : 10}
-        quality={isZoomed ? 90 : 25}
-      />
+      <BlurImage {...img} />
     </ControlledZoom>
   )
 }
