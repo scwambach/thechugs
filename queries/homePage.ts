@@ -23,6 +23,7 @@ const imageQuery = ({
 
 export const assetQuery = () => {
   return `
+    _key,
     "reference": {
       asset,
       "crop": crop,

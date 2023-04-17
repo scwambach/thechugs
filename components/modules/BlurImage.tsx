@@ -12,6 +12,7 @@ interface BlurImageProps extends SanityImageProps {
   imgWidth?: number
   grayscale?: boolean
   isBackground?: boolean
+  blur?: number
   mobileCrop?: boolean | 'squared'
   overrideSize?: boolean
   priority?: boolean
@@ -23,6 +24,7 @@ interface BlurImageProps extends SanityImageProps {
 const BlurImage = ({
   alt = '',
   className,
+  blur,
   crop,
   height,
   imgHeight,
@@ -51,6 +53,7 @@ const BlurImage = ({
               mobileCrop === 'squared' ? breakpoints.sm : breakpoints.sm * 1.5
             )
             .quality(quality)
+            .blur(blur || undefined)
             .fit('clip')
         }
 
@@ -61,6 +64,7 @@ const BlurImage = ({
               mobileCrop === 'squared' ? breakpoints.md : breakpoints.md / 1.5
             )
             .quality(quality)
+            .blur(blur || undefined)
             .fit('clip')
         }
 
@@ -69,6 +73,7 @@ const BlurImage = ({
             .width(imgWidth)
             .height(imgHeight)
             .quality(quality)
+            .blur(blur || undefined)
             .fit('clip')
         }
       }
@@ -76,6 +81,7 @@ const BlurImage = ({
         .width(imgWidth)
         .height(imgHeight)
         .quality(quality)
+        .blur(blur || undefined)
         .fit('clip')
     }
 
@@ -87,6 +93,7 @@ const BlurImage = ({
             mobileCrop === 'squared' ? breakpoints.sm : breakpoints.sm * 1.5
           )
           .quality(quality)
+          .blur(blur || undefined)
           .fit('clip')
       }
 
@@ -97,6 +104,7 @@ const BlurImage = ({
             mobileCrop === 'squared' ? breakpoints.md : breakpoints.md / 1.5
           )
           .quality(quality)
+          .blur(blur || undefined)
           .fit('clip')
       }
 
@@ -105,12 +113,19 @@ const BlurImage = ({
           .width(imgWidth + 600)
           .height(900)
           .quality(quality)
+          .blur(blur || undefined)
           .fit('clip')
       }
 
-      return imageUrlBuilder.width(imgWidth).quality(quality)
+      return imageUrlBuilder
+        .width(imgWidth)
+        .quality(quality)
+        .blur(blur || undefined)
     }
-    return imageUrlBuilder.width(imgWidth).quality(quality)
+    return imageUrlBuilder
+      .width(imgWidth)
+      .quality(quality)
+      .blur(blur || undefined)
   }
 
   const imageProps: any = useNextSanityImage(client, reference, {
