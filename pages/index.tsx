@@ -7,6 +7,7 @@ import { HeroBanner } from '@components/blocks/HeroBanner'
 import { Events } from '@components/blocks/Events'
 import { ImageGallery } from '@components/blocks/ImageGallery'
 import { Music } from '@components/blocks/Music'
+import { Articles } from '@components/blocks/Articles'
 
 const today = moment(new Date()).format('YYYY-MM-DD')
 
@@ -16,8 +17,8 @@ export default function Home({ data }: { data: HomePageProps }) {
       <HeroBanner {...data.banner} />
       <Music />
       <Events events={data.events} />
-
       <ImageGallery images={data.imageGallery} />
+      <Articles articles={data.articles} />
     </Layout>
   )
 }

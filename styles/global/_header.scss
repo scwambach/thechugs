@@ -2,6 +2,8 @@ header {
   position: fixed;
   z-index: 100;
   width: 100%;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
 
   @media screen and (max-width: ($smd - 1)) {
     height: 0;
@@ -154,7 +156,7 @@ header {
     text-decoration: none;
 
     &:hover {
-      color: $red;
+      color: $white;
 
       &:before {
         content: '';
@@ -172,7 +174,7 @@ header {
     &:visited {
       color: $white;
       &:hover {
-        color: $red;
+        color: $white;
       }
     }
 

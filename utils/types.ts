@@ -67,12 +67,12 @@ export interface ProductProps {
   images: ImageProps[]
 }
 
-export interface ReleaseProps {
+export interface ArticleProps {
+  _id: string
   title: string
-  description?: string
-  releaseDate: string
-  coverArt: ImageProps
-  links: LinkProps[]
+  image: SanityImageProps
+  date: string
+  link: string
 }
 
 export interface LocationProps {
@@ -109,7 +109,7 @@ export interface HomePageProps {
   imageGallery: SanityImageProps[]
   site: SiteProps
   products: ProductProps[]
-  releases: ReleaseProps[]
+  articles: ArticleProps[]
   events: EventProps[]
   videos: VideoProps[]
 }

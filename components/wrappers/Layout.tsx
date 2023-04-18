@@ -3,7 +3,7 @@ import { Header } from '@components/global/Header'
 import { Seo } from '@components/global/Seo'
 import { SiteProps } from '@utils/types'
 import { createContext, useEffect, useState } from 'react'
-
+import { logoArt } from '@utils/art'
 interface ContextProps {
   scrollingDown?: boolean
   hasWindow?: boolean
@@ -24,6 +24,7 @@ const Layout = ({
   const [scrollingDown, setScrollingDown] = useState<boolean>(false)
 
   useEffect(() => {
+    console.log(logoArt)
     if (typeof window !== 'undefined') {
       setHasWindow(true)
 

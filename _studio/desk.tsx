@@ -9,6 +9,7 @@ import {
 import {BiAlbum} from 'react-icons/bi'
 import {BsGlobe} from 'react-icons/bs'
 import {FaMapMarkerAlt} from 'react-icons/fa'
+import {GrArticle} from 'react-icons/gr'
 export const desk = deskTool({
   structure: (S) =>
     S.list()
@@ -38,6 +39,10 @@ export const desk = deskTool({
           .title('Releases')
           .child(S.documentTypeList('release').title('Releases'))
           .icon(BiAlbum),
+        S.listItem()
+          .title('Articles')
+          .child(S.documentTypeList('article').title('Articles'))
+          .icon(GrArticle),
         S.listItem()
           .title('Global Info')
           .child(S.document().schemaType('globalInfo').documentId('globalInfo'))

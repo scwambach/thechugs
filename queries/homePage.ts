@@ -59,17 +59,18 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     contactInfo,
   },
   "products": *[_type == "product" && ((_id in path('drafts.**')) == false)] {
+    _id,
     title,
     description,
     price,
     images,
   },
-  "releases": *[_type == "release" && ((_id in path('drafts.**')) == false)] | order(releaseDate asc) {
+  "articles": *[_type == "article" && ((_id in path('drafts.**')) == false)] | order(date desc) {
+    _id,
     title,
-    description,
-    releaseDate,
-    coverArt,
-    links,
+    date,
+    link,
+    ${imageQuery({ name: 'image' })},
   },
   "events": *[_type == "event" && ((_id in path('drafts.**')) == false) && dateTime >= $today] | order(dateTime asc) {
     _id,
@@ -90,6 +91,7 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     links
   },
   "videos": *[_type == "video" && ((_id in path('drafts.**')) == false)] | order(releaseDate desc) {
+    _id,
     title,
     description,
     releaseDate,

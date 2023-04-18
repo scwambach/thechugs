@@ -5,12 +5,13 @@ import { SocialSelector } from '@components/modules/SocialSelector'
 import { colors } from '@utils/settings'
 import { ContactProps } from '@utils/types'
 import { useState } from 'react'
-import useSnipcartCount from "@hooks/useSnipcartCount";
+import useSnipcartCount from '@hooks/useSnipcartCount'
+import { NavItem } from '@components/modules/NavItem'
 
 const Header = ({ socials }: ContactProps) => {
   const [open, setOpen] = useState<boolean>(false)
-  const { cart } = useSnipcartCount();
-  const cartHasItems = cart.items.count !== 0;
+  const { cart } = useSnipcartCount()
+  const cartHasItems = cart.items.count !== 0
 
   return (
     <header className={open ? 'open' : undefined}>
@@ -28,66 +29,12 @@ const Header = ({ socials }: ContactProps) => {
       <div className={open ? 'open' : undefined}>
         <nav id="mainNav">
           <ul className="unstyled">
-            <li>
-              <a
-                onClick={() => {
-                  setOpen(false)
-                }}
-                href="#events"
-              >
-                events
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={() => {
-                  setOpen(false)
-                }}
-                href="#music"
-              >
-                music
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={() => {
-                  setOpen(false)
-                }}
-                href="#releases"
-              >
-                releases
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={() => {
-                  setOpen(false)
-                }}
-                href="#images"
-              >
-                images
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={() => {
-                  setOpen(false)
-                }}
-                href="#videos"
-              >
-                videos
-              </a>
-            </li>
-            <li>
-              <a
-                onClick={() => {
-                  setOpen(false)
-                }}
-                href="#contact"
-              >
-                contact
-              </a>
-            </li>
+            <NavItem elementId="events" setOpen={setOpen} />
+            <NavItem elementId="music" setOpen={setOpen} />
+            <NavItem elementId="articles" setOpen={setOpen} />
+            <NavItem elementId="images" setOpen={setOpen} />
+            <NavItem elementId="videos" setOpen={setOpen} />
+            <NavItem elementId="contact" setOpen={setOpen} />
           </ul>
         </nav>
         <ul className="socials unstyled">
@@ -110,10 +57,13 @@ const Header = ({ socials }: ContactProps) => {
           </li>
           <li>
             <a className="snipcart-checkout">
-              <DynamicIcon faIcons={true} color={colors.white} size={25} name="cart" />
-              {cartHasItems &&
-                <span />
-              }
+              <DynamicIcon
+                faIcons={true}
+                color={colors.white}
+                size={25}
+                name="cart"
+              />
+              {cartHasItems && <span />}
             </a>
           </li>
         </ul>

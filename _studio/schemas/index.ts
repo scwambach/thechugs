@@ -1,3 +1,4 @@
+import {article} from './article'
 import {event} from './event'
 import {globalInfo} from './globalInfo'
 import {homePage} from './homePage'
@@ -15,5 +16,6 @@ export const schemaTypes = [
   video,
   product,
   location,
+  article,
   otherBand,
 ]
