@@ -1,3 +1,16 @@
+$multiplier: 0.01em;
+$start: 0.02em;
+$shadow1: $start;
+$shadow2: $start + $multiplier;
+$shadow3: $shadow2 + $multiplier;
+$shadow4: $shadow3 + $multiplier;
+$shadow5: $shadow4 + $multiplier;
+$shadow6: $shadow5 + $multiplier;
+$shadow7: $shadow6 + $multiplier;
+$shadow8: $shadow7 + $multiplier;
+$shadow9: $shadow8 + $multiplier;
+$shadow10: $shadow9 + $multiplier;
+
 body {
   margin: 0;
   padding: 0;
@@ -82,7 +95,34 @@ table {
   transform: scale(1.05);
 
   video {
-    filter: grayscale(100%);
     object-fit: cover;
+  }
+}
+
+.section-heading {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 8vw;
+  position: relative;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  color: $blue;
+  @media screen and (min-width: ($xl)) {
+    font-size: 7rem;
+  }
+
+  @media screen and (max-width: ($md - 1)) {
+    font-size: 5rem;
+  }
+
+  .events & {
+    margin-bottom: 3rem;
+  }
+
+  &:hover {
+    color: $white;
+    text-shadow: 0em 0em $start $text, $shadow2 $shadow2 0 $red,
+      $shadow3 $shadow3 0 $blue, $shadow4 $shadow4 0 $gold,
+      $shadow5 $shadow5 0 $red, $shadow6 $shadow6 0 $blue;
   }
 }

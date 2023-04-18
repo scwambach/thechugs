@@ -4,13 +4,13 @@
   height: 0;
   padding-bottom: 56.25%;
 
-  @media screen and (min-width: ($xxl)) {
+  @media screen and (min-width: ($xl)) {
     padding-bottom: 0;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: 900px;
+    max-height: 1200px;
   }
 
   .inner {

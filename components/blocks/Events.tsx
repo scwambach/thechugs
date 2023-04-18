@@ -23,10 +23,11 @@ const Events = ({ events }: { events: EventProps[] }) => {
   }, [hasWindow])
   return (
     <section id="events" className="events">
+      <h2 className="section-heading">Events</h2>
       <div className="background-media">
         {hasWindow && (
           <ReactPlayer
-            url="https://res.cloudinary.com/dccdxhera/video/upload/v1681794078/The%20Chugs/Screen_Recording_2023-04-17_at_11.56.45_PM_lxxxwl.mov"
+            url="https://res.cloudinary.com/dccdxhera/video/upload/e_saturation:-100/c_fill,w_500/f_auto/v1681794078/The%20Chugs/Screen_Recording_2023-04-17_at_11.56.45_PM_lxxxwl.mp4"
             width="100%"
             height="100%"
             playing={visible}
@@ -34,6 +35,7 @@ const Events = ({ events }: { events: EventProps[] }) => {
             loop
           />
         )}
+        /c_scale,h_280/f_auto/dog.mp4
       </div>
       <Container maxWidth={breakpoints.lg}>
         <ul className="unstyled">
