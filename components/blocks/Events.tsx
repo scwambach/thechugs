@@ -7,9 +7,18 @@ import { useEffect, useState } from 'react'
 
 const Events = ({ events }: { events: EventProps[] }) => {
   const [hasWindow, setHasWindow] = useState<boolean>(false)
+  const [visible, setVisible] = useState<boolean>(false)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setHasWindow(true)
+      // intersection observer for when it's not in view
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setVisible(entry.isIntersecting)
+        }
+        // { threshold: 0.5 }
+      )
+      observer.observe(document.querySelector('.events') as Element)
     }
   }, [hasWindow])
   return (
@@ -20,7 +29,7 @@ const Events = ({ events }: { events: EventProps[] }) => {
             url="https://res.cloudinary.com/dccdxhera/video/upload/v1681794078/The%20Chugs/Screen_Recording_2023-04-17_at_11.56.45_PM_lxxxwl.mov"
             width="100%"
             height="100%"
-            playing
+            playing={visible}
             muted
             loop
           />

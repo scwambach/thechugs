@@ -38,7 +38,7 @@ const HeroBanner = ({ heading, image, logo, video }: BannerProps) => {
           {hasWindow && (
             <ReactPlayer
               url={video}
-              playing
+              playing={visible}
               loop
               muted
               width="100%"
