@@ -26,17 +26,8 @@
   }
 
   .background-media {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    pointer-events: none;
-    transform: scale(1.05);
-
     video {
-      filter: grayscale(100%);
       display: none;
-      object-fit: cover;
     }
   }
 

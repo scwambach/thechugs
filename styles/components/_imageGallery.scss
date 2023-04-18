@@ -1,5 +1,5 @@
 .imageGallery {
-  @include componentSpacing;
+  @include componentSpacingMargin;
   position: relative;
 
   .container {

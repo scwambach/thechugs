@@ -1,5 +1,5 @@
 .articles {
-  @include componentSpacing;
+  @include componentSpacingMargin;
 
   .container {
     @media screen and (min-width: ($mlg)) {

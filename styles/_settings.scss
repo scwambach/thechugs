@@ -26,10 +26,18 @@ $line-height: 1.5;
 $color: $black;
 $background-color: $white;
 
-@mixin componentSpacing {
+@mixin componentSpacingMargin {
   margin: 10rem 0;
 
   @media screen and (max-width: ($lg - 1)) {
     margin: 5rem 0;
+  }
+}
+
+@mixin componentSpacingPadding {
+  padding: 10rem 0;
+
+  @media screen and (max-width: ($lg - 1)) {
+    padding: 5rem 0;
   }
 }

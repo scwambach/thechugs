@@ -26,10 +26,8 @@ const Articles = ({ articles }: { articles: ArticleProps[] }) => {
               <div className="info">
                 <h4>{title}</h4>
 
-                <p>
-                  <hr />
-                  {returnDate(date)}
-                </p>
+                <hr />
+                <p>{returnDate(date)}</p>
               </div>
             </a>
           </article>

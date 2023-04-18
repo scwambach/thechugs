@@ -2,8 +2,8 @@ $width: 130px;
 $midWidth: $width / 1.2;
 
 .events {
-  @include componentSpacing;
   position: relative;
+  overflow: hidden;
 
   @media screen and (min-width: ($mlg)) {
     font-size: 1rem;
@@ -11,6 +11,29 @@ $midWidth: $width / 1.2;
 
   @media screen and (min-width: ($lg)) {
     font-size: 1.2rem;
+  }
+
+  .container {
+    @include componentSpacingMargin;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    padding: 5rem 0;
+
+    &:before {
+      content: '';
+      display: block;
+      background-color: $white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: calc(100% + 5rem);
+      height: 100%;
+      z-index: -1;
+      opacity: 0.8;
+    }
   }
 
   ul {
