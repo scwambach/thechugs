@@ -8,7 +8,7 @@ import useWishlistState from "@hooks/useWishlistState";
 import VariantPicker from "../modules/VariantPicker";
 import React from "react";
 
-const Product = (product: any) => {
+const PrintfulProduct = (product: any) => {
   const { addItem } = useWishlistDispatch();
   const { isSaved } = useWishlistState();
 
@@ -80,4 +80,4 @@ const Product = (product: any) => {
   );
 };
 
-export default Product;
+export default PrintfulProduct;

@@ -58,6 +58,8 @@ export const getStaticProps: GetStaticProps = async () => {
     })
   )
 
+  products.push(...data.products);
+
   return {
     props: {
       data: {

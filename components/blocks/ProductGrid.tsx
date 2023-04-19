@@ -1,8 +1,9 @@
 /* eslint-disable */
 import { Container } from "@components/modules/Container";
-import Product from "./Product";
+import PrintfulProduct from "./PrintfulProduct";
 import { breakpoints } from "@utils/settings";
 import React from "react";
+import SanityProduct from "./SanityProduct";
 
 const ProductGrid = ({ products }: { products: any}) => {
   if (!products || products.length === 0) return null;
@@ -13,7 +14,13 @@ const ProductGrid = ({ products }: { products: any}) => {
       <Container maxWidth={breakpoints.xxl}>
         <div className="product-grid">
           {products.map((product: any) => (
-            <Product key={product.id} {...product} />
+            <>
+            {product.external_id ? (
+              <PrintfulProduct key={product.id} {...product} />
+            ) : (
+              <SanityProduct key={product._id} {...product} />
+            )}
+            </>
           ))}
         </div>
       </Container>
