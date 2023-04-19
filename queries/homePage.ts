@@ -47,7 +47,7 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     video,
     logo,
     heading,
-    ${imageQuery({ name: 'images', fieldName: 'images' })},
+    ${imageQuery({ name: 'image' })},
   },
   imageGallery[] {
     ${assetQuery()}
