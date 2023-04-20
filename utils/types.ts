@@ -109,7 +109,7 @@ export interface HomePageProps {
   imageGallery: SanityImageProps[]
   site: SiteProps
   products: ProductProps[]
-  articles: ArticleProps[]
+  articles?: ArticleProps[]
   events: EventProps[]
   videos: VideoProps[]
 }

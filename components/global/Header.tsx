@@ -8,7 +8,12 @@ import { useState } from 'react'
 import useSnipcartCount from '@hooks/useSnipcartCount'
 import { NavItem } from '@components/modules/NavItem'
 
-const Header = ({ socials }: ContactProps) => {
+interface HeaderProps extends ContactProps {
+  hasArticles?: boolean
+  hasVideos?: boolean
+}
+
+const Header = ({ socials, hasArticles, hasVideos }: HeaderProps) => {
   const [open, setOpen] = useState<boolean>(false)
   const { cart } = useSnipcartCount()
   const cartHasItems = cart.items.count !== 0
@@ -31,9 +36,9 @@ const Header = ({ socials }: ContactProps) => {
           <ul className="unstyled">
             <NavItem elementId="events" setOpen={setOpen} />
             <NavItem elementId="music" setOpen={setOpen} />
-            <NavItem elementId="articles" setOpen={setOpen} />
+            {hasArticles && <NavItem elementId="articles" setOpen={setOpen} />}
             <NavItem elementId="images" setOpen={setOpen} />
-            <NavItem elementId="videos" setOpen={setOpen} />
+            {hasVideos && <NavItem elementId="videos" setOpen={setOpen} />}
             <NavItem elementId="contact" setOpen={setOpen} />
           </ul>
         </nav>

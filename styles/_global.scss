@@ -100,29 +100,45 @@ table {
 }
 
 .section-heading {
-  text-align: center;
   text-transform: uppercase;
-  font-size: 8vw;
+  font-size: 5vw;
   position: relative;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
   color: $blue;
+
   @media screen and (min-width: ($xl)) {
-    font-size: 7rem;
+    font-size: 5rem;
   }
 
   @media screen and (max-width: ($md - 1)) {
-    font-size: 5rem;
+    font-size: 3rem;
   }
 
   .events & {
     margin-bottom: 3rem;
   }
+}
 
-  &:hover {
-    color: $white;
-    text-shadow: 0em 0em $start $text, $shadow2 $shadow2 0 $red,
-      $shadow3 $shadow3 0 $blue, $shadow4 $shadow4 0 $gold,
-      $shadow5 $shadow5 0 $red, $shadow6 $shadow6 0 $blue;
+@mixin blueOverlay {
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  &:before {
+    background-color: $blue;
+    mix-blend-mode: color;
+  }
+
+  &:after {
+    background-color: $blue;
+    opacity: 0.6;
   }
 }

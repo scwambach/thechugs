@@ -12,16 +12,11 @@ const HeroBanner = ({ heading, image, logo, video }: BannerProps) => {
     if (typeof window !== 'undefined') {
       setHasWindow(true)
 
-      // intersection observer for when it's not in view
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          setVisible(entry.isIntersecting)
-        }
-        // { threshold: 0.5 }
-      )
+      const observer = new IntersectionObserver(([entry]) => {
+        setVisible(entry.isIntersecting)
+      })
       observer.observe(document.querySelector('.hero-banner') as Element)
 
-      // if it's in view, play the video
       if (visible) {
         const video = document.querySelector('video')
         document.getElementsByTagName('header')[0].classList.remove('scrolling')
@@ -45,7 +40,7 @@ const HeroBanner = ({ heading, image, logo, video }: BannerProps) => {
               height="100%"
             />
           )}
-          <BlurImage grayscale isBackground {...image} />
+          <BlurImage isBackground {...image} />
         </div>
 
         <div className="logo">

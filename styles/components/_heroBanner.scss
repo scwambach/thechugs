@@ -26,6 +26,8 @@
   }
 
   .background-media {
+    @include blueOverlay;
+
     video {
       display: none;
     }

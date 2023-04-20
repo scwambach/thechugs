@@ -11,7 +11,9 @@ const Articles = ({ articles }: { articles: ArticleProps[] }) => {
 
   return (
     <section className="articles" id="articles">
-      <h2 className="section-heading">Articles</h2>
+      <Container maxWidth={breakpoints.xxl}>
+        <h2 className="section-heading">Articles</h2>
+      </Container>
       <Container maxWidth={breakpoints.xxl}>
         {articles.map(({ _id, date, image, link, title }) => (
           <article key={_id}>
