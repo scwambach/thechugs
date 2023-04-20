@@ -1,7 +1,7 @@
 import { Footer } from '@components/global/Footer'
 import { Header } from '@components/global/Header'
 import { Seo } from '@components/global/Seo'
-// import { playAudio } from '@utils/playAudio'
+import { playAudio } from '@utils/playAudio'
 import { SiteProps } from '@utils/types'
 import { useEffect } from 'react'
 
@@ -20,7 +20,7 @@ const Layout = ({
   children,
 }: LayoutProps) => {
   useEffect(() => {
-    // playAudio('a', 'addToCart')
+    playAudio('a', 'addToCart')
   }, [])
   return (
     <>
