@@ -1,7 +1,9 @@
 import { Footer } from '@components/global/Footer'
 import { Header } from '@components/global/Header'
 import { Seo } from '@components/global/Seo'
+import { playAudio } from '@utils/playAudio'
 import { SiteProps } from '@utils/types'
+import { useEffect } from 'react'
 
 interface LayoutProps extends SiteProps {
   hasArticles?: boolean
@@ -17,6 +19,9 @@ const Layout = ({
   hasVideos,
   children,
 }: LayoutProps) => {
+  useEffect(() => {
+    // playAudio('a', 'addToCart')
+  }, [])
   return (
     <>
       <Seo

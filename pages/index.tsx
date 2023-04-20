@@ -8,6 +8,7 @@ import { Events } from '@components/blocks/Events'
 import { ImageGallery } from '@components/blocks/ImageGallery'
 import { Music } from '@components/blocks/Music'
 import { Articles } from '@components/blocks/Articles'
+import { Contact } from '@components/blocks/Contact'
 
 const today = moment(new Date()).format('YYYY-MM-DD')
 
@@ -23,6 +24,7 @@ export default function Home({ data }: { data: HomePageProps }) {
       {data.articles && data.articles.length > 0 && (
         <Articles articles={data.articles} />
       )}
+      <Contact />
     </Layout>
   )
 }

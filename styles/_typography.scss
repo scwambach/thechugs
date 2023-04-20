@@ -134,6 +134,7 @@ a {
   text-decoration: underline;
   display: inline-block;
   position: relative;
+  cursor: url('/can.png'), auto;
 
   &:focus {
     &:before {

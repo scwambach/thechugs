@@ -2,44 +2,42 @@ import { Field } from './Field'
 
 const Form = () => {
   return (
-    <form>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+      }}
+    >
       <fieldset>
-        <Field type="text" _key="2i34y2oihebf" label="Field 1" />
-        <Field type="textarea" _key="sdfkjshi3" label="Field 2" />
+        <Field type="text" label="name" required />
+        <Field type="email" label="email" required />
         <Field
-          type="checkbox"
-          _key="sdfksdfgsjshi3"
-          label="Field 2"
+          type="select"
+          label="favorite beer"
+          required
           choices={[
             {
-              copy: 'Choice 1',
-              value: 'choice-1',
-              _key: 'sdfkjshi3',
+              copy: "Hamm's",
+              value: "Hamm's",
+              _key: 'sdfkjshi3sdvcnb',
             },
             {
-              copy: 'Choice 2',
-              value: 'choice-2',
-              _key: 'sdfgpo432uj',
+              copy: "Hamm's",
+              value: "Hamm's",
+              _key: 'sdfgpo432ujefdgdnm8',
+            },
+            {
+              copy: "Hamm's",
+              value: "Hamm's",
+              _key: 'sdfkjshi34rgbsf',
+            },
+            {
+              copy: "Hamm's",
+              value: "Hamm's",
+              _key: 'sdfgpo432ujsdcvhsasf2122',
             },
           ]}
         />
-        <Field
-          type="radio"
-          _key="sdflsndvl23"
-          label="Field 2"
-          choices={[
-            {
-              copy: 'Choice 1',
-              value: 'choice-1',
-              _key: 'i2uy3ibjkf',
-            },
-            {
-              copy: 'Choice 2',
-              value: 'choice-2',
-              _key: 'olkbv8749820',
-            },
-          ]}
-        />
+        <Field required type="textarea" label="message to the boiz:" />
       </fieldset>
       <input className="button" type="submit" value="Submit this form" />
     </form>

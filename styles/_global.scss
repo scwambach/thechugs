@@ -22,6 +22,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  cursor: url('/can.png'), auto;
 }
 
 .skip-to-content {
@@ -100,19 +101,22 @@ table {
 }
 
 .section-heading {
+  line-height: 0.8;
   text-transform: uppercase;
   font-size: 5vw;
   position: relative;
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
   color: $blue;
+  padding-bottom: 2rem;
 
   @media screen and (min-width: ($xl)) {
     font-size: 5rem;
   }
 
   @media screen and (max-width: ($md - 1)) {
-    font-size: 3rem;
+    line-height: 1;
+    font-size: 2.5rem;
   }
 
   .events & {

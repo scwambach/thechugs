@@ -20,28 +20,17 @@
 
     &:hover {
       background-color: $red;
-      a,
-      button {
-        color: $black;
-      }
+      color: $white;
     }
   }
 
   &:hover {
+    color: $white;
     background-color: $blue;
-    a,
-    button {
-      color: $black;
-    }
   }
 
   + .button {
     margin-left: 10px;
-  }
-
-  a,
-  button {
-    @include buttonItem;
   }
 }
 
