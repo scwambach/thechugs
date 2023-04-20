@@ -109,22 +109,6 @@ const Form = ({ _id }: { _id: string }) => {
           collectData()
         }}
       >
-        <code>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              display: 'block',
-              padding: '50px',
-              color: '#88ffbf',
-              backgroundColor: 'black',
-              textAlign: 'left',
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {JSON.stringify(payload, null, '    ')}
-          </pre>
-        </code>
-
         <Field type="text" label="name" required />
         <Field type="email" label="email" required />
         <Field
