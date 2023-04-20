@@ -9,7 +9,7 @@ const Contact = () => {
         <h2 className="section-heading">What is it that you need to know?!</h2>
       </Container>
       <Container maxWidth={breakpoints.md}>
-        <Form />
+        <Form _id="contact" />
       </Container>
     </section>
   )
