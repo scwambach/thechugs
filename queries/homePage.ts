@@ -93,7 +93,7 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
   "videos": *[_type == "video" && ((_id in path('drafts.**')) == false)] | order(releaseDate desc) {
     _id,
     title,
-    description,
+    ${imageQuery({ name: 'image' })},
     releaseDate,
     video,
   }

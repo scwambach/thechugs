@@ -1,0 +1,11 @@
+.videos {
+  @include componentSpacingMargin;
+  .container {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .video-box {
+    width: 50%;
+  }
+}

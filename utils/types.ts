@@ -97,8 +97,9 @@ export interface EventProps {
 }
 
 export interface VideoProps {
+  _id?: string
   title: string
-  description?: string
+  image: SanityImageProps
   releaseDate: string
   video: string
 }

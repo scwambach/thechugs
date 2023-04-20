@@ -10,13 +10,6 @@ export const video = {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      title: 'Description',
-      name: 'description',
-      type: 'text',
-      rows: 4,
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
       title: 'Release Date',
       name: 'releaseDate',
       type: 'date',
