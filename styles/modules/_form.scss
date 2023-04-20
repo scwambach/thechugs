@@ -6,6 +6,44 @@ form {
     }
   }
 
+  fieldset {
+    &:disabled {
+      label {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .submit {
+    width: 300px;
+    &.loading {
+      position: relative;
+
+      &:after {
+        content: '';
+        height: 48px;
+        width: 48px;
+        background-image: url('/can.png');
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform-origin: top;
+        animation: spin;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    }
+    input[type='submit'] {
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
   input:not([type='submit'], [type='radio'], [type='checkbox']),
   textarea {
     border: 2px solid;
@@ -13,7 +51,7 @@ form {
     width: 100%;
 
     &:focus {
-      border-color: $blue;
+      border-color: $white;
     }
   }
 
@@ -28,6 +66,9 @@ form {
       padding: 10px;
       width: 100%;
       border: 2px solid;
+      &:focus {
+        border-color: $white;
+      }
     }
 
     &:before,
@@ -64,7 +105,7 @@ form {
           // opacity: 0;
 
           &:focus {
-            border-color: $blue;
+            border-color: $white;
           }
 
           &:checked {
@@ -96,5 +137,17 @@ form {
         }
       }
     }
+  }
+}
+
+.form-error {
+  color: $white;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  line-height: 1.1;
+
+  h3 {
+    font-size: 3rem;
+    line-height: 1;
   }
 }

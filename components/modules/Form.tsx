@@ -92,6 +92,38 @@ const Form = ({ _id }: { _id: string }) => {
     collectData()
   }, [checkedBoxes])
 
+  // need a random error message
+  if (submitted && error) {
+    return (
+      <div className="form-error">
+        <h3>Error!</h3>
+        <p>
+          The form had a little too much to drink last night, but it&apos;s okay
+          now.
+          <br />
+          <br />
+          Someone&apos;s taking care of it!
+        </p>
+      </div>
+    )
+  }
+
+  if (submitted && success) {
+    return (
+      <div className="form-error">
+        <h3>Thank you!</h3>
+        <p>
+          Get yourself a Hamm&apos;s! You just conquered our contact form like a
+          boss.
+          <br />
+          <br />
+          Your message is now in good hands and will be responded to as soon as
+          we give a rip!
+        </p>
+      </div>
+    )
+  }
+
   return (
     <form
       id={`form_${_id}`}
@@ -140,7 +172,14 @@ const Form = ({ _id }: { _id: string }) => {
         />
         <Field required type="textarea" label="message to the boiz:" />
       </fieldset>
-      <input className="button" type="submit" value="Submit this form" />
+      <div className={`submit${loading ? ' loading' : ''}`}>
+        <input
+          disabled={loading}
+          className="button"
+          type="submit"
+          value="Submit this form"
+        />
+      </div>
     </form>
   )
 }
