@@ -20,6 +20,11 @@ header {
 
   &.scrolling {
     background: $text;
+
+    .back-to-top {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 
   &.open {
@@ -190,6 +195,42 @@ header {
       position: absolute;
       top: 0;
       right: 0;
+    }
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 1rem;
+    list-style-type: none;
+    pointer-events: none;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    opacity: 0;
+
+    @media screen and (min-width: ($md)) {
+      right: 1rem;
+    }
+
+    @media screen and (max-width: ($md - 1)) {
+      left: 1rem;
+    }
+
+    a {
+      display: block;
+      background-color: $gold;
+      border-radius: 5px;
+      padding: 1rem;
+      cursor: pointer;
+      z-index: 1000;
+
+      @media screen and (max-width: ($md - 1)) {
+        padding: 0.5rem;
+        font-size: 1rem;
+      }
+
+      &:before {
+        content: none;
+      }
     }
   }
 }

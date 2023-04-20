@@ -73,6 +73,13 @@ const Header = ({ socials, hasArticles, hasVideos }: HeaderProps) => {
           </li>
         </ul>
       </div>
+      <NavItem
+        elementId="main-content"
+        copy="Back to top"
+        setOpen={setOpen}
+        top
+        className="back-to-top"
+      />
     </header>
   )
 }
