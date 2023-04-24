@@ -37,6 +37,7 @@ const Header = ({ socials, hasArticles, hasVideos }: HeaderProps) => {
             <NavItem elementId="music" setOpen={setOpen} />
             <NavItem elementId="events" setOpen={setOpen} />
             {hasVideos && <NavItem elementId="videos" setOpen={setOpen} />}
+            <NavItem elementId="bio" setOpen={setOpen} />
             <NavItem elementId="images" setOpen={setOpen} />
             {hasArticles && <NavItem elementId="articles" setOpen={setOpen} />}
             <NavItem elementId="contact" setOpen={setOpen} />

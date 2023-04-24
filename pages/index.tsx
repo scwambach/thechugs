@@ -10,6 +10,7 @@ import { Music } from '@components/blocks/Music'
 import { Articles } from '@components/blocks/Articles'
 import { Contact } from '@components/blocks/Contact'
 import { Videos } from '@components/blocks/Videos'
+import { Bio } from '@components/blocks/Bio'
 
 const today = moment(new Date()).format('YYYY-MM-DD')
 
@@ -22,6 +23,7 @@ export default function Home({ data }: { data: HomePageProps }) {
       <Music />
       <Events events={data.events} />
       {data.videos && data.videos.length > 0 && <Videos videos={data.videos} />}
+      <Bio {...data.artistBio} />
       <ImageGallery images={data.imageGallery} />
       {data.articles && data.articles.length > 0 && (
         <Articles articles={data.articles} />

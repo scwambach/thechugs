@@ -104,9 +104,16 @@ export interface VideoProps {
   video: string
 }
 
+export interface BioProps {
+  heading: string
+  image: SanityImageProps
+  copy: any[]
+}
+
 export interface HomePageProps {
   title: string
   banner: BannerProps
+  artistBio: BioProps
   imageGallery: SanityImageProps[]
   site: SiteProps
   products: ProductProps[]

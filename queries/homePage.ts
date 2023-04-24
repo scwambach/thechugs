@@ -49,6 +49,11 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     heading,
     ${imageQuery({ name: 'image' })},
   },
+  artistBio {
+    heading,
+    ${imageQuery({ name: 'image' })},
+    copy,
+  },
   imageGallery[] {
     ${assetQuery()}
   },
