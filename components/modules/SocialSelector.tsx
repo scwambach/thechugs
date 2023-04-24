@@ -21,6 +21,8 @@ const SocialSelector = ({ name, color }: { name: string; color?: string }) => {
         <DynamicIcon color={color} size={30} name="SiApplemusic" />
       ) : name.indexOf('reverbnation') !== -1 ? (
         <DynamicIcon color={color} size={30} name="SiReverbnation" />
+      ) : name.indexOf('bandcamp') !== -1 ? (
+        <DynamicIcon color={color} size={30} name="SiBandcamp" />
       ) : name.indexOf('patreon') !== -1 ? (
         <DynamicIcon color={color} size={30} name="SiPatreon" />
       ) : name.indexOf('tiktok') !== -1 ? (

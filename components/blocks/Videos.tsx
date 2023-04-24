@@ -1,8 +1,8 @@
 import { Container } from '@components/modules/Container'
 import { useWindowWidth } from '@hooks/useWindowWidth'
+import { returnDate } from '@utils/returnDate'
 import { breakpoints } from '@utils/settings'
 import { VideoProps } from '@utils/types'
-import moment from 'moment'
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 
@@ -13,9 +13,6 @@ const Videos = ({ videos }: { videos: VideoProps[] }) => {
       setHasWindow(true)
     }
   }, [hasWindow])
-  const returnDate = (date: string) => {
-    return moment(date).format('MMMM DD, YYYY')
-  }
 
   const windowWidth = useWindowWidth()
 

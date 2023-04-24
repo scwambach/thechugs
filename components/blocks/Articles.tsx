@@ -1,14 +1,10 @@
 import { BlurImage } from '@components/modules/BlurImage'
 import { Container } from '@components/modules/Container'
+import { returnDate } from '@utils/returnDate'
 import { breakpoints } from '@utils/settings'
 import { ArticleProps } from '@utils/types'
-import moment from 'moment'
 
 const Articles = ({ articles }: { articles: ArticleProps[] }) => {
-  const returnDate = (date: string) => {
-    return moment(date).format('MMMM DD, YYYY')
-  }
-
   return (
     <section className="articles" id="articles">
       <Container maxWidth={breakpoints.xxl}>

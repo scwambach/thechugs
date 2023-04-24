@@ -110,6 +110,14 @@ export interface BioProps {
   copy: any[]
 }
 
+export interface ReleaseProps {
+  _id: string
+  title: string
+  coverArt: SanityImageProps
+  releaseDate: string
+  links: LinkProps[]
+}
+
 export interface HomePageProps {
   title: string
   banner: BannerProps
@@ -120,4 +128,5 @@ export interface HomePageProps {
   articles?: ArticleProps[]
   events: EventProps[]
   videos: VideoProps[]
+  releases: ReleaseProps[]
 }

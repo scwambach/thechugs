@@ -1,4 +1,5 @@
 .bio {
+  @include componentSpacingMargin;
   display: flex;
 
   @media screen and (max-width: ($md - 1)) {

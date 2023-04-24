@@ -57,6 +57,13 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
   imageGallery[] {
     ${assetQuery()}
   },
+  "releases": *[_type == "release" && ((_id in path('drafts.**')) == false)] | order(releaseDate desc) {
+    _id,
+    title,
+    releaseDate,
+    links,
+    ${imageQuery({ name: 'coverArt' })},
+  },
   "site": *[_type == "globalInfo"][0] {
     title,
     description,
