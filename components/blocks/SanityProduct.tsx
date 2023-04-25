@@ -6,7 +6,7 @@ import VariantPicker from "../modules/VariantPicker";
 import React from "react";
 import { BlurImage } from "../modules/BlurImage";
 
-const SanityProduct = ({ _id, title, price, description, images }) => {
+const SanityProduct = ({ _id, title, price, images }: { _id: any, title: any, price: any, images: any }) => {
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: 'currency',
