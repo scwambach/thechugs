@@ -16,7 +16,6 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-
     @media screen and (max-width: ($mlg - 1)) {
       width: calc(50% - 2rem);
     }
@@ -31,6 +30,10 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 5px 0;
+    }
+
+    .product-img > img {
+      object-fit: contain;
     }
 
     .price {
