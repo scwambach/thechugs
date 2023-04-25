@@ -151,13 +151,17 @@ a {
   }
 
   &:hover {
-    color: $red;
+    @media screen and (min-width: ($lg)) {
+      color: $red;
+    }
   }
 
   &:visited {
-    color: $blue;
-    &:hover {
-      color: $red;
+    @media screen and (min-width: ($lg)) {
+      color: $blue;
+      &:hover {
+        color: $red;
+      }
     }
   }
 }

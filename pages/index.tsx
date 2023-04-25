@@ -22,10 +22,10 @@ export default function Home({ data }: { data: HomePageProps }) {
     <Layout {...data.site} hasArticles={hasArticles} hasVideos={hasVideos}>
       <HeroBanner {...data.banner} />
       <Releases releases={data.releases} />
-      <Music />
       <Events events={data.events} />
-      {data.videos && data.videos.length > 0 && <Videos videos={data.videos} />}
       <Bio {...data.artistBio} />
+      <Music />
+      {data.videos && data.videos.length > 0 && <Videos videos={data.videos} />}
       <ImageGallery images={data.imageGallery} />
       {data.articles && data.articles.length > 0 && (
         <Articles articles={data.articles} />

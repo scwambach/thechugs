@@ -15,6 +15,10 @@ $midWidth: $width / 1.2;
 
   .background-media {
     @include blueOverlay;
+
+    @media screen and (max-width: ($lg - 1)) {
+      display: none;
+    }
   }
 
   .container {
@@ -27,6 +31,7 @@ $midWidth: $width / 1.2;
 
     @media screen and (max-width: ($lg - 1)) {
       margin: 0;
+      padding: 0 1rem;
     }
 
     &:before {
