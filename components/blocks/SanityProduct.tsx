@@ -6,10 +6,7 @@ import VariantPicker from "../modules/VariantPicker";
 import React from "react";
 import { BlurImage } from "../modules/BlurImage";
 
-const SanityProduct = ({ _id: id, title, price, description, images }) => {
-  // const { id, title, price, description } = product;
-
-  console.log(images)
+const SanityProduct = ({ _id, title, price, description, images }) => {
 
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: 'currency',
@@ -27,9 +24,9 @@ const SanityProduct = ({ _id: id, title, price, description, images }) => {
       </div>
       <button
         className="snipcart-add-item button"
-        data-item-id={id}
+        data-item-id={_id}
         data-item-price={price}
-        data-item-url={`/api/products/${id}`}
+        data-item-url={`/api/products/${_id}`}
         data-item-description={title}
         data-item-image={images[0].url}
         data-item-name={title}
