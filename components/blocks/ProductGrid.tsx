@@ -14,13 +14,13 @@ const ProductGrid = ({ products }: { products: any}) => {
       <Container maxWidth={breakpoints.xxl}>
         <div className="product-grid">
           {products.map((product: any) => (
-            <>
+            <React.Fragment key={product.external_id ? product.id : product._id}>
             {product.external_id ? (
               <PrintfulProduct key={product.id} {...product} />
             ) : (
               <SanityProduct key={product._id} {...product} />
             )}
-            </>
+            </React.Fragment>
           ))}
         </div>
       </Container>

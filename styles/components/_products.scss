@@ -1,4 +1,6 @@
 .products {
+  @include componentSpacingMargin;
+
   .product-grid {
     display: flex;
     flex-wrap: wrap;
