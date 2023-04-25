@@ -18,32 +18,37 @@ const Releases = ({ releases }: { releases: ReleaseProps[] }) => {
   return (
     <section className="releases" id="releases">
       <Container maxWidth={breakpoints.xxl}>
-        <h2 className="section-heading">Releases</h2>
         <div className="inner">
           {releases.map(({ _id, coverArt, links, releaseDate, title }) => {
             return (
               <div key={_id} className="item">
                 <BlurImage {...coverArt} />
-                <h4>{title}</h4>
-                {checkDateIsPastToday(releaseDate) ? (
-                  <>
-                    {links.map((link) => (
-                      <a
-                        key={link._key}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <span className="sr-only">{link.copy}</span>
-                        <SocialSelector name={link.url} color={colors.black} />
-                      </a>
-                    ))}
-                  </>
-                ) : (
-                  <>
-                    <p>Coming soon</p>
-                  </>
-                )}
+                <div className="content">
+                  <h4>{title}</h4>
+                  {checkDateIsPastToday(releaseDate) ? (
+                    <div className="links">
+                      {links.map((link) => (
+                        <a
+                          key={link._key}
+                          href={link.url}
+                          title={link.copy}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <SocialSelector
+                            name={link.url}
+                            color={colors.black}
+                          />
+                          {link.copy}
+                        </a>
+                      ))}
+                    </div>
+                  ) : (
+                    <>
+                      <p className="big">Coming soon</p>
+                    </>
+                  )}
+                </div>
               </div>
             )
           })}

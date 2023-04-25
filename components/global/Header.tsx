@@ -34,10 +34,11 @@ const Header = ({ socials, hasArticles, hasVideos }: HeaderProps) => {
       <div className={open ? 'open' : undefined}>
         <nav id="mainNav">
           <ul className="unstyled">
-            <NavItem elementId="music" setOpen={setOpen} />
+            <NavItem elementId="releases" setOpen={setOpen} />
             <NavItem elementId="events" setOpen={setOpen} />
-            {hasVideos && <NavItem elementId="videos" setOpen={setOpen} />}
             <NavItem elementId="bio" setOpen={setOpen} />
+            <NavItem elementId="music" copy="listen" setOpen={setOpen} />
+            {hasVideos && <NavItem elementId="videos" setOpen={setOpen} />}
             <NavItem elementId="images" setOpen={setOpen} />
             {hasArticles && <NavItem elementId="articles" setOpen={setOpen} />}
             <NavItem elementId="contact" setOpen={setOpen} />

@@ -3,6 +3,7 @@ import { useWindowWidth } from '@hooks/useWindowWidth'
 import { returnDate } from '@utils/returnDate'
 import { breakpoints } from '@utils/settings'
 import { VideoProps } from '@utils/types'
+import { urlFor } from '@utils/urlFor'
 import { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 
@@ -37,7 +38,7 @@ const Videos = ({ videos }: { videos: VideoProps[] }) => {
                     : undefined
                 }
                 url={vid.video}
-                light={vid.image.url}
+                light={urlFor(vid.image.reference).width(800).quality(90).url()}
               />
             )}
             <h4>{vid.title}</h4>

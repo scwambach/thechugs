@@ -1,9 +1,12 @@
 .videos {
-  @include componentSpacingMargin;
+  @include componentSpacingPadding;
+  color: $white;
+  background-color: $blue;
 
   .container {
     display: flex;
     gap: 2rem;
+    justify-content: center;
 
     @media screen and (max-width: ($md - 1)) {
       flex-direction: column;
@@ -14,5 +17,9 @@
     @media screen and (min-width: ($md - 1)) {
       width: 50%;
     }
+  }
+
+  p {
+    margin: 0;
   }
 }
