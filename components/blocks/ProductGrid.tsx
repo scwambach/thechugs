@@ -1,15 +1,30 @@
 /* eslint-disable */
-import Product from "./Product";
+import { Container } from "@components/modules/Container";
+import PrintfulProduct from "./PrintfulProduct";
+import { breakpoints } from "@utils/settings";
+import React from "react";
+import SanityProduct from "./SanityProduct";
 
 const ProductGrid = ({ products }: { products: any}) => {
   if (!products || products.length === 0) return null;
 
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {products.map((product: any) => (
-        <Product key={product.id} {...product} />
-      ))}
-    </div>
+    <section id="products" className="products">
+      <h2 className="section-heading">Products</h2>
+      <Container maxWidth={breakpoints.xxl}>
+        <div className="product-grid">
+          {products.map((product: any) => (
+            <React.Fragment key={product.external_id ? product.id : product._id}>
+            {product.external_id ? (
+              <PrintfulProduct key={product.id} {...product} />
+            ) : (
+              <SanityProduct key={product._id} {...product} />
+            )}
+            </React.Fragment>
+          ))}
+        </div>
+      </Container>
+    </section>
   );
 };
 

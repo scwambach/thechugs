@@ -12,6 +12,11 @@ import { Contact } from '@components/blocks/Contact'
 import { Videos } from '@components/blocks/Videos'
 import { Bio } from '@components/blocks/Bio'
 import { Releases } from '@components/blocks/Releases'
+import shuffle from 'lodash.shuffle'
+import { printful } from '@lib/printful-client'
+import { formatVariantName } from '@lib/format-variant-name'
+import { PrintfulProduct } from '@utils/storeTypes'
+import ProductGrid from '@components/blocks/ProductGrid'
 
 const today = moment(new Date()).format('YYYY-MM-DD')
 
@@ -23,6 +28,7 @@ export default function Home({ data }: { data: HomePageProps }) {
       <HeroBanner {...data.banner} />
       <Releases releases={data.releases} />
       <Events events={data.events} />
+      <ProductGrid products={data.products} />
       <Bio {...data.artistBio} />
       <Music />
       {data.videos && data.videos.length > 0 && <Videos videos={data.videos} />}
@@ -45,5 +51,34 @@ export async function getStaticProps() {
       notFound: true,
     }
   }
-  return { props: { data } }
+
+  const { result: productIds } = await printful.get('sync/products')
+
+  const allProducts = await Promise.all(
+    productIds.map(
+      async ({ id }: { id: any }) => await printful.get(`sync/products/${id}`)
+    )
+  )
+
+  const products: PrintfulProduct[] = allProducts.map(
+    ({ result: { sync_product, sync_variants } }: { result: any }) => ({
+      ...sync_product,
+      //@ts-ignore
+      variants: sync_variants.map(({ name, ...variant }) => ({
+        name: formatVariantName(name),
+        ...variant,
+      })),
+    })
+  )
+
+  products.push(...data.products);
+
+  return {
+    props: {
+      data: {
+        ...data,
+        products: shuffle(products),
+      },
+    },
+  }
 }

@@ -1,0 +1,59 @@
+.variant-picker {
+  position: relative;
+  border-top: 2px dashed $gray;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    border-top: 6px solid $red;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    pointer-events: none;
+  }
+
+  button {
+    cursor: pointer;
+    padding: 5px 0;
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  
+  ul, li, p {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $white;
+
+    &.open {
+      display: block;
+      border: 2px dashed $light-gray;
+    }
+
+    li {
+      &:hover {
+        color: $white;
+        background-color: $blue;
+      }
+
+      button {
+        padding: 5px 10px;
+        font-size: 14px;
+      }
+    }
+  }
+}

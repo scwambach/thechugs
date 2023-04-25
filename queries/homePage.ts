@@ -75,7 +75,9 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     title,
     description,
     price,
-    images,
+    images[] {
+      ${assetQuery()}
+    },
   },
   "articles": *[_type == "article" && ((_id in path('drafts.**')) == false)] | order(date desc) {
     _id,

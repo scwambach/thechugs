@@ -23,6 +23,12 @@ export const product = {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      title: 'Price',
+      name: 'price',
+      type: 'number',
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
       name: 'images',
       title: 'Images',
       type: 'array',

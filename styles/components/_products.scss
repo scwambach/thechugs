@@ -1,0 +1,56 @@
+.products {
+  @include componentSpacingMargin;
+
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 40px;
+    justify-content: space-between;
+  }
+
+  .product-item {
+    width: calc(25% - 2rem);
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: ($mlg - 1)) {
+      width: calc(50% - 2rem);
+    }
+
+    h4 {
+      margin: 0;
+    }
+
+    .product-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 5px 0;
+    }
+
+    .price {
+      margin: 0;
+      padding: 0;
+      flex: 1;
+      font-size: 22px;
+    }
+
+    .button {
+      @include buttonItem;
+      width: 100%;
+      text-align: center;
+      align-self: end;
+      margin-top: 10px;
+
+      &:hover {
+        border-color: $blue;
+        color: $white;
+      }
+    }
+  }
+}
