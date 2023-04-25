@@ -10,7 +10,7 @@ interface FieldProps {
   }[]
   description?: string
   disabled?: boolean
-  _key: string
+  _key?: string
   label: string
   placeholder?: string
   readOnly?: boolean
@@ -71,12 +71,24 @@ const Field = ({
   return (
     <>
       {type === 'textarea' ? (
-        <label className={`${type}`} htmlFor={fieldId}>
+        <label className={`form-field ${type}`} htmlFor={fieldId}>
           <Label label={label} description={description} />
           <textarea {...fieldArgs} rows={4} />
         </label>
+      ) : type === 'select' ? (
+        <label className={`form-field ${type}`}>
+          <Label label={label} description={description} />
+          <select {...fieldArgs}>
+            <option></option>
+            {choices?.map((choice) => (
+              <option key={choice._key} value={choice.value}>
+                {choice.copy}
+              </option>
+            ))}
+          </select>
+        </label>
       ) : type === 'checkbox' || type === 'radio' ? (
-        <div className={`${type}`}>
+        <div className={`form-field ${type}`}>
           <Label label={label} description={description} />
           <div className="choices">
             {choices?.map((choice) => (
@@ -99,7 +111,7 @@ const Field = ({
           </div>
         </div>
       ) : (
-        <label htmlFor={fieldId} className={`${type}`}>
+        <label htmlFor={fieldId} className={`form-field ${type}`}>
           <Label label={label} description={description} />
           <input {...fieldArgs} type={type} />
         </label>

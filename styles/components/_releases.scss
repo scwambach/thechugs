@@ -1,0 +1,31 @@
+.releases {
+  @include componentSpacingMargin;
+  .inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .section-heading {
+    text-align: center;
+  }
+
+  .item {
+    max-width: ($xxl * 0.25);
+    width: 25%;
+    text-align: center;
+  }
+
+  a {
+    svg {
+      path {
+        fill: $blue !important;
+      }
+    }
+
+    + a {
+      margin-left: 1rem;
+    }
+  }
+}

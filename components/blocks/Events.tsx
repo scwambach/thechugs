@@ -23,7 +23,6 @@ const Events = ({ events }: { events: EventProps[] }) => {
   }, [hasWindow])
   return (
     <section id="events" className="events">
-      <h2 className="section-heading">Events</h2>
       <div className="background-media">
         {hasWindow && (
           <ReactPlayer

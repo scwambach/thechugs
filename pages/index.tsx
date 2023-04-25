@@ -8,17 +8,29 @@ import { Events } from '@components/blocks/Events'
 import { ImageGallery } from '@components/blocks/ImageGallery'
 import { Music } from '@components/blocks/Music'
 import { Articles } from '@components/blocks/Articles'
+import { Contact } from '@components/blocks/Contact'
+import { Videos } from '@components/blocks/Videos'
+import { Bio } from '@components/blocks/Bio'
+import { Releases } from '@components/blocks/Releases'
 
 const today = moment(new Date()).format('YYYY-MM-DD')
 
 export default function Home({ data }: { data: HomePageProps }) {
+  const hasArticles = data.articles && data.articles.length > 0
+  const hasVideos = data.videos && data.videos.length > 0
   return (
-    <Layout {...data.site}>
+    <Layout {...data.site} hasArticles={hasArticles} hasVideos={hasVideos}>
       <HeroBanner {...data.banner} />
+      <Releases releases={data.releases} />
       <Music />
       <Events events={data.events} />
+      {data.videos && data.videos.length > 0 && <Videos videos={data.videos} />}
+      <Bio {...data.artistBio} />
       <ImageGallery images={data.imageGallery} />
-      <Articles articles={data.articles} />
+      {data.articles && data.articles.length > 0 && (
+        <Articles articles={data.articles} />
+      )}
+      <Contact />
     </Layout>
   )
 }

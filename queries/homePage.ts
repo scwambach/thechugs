@@ -49,8 +49,20 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     heading,
     ${imageQuery({ name: 'image' })},
   },
+  artistBio {
+    heading,
+    ${imageQuery({ name: 'image' })},
+    copy,
+  },
   imageGallery[] {
     ${assetQuery()}
+  },
+  "releases": *[_type == "release" && ((_id in path('drafts.**')) == false)] | order(releaseDate desc) {
+    _id,
+    title,
+    releaseDate,
+    links,
+    ${imageQuery({ name: 'coverArt' })},
   },
   "site": *[_type == "globalInfo"][0] {
     title,
@@ -95,7 +107,7 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
   "videos": *[_type == "video" && ((_id in path('drafts.**')) == false)] | order(releaseDate desc) {
     _id,
     title,
-    description,
+    ${imageQuery({ name: 'image' })},
     releaseDate,
     video,
   }

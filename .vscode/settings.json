@@ -1,9 +1,9 @@
 {
   "workbench.colorCustomizations": {
-    "titleBar.activeForeground": "#000000",
-    "titleBar.inactiveForeground": "#3b3b3b",
-    "titleBar.activeBackground": "#76c5ce",
-    "titleBar.inactiveBackground": "#2baeb7"
+    "titleBar.activeForeground": "#dea211",
+    "titleBar.inactiveForeground": "#ffffff",
+    "titleBar.activeBackground": "#3c5ba9",
+    "titleBar.inactiveBackground": "#cf1e3a"
   },
   "cSpell.words": [
     "AAAAAACCCDEEEEEEEEIIIINNOOOOOORRSTUUUUUYY",

@@ -8,6 +8,7 @@ const nextConfig = {
   env: {
     SANITY_ID: process.env.SANITY_ID,
     SANITY_DATASET: process.env.SANITY_DATASET,
+    SITE_URL: process.env.SITE_URL,
   },
 }
 

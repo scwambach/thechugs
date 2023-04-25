@@ -97,19 +97,36 @@ export interface EventProps {
 }
 
 export interface VideoProps {
+  _id?: string
   title: string
-  description?: string
+  image: SanityImageProps
   releaseDate: string
   video: string
+}
+
+export interface BioProps {
+  heading: string
+  image: SanityImageProps
+  copy: any[]
+}
+
+export interface ReleaseProps {
+  _id: string
+  title: string
+  coverArt: SanityImageProps
+  releaseDate: string
+  links: LinkProps[]
 }
 
 export interface HomePageProps {
   title: string
   banner: BannerProps
+  artistBio: BioProps
   imageGallery: SanityImageProps[]
   site: SiteProps
   products: ProductProps[]
-  articles: ArticleProps[]
+  articles?: ArticleProps[]
   events: EventProps[]
   videos: VideoProps[]
+  releases: ReleaseProps[]
 }

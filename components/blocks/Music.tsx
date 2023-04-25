@@ -4,7 +4,6 @@ import { breakpoints } from '@utils/settings'
 export const Music = () => {
   return (
     <section id="music" className="music">
-      <h2 className="section-heading">Music</h2>
       <Container maxWidth={breakpoints.lg}>
         <iframe
           style={{

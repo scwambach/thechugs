@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-height: 1200px;
+    max-height: 2000px;
   }
 
   .inner {
@@ -26,6 +26,8 @@
   }
 
   .background-media {
+    @include blueOverlay;
+
     video {
       display: none;
     }

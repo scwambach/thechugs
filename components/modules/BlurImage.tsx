@@ -4,7 +4,7 @@ import { client } from '@utils/client'
 import { newRatio } from '@utils/newRatio'
 import { breakpoints } from '@utils/settings'
 import { SanityImageProps } from '@utils/types'
-import { useWindowWidth } from '@utils/useWindowWidth'
+import { useWindowWidth } from '@hooks/useWindowWidth'
 
 interface BlurImageProps extends SanityImageProps {
   className?: string

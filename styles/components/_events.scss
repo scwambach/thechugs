@@ -13,6 +13,10 @@ $midWidth: $width / 1.2;
     font-size: 1.2rem;
   }
 
+  .background-media {
+    @include blueOverlay;
+  }
+
   .container {
     @include componentSpacingMargin;
     margin-left: auto;

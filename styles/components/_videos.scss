@@ -1,0 +1,18 @@
+.videos {
+  @include componentSpacingMargin;
+
+  .container {
+    display: flex;
+    gap: 2rem;
+
+    @media screen and (max-width: ($md - 1)) {
+      flex-direction: column;
+    }
+  }
+
+  .video-box {
+    @media screen and (min-width: ($md - 1)) {
+      width: 50%;
+    }
+  }
+}

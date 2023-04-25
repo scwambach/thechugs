@@ -1,3 +1,5 @@
+import {blockContent} from './common/blockContent'
+
 export const homePage = {
   name: 'homePage',
   title: 'Home Page',
@@ -30,6 +32,7 @@ export const homePage = {
           },
           validation: (Rule: any) => Rule.required(),
         },
+
         {
           title: 'Logo',
           name: 'logo',
@@ -42,6 +45,30 @@ export const homePage = {
           type: 'string',
           validation: (Rule: any) => Rule.required(),
         },
+      ],
+    },
+    {
+      title: 'Artist Bio',
+      name: 'artistBio',
+      type: 'object',
+      validation: (Rule: any) => Rule.required(),
+      fields: [
+        {
+          title: 'Image',
+          name: 'image',
+          type: 'image',
+          validation: (Rule: any) => Rule.required(),
+          options: {
+            hotspot: true,
+          },
+        },
+        {
+          title: 'Heading',
+          name: 'heading',
+          type: 'string',
+          validation: (Rule: any) => Rule.required(),
+        },
+        blockContent({title: 'Copy', name: 'copy'}),
       ],
     },
     {

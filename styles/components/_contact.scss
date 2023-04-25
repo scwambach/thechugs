@@ -1,0 +1,36 @@
+.contact {
+  @include componentSpacingPadding;
+  background-color: $blue;
+
+  .section-heading {
+    color: $gold;
+  }
+
+  form {
+    label {
+      color: $white;
+    }
+
+    input,
+    select,
+    textarea {
+      color: $white;
+      border-color: $gold;
+    }
+
+    [type='submit'] {
+      background-color: $gold;
+      color: $white;
+      font-family: $heading-family;
+      text-transform: uppercase;
+      border-color: transparent;
+    }
+
+    .select {
+      &:before,
+      &:after {
+        border-color: $gold transparent transparent transparent;
+      }
+    }
+  }
+}

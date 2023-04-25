@@ -1,6 +1,6 @@
+import { useWindowWidth } from '@hooks/useWindowWidth'
 import { breakpoints } from '@utils/settings'
 import { SanityImageProps } from '@utils/types'
-import { useWindowWidth } from '@utils/useWindowWidth'
 import { useCallback, useState } from 'react'
 import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
 import { BlurImage } from './BlurImage'
