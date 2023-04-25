@@ -55,6 +55,7 @@ const PrintfulProduct = (product: any) => {
       </div>
       <h4>{name}</h4>
       <div className="product-info">
+        <p className="price">{formattedPrice}</p>
         <VariantPicker
           value={activeVariantExternalId}
           onChange={(value: string) =>
@@ -63,7 +64,6 @@ const PrintfulProduct = (product: any) => {
           variants={variants}
           disabled={oneStyle}
           />
-          <p className="price">{formattedPrice}</p>
       </div>
       <button
         className="snipcart-add-item button"
@@ -72,7 +72,10 @@ const PrintfulProduct = (product: any) => {
         data-item-url={`/api/products/${activeVariantExternalId}`}
         data-item-description={activeVariant.name}
         data-item-image={activeVariantFile.preview_url}
-        data-item-name={name}
+        data-item-name={`${name} - ${activeVariant.name}`}
+        data-item-custom1-type="hidden"
+        data-item-custom1-name="PrintfulProduct"
+        data-item-custom1-value="true"
       >
         Add to Cart
       </button>

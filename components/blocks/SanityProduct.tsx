@@ -23,14 +23,6 @@ const SanityProduct = ({ _id: id, title, price, description, images }) => {
       </div>
       <h4>{title}</h4>
       <div className="product-info">
-        {/* <VariantPicker
-          value={activeVariantExternalId}
-          onChange={(value: string) =>
-            setActiveVariantExternalId(value)
-          }
-          variants={variants}
-          disabled={oneStyle}
-          /> */}
           <p className="price">{formattedPrice}</p>
       </div>
       <button
@@ -39,8 +31,11 @@ const SanityProduct = ({ _id: id, title, price, description, images }) => {
         data-item-price={price}
         data-item-url={`/api/products/${id}`}
         data-item-description={title}
-        // data-item-image={activeVariantFile.preview_url}
+        data-item-image={images[0].url}
         data-item-name={title}
+        data-item-custom1-type="hidden"
+        data-item-custom1-name="PrintfulProduct"
+        data-item-custom1-value="false"
       >
         Add to Cart
       </button>

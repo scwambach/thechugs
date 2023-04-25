@@ -1,12 +1,15 @@
 .variant-picker {
   position: relative;
-  width: 65%;
+  border-top: 2px dashed $gray;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   &:before {
     content: '';
     position: absolute;
     right: 10px;
-    top: 15px;
+    top: 25px;
     border-top: 6px solid $red;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
@@ -37,7 +40,7 @@
 
     &.open {
       display: block;
-      border-top: 2px dashed $light-gray;
+      border: 2px dashed $light-gray;
     }
 
     li {
