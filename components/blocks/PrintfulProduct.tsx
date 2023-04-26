@@ -44,7 +44,6 @@ const PrintfulProduct = (product: any) => {
       <div className="product-img">
         {activeVariantFile && (
           <Image
-            className=""
             src={activeVariantFile.preview_url}
             width={250}
             height={250}
