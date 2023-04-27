@@ -32,7 +32,15 @@ export const homePage = {
           },
           validation: (Rule: any) => Rule.required(),
         },
-
+        {
+          title: 'Mobile Image',
+          name: 'mobileImage',
+          type: 'image',
+          validation: (Rule: any) => Rule.required(),
+          options: {
+            hotspot: true,
+          },
+        },
         {
           title: 'Logo',
           name: 'logo',

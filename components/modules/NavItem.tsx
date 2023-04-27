@@ -1,3 +1,5 @@
+import { scrollToSection } from '@utils/scrollToSection'
+
 const NavItem = ({
   setOpen,
   elementId,
@@ -11,19 +13,13 @@ const NavItem = ({
   top?: boolean
   className?: string
 }) => {
-  const scrollToSection = (section: string) => {
-    const el = document.getElementById(section)
-    if (el) {
-      el.scrollIntoView({ block: top ? 'start' : 'center', behavior: 'smooth' })
-    }
-  }
   return (
     <li className={className}>
       <a
         onClick={(e) => {
           e.preventDefault()
           setOpen(false)
-          scrollToSection(elementId)
+          scrollToSection(elementId, top)
         }}
         href={`#${elementId}`}
       >

@@ -48,6 +48,7 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     logo,
     heading,
     ${imageQuery({ name: 'image' })},
+    ${imageQuery({ name: 'mobileImage' })},
   },
   artistBio {
     heading,

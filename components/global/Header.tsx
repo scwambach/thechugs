@@ -7,13 +7,20 @@ import { ContactProps } from '@utils/types'
 import { useState } from 'react'
 import useSnipcartCount from '@hooks/useSnipcartCount'
 import { NavItem } from '@components/modules/NavItem'
+import { scrollToSection } from '@utils/scrollToSection'
 
 interface HeaderProps extends ContactProps {
   hasArticles?: boolean
   hasVideos?: boolean
+  hasEvents?: boolean
 }
 
-const Header = ({ socials, hasArticles, hasVideos }: HeaderProps) => {
+const Header = ({
+  socials,
+  hasArticles,
+  hasEvents,
+  hasVideos,
+}: HeaderProps) => {
   const [open, setOpen] = useState<boolean>(false)
   const { cart } = useSnipcartCount()
   const cartHasItems = cart.items.count !== 0
@@ -35,7 +42,8 @@ const Header = ({ socials, hasArticles, hasVideos }: HeaderProps) => {
         <nav id="mainNav">
           <ul className="unstyled">
             <NavItem elementId="releases" setOpen={setOpen} />
-            <NavItem elementId="events" setOpen={setOpen} />
+            {hasEvents && <NavItem elementId="events" setOpen={setOpen} />}
+            <NavItem elementId="products" setOpen={setOpen} />
             <NavItem elementId="bio" setOpen={setOpen} />
             <NavItem elementId="music" copy="listen" setOpen={setOpen} />
             {hasVideos && <NavItem elementId="videos" setOpen={setOpen} />}
@@ -54,8 +62,10 @@ const Header = ({ socials, hasArticles, hasVideos }: HeaderProps) => {
           ))}
           <li>
             <a
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault()
                 setOpen(false)
+                scrollToSection('contact', false)
               }}
               href="#contact"
             >

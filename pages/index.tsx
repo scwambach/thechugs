@@ -23,8 +23,14 @@ const today = moment(new Date()).format('YYYY-MM-DD')
 export default function Home({ data }: { data: HomePageProps }) {
   const hasArticles = data.articles && data.articles.length > 0
   const hasVideos = data.videos && data.videos.length > 0
+  const hasEvents = data.events && data.events.length > 0
   return (
-    <Layout {...data.site} hasArticles={hasArticles} hasVideos={hasVideos}>
+    <Layout
+      {...data.site}
+      hasArticles={hasArticles}
+      hasVideos={hasVideos}
+      hasEvents={hasEvents}
+    >
       <HeroBanner {...data.banner} />
       <Releases releases={data.releases} />
       <Events events={data.events} />
@@ -71,7 +77,7 @@ export async function getStaticProps() {
     })
   )
 
-  products.push(...data.products);
+  products.push(...data.products)
 
   return {
     props: {

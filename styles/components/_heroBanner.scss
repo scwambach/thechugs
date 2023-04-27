@@ -1,12 +1,14 @@
 .hero-banner {
   position: relative;
   overflow: hidden;
-  height: 0;
-  padding-bottom: 56.25%;
+  height: 100vh;
+  max-height: 1000px;
+  // height: 0;
+  // padding-bottom: 56.25%;
 
   @media screen and (min-width: ($xl)) {
+    max-height: none;
     padding-bottom: 0;
-    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,8 +55,7 @@
     }
 
     @media screen and (max-width: ($md - 1)) {
-      max-width: 300px;
-      width: 50%;
+      width: 80%;
     }
   }
 }

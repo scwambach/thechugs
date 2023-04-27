@@ -1,14 +1,25 @@
 import { BlurImage } from '@components/modules/BlurImage'
 import { ResponsiveImage } from '@components/modules/ResponsiveImage'
+import { useWindowWidth } from '@hooks/useWindowWidth'
+import { breakpoints } from '@utils/settings'
 import { BannerProps } from '@utils/types'
 import { urlFor } from '@utils/urlFor'
 import { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 import VanillaTilt from 'vanilla-tilt'
 
-const HeroBanner = ({ heading, image, logo, video }: BannerProps) => {
+const HeroBanner = ({
+  heading,
+  image,
+  mobileImage,
+  logo,
+  video,
+}: BannerProps) => {
   const [hasWindow, setHasWindow] = useState<boolean>(false)
   const [visible, setVisible] = useState<boolean>(false)
+
+  const windowWidth = useWindowWidth()
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setHasWindow(true)
@@ -37,6 +48,8 @@ const HeroBanner = ({ heading, image, logo, video }: BannerProps) => {
   }
   const tilt = useRef(null)
 
+  const bannerImage = windowWidth > breakpoints.md ? image : mobileImage
+
   useEffect(() => {
     if (!tilt.current) return
     VanillaTilt.init(tilt.current, tiltOptions)
@@ -55,7 +68,7 @@ const HeroBanner = ({ heading, image, logo, video }: BannerProps) => {
               height="100%"
             />
           )}
-          <BlurImage isBackground {...image} />
+          <BlurImage isBackground {...bannerImage} />
         </div>
 
         <div className="logo" ref={tilt}>

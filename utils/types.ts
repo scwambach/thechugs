@@ -44,6 +44,7 @@ export interface LinkProps {
 export interface BannerProps {
   heading: string
   image: SanityImageProps
+  mobileImage: SanityImageProps
   logo: ImageProps
   video: string
 }

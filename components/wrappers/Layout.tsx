@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 interface LayoutProps extends SiteProps {
   hasArticles?: boolean
   hasVideos?: boolean
+  hasEvents?: boolean
 }
 
 const Layout = ({
@@ -17,6 +18,7 @@ const Layout = ({
   title,
   hasArticles,
   hasVideos,
+  hasEvents,
   children,
 }: LayoutProps) => {
   useEffect(() => {
@@ -38,6 +40,7 @@ const Layout = ({
         {...contactInfo}
         hasArticles={hasArticles}
         hasVideos={hasVideos}
+        hasEvents={hasEvents}
       />
       <main id="main-content">{children}</main>
       <Footer />

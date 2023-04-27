@@ -13,6 +13,13 @@ $midWidth: $width / 1.2;
     font-size: 1.2rem;
   }
 
+  @media screen and (max-width: ($lg - 1)) {
+    color: $white;
+    background-color: $blue;
+
+    padding: 4rem 0 2rem;
+  }
+
   .background-media {
     @include blueOverlay;
 
@@ -46,8 +53,9 @@ $midWidth: $width / 1.2;
       height: 100%;
       z-index: -1;
       opacity: 0.8;
+
       @media screen and (max-width: ($lg - 1)) {
-        opacity: 0.9;
+        content: none;
       }
     }
   }
@@ -84,11 +92,19 @@ $midWidth: $width / 1.2;
     text-decoration: none;
     font-weight: bold;
     text-transform: uppercase;
+
+    @media screen and (max-width: ($lg - 1)) {
+      color: $gold;
+    }
   }
 
   .section {
     width: 50%;
     border-right: 2px solid $text;
+
+    @media screen and (max-width: ($lg - 1)) {
+      border-color: $white;
+    }
 
     &:nth-of-type(1) {
       width: $midWidth;
@@ -107,7 +123,7 @@ $midWidth: $width / 1.2;
       @media screen and (max-width: ($xs - 1)) {
         width: 100%;
         border-right: none;
-        border-bottom: 2px solid $text;
+        border-bottom: 2px solid $white;
       }
     }
 
@@ -141,7 +157,11 @@ $midWidth: $width / 1.2;
 
       @media screen and (max-width: ($mlg - 1)) {
         width: 100%;
-        border-top: 2px solid $text;
+        border-top: 2px solid $white;
+      }
+
+      @media screen and (max-width: ($lg - 1)) {
+        border-color: $white;
       }
     }
   }
@@ -184,6 +204,10 @@ $midWidth: $width / 1.2;
         font-size: 2em;
       }
 
+      @media screen and (max-width: ($lg - 1)) {
+        color: $gold;
+      }
+
       @media screen and (max-width: ($xs - 1)) {
         width: 100%;
         margin-right: 1rem;
@@ -218,6 +242,10 @@ $midWidth: $width / 1.2;
       font-size: 1.2em;
     }
 
+    @media screen and (max-width: ($lg - 1)) {
+      border-color: $white;
+    }
+
     ul {
       font-size: 0.7em;
       &:before {
@@ -237,8 +265,11 @@ $midWidth: $width / 1.2;
         padding: 0;
 
         a {
-          color: $text;
           text-transform: lowercase;
+
+          @media screen and (min-width: ($md)) {
+            color: $text;
+          }
 
           &:hover {
             @media screen and (min-width: ($md)) {
@@ -273,6 +304,10 @@ $midWidth: $width / 1.2;
       padding: 0.4rem 0;
       font-size: 1.2em;
     }
+
+    @media screen and (max-width: ($lg - 1)) {
+      border-color: $white;
+    }
   }
 
   .mapLink {
@@ -305,6 +340,10 @@ $midWidth: $width / 1.2;
       width: 100%;
       padding-left: 0;
     }
+
+    @media screen and (max-width: ($lg - 1)) {
+      border-color: $white;
+    }
   }
 
   .showTime {
@@ -316,6 +355,10 @@ $midWidth: $width / 1.2;
 
     @media screen and (max-width: ($sm - 1)) {
       border-right: 0;
+    }
+
+    @media screen and (max-width: ($lg - 1)) {
+      border-color: $white;
     }
   }
 
