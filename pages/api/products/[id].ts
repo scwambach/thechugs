@@ -6,6 +6,7 @@ type Data = {
   id: string;
   price: number;
   url: string;
+  customFields: any;
 };
 
 type Error = {
@@ -27,6 +28,7 @@ export default async function handler(
       id: id as string,
       price: result.retail_price,
       url: `/api/products/${id}`,
+      customFields: []
     });
   } catch (error: any) {
     console.log(error);

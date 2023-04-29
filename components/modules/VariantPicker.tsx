@@ -8,7 +8,7 @@ const VariantPicker = ({ variants, ...props }) => {
   return (
     <div className="variant-picker">
       <button onClick={() => setOpen(!open)}>
-        Size: {variants.find((x: any) => x.external_id === props.value).name}
+        {variants.find((x: any) => x.external_id === props.value).name}
       </button>
       <ul className={open ? 'open' : ''}>
         {variants.map(
