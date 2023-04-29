@@ -4,6 +4,7 @@ import { Seo } from '@components/global/Seo'
 // import { playAudio } from '@utils/playAudio'
 import { SiteProps } from '@utils/types'
 import { useEffect } from 'react'
+import { logoArt } from '@utils/art'
 
 interface LayoutProps extends SiteProps {
   hasArticles?: boolean
@@ -25,6 +26,7 @@ const Layout = ({
 }: LayoutProps) => {
   useEffect(() => {
     // playAudio('a', 'addToCart')
+    console.log(logoArt)
   }, [])
   return (
     <>
