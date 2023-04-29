@@ -24,19 +24,24 @@ export default function Home({ data }: { data: HomePageProps }) {
   const hasArticles = data.articles && data.articles.length > 0
   const hasVideos = data.videos && data.videos.length > 0
   const hasEvents = data.events && data.events.length > 0
+  const hasMusic = data.musicPlayerCode && data.musicPlayerCode.code
   return (
     <Layout
       {...data.site}
       hasArticles={hasArticles}
       hasVideos={hasVideos}
       hasEvents={hasEvents}
+      hasMusic={hasMusic}
     >
       <HeroBanner {...data.banner} />
       <Releases releases={data.releases} />
       <Events events={data.events} />
       <ProductGrid products={data.products} />
       <Bio {...data.artistBio} />
-      <Music />
+
+      {data.musicPlayerCode && data.musicPlayerCode.code && (
+        <Music player={data.musicPlayerCode.code} />
+      )}
       {data.videos && data.videos.length > 0 && <Videos videos={data.videos} />}
       <ImageGallery images={data.imageGallery} />
       {data.articles && data.articles.length > 0 && (

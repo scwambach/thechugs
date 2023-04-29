@@ -58,11 +58,16 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
   imageGallery[] {
     ${assetQuery()}
   },
+  musicPlayerCode,
   "releases": *[_type == "release" && ((_id in path('drafts.**')) == false)] | order(releaseDate desc) {
     _id,
     title,
     releaseDate,
     links,
+    preSaveLink {
+      copy,
+      url,
+    },
     ${imageQuery({ name: 'coverArt' })},
   },
   "site": *[_type == "globalInfo"][0] {

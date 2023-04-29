@@ -1,6 +1,6 @@
 export const breakpoints = {
   sm: 480,
-  smd: 600,
+  smd: 700,
   md: 768,
   mlg: 900,
   lg: 1024,

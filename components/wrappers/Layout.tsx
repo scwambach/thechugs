@@ -9,6 +9,7 @@ interface LayoutProps extends SiteProps {
   hasArticles?: boolean
   hasVideos?: boolean
   hasEvents?: boolean
+  hasMusic?: boolean
 }
 
 const Layout = ({
@@ -18,6 +19,7 @@ const Layout = ({
   title,
   hasArticles,
   hasVideos,
+  hasMusic,
   hasEvents,
   children,
 }: LayoutProps) => {
@@ -41,6 +43,7 @@ const Layout = ({
         hasArticles={hasArticles}
         hasVideos={hasVideos}
         hasEvents={hasEvents}
+        hasMusic={hasMusic}
       />
       <main id="main-content">{children}</main>
       <Footer />

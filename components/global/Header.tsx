@@ -13,12 +13,14 @@ interface HeaderProps extends ContactProps {
   hasArticles?: boolean
   hasVideos?: boolean
   hasEvents?: boolean
+  hasMusic?: boolean
 }
 
 const Header = ({
   socials,
   hasArticles,
   hasEvents,
+  hasMusic,
   hasVideos,
 }: HeaderProps) => {
   const [open, setOpen] = useState<boolean>(false)
@@ -45,7 +47,9 @@ const Header = ({
             {hasEvents && <NavItem elementId="events" setOpen={setOpen} />}
             <NavItem elementId="products" setOpen={setOpen} />
             <NavItem elementId="bio" setOpen={setOpen} />
-            <NavItem elementId="music" copy="listen" setOpen={setOpen} />
+            {hasMusic && (
+              <NavItem elementId="music" copy="listen" setOpen={setOpen} />
+            )}
             {hasVideos && <NavItem elementId="videos" setOpen={setOpen} />}
             <NavItem elementId="images" setOpen={setOpen} />
             {hasArticles && <NavItem elementId="articles" setOpen={setOpen} />}
@@ -72,17 +76,6 @@ const Header = ({
               <DynamicIcon color={colors.white} size={25} name="email" />
             </a>
           </li>
-          <li>
-            <a className="snipcart-checkout">
-              <DynamicIcon
-                faIcons={true}
-                color={colors.white}
-                size={25}
-                name="cart"
-              />
-              {cartHasItems && <span />}
-            </a>
-          </li>
         </ul>
       </div>
       <NavItem
@@ -92,6 +85,16 @@ const Header = ({
         top
         className="back-to-top"
       />
+      <a className="snipcart-checkout" href="#">
+        <div className="sr-only">cart</div>
+        <DynamicIcon
+          faIcons={true}
+          color={colors.white}
+          size={25}
+          name="cart"
+        />
+        {cartHasItems && <span />}
+      </a>
     </header>
   )
 }

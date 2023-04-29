@@ -1,11 +1,6 @@
 .releases {
   @include componentSpacingMargin;
 
-  @media screen and (max-width: ($md - 1)) {
-    padding-bottom: 4rem;
-    border-bottom: 4px dashed $gold;
-  }
-
   .inner {
     display: flex;
     flex-direction: row;
@@ -53,6 +48,30 @@
 
       @media screen and (max-width: ($sm - 1)) {
         width: auto;
+      }
+    }
+
+    .button {
+      display: inline-block;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      text-decoration: none;
+      line-height: 1.1;
+      text-align: center;
+      border: none;
+      background: $gold;
+      color: $white;
+      padding: 1rem 2rem;
+      font-family: $heading-family;
+      font-weight: bold;
+
+      &:hover {
+        @media screen and (min-width: ($md)) {
+          color: $white;
+          background: $blue;
+          outline: 4px solid $gold;
+        }
       }
     }
   }

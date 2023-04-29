@@ -52,7 +52,7 @@ const PrintfulProduct = (product: any) => {
           />
         )}
       </div>
-      <h4>{name}</h4>
+      <h4>{name.replace('The Chugs', '')}</h4>
       <div className="product-info">
         <p className="price">{formattedPrice}</p>
         <VariantPicker

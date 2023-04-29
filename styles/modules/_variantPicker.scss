@@ -23,14 +23,17 @@
     display: block;
     width: 100%;
     text-align: left;
+    font-size: 1rem;
   }
-  
-  ul, li, p {
+
+  ul,
+  li,
+  p {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
-  
+
   ul {
     display: none;
     position: absolute;
@@ -52,7 +55,7 @@
 
       button {
         padding: 5px 10px;
-        font-size: 14px;
+        font-size: 0.9rem;
       }
     }
   }

@@ -35,8 +35,8 @@ export interface SanityImageProps {
   width: number
 }
 export interface LinkProps {
-  _key: string
-  _type: string
+  _key?: string
+  _type?: string
   copy: string
   url: string
 }
@@ -46,7 +46,7 @@ export interface BannerProps {
   image: SanityImageProps
   mobileImage: SanityImageProps
   logo: ImageProps
-  video: string
+  video?: string
 }
 
 export interface ContactProps {
@@ -116,6 +116,7 @@ export interface ReleaseProps {
   title: string
   coverArt: SanityImageProps
   releaseDate: string
+  preSaveLink: LinkProps
   links: LinkProps[]
 }
 
@@ -123,6 +124,9 @@ export interface HomePageProps {
   title: string
   banner: BannerProps
   artistBio: BioProps
+  musicPlayerCode?: {
+    code?: string
+  }
   imageGallery: SanityImageProps[]
   site: SiteProps
   products: ProductProps[]

@@ -21,7 +21,6 @@ export const homePage = {
           title: 'Video',
           name: 'video',
           type: 'url',
-          validation: (Rule: any) => Rule.required(),
         },
         {
           title: 'Image',
@@ -78,6 +77,14 @@ export const homePage = {
         },
         blockContent({title: 'Copy', name: 'copy'}),
       ],
+    },
+    {
+      name: 'musicPlayerCode',
+      title: 'Music Player Code',
+      type: 'code',
+      options: {
+        language: 'html',
+      },
     },
     {
       title: 'Image Gallery',

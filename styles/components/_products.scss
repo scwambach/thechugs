@@ -21,8 +21,17 @@
       width: calc(50% - 2rem);
     }
 
+    @media screen and (max-width: ($sm - 1)) {
+      width: 100%;
+    }
+
     h4 {
-      margin: 0;
+      margin: 1rem 0 0.5rem;
+      line-height: 1.1;
+
+      @media screen and (max-width: ($md - 1)) {
+        font-size: 1.1rem;
+      }
     }
 
     .product-info {
@@ -41,7 +50,15 @@
       margin: 0;
       padding: 0;
       flex: 1;
-      font-size: 22px;
+      font-size: 1.2rem;
+
+      @media screen and (max-width: ($md - 1)) {
+        font-size: 1rem;
+      }
+
+      @media screen and (min-width: ($md)) {
+        margin-bottom: 1rem;
+      }
     }
 
     .button {

@@ -32,6 +32,23 @@ export const release = {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      title: 'Pre-Save Link',
+      name: 'preSaveLink',
+      type: 'object',
+      fields: [
+        {
+          title: 'Copy',
+          name: 'copy',
+          type: 'string',
+        },
+        {
+          title: 'URL',
+          name: 'url',
+          type: 'url',
+        },
+      ],
+    },
+    {
       title: 'Links',
       name: 'links',
       type: 'array',
