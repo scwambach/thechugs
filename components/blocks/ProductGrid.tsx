@@ -11,7 +11,6 @@ const ProductGrid = ({ products }: { products: any }) => {
   return (
     <section id="products" className="products">
       <Container maxWidth={breakpoints.xxl}>
-        <h2 className="section-heading">Products</h2>
         <div className="product-grid">
           {products.map((product: any) => (
             <React.Fragment

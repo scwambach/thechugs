@@ -6,7 +6,9 @@ const Contact = () => {
   return (
     <section className="contact" id="contact">
       <Container maxWidth={breakpoints.xl}>
-        <h2 className="section-heading">What is it that you need to know?!</h2>
+        <h2 className="section-heading">
+          What is it that you need to&nbsp;know?!
+        </h2>
       </Container>
       <Container maxWidth={breakpoints.md}>
         <Form _id="contact" />

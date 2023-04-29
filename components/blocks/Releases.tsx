@@ -45,7 +45,7 @@ const Releases = ({ releases }: { releases: ReleaseProps[] }) => {
                     </div>
                   ) : (
                     <>
-                      <p className="big">Coming soon</p>
+                      <p className="big">coming soon...</p>
                     </>
                   )}
                 </div>

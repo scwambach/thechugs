@@ -2,9 +2,7 @@
   position: relative;
   overflow: hidden;
   height: 100vh;
-  max-height: 1000px;
-  // height: 0;
-  // padding-bottom: 56.25%;
+  max-height: 1024px;
 
   @media screen and (min-width: ($xl)) {
     max-height: none;
