@@ -24,7 +24,8 @@ export default function Home({ data }: { data: HomePageProps }) {
   const hasArticles = data.articles && data.articles.length > 0
   const hasVideos = data.videos && data.videos.length > 0
   const hasEvents = data.events && data.events.length > 0
-  const hasMusic = data.musicPlayerCode && data.musicPlayerCode.code
+  const hasMusic =
+    data.musicPlayerCode && data.musicPlayerCode.code ? true : false
   return (
     <Layout
       {...data.site}
