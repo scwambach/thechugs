@@ -53,7 +53,7 @@ export default function Home({ data }: { data: HomePageProps }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const data = await client.fetch(HOMEPAGE_QUERY, {
     today,
   })
