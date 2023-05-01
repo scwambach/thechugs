@@ -57,8 +57,8 @@ export default async function handler(
   const printfulItems: any[] = [];
   let hasPhysicalItems = false;
 
-  cartItems.forEach((item) => {
-    item?.customFields?.forEach(field => {
+  cartItems.forEach((item: any) => {
+    item?.customFields?.forEach((field: any) => {
       if (field.name === 'PrintfulProduct') {
         if (field.value === 'true') printfulItems.push(item);
         if (field.value === 'false') {
