@@ -98,7 +98,7 @@ export default async function handler(
           cost: physicalItemShippingCosts,
           description: 'Flat Rate',
           userDefinedId: 'SNAILMAIL',
-          guaranteedDaysToDelivery: '10',
+          guaranteedDaysToDelivery: 10,
         }]
       });
     }
