@@ -54,7 +54,21 @@ export default async function handler(
     ...(shippingAddressPhone && { phone: shippingAddressPhone }),
   };
 
-  const items: PrintfulShippingItem[] = cartItems.map(
+  const printfulItems: any[] = [];
+  let hasPhysicalItems = false;
+
+  cartItems.forEach((item) => {
+    item?.customFields?.forEach(field => {
+      if (field.name === 'PrintfulProduct') {
+        if (field.value === 'true') printfulItems.push(item);
+        if (field.value === 'false') {
+          hasPhysicalItems = true;
+        }
+      }
+    });
+  });
+
+  const printfulShippingItems: PrintfulShippingItem[] = printfulItems.map(
     (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,
@@ -64,12 +78,12 @@ export default async function handler(
   try {
     const { result } = await printful.post("shipping/rates", {
       recipient,
-      items,
+      items: printfulShippingItems,
     });
 
     res.status(200).json({
       rates: result.map((rate: any) => ({
-        cost: rate.rate,
+        cost: roundShippingCost(rate.rate, hasPhysicalItems),
         description: rate.name,
         userDefinedId: rate.id,
         guaranteedDaysToDelivery: rate.maxDeliveryDays,
@@ -87,3 +101,8 @@ export default async function handler(
     });
   }
 }
+
+const roundShippingCost = (cost: number, hasPhysicalItems: boolean) => {
+  const newCost = hasPhysicalItems ? cost*1+7 : cost;
+  return (Math.round(newCost * 100) / 100).toFixed(2);
+};
