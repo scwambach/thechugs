@@ -95,7 +95,7 @@ export default async function handler(
     } else {
       res.status(200).json({
         rates: [{
-          cost: `${physicalItemShippingCosts}`,
+          cost: physicalItemShippingCosts,
           description: 'Flat Rate',
           userDefinedId: 'SNAILMAIL',
           guaranteedDaysToDelivery: '10',
