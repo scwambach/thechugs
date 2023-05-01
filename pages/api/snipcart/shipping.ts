@@ -6,6 +6,8 @@ import type {
   PrintfulShippingItem,
 } from "@utils/storeTypes";
 
+const physicalItemShippingCosts: any = 6.99;
+
 interface SnipcartRequest extends NextApiRequest {
   body: {
     eventName: string;
@@ -76,19 +78,30 @@ export default async function handler(
   );
 
   try {
-    const { result } = await printful.post("shipping/rates", {
-      recipient,
-      items: printfulShippingItems,
-    });
+    if (printfulShippingItems.length > 0) {
+      const { result } = await printful.post("shipping/rates", {
+        recipient,
+        items: printfulShippingItems,
+      });
 
-    res.status(200).json({
-      rates: result.map((rate: any) => ({
-        cost: roundShippingCost(rate.rate, hasPhysicalItems),
-        description: rate.name,
-        userDefinedId: rate.id,
-        guaranteedDaysToDelivery: rate.maxDeliveryDays,
-      })),
-    });
+      res.status(200).json({
+        rates: result.map((rate: any) => ({
+          cost: roundShippingCost(rate.rate, hasPhysicalItems),
+          description: rate.name,
+          userDefinedId: rate.id,
+          guaranteedDaysToDelivery: rate.maxDeliveryDays,
+        })),
+      });
+    } else {
+      res.status(200).json({
+        rates: [{
+          cost: physicalItemShippingCosts,
+          description: 'Flat Rate',
+          userDefinedId: 'SNAILMAIL',
+          guaranteedDaysToDelivery: 10,
+        }]
+      });
+    }
   } catch (error: any) {
     console.log(error);
     res.status(200).json({
@@ -103,6 +116,6 @@ export default async function handler(
 }
 
 const roundShippingCost = (cost: number, hasPhysicalItems: boolean) => {
-  const newCost = hasPhysicalItems ? cost*1+7 : cost;
+  const newCost = hasPhysicalItems ? cost*1+physicalItemShippingCosts : cost;
   return (Math.round(newCost * 100) / 100).toFixed(2);
 };
