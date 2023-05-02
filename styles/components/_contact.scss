@@ -23,6 +23,12 @@
       color: $white;
       font-family: $heading-family;
       border-color: transparent;
+
+      &:hover {
+        color: $white;
+        background: $blue;
+        outline: 4px solid $gold;
+      }
     }
 
     .select {

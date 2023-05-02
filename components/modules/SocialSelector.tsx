@@ -4,13 +4,13 @@ const SocialSelector = ({ name, color }: { name: string; color?: string }) => {
   return (
     <>
       {name.indexOf('instagram') !== -1 ? (
-        <DynamicIcon color={color} size={20} name="SiInstagram" />
+        <DynamicIcon color={color} size={22} name="SiInstagram" />
       ) : name.indexOf('facebook') !== -1 ? (
-        <DynamicIcon color={color} size={30} name="SiFacebook" />
+        <DynamicIcon color={color} size={23} name="SiFacebook" />
       ) : name.indexOf('twitter') !== -1 ? (
         <DynamicIcon color={color} size={30} name="SiTwitter" />
       ) : name.indexOf('youtube') !== -1 ? (
-        <DynamicIcon color={color} size={30} name="SiYoutube" />
+        <DynamicIcon color={color} size={25} name="SiYoutube" />
       ) : name.indexOf('bandCamp') !== -1 ? (
         <DynamicIcon color={color} size={30} name="SiBandCamp" />
       ) : name.indexOf('spotify') !== -1 ? (

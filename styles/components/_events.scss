@@ -271,6 +271,10 @@ $midWidth: $width / 1.2;
             color: $text;
           }
 
+          @media screen and (max-width: ($lg - 1)) {
+            color: $gold;
+          }
+
           &:hover {
             @media screen and (min-width: ($md)) {
               color: $red;

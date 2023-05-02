@@ -67,10 +67,15 @@
       text-align: center;
       align-self: end;
       margin-top: 10px;
+      font-family: $heading-family;
+      font-weight: bold;
+      border: none;
+      outline: 2px solid $black;
 
       &:hover {
-        border-color: $blue;
         color: $white;
+        background: $blue;
+        outline: 4px solid $gold;
       }
     }
   }

@@ -219,10 +219,13 @@ header {
     a {
       display: block;
       background-color: $gold;
-      border-radius: 5px;
+      font-family: $heading-family;
+      font-weight: bold;
       padding: 1rem;
       cursor: pointer;
       z-index: 1000;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
 
       @media screen and (max-width: ($md - 1)) {
         padding: 0.5rem;
@@ -232,12 +235,24 @@ header {
       &:before {
         content: none;
       }
+
+      &:hover {
+        @media screen and (min-width: ($md)) {
+          color: $white;
+          background: $blue;
+          outline: 4px solid $gold;
+        }
+      }
     }
   }
 
   .socials {
     @media screen and (min-width: ($smd)) {
       padding-right: 2.5rem;
+
+      svg {
+        width: auto;
+      }
     }
   }
 
