@@ -24,9 +24,13 @@ const PrintfulProduct = (product: any) => {
     (v: any) => v.external_id === activeVariantExternalId
   )
 
-  const activeVariantFile = activeVariant.files.find(
-    ({ type }: { type: any }) => type === 'preview'
-  )
+  const activeVariantFile = () => {
+    let variantFile = activeVariant.files.find(({ type }: { type: any }) => type === 'preview')
+    if (variantFile === undefined) {
+      variantFile = variants[0].files.find(({ type }: { type: any }) => type === 'preview')
+    }
+    return variantFile.preview_url
+  }
 
   const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -42,9 +46,9 @@ const PrintfulProduct = (product: any) => {
   return (
     <article className="product-item">
       <div className="product-img">
-        {activeVariantFile && (
+        {activeVariantFile() && (
           <Image
-            src={activeVariantFile.preview_url}
+            src={activeVariantFile()}
             width={250}
             height={250}
             alt={`${activeVariant.name} ${name}`}
@@ -68,7 +72,7 @@ const PrintfulProduct = (product: any) => {
         data-item-price={activeVariant.retail_price}
         data-item-url={`/api/products/${activeVariantExternalId}`}
         data-item-description={activeVariant.name}
-        data-item-image={activeVariantFile?.preview_url || undefined}
+        data-item-image={activeVariantFile() || undefined}
         data-item-name={`${name} - ${activeVariant.name}`}
         data-item-custom1-type="hidden"
         data-item-custom1-name="PrintfulProduct"
