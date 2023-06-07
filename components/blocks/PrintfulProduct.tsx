@@ -25,11 +25,16 @@ const PrintfulProduct = (product: any) => {
   )
 
   const activeVariantFile = () => {
-    let variantFile = activeVariant.files.find(({ type }: { type: any }) => type === 'preview')
+    let variantFile = activeVariant.files.find(
+      ({ type }: { type: any }) => type === 'preview'
+    )
     if (variantFile === undefined) {
-      variantFile = variants[0].files.find(({ type }: { type: any }) => type === 'preview')
+      variantFile = variants[0].files.find(
+        ({ type }: { type: any }) => type === 'preview'
+      )
     }
-    return variantFile.preview_url
+
+    return variantFile?.preview_url
   }
 
   const formattedPrice = new Intl.NumberFormat('en-US', {
