@@ -2,6 +2,8 @@ interface VariantPickerProps {
   variants: { external_id: string; name: string }[]
   name: string
   id: string
+  value: string
+  disabled: boolean
   onChange: (value: string) => void
 }
 
@@ -22,7 +24,6 @@ const VariantPicker = ({
           props.onChange(e.target.value)
         }}
       >
-        <option value="">Select a variant</option>
         {variants.map((variant: { external_id: string; name: string }) => (
           <option value={variant.external_id} key={variant.external_id}>
             {variant.name}

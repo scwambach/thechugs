@@ -5,6 +5,10 @@
   padding: 10px 15px;
   z-index: 1;
 
+  select {
+    width: 100%;
+  }
+
   &:before {
     content: '';
     position: absolute;
