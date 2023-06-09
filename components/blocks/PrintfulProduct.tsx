@@ -69,6 +69,8 @@ const PrintfulProduct = (product: any) => {
           onChange={(value: string) => setActiveVariantExternalId(value)}
           variants={variants}
           disabled={oneStyle}
+          name={name.replace('The Chugs', '')}
+          id={id}
         />
       </div>
       <button

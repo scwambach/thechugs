@@ -1,31 +1,34 @@
-import React, { useState } from 'react'
+interface VariantPickerProps {
+  variants: { external_id: string; name: string }[]
+  name: string
+  id: string
+  onChange: (value: string) => void
+}
 
-//@ts-ignore
-const VariantPicker = ({ variants, ...props }) => {
-  const [open, setOpen] = useState(false)
+const VariantPicker = ({
+  variants,
+  name,
+  id,
+  ...props
+}: VariantPickerProps) => {
   if (variants.length === (0 || 1)) return null
 
   return (
     <div className="variant-picker">
-      <button onClick={() => setOpen(!open)}>
-        {variants.find((x: any) => x.external_id === props.value).name}
-      </button>
-      <ul className={open ? 'open' : ''}>
-        {variants.map(
-          ({ external_id, name }: { external_id: string; name: string }) => (
-            <li key={external_id}>
-              <button
-                onClick={() => {
-                  props.onChange(external_id)
-                  setOpen(!open)
-                }}
-              >
-                {name}
-              </button>
-            </li>
-          )
-        )}
-      </ul>
+      <select
+        name={name}
+        id={id}
+        onChange={(e) => {
+          props.onChange(e.target.value)
+        }}
+      >
+        <option value="">Select a variant</option>
+        {variants.map((variant: { external_id: string; name: string }) => (
+          <option value={variant.external_id} key={variant.external_id}>
+            {variant.name}
+          </option>
+        ))}
+      </select>
     </div>
   )
 }
