@@ -11,11 +11,13 @@ const ProductGrid = ({ products }: { products: any }) => {
   const orderedProducts = products.sort((a: any, b: any) => {
     a = {
       ...a,
-      name: a.name.replace('The Chugs', '').toUpperCase()
+      name: a.name?.replace('The Chugs', '').toUpperCase(),
+      title: a.title?.replace('The Chugs', '').toUpperCase()
     }
     b = {
       ...b,
-      name: b.name.replace('The Chugs', '').toUpperCase()
+      name: b.name?.replace('The Chugs', '').toUpperCase(),
+      title: a.title?.replace('The Chugs', '').toUpperCase()
     }
     return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0;
   });
