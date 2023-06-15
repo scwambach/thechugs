@@ -23,6 +23,19 @@ const createOrder = async ({
     email,
   };
 
+  items.forEach((item: any) => {
+    item?.customFields?.forEach((field: any) => {
+      if (field.name === 'PrintfulProduct') {
+        if (field.value === 'false') {
+          const index = items.indexOf(item);
+          if (index > -1) {
+            items.splice(index, 1);
+          }
+        }
+      }
+    });
+  });
+
   const printfulItems: PrintfulShippingItem[] = items.map(
     (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
