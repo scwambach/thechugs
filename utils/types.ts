@@ -135,3 +135,23 @@ export interface HomePageProps {
   videos: VideoProps[]
   releases: ReleaseProps[]
 }
+
+export interface SpotifyPlaylist {
+  id: string
+  external_urls: { spotify: string }
+  name: string
+  tracks: { total: number }
+  description: string
+  owner: PlaylistOwner
+  email?: string
+  images: SpotifyImage[]
+}
+
+export interface PlaylistOwner {
+  display_name: string
+  external_urls: { spotify: string }
+}
+
+export interface SpotifyImage {
+  url: string
+}
