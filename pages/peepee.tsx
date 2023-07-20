@@ -14,6 +14,7 @@ const Peepee = () => {
   const [searchResults, setSearchResults] = useState<SpotifyPlaylist[]>([])
   const [nextUrl, setNextUrl] = useState('')
   const [prevUrl, setPrevUrl] = useState('')
+  const [loading, setLoading] = useState(false)
   const [totalResults, setTotalResults] = useState(0)
   const [pageCount, setPageCount] = useState(1)
 
@@ -36,10 +37,11 @@ const Peepee = () => {
   }
 
   const commitSearch = async (newEndpoint = '') => {
-    const q = `${searchTerm} @gmail`
+    setLoading(true);
+    const q = `${searchTerm}`
     let searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(q)}&type=playlist&limit=50`
     if (newEndpoint) searchEndpoint = newEndpoint;
-
+    
     const searchResponse = await fetch(searchEndpoint, {
       method: 'GET',
       headers: {
@@ -48,14 +50,13 @@ const Peepee = () => {
     })
 
     const results = await searchResponse.json()
-    const searchData = snagDataFromDesc(results.playlists.items);
-    setSearchResults(searchData)
+    const searchData = await snagData(results.playlists.items)
     setSearchResults(searchData)
     setNextUrl(results.playlists.next)
     setPrevUrl(results.playlists.previous)
     setTotalResults(results.playlists.total)
     getPageCount(results.playlists.href)
-    console.log(searchData)
+    setLoading(false);
   }
 
   const getPageCount = (href: string) => {
@@ -64,14 +65,44 @@ const Peepee = () => {
     setPageCount(offsetAmount/50 + 1);
   }
 
-  const snagDataFromDesc = (pls: SpotifyPlaylist[]) => {
+  const snagData = async (pls: SpotifyPlaylist[]) => {
     const emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\'.+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
-    pls.forEach(pl => {
-      const desc = pl.description;
-      const emails = emailRegex.exec(desc);
-      if (emails && emails[0]) pl.email = emails[0];
-    });
-    return pls;
+    for (let i = 0; i < pls.length; i++) {
+      let pl = pls[i];
+      const desc = pl.description
+      const emails = emailRegex.exec(desc)
+      if (emails && emails[0]) pl.email = emails[0]
+      pl = await getExtraPLInfo(pl);
+    }
+    return pls
+  }
+
+  const getExtraPLInfo = async (playlist: SpotifyPlaylist) => {
+    const plEndpoint = `https://api.spotify.com/v1/playlists/${playlist.id}`
+    const res = await fetch(plEndpoint, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token.toString()}`,
+      },
+    })
+    const results = await res.json()
+    const followCount = results.followers?.total
+    playlist.followCount = followCount
+    playlist.hasChugs = checkForChugs(results.tracks)
+    return playlist
+  }
+
+  const checkForChugs = (tracks: any) => {
+    let hasChugs = false;
+    for (let i = 0; i < tracks.items.length; i++) {
+      const song = tracks.items[i].track
+      const artistNames = song.artists.map((x:any) => x.name.toLowerCase())
+      if (artistNames.includes('the chugs')) {
+        hasChugs = true
+        break
+      }
+    }
+    return hasChugs
   }
 
   return (
@@ -84,7 +115,9 @@ const Peepee = () => {
       <p>
         <button style={{color: 'white', backgroundColor: colors.blue, border: '1px solid black', padding: 10}} onClick={() => commitSearch()}>Search Playlists</button>
       </p>
-      {searchResults.length > 0 && (
+      {loading && (<p>...Searching, OK? Sheesh...</p>)}
+      {!loading && searchResults.length === 0 && (<p>No Results</p>)}
+      {!loading && searchResults.length > 0 && (
         <div>
           <div style={{flex: 1, display: 'flex', justifyContent: 'space-between'}}>
             <button
@@ -107,24 +140,30 @@ const Peepee = () => {
             </button>
           </div>
           {searchResults.map((pl: SpotifyPlaylist) => (
-            <div key={pl.id} style={{display: 'flex', border: `1px solid ${colors.gray}`, padding: 10, margin: 10}}>
+            <div key={pl.id} style={{position: 'relative', display: 'flex', justifyContent: 'space-between', border: `1px solid ${colors.gray}`, padding: 10, margin: 10, overflow: 'hidden'}}>
               {pl.images[0]?.url && (
                 <div style={{height: 200, width: 200, backgroundImage: `url(${pl.images[0].url})`, backgroundSize: 'contain'}}></div>
               )}
-              <div style={{width: 'calc(100% - 200px'}}>
+              <div style={{width: 'calc(100% - 220px'}}>
                 <p><a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a></p>
                 <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner.external_urls.spotify}>{pl.owner.display_name}</a></p>
                 {pl.email && (
                   <p>
-                    {pl.email}
+                    Email: {pl.email}
                     <button style={{marginLeft: 5}} onClick={() => navigator.clipboard.writeText(pl.email || '')}>
                       <DynamicIcon color={colors.blue} size={16} name='copy' />
                     </button>
                   </p>
                 )}
+                <p>Followers: {pl.followCount}</p>
                 <p>Song count: {pl.tracks.total}</p>
                 <p>{pl.description}</p>
               </div>
+              {pl.hasChugs && (
+                <div style={{position: 'absolute', top: -87, right: -87, height: 175, width: 175, rotate: '45deg', backgroundColor: colors.blue, color: colors.gold, display: 'flex', justifyContent: 'center', alignItems: 'end', fontWeight: 'bold', padding: 10}}>
+                  Chugged
+                </div>
+              )}
             </div>
           ))}
         </div>

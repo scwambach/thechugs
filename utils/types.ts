@@ -140,11 +140,13 @@ export interface SpotifyPlaylist {
   id: string
   external_urls: { spotify: string }
   name: string
-  tracks: { total: number }
+  tracks: { total: number, items: any }
   description: string
   owner: PlaylistOwner
-  email?: string
   images: SpotifyImage[]
+  email?: string
+  followCount?: number
+  hasChugs?: boolean
 }
 
 export interface PlaylistOwner {
