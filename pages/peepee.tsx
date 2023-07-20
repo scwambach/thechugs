@@ -3,6 +3,7 @@ import fetch from 'node-fetch'
 import { SpotifyPlaylist } from '@utils/types'
 import { DynamicIcon } from '@components/modules/DynamicIcon'
 import { colors } from '@utils/settings'
+import { NextSeo } from 'next-seo'
 
 const clientId = '374d2ce6617f4668835df65099ff14fa'
 const clientSecret = '888e73625ae845968a65d60297ffa5a9'
@@ -75,6 +76,7 @@ const Peepee = () => {
 
   return (
     <div style={{width: '75%', margin: 40, marginLeft: 'auto', marginRight: 'auto', textAlign: 'center'}}>
+      <NextSeo noindex={true} nofollow={true} />
       <h2>Spotify Playlist Search</h2>
       <p>
         <input style={{border: '1px solid black', width: '50%'}} type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='search terms' />
