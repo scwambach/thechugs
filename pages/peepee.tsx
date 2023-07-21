@@ -11,6 +11,7 @@ const clientSecret = '888e73625ae845968a65d60297ffa5a9'
 const Peepee = () => {
   const [token, setToken] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
+  const [bandName, setBandName] = useState('The Chugs')
   const [searchResults, setSearchResults] = useState<SpotifyPlaylist[]>([])
   const [nextUrl, setNextUrl] = useState('')
   const [prevUrl, setPrevUrl] = useState('')
@@ -66,15 +67,16 @@ const Peepee = () => {
   }
 
   const snagData = async (pls: SpotifyPlaylist[]) => {
+    const playlists = pls.filter((x:SpotifyPlaylist) => x.owner.display_name.toLowerCase() !== 'spotify')
     const emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\'.+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
-    for (let i = 0; i < pls.length; i++) {
-      let pl = pls[i];
+    for (let i = 0; i < playlists.length; i++) {
+      let pl = playlists[i];
       const desc = pl.description
       const emails = emailRegex.exec(desc)
       if (emails && emails[0]) pl.email = emails[0]
       pl = await getExtraPLInfo(pl);
     }
-    return pls
+    return playlists
   }
 
   const getExtraPLInfo = async (playlist: SpotifyPlaylist) => {
@@ -97,7 +99,7 @@ const Peepee = () => {
     for (let i = 0; i < tracks.items.length; i++) {
       const song = tracks.items[i].track
       const artistNames = song.artists.map((x:any) => x.name.toLowerCase())
-      if (artistNames.includes('the chugs')) {
+      if (artistNames.includes(bandName.toLowerCase())) {
         hasChugs = true
         break
       }
@@ -110,7 +112,8 @@ const Peepee = () => {
       <NextSeo noindex={true} nofollow={true} />
       <h2>Spotify Playlist Search</h2>
       <p>
-        <input style={{border: '1px solid black', width: '50%'}} type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='search terms' />
+        <input style={{border: '1px solid black', width: '25%', margin: 5}} type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' />
+        <input style={{border: '1px solid black', width: '25%', margin: 5}} type='text' required onChange={(e) => setBandName(e.target.value)} placeholder='Band Name' value={bandName} />
       </p>
       <p>
         <button style={{color: 'white', backgroundColor: colors.blue, border: '1px solid black', padding: 10}} onClick={() => commitSearch()}>Search Playlists</button>
