@@ -63,6 +63,15 @@ export const HOMEPAGE_QUERY = `*[_type == "homePage"][0] {
     _id,
     title,
     releaseDate,
+    product -> {
+      _id,
+      title,
+      description,
+      price,
+      images[] {
+        ${assetQuery()}
+      },
+    },
     links,
     preSaveLink {
       copy,
