@@ -53,7 +53,7 @@ const Releases = ({ releases }: { releases: ReleaseProps[] }) => {
                           data-item-price={product.price}
                           data-item-url={`/api/products/${product._id}`}
                           data-item-description={title}
-                          data-item-image={product?.images[0].url}
+                          data-item-image={product.images[0].url}
                           data-item-name={title}
                           data-item-custom1-type="hidden"
                           data-item-custom1-name="PrintfulProduct"
