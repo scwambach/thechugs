@@ -116,6 +116,7 @@ export interface ReleaseProps {
   title: string
   coverArt: SanityImageProps
   releaseDate: string
+  product?: any
   preSaveLink: LinkProps
   links: LinkProps[]
 }
