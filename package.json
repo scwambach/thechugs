@@ -47,7 +47,6 @@
     "autoprefixer": "^10.4.13",
     "concurrently": "^8.0.1",
     "eslint-config-prettier": "^8.6.0",
-    "googleapis": "^118.0.0",
     "husky": "^8.0.3",
     "nodemailer": "^6.9.1",
     "prettier": "^2.8.3",
