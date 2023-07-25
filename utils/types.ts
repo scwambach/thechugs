@@ -148,6 +148,7 @@ export interface SpotifyPlaylist {
   email?: string
   followCount?: number
   hasChugs?: boolean
+  wasPitched?: boolean
 }
 
 export interface PlaylistOwner {

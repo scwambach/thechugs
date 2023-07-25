@@ -24,6 +24,8 @@
     "@types/react-dom": "18.0.10",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
+    "google-auth-library": "^9.0.0",
+    "googleapis": "^122.0.0",
     "lodash.shuffle": "^4.2.0",
     "moment": "^2.29.4",
     "next": "13.1.6",

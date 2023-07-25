@@ -4,7 +4,6 @@ import { SpotifyPlaylist } from '@utils/types'
 import { DynamicIcon } from '@components/modules/DynamicIcon'
 import { colors } from '@utils/settings'
 import { NextSeo } from 'next-seo'
-import { getGSheet } from '@utils/gsheets'
 
 const clientId = '374d2ce6617f4668835df65099ff14fa'
 const clientSecret = '888e73625ae845968a65d60297ffa5a9'
@@ -19,11 +18,20 @@ const Peepee = () => {
   const [loading, setLoading] = useState(false)
   const [totalResults, setTotalResults] = useState(0)
   const [pageCount, setPageCount] = useState(1)
+  const [gSheetData, setGSheetData] = useState([])
 
   useEffect(() => {
-    if (token === '') getToken()
-    getGSheet()
+    if (token === '') {
+      getToken()
+      getGSheet()
+    }
   }, [])
+
+  const getGSheet = async () => {
+    const response = await fetch('/api/gsheets', { method: 'GET' })
+    const data:any = await response.json()
+    setGSheetData(data);
+  }
 
   const getToken = async () => {
     const tokenEndpoint = 'https://accounts.spotify.com/api/token'
@@ -114,7 +122,7 @@ const Peepee = () => {
   }
 
   return (
-    <div style={{width: '75%', margin: 40, marginLeft: 'auto', marginRight: 'auto', textAlign: 'center'}}>
+    <div style={{width: '75%', margin: 40, marginLeft: 'auto', marginRight: 'auto', textAlign: 'center', minWidth: 1000}}>
       <NextSeo noindex={true} nofollow={true} />
       <h2>Spotify Playlist Search</h2>
       {!token ? <p>Failed to retrieve spotify token. Try again later</p> : (
@@ -153,9 +161,9 @@ const Peepee = () => {
               {searchResults.map((pl: SpotifyPlaylist) => (
                 <div key={pl.id} style={{position: 'relative', display: 'flex', justifyContent: 'space-between', border: `1px solid ${colors.gray}`, padding: 10, margin: 10, overflow: 'hidden'}}>
                   {pl.images[0]?.url && (
-                    <div style={{height: 200, width: 200, backgroundImage: `url(${pl.images[0].url})`, backgroundSize: 'contain'}}></div>
+                    <div style={{height: 100, width: 100, backgroundImage: `url(${pl.images[0].url})`, backgroundSize: 'contain'}}></div>
                   )}
-                  <div style={{width: 'calc(100% - 220px'}}>
+                  <div style={{padding: 10, marginRight: 60}}>
                     <p><a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a></p>
                     <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner.external_urls.spotify}>{pl.owner.display_name}</a></p>
                     {pl.email && (
@@ -170,9 +178,14 @@ const Peepee = () => {
                     <p>Song count: {pl.tracks.total}</p>
                     <p>{pl.description}</p>
                   </div>
+                  {pl.wasPitched && (
+                    <div style={{position: 'absolute', top: -87, right: -87, height: 175, width: 175, rotate: '45deg', backgroundColor: colors.gold, color: colors.blue, display: 'flex', justifyContent: 'center', alignItems: 'end', fontWeight: 'bold', padding: 10}}>
+                      PITCHED
+                    </div>
+                  )}
                   {pl.hasChugs && (
-                    <div style={{position: 'absolute', top: -87, right: -87, height: 175, width: 175, rotate: '45deg', backgroundColor: colors.blue, color: colors.gold, display: 'flex', justifyContent: 'center', alignItems: 'end', fontWeight: 'bold', padding: 10}}>
-                      Chugged
+                    <div style={{position: 'absolute', bottom: -87, right: -87, height: 175, width: 175, rotate: '315deg', backgroundColor: colors.blue, color: colors.gold, display: 'flex', justifyContent: 'center', alignItems: 'start', fontWeight: 'bold', padding: 10}}>
+                      CHUGGED
                     </div>
                   )}
                 </div>
