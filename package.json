@@ -29,6 +29,7 @@
     "next": "13.1.6",
     "next-sanity-image": "^6.0.0",
     "next-seo": "^6.1.0",
+    "nextjs-google-analytics": "^2.3.3",
     "node-fetch": "2.6.1",
     "printful-request": "^2.0.0",
     "react": "18.2.0",

@@ -32,6 +32,12 @@ export const release = {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      title: 'Product',
+      name: 'product',
+      type: 'reference',
+      to: [{type: 'product'}],
+    },
+    {
       title: 'Pre-Save Link',
       name: 'preSaveLink',
       type: 'object',
