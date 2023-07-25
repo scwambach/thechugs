@@ -19,7 +19,7 @@ header {
   }
 
   &.scrolling {
-    background: $text;
+    background: rgba($blue, .95);
 
     .back-to-top {
       opacity: 1;
