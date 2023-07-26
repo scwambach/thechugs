@@ -166,32 +166,32 @@ const Peepee = () => {
   }
 
   return (
-    <div style={{width: '75%', margin: 40, marginLeft: 'auto', marginRight: 'auto', textAlign: 'center', minWidth: 1000}}>
+    <div className="peepee">
       <NextSeo noindex={true} nofollow={true} />
       <h2>Spotify Playlist Search</h2>
       {pass !== passWord ? (
-        <><p><input type="password" style={{border: '1px solid black', width: '25%', margin: 5}} onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
+        <><p><input type="password" onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
       ) : (
         <>
           {!token ? <p>Failed to retrieve spotify token. Try again later</p> : (
             <>
               <p>
-                <button style={{color: 'white', backgroundColor: colors.blue, border: '1px solid black', padding: 10}} onClick={() => logout()}>Logout</button>
+                <button onClick={() => logout()}>Logout</button>
               </p>
               <p>
-                <input style={{border: '1px solid black', width: '25%', margin: 5}} type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' />
-                <input style={{border: '1px solid black', width: '25%', margin: 5}} type='text' required onChange={(e) => setBandName(e.target.value)} placeholder='Band Name' value={bandName} />
+                <input type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' />
+                <input type='text' required onChange={(e) => setBandName(e.target.value)} placeholder='Band Name' value={bandName} />
               </p>
               <p>
-                <button style={{color: 'white', backgroundColor: colors.blue, border: '1px solid black', padding: 10}} onClick={() => commitSearch()}>Search Playlists</button>
+                <button onClick={() => commitSearch()}>Search Playlists</button>
               </p>
               {loading && (<p>...Searching, OK? Sheesh...</p>)}
               {!loading && searchResults.length === 0 && (<p>No Results</p>)}
               {!loading && searchResults.length > 0 && (
-                <div>
-                  <div style={{flex: 1, display: 'flex', justifyContent: 'space-between'}}>
+                <div className="results-cont">
+                  <div>
                     <button
-                      style={{width: 100, backgroundColor: `${!prevUrl ? colors.gray : colors.blue}`, color: 'white', border: '1px solid black', padding: 5}}
+                      className="prev"
                       disabled={!prevUrl}
                       onClick={() => commitSearch(prevUrl)}
                       >
@@ -202,7 +202,7 @@ const Peepee = () => {
                       <p>Total Results: {totalResults}</p>
                     </div>
                     <button
-                      style={{width: 100, backgroundColor: `${!nextUrl ? colors.gray : colors.blue}`, color: 'white', border: '1px solid black', padding: 5}}
+                      className="next"
                       disabled={!nextUrl}
                       onClick={() => commitSearch(nextUrl)}
                       >
@@ -210,17 +210,19 @@ const Peepee = () => {
                     </button>
                   </div>
                   {searchResults.map((pl: SpotifyPlaylist) => (
-                    <div key={pl.id} style={{position: 'relative', display: 'flex', justifyContent: 'space-between', border: `1px solid ${colors.gray}`, padding: 10, margin: 10, overflow: 'hidden'}}>
+                    <div key={pl.id} className="results-item">
                       {pl.images[0]?.url && (
-                        <div style={{height: 100, width: 100, backgroundImage: `url(${pl.images[0].url})`, backgroundSize: 'contain'}}></div>
+                        <div className="results-img" style={{backgroundImage: `url(${pl.images[0].url})`}}></div>
                       )}
-                      <div style={{padding: 10, marginRight: 60, width: '100%'}}>
-                        <p><a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a></p>
+                      <div className="results-data">
+                        <h4><a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a></h4>
                         <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner.external_urls.spotify}>{pl.owner.display_name}</a></p>
                         {pl.email && (
                           <p>
-                            Email: {pl.email}
-                            <button style={{marginLeft: 5}} onClick={() => navigator.clipboard.writeText(pl.email || '')}>
+                            Email:
+                            <button onClick={() => navigator.clipboard.writeText(pl.email || '')}>
+                              <DynamicIcon color={colors.blue} size={16} name='copy' />
+                              {pl.email}
                               <DynamicIcon color={colors.blue} size={16} name='copy' />
                             </button>
                           </p>
@@ -230,14 +232,10 @@ const Peepee = () => {
                         <p>{pl.description}</p>
                       </div>
                       {pl.pitch !== undefined && (
-                        <div onClick={() => openModal(pl) } style={{position: 'absolute', top: -87, right: -87, height: 175, width: 175, rotate: '45deg', backgroundColor: colors.gold, color: colors.blue, display: 'flex', justifyContent: 'center', alignItems: 'end', fontWeight: 'bold', padding: 10}}>
-                          PITCHED
-                        </div>
+                        <div className="results-tag pitched" onClick={() => openModal(pl) } style={{}}>PITCHED</div>
                       )}
                       {pl.hasChugs && (
-                        <div style={{position: 'absolute', bottom: -87, right: -87, height: 175, width: 175, rotate: '315deg', backgroundColor: colors.blue, color: colors.gold, display: 'flex', justifyContent: 'center', alignItems: 'start', fontWeight: 'bold', padding: 10}}>
-                          CHUGGED
-                        </div>
+                        <div className="results-tag chugged">CHUGGED</div>
                       )}
                     </div>
                   ))}
@@ -247,8 +245,8 @@ const Peepee = () => {
           )}
           {showModal && modalPlaylist && (
             <>
-            <div style={{top: 0, left: 0, position: 'absolute', height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0, .75)'}} onClick={() => closeModal() } ></div>
-            <div style={{ top: 200, left: 'calc(50% - 350px)', backgroundColor: colors.white, position: 'fixed', width: 700, margin: '0 auto', padding: 20}}>
+            <div className="modal-bg" onClick={() => closeModal() } ></div>
+            <div className="modal">
                 <h3>{modalPlaylist.name}</h3>
                 <p>Song: {modalPlaylist.pitch?.song}</p>
                 <p>Response: {modalPlaylist.pitch?.response}</p>
