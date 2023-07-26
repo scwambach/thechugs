@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "the-chugs",
+  "private_key_id": "4cb018229ec5fa2652a68e1fe1080c4e9cdd2b61",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQD0PErEIun7t48s\n84E3BSDPtmB957ZQqp1z4YUjDCeuuzUzZLla1cu0MULpl1XosGWu6B71U5Xl9L0W\nZdJu9UaJQVaKCpDNlRvPYjIL3jRO9BsaGXYO2GGQtng9qRmqRTxBY8bwhiyblq6w\nrf7ymOzkPShy2KRiPS4aK3G9D2IFH1/vUnMJhJXm6Ni76QX4Z8/xQiabKnQj5cAx\nJrqyZh1TpjjxolBmemTZL/7lQaxI1/K9mQlJxD8gVNvdRWYKFNy11R8GTxnRVZqW\n802IOzZDUB59oIO9pkhg8tUSw9z5OYRehiZlv3dzS/7fhxWJrMSo4YD1oVEcMypC\nLvGzOwgzAgMBAAECggEAMzXPIXgGoqp24WB/Z/dxzUu6yLuEjT5w/EK9pT8ftPH4\n8jk86jBo4XPwyUTblQojj/yIvTzU8d4Spbcc2/oe25mxGQmlGg4ZQi8fOkDRq/pg\nEmVjTTKOpoa0CI3D3WFeBIH0zSr9AHSkVVRuYBSzmxm9uPL26MhWOdOBKjim/1aP\nbPXRpwS5gnDNdUJAU9nn+hAdpi5OjZqGJ6Z4DZ+DTqbEaYE3UUuqufcAJ0ltuNcF\njYFeH5nw7Es7rorfRfASBZdOLlPCLL6W6gaYTYp+9u/KYcvGJfpvWFJv/bZ4M4oo\nd/KST7eSp+7Xs516HsJ6qJFoDAPkAZYVx/cNqZM26QKBgQD7hVL8cp6tARKw2r7N\nBIovcsY6pGgYgLabgHWuZttqNiZuNdWUKJhKEkpTixQ3/BqYgpKDY1OYc/jBytD+\nBvLzmhraTHtpmvA2YdT3BMvhxjDItyYfSLIQ4eKNo315zmqG6mRM6TGxnH1VXDM2\nTRIAoryOlYd8VxH9N9O3/FBqawKBgQD4lcEndBmgEjwP5uiF8n3517pYjQb1HE2/\nQe+L//zh5C78A221YsLQy8O7r2XH8S3xa1yZYyyKWg0E7BhcQqwFySU3a/vc/Skj\n2VuWFbDqcMHAjMBGAH0l+smXlg2rvTGr4aySHr8BEBMyxKF12BhxdNAWG847Pj1T\n8DZwUNZbWQKBgCTCRXCTp9EM+RhTv9LiuPdaRNJJONVr6kQrsAc/DQ4mv9MXlxFC\nJY+dwLMY/ml4NMLZQmRlXdBIErDv3T9i8JrdiNMinl6+wCCSh7daQhnLB1IuQioM\nS8nf2WZt4Gau3i69js8WvaaBgme5Q9rJxLnHDtufyt9HMl/Zit22yGHlAoGADNrJ\noz2ouZNX0cayDYMtqobSVxPr4S72gkZpmcbCD/hZyaRvvup9goiW9ZSrYbyCELLp\nlfD/86OWesOuus6j0KTHLOeDnbjlsLnjt44lmOn9yvQ8WSJbVmRymkkjKdddwzKn\nVuMKI4buRzjN1Kc5FFzjCdGkR4H/b+DDH+m+O/kCgYEAi/J+unEhSPOiFCfFjFY2\nO/VctFcH0HxgJdTLQ16DU/VtbOHvAFUXn9JL+JCw1zrmXwGbHlSli525lsE4w/lh\n779mmOivGMWAoi6lGb6OPiO7uaDb1EwT6WLvuhnoB6NB+LtkxlMR64ADHf+8DWvm\noonjrAoHUzshE/wVlvMnqo4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "the-chugs@the-chugs.iam.gserviceaccount.com",
+  "client_id": "113550313559504413032",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/the-chugs%40the-chugs.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

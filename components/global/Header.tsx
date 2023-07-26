@@ -45,7 +45,7 @@ const Header = ({
           <ul className="unstyled">
             <NavItem elementId="releases" setOpen={setOpen} />
             {hasEvents && <NavItem elementId="events" setOpen={setOpen} />}
-            <NavItem elementId="products" copy="merch" setOpen={setOpen} />
+            <NavItem elementId="products" top={true} copy="merch" setOpen={setOpen} />
             <NavItem elementId="bio" setOpen={setOpen} />
             {hasMusic && (
               <NavItem elementId="music" copy="listen" setOpen={setOpen} />

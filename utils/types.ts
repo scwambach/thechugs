@@ -148,6 +148,7 @@ export interface SpotifyPlaylist {
   email?: string
   followCount?: number
   hasChugs?: boolean
+  pitch?: gSheetPitch
 }
 
 export interface PlaylistOwner {
@@ -157,4 +158,16 @@ export interface PlaylistOwner {
 
 export interface SpotifyImage {
   url: string
+}
+
+export interface gSheetPlaylist {
+  name: string,
+  email: string,
+  pitch: gSheetPitch
+}
+
+export interface gSheetPitch {
+  song: string,
+  response: string,
+  placement: string
 }
