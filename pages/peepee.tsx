@@ -143,8 +143,10 @@ const Peepee = () => {
     return hasChugs
   }
 
-  const checkForPitch = (plName: string) => {
-    const match = gSheetData.find((x:gSheetPlaylist) => x.name === plName)
+  const checkForPitch = (pln: string) => {
+    const regex = /[^A-Za-z0-9]/g
+    const plName = pln.replace(regex, '').toLowerCase()
+    const match = gSheetData.find((x:gSheetPlaylist) => x.name.replace(regex, '').toLowerCase() === plName)
     if (match !== undefined) return match.pitch
     return undefined
   }
