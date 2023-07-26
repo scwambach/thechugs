@@ -212,7 +212,7 @@ const Peepee = () => {
                       {pl.images[0]?.url && (
                         <div style={{height: 100, width: 100, backgroundImage: `url(${pl.images[0].url})`, backgroundSize: 'contain'}}></div>
                       )}
-                      <div style={{padding: 10, marginRight: 60}}>
+                      <div style={{padding: 10, marginRight: 60, width: '100%'}}>
                         <p><a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a></p>
                         <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner.external_urls.spotify}>{pl.owner.display_name}</a></p>
                         {pl.email && (
@@ -247,7 +247,7 @@ const Peepee = () => {
             <>
             <div style={{top: 0, left: 0, position: 'absolute', height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0, .75)'}} onClick={() => closeModal() } ></div>
             <div style={{ top: 200, left: 'calc(50% - 350px)', backgroundColor: colors.white, position: 'fixed', width: 700, margin: '0 auto', padding: 20}}>
-                <h3>Name: {modalPlaylist.name}</h3>
+                <h3>{modalPlaylist.name}</h3>
                 <p>Song: {modalPlaylist.pitch?.song}</p>
                 <p>Response: {modalPlaylist.pitch?.response}</p>
                 <p>Placement: {modalPlaylist.pitch?.placement}</p>
