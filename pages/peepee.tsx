@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import fetch from 'node-fetch'
-import { SpotifyPlaylist } from '@utils/types'
+import { SpotifyPlaylist, gSheetPitch, gSheetPlaylist } from '@utils/types'
 import { DynamicIcon } from '@components/modules/DynamicIcon'
 import { colors } from '@utils/settings'
 import { NextSeo } from 'next-seo'
@@ -19,9 +19,11 @@ const Peepee = () => {
   const [loading, setLoading] = useState(false)
   const [totalResults, setTotalResults] = useState(0)
   const [pageCount, setPageCount] = useState(1)
-  const [gSheetData, setGSheetData] = useState([])
+  const [gSheetData, setGSheetData] = useState<gSheetPlaylist[]>([])
+  const [showModal, setShowModal] = useState(false);
+  const [modalPlaylist, setModalPlaylist] = useState<gSheetPlaylist>();
 
-  const passWord = `Hamm's`;
+  const passWord = `red`;
 
   useEffect(() => {
     if (pass === passWord) {
@@ -33,7 +35,23 @@ const Peepee = () => {
   const getGSheet = async () => {
     const response = await fetch('/api/gsheets', { method: 'GET' })
     const data:any = await response.json()
-    setGSheetData(data)
+    const cleanedGSheetData: any = []
+    data.forEach((gSheetPL: string[]) => {
+      const pitchInfo = gSheetPL.splice(2,gSheetPL.length)
+      const playlistInfo = [gSheetPL[0], gSheetPL[1]]
+      const pl: gSheetPlaylist = {
+        name: playlistInfo[0],
+        email: playlistInfo[1],
+        pitch: {
+          song: pitchInfo[1],
+          response: pitchInfo[2],
+          placement: pitchInfo[3]
+        },
+      }
+      cleanedGSheetData.push(pl)
+    });
+    console.log(cleanedGSheetData)
+    setGSheetData(cleanedGSheetData)
   }
 
   const getToken = async () => {
@@ -108,6 +126,7 @@ const Peepee = () => {
     const followCount = results.followers?.total
     playlist.followCount = followCount
     playlist.hasChugs = checkForChugs(results.tracks)
+    playlist.pitch = checkForPitch(playlist.name)
     return playlist
   }
 
@@ -115,8 +134,8 @@ const Peepee = () => {
     let hasChugs = false;
     for (let i = 0; i < tracks.items.length; i++) {
       const song = tracks.items[i].track
-      const artistNames = song.artists.map((x:any) => x.name.toLowerCase())
-      if (artistNames.includes(bandName.toLowerCase())) {
+      const artistNames = song?.artists.map((x:any) => x.name.toLowerCase())
+      if (artistNames?.includes(bandName.toLowerCase())) {
         hasChugs = true
         break
       }
@@ -124,9 +143,24 @@ const Peepee = () => {
     return hasChugs
   }
 
+  const checkForPitch = (plName: string) => {
+    const match = gSheetData.find((x:gSheetPlaylist) => x.name === plName)
+    if (match !== undefined) return match.pitch
+    return undefined
+  }
+
   const logout = () => {
     setToken('')
     setPass('')
+  }
+
+  const openModal = (pl: gSheetPlaylist) => {
+    setShowModal(true)
+    setModalPlaylist(pl)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
   }
 
   return (
@@ -134,7 +168,7 @@ const Peepee = () => {
       <NextSeo noindex={true} nofollow={true} />
       <h2>Spotify Playlist Search</h2>
       {pass !== passWord ? (
-        <><p><input style={{border: '1px solid black', width: '25%', margin: 5}} onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
+        <><p><input type="password" style={{border: '1px solid black', width: '25%', margin: 5}} onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
       ) : (
         <>
           {!token ? <p>Failed to retrieve spotify token. Try again later</p> : (
@@ -193,8 +227,8 @@ const Peepee = () => {
                         <p>Song count: {pl.tracks.total}</p>
                         <p>{pl.description}</p>
                       </div>
-                      {pl.wasPitched && (
-                        <div style={{position: 'absolute', top: -87, right: -87, height: 175, width: 175, rotate: '45deg', backgroundColor: colors.gold, color: colors.blue, display: 'flex', justifyContent: 'center', alignItems: 'end', fontWeight: 'bold', padding: 10}}>
+                      {pl.pitch !== undefined && (
+                        <div onClick={() => openModal(pl) } style={{position: 'absolute', top: -87, right: -87, height: 175, width: 175, rotate: '45deg', backgroundColor: colors.gold, color: colors.blue, display: 'flex', justifyContent: 'center', alignItems: 'end', fontWeight: 'bold', padding: 10}}>
                           PITCHED
                         </div>
                       )}
@@ -207,6 +241,17 @@ const Peepee = () => {
                   ))}
                 </div>
               )}
+            </>
+          )}
+          {showModal && modalPlaylist && (
+            <>
+            <div style={{top: 0, left: 0, position: 'absolute', height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0, .75)'}} onClick={() => closeModal() } ></div>
+            <div style={{ top: 200, left: 'calc(50% - 350px)', backgroundColor: colors.white, position: 'fixed', width: 700, margin: '0 auto', padding: 20}}>
+                <h3>Name: {modalPlaylist.name}</h3>
+                <p>Song: {modalPlaylist.pitch.song}</p>
+                <p>Response: {modalPlaylist.pitch.response}</p>
+                <p>Placement: {modalPlaylist.pitch.placement}</p>
+            </div>
             </>
           )}
         </>
