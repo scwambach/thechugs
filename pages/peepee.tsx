@@ -9,7 +9,7 @@ const clientId = '374d2ce6617f4668835df65099ff14fa'
 const clientSecret = '888e73625ae845968a65d60297ffa5a9'
 
 const Peepee = () => {
-  const [pass, setPass] = useState('red')
+  const [pass, setPass] = useState('')
   const [token, setToken] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
   const [bandName, setBandName] = useState('The Chugs')
@@ -21,7 +21,7 @@ const Peepee = () => {
   const [pageCount, setPageCount] = useState(1)
   const [gSheetData, setGSheetData] = useState([])
 
-  const passWord = 'red';
+  const passWord = `Hamm's`;
 
   useEffect(() => {
     if (pass === passWord) {
@@ -134,7 +134,7 @@ const Peepee = () => {
       <NextSeo noindex={true} nofollow={true} />
       <h2>Spotify Playlist Search</h2>
       {pass !== passWord ? (
-        <><p><input style={{border: '1px solid black', width: '25%', margin: 5}} onChange={(e) => setPass(e.target.value)} /></p></>
+        <><p><input style={{border: '1px solid black', width: '25%', margin: 5}} onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
       ) : (
         <>
           {!token ? <p>Failed to retrieve spotify token. Try again later</p> : (
