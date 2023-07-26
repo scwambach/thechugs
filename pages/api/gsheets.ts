@@ -17,6 +17,7 @@ const getDataFromGoogleSheet = async (): Promise<sheets_v4.Schema$ValueRange['va
     });
 
     // Create the Google Sheets API instance
+    //@ts-ignore
     const sheets = google.sheets({ version: 'v4', auth: authClient });
 
     // Define the range of data you want to retrieve (e.g., "Sheet1!A1:C100")
