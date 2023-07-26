@@ -232,7 +232,7 @@ const Peepee = () => {
                         <p>{pl.description}</p>
                       </div>
                       {pl.pitch !== undefined && (
-                        <div className="results-tag pitched" onClick={() => openModal(pl) } style={{}}>PITCHED</div>
+                        <div className="results-tag pitched" onClick={() => openModal(pl) }>PITCHED</div>
                       )}
                       {pl.hasChugs && (
                         <div className="results-tag chugged">CHUGGED</div>
