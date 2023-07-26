@@ -21,7 +21,7 @@ const Peepee = () => {
   const [pageCount, setPageCount] = useState(1)
   const [gSheetData, setGSheetData] = useState<gSheetPlaylist[]>([])
   const [showModal, setShowModal] = useState(false);
-  const [modalPlaylist, setModalPlaylist] = useState<gSheetPlaylist>();
+  const [modalPlaylist, setModalPlaylist] = useState<SpotifyPlaylist>();
 
   const passWord = `red`;
 
@@ -154,7 +154,7 @@ const Peepee = () => {
     setPass('')
   }
 
-  const openModal = (pl: gSheetPlaylist) => {
+  const openModal = (pl: SpotifyPlaylist) => {
     setShowModal(true)
     setModalPlaylist(pl)
   }
@@ -248,9 +248,9 @@ const Peepee = () => {
             <div style={{top: 0, left: 0, position: 'absolute', height: '100vh', width: '100vw', backgroundColor: 'rgba(0,0,0, .75)'}} onClick={() => closeModal() } ></div>
             <div style={{ top: 200, left: 'calc(50% - 350px)', backgroundColor: colors.white, position: 'fixed', width: 700, margin: '0 auto', padding: 20}}>
                 <h3>Name: {modalPlaylist.name}</h3>
-                <p>Song: {modalPlaylist.pitch.song}</p>
-                <p>Response: {modalPlaylist.pitch.response}</p>
-                <p>Placement: {modalPlaylist.pitch.placement}</p>
+                <p>Song: {modalPlaylist.pitch?.song}</p>
+                <p>Response: {modalPlaylist.pitch?.response}</p>
+                <p>Placement: {modalPlaylist.pitch?.placement}</p>
             </div>
             </>
           )}
