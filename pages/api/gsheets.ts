@@ -32,7 +32,7 @@ const getDataFromGoogleSheet = async (): Promise<sheets_v4.Schema$ValueRange['va
     // Process the data and return it
     const data = response.data.values;
     return data;
-  } catch (err) {
+  } catch (err:any) {
     // Handle errors appropriately
     console.error('Error fetching data from Google Sheet:', err.message);
     return null;
