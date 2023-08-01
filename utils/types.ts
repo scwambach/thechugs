@@ -171,3 +171,11 @@ export interface gSheetPitch {
   response: string,
   placement: string
 }
+
+export interface SpotifyArtist {
+  name?: string,
+  followCount?: number,
+  genres?: string[],
+  popularity?: number,
+  images?: SpotifyImage[]
+}
