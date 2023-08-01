@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import fetch from 'node-fetch'
-import { SpotifyPlaylist, gSheetPitch, gSheetPlaylist } from '@utils/types'
+import { SpotifyArtist, SpotifyPlaylist, gSheetPlaylist } from '@utils/types'
 import { DynamicIcon } from '@components/modules/DynamicIcon'
 import { colors } from '@utils/settings'
 import { NextSeo } from 'next-seo'
@@ -20,10 +20,12 @@ const Peepee = () => {
   const [totalResults, setTotalResults] = useState(0)
   const [pageCount, setPageCount] = useState(1)
   const [gSheetData, setGSheetData] = useState<gSheetPlaylist[]>([])
-  const [showModal, setShowModal] = useState(false);
-  const [modalPlaylist, setModalPlaylist] = useState<SpotifyPlaylist>();
+  const [showModal, setShowModal] = useState(false)
+  const [modalPlaylist, setModalPlaylist] = useState<SpotifyPlaylist>()
+  const [artistInfo, setArtistInfo] = useState<SpotifyArtist>()
+  const [showArtistModal, setShowArtistModal] = useState(false)
 
-  const passWord = `red`;
+  const passWord = `red`
 
   useEffect(() => {
     if (pass === passWord) {
@@ -49,8 +51,7 @@ const Peepee = () => {
         },
       }
       cleanedGSheetData.push(pl)
-    });
-    console.log(cleanedGSheetData)
+    })
     setGSheetData(cleanedGSheetData)
   }
 
@@ -68,15 +69,15 @@ const Peepee = () => {
       const data:any = await response.json()
       setToken(data.access_token)
     } catch (err:any) {
-      console.log(err);
+      console.log(err)
     }
   }
 
   const commitSearch = async (newEndpoint = '') => {
-    setLoading(true);
+    setLoading(true)
     const q = `${searchTerm}`
     let searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(q)}&type=playlist&limit=50`
-    if (newEndpoint) searchEndpoint = newEndpoint;
+    if (newEndpoint) searchEndpoint = newEndpoint
     
     const searchResponse = await fetch(searchEndpoint, {
       method: 'GET',
@@ -92,24 +93,54 @@ const Peepee = () => {
     setPrevUrl(results.playlists.previous)
     setTotalResults(results.playlists.total)
     getPageCount(results.playlists.href)
-    setLoading(false);
+    setLoading(false)
+    
+    const artistsByNameRes = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(bandName)}&type=artist`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token.toString()}`,
+      },
+    })
+    const artistsByName = await artistsByNameRes.json()
+    const foundArtist = artistsByName.artists.items.find((x: any) => x.name.toLowerCase() === bandName.toLowerCase())
+    console.log(foundArtist)
+    
+    if (foundArtist) {
+      const artistInfoRes = await fetch(`https://api.spotify.com/v1/artists/${foundArtist.id}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token.toString()}`,
+        },
+      })
+      const artistResults = await artistInfoRes.json()
+      console.log(artistResults);
+      setArtistInfo({
+        name: artistResults.name,
+        followCount: artistResults.followers?.total,
+        genres: artistResults.genres.join(' | '),
+        popularity: artistResults.popularity,
+        images: artistResults.images || []
+      })
+    } else {
+      setArtistInfo({})
+    }
   }
 
   const getPageCount = (href: string) => {
     const offsetSplit:any = href.split('offset=')[1]
     const offsetAmount:any = offsetSplit.split('&')[0]*1
-    setPageCount(offsetAmount/50 + 1);
+    setPageCount(offsetAmount/50 + 1)
   }
 
   const snagData = async (pls: SpotifyPlaylist[]) => {
     const playlists = pls.filter((x:SpotifyPlaylist) => x.owner.display_name.toLowerCase() !== 'spotify')
-    const emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\'.+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
+    const emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\'.+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
     for (let i = 0; i < playlists.length; i++) {
-      let pl = playlists[i];
+      let pl = playlists[i]
       const desc = pl.description
       const emails = emailRegex.exec(desc)
       if (emails && emails[0]) pl.email = emails[0]
-      pl = await getExtraPLInfo(pl);
+      pl = await getExtraPLInfo(pl)
     }
     return playlists
   }
@@ -131,7 +162,7 @@ const Peepee = () => {
   }
 
   const checkForChugs = (tracks: any) => {
-    let hasChugs = false;
+    let hasChugs = false
     for (let i = 0; i < tracks.items.length; i++) {
       const song = tracks.items[i].track
       const artistNames = song?.artists.map((x:any) => x.name.toLowerCase())
@@ -163,6 +194,7 @@ const Peepee = () => {
 
   const closeModal = () => {
     setShowModal(false)
+    setShowArtistModal(false)
   }
 
   return (
@@ -180,7 +212,7 @@ const Peepee = () => {
               </p>
               <p>
                 <input type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' />
-                <input type='text' required onChange={(e) => setBandName(e.target.value)} placeholder='Band Name' value={bandName} />
+                <input type='text' required onChange={(e) => setBandName(e.target.value)} placeholder='Exact Band Name' value={bandName} />
               </p>
               <p>
                 <button onClick={() => commitSearch()}>Search Playlists</button>
@@ -252,6 +284,24 @@ const Peepee = () => {
                 <p>Response: {modalPlaylist.pitch?.response}</p>
                 <p>Placement: {modalPlaylist.pitch?.placement}</p>
             </div>
+            </>
+          )}
+          {artistInfo && (
+            <>
+            {artistInfo.images && (
+              <div onClick={() => setShowArtistModal(true) } className="artist-img" style={{backgroundImage: `url(${artistInfo.images[0].url})`}}></div>
+            )}
+            {showArtistModal && (
+            <>
+              <div className="modal-bg" onClick={() => closeModal() }></div>
+              <div className="modal">
+                  <h3>{artistInfo.name}</h3>
+                  <p>Followers: {artistInfo.followCount}</p>
+                  <p>Popularity: {artistInfo.popularity}</p>
+                  <p>Genres: {artistInfo.genres}</p>
+              </div>
+            </>
+            )}
             </>
           )}
         </>

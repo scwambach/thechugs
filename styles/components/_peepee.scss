@@ -8,6 +8,7 @@
     border: 1px solid $black;
     width: 25%;
     margin: 5px;
+    cursor: text;
   }
 
   button {
@@ -46,8 +47,6 @@
         right: -87px;
         height: 175px;
         width: 175px;
-        background-color: $gold;
-        color: $blue;
         display: flex;
         justify-content: center;
         font-weight: bold;
@@ -57,12 +56,16 @@
           top: -87px;
           rotate: 45deg;
           align-items: end;
+          background-color: $gold;
+          color: $blue;
         }
 
         &.chugged {
           bottom: -87px;
           rotate: 315deg;
           align-items: start;
+          background-color: $blue;
+          color: $gold;
         }
       }
 
@@ -88,6 +91,38 @@
           }
         }
       }
+    }
+  }
+
+  .artist-img {
+    position: absolute;
+    top: 153px;
+    right: 0;
+    height: 100px;
+    width: 100px;
+    background-size: contain;
+    border: 5px solid $blue;
+    cursor: pointer;
+
+    &:after {
+      content: 'i';
+      font-family: monospace;
+      font-size: 24px;
+      color: $white;
+      position: absolute;
+      top: 24px;
+      right: 103px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 70px;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 50px solid $blue;
+      rotate: -90deg;
     }
   }
 
