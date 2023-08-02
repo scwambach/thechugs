@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 }
 
-const scrapePlaylistsFromURL = async (id: string): Promise<string[]> => {
+const scrapePlaylistsFromURL = async (id: string): Promise<{name: string, id: string}[]> => {
   const browser = await puppeteer.launch({headless: 'new'})
   const page = await browser.newPage()
   const url = `https://open.spotify.com/artist/${id}/discovered-on`
@@ -30,12 +30,17 @@ const scrapePlaylistsFromURL = async (id: string): Promise<string[]> => {
   try {
     await page.goto(url, { waitUntil: 'networkidle2' })
     const playlists = await page.evaluate(() => {
-      const playlistLinks = document.querySelectorAll('a[title] > div')
-      const playlists: string[] = []
+      const playlistLinks = document.querySelectorAll('a[title][href]')
+      const playlists: {name: string, id: string}[] = []
       playlistLinks.forEach((link) => {
-        const playlistName = link.textContent?.trim()
+        const playlistName = link.getAttribute('title') || ''
+        const playlistUrl = link.getAttribute('href') || ''
+        const playlistId = playlistUrl.replace('/playlist/','') || ''
         if (playlistName) {
-          playlists.push(playlistName)
+          playlists.push({
+            name: playlistName,
+            id: playlistId
+          })
         }
       })
       return playlists

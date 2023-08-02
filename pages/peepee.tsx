@@ -24,8 +24,10 @@ const Peepee = () => {
   const [modalPlaylist, setModalPlaylist] = useState<SpotifyPlaylist>()
   const [artistInfo, setArtistInfo] = useState<SpotifyArtist>()
   const [showArtistModal, setShowArtistModal] = useState(false)
+  const [artistDiscoveredOn, setArtistDiscoveredOn] = useState<string[]>([])
 
   const passWord = `red`
+  const regex = /[^A-Za-z0-9]/g
 
   useEffect(() => {
     if (pass === passWord) {
@@ -85,16 +87,8 @@ const Peepee = () => {
         Authorization: `Bearer ${token.toString()}`,
       },
     })
-
     const results = await searchResponse.json()
-    const searchData = await snagData(results.playlists.items)
-    setSearchResults(searchData)
-    setNextUrl(results.playlists.next)
-    setPrevUrl(results.playlists.previous)
-    setTotalResults(results.playlists.total)
-    getPageCount(results.playlists.href)
-    setLoading(false)
-    
+
     const artistsByNameRes = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(bandName)}&type=artist`, {
       method: 'GET',
       headers: {
@@ -103,7 +97,6 @@ const Peepee = () => {
     })
     const artistsByName = await artistsByNameRes.json()
     const foundArtist = artistsByName.artists.items.find((x: any) => x.name.toLowerCase() === bandName.toLowerCase())
-    console.log(foundArtist)
     
     if (foundArtist) {
       const artistInfoRes = await fetch(`https://api.spotify.com/v1/artists/${foundArtist.id}`, {
@@ -113,7 +106,6 @@ const Peepee = () => {
         },
       })
       const artistResults = await artistInfoRes.json()
-      console.log(artistResults);
       setArtistInfo({
         name: artistResults.name,
         followCount: artistResults.followers?.total,
@@ -121,6 +113,15 @@ const Peepee = () => {
         popularity: artistResults.popularity,
         images: artistResults.images || []
       })
+
+      await getArtistDiscoveredOn(foundArtist.id)
+      const searchData = await snagData(results.playlists?.items)
+      setSearchResults(searchData)
+      setNextUrl(results.playlists.next)
+      setPrevUrl(results.playlists.previous)
+      setTotalResults(results.playlists.total)
+      getPageCount(results.playlists.href)
+      setLoading(false)
     } else {
       setArtistInfo({})
     }
@@ -156,26 +157,18 @@ const Peepee = () => {
     const results = await res.json()
     const followCount = results.followers?.total
     playlist.followCount = followCount
-    playlist.hasChugs = checkForChugs(results.tracks)
+    playlist.hasChugs = !!artistDiscoveredOn.find((x:any) => x.id.toLowerCase() === playlist.id.toLowerCase());
     playlist.pitch = checkForPitch(playlist.name)
     return playlist
   }
 
-  const checkForChugs = (tracks: any) => {
-    let hasChugs = false
-    for (let i = 0; i < tracks.items.length; i++) {
-      const song = tracks.items[i].track
-      const artistNames = song?.artists.map((x:any) => x.name.toLowerCase())
-      if (artistNames?.includes(bandName.toLowerCase())) {
-        hasChugs = true
-        break
-      }
-    }
-    return hasChugs
+  const getArtistDiscoveredOn = async (bandId: string) => {
+    const response = await fetch(`/api/scraper?id=${bandId}`, { method: 'GET' })
+    const data:any = await response.json()
+    setArtistDiscoveredOn(data);
   }
 
   const checkForPitch = (pln: string) => {
-    const regex = /[^A-Za-z0-9]/g
     const plName = pln.replace(regex, '').toLowerCase()
     const match = gSheetData.find((x:gSheetPlaylist) => x.name.replace(regex, '').toLowerCase() === plName)
     if (match !== undefined) return match.pitch
