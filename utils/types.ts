@@ -147,7 +147,6 @@ export interface SpotifyPlaylist {
   images?: SpotifyImage[]
   email?: string
   followCount?: number
-  hasChugs?: boolean
   pitch?: gSheetPitch
 }
 

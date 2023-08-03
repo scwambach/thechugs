@@ -66,7 +66,7 @@ const Peepee = () => {
           'Content-Type': 'application/x-www-form-urlencoded',
         }
       })
-  
+
       const data:any = await response.json()
       setToken(data.access_token)
     } catch (err:any) {
@@ -76,27 +76,18 @@ const Peepee = () => {
 
   const commitSearch = async (newEndpoint = '') => {
     setLoading(true)
-    const q = `${searchTerm}`
-    let searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(q)}&type=playlist&limit=50`
-    if (newEndpoint) searchEndpoint = newEndpoint
-    
-    const searchResponse = await fetch(searchEndpoint, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token.toString()}`,
-      },
-    })
-    const results = await searchResponse.json()
+    let foundArtist;
+    if (bandName) {
+      const artistsByNameRes = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(bandName)}&type=artist`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token.toString()}`,
+        },
+      })
+      const artistsByName = await artistsByNameRes.json()
+      foundArtist = artistsByName.artists?.items.find((x: any) => x.name.toLowerCase() === bandName.toLowerCase())
+    }
 
-    const artistsByNameRes = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(bandName)}&type=artist`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token.toString()}`,
-      },
-    })
-    const artistsByName = await artistsByNameRes.json()
-    const foundArtist = artistsByName.artists.items.find((x: any) => x.name.toLowerCase() === bandName.toLowerCase())
-    
     if (foundArtist) {
       const artistInfoRes = await fetch(`https://api.spotify.com/v1/artists/${foundArtist.id}`, {
         method: 'GET',
@@ -114,17 +105,30 @@ const Peepee = () => {
         images: artistResults.images || [],
         discoveredOn
       })
+    } else {
+      setArtistInfo({})
+    }
 
+    if (searchTerm) {
+      const q = `${searchTerm}`
+      let searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(q)}&type=playlist&limit=50`
+      if (newEndpoint) searchEndpoint = newEndpoint
+
+      const searchResponse = await fetch(searchEndpoint, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token.toString()}`,
+        },
+      })
+      const results = await searchResponse.json()
       const searchData = await snagData(results.playlists?.items)
       setSearchResults(searchData)
       setNextUrl(results.playlists.next)
       setPrevUrl(results.playlists.previous)
       setTotalResults(results.playlists.total)
       getPageCount(results.playlists.href)
-      setLoading(false)
-    } else {
-      setArtistInfo({})
     }
+    setLoading(false)
   }
 
   const getPageCount = (href: string) => {
@@ -157,7 +161,7 @@ const Peepee = () => {
     const results = await res.json()
     const followCount = results.followers?.total
     playlist.followCount = followCount
-    playlist.hasChugs = !!artistInfo?.discoveredOn?.find((x:any) => x.id.toLowerCase() === playlist.id.toLowerCase());
+    console.log(artistInfo?.discoveredOn?.find((x:any) => x.id.toLowerCase() === playlist.id.toLowerCase()))
     playlist.pitch = checkForPitch(playlist.name)
     return playlist
   }
@@ -195,7 +199,7 @@ const Peepee = () => {
       <NextSeo noindex={true} nofollow={true} />
       <h2>Spotify Playlist Search</h2>
       {pass !== passWord ? (
-        <><p><input type="password" onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
+        <><p><input autoFocus type="password" onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
       ) : (
         <>
           {!token ? <p>Failed to retrieve spotify token. Try again later</p> : (
@@ -204,7 +208,7 @@ const Peepee = () => {
                 <button onClick={() => logout()}>Logout</button>
               </p>
               <p>
-                <input type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' />
+                <input type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' autoFocus />
                 <input type='text' required onChange={(e) => setBandName(e.target.value)} placeholder='Exact Band Name' value={bandName} />
               </p>
               <p>
@@ -259,7 +263,7 @@ const Peepee = () => {
                       {pl.pitch !== undefined && (
                         <div className="results-tag pitched" onClick={() => openModal(pl) }>PITCHED</div>
                       )}
-                      {pl.hasChugs && (
+                      {!!artistInfo?.discoveredOn?.find((x:any) => x.id === pl.id) && (
                         <div className="results-tag chugged">CHUGGED</div>
                       )}
                     </div>
