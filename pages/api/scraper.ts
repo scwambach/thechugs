@@ -1,8 +1,7 @@
 // pages/api/scrape-playlists.ts
 import { SpotifyPlaylist } from '@utils/types'
 import { NextApiRequest, NextApiResponse } from 'next'
-import chromium from 'chrome-aws-lambda'
-import puppeteer from 'puppeteer-core'
+import puppeteer, { executablePath } from 'puppeteer'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -24,13 +23,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> => {
-  const executablePath = await chromium.executablePath;
   const browser = await puppeteer.launch({
-    args: ['--hide-scrollbars', '--disable-web-security'],
-    defaultViewport: chromium.defaultViewport,
-    executablePath: executablePath,
-    headless: true,
-    ignoreHTTPSErrors: true,
+    executablePath: executablePath(),
+    headless: 'new',
   })
   const page = await browser.newPage()
   const url = `https://open.spotify.com/artist/${id}/discovered-on`

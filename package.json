@@ -35,7 +35,7 @@
     "nextjs-google-analytics": "^2.3.3",
     "node-fetch": "2.6.1",
     "printful-request": "^2.0.0",
-    "puppeteer-core": "^21.0.1",
+    "puppeteer": "^21.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
