@@ -297,7 +297,7 @@ const Peepee = () => {
                   <p><b>Popularity:</b> {artistInfo.popularity}</p>
                   <p><b>Genres:</b> {artistInfo.genres}</p>
                   <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
-                  {artistInfo.discoveredOn?.map((pl) => (
+                  {artistInfo.discoveredOn && artistInfo.discoveredOn.map((pl) => (
                     <p  key={`${pl.id}-do`}>
                       <a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a>
                     </p>
