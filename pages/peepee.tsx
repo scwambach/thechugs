@@ -24,7 +24,6 @@ const Peepee = () => {
   const [modalPlaylist, setModalPlaylist] = useState<SpotifyPlaylist>()
   const [artistInfo, setArtistInfo] = useState<SpotifyArtist>()
   const [showArtistModal, setShowArtistModal] = useState(false)
-  const [artistDiscoveredOn, setArtistDiscoveredOn] = useState<SpotifyPlaylist[]>([])
 
   const passWord = `red`
   const regex = /[^A-Za-z0-9]/g
