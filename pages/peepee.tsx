@@ -161,7 +161,6 @@ const Peepee = () => {
     const results = await res.json()
     const followCount = results.followers?.total
     playlist.followCount = followCount
-    console.log(artistInfo?.discoveredOn?.find((x:any) => x.id.toLowerCase() === playlist.id.toLowerCase()))
     playlist.pitch = checkForPitch(playlist.name)
     return playlist
   }
