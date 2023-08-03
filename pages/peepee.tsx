@@ -26,6 +26,7 @@ const Peepee = () => {
   const [showArtistModal, setShowArtistModal] = useState(false)
 
   const passWord = `red`
+  const regex = /[^A-Za-z0-9]/g
 
   useEffect(() => {
     if (pass === passWord) {
@@ -65,7 +66,7 @@ const Peepee = () => {
           'Content-Type': 'application/x-www-form-urlencoded',
         }
       })
-  
+
       const data:any = await response.json()
       setToken(data.access_token)
     } catch (err:any) {
@@ -75,36 +76,18 @@ const Peepee = () => {
 
   const commitSearch = async (newEndpoint = '') => {
     setLoading(true)
-    const q = `${searchTerm}`
-    let searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(q)}&type=playlist&limit=50`
-    if (newEndpoint) searchEndpoint = newEndpoint
-    
-    const searchResponse = await fetch(searchEndpoint, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token.toString()}`,
-      },
-    })
+    let foundArtist;
+    if (bandName) {
+      const artistsByNameRes = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(bandName)}&type=artist`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token.toString()}`,
+        },
+      })
+      const artistsByName = await artistsByNameRes.json()
+      foundArtist = artistsByName.artists?.items.find((x: any) => x.name.toLowerCase() === bandName.toLowerCase())
+    }
 
-    const results = await searchResponse.json()
-    const searchData = await snagData(results.playlists.items)
-    setSearchResults(searchData)
-    setNextUrl(results.playlists.next)
-    setPrevUrl(results.playlists.previous)
-    setTotalResults(results.playlists.total)
-    getPageCount(results.playlists.href)
-    setLoading(false)
-    
-    const artistsByNameRes = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(bandName)}&type=artist`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token.toString()}`,
-      },
-    })
-    const artistsByName = await artistsByNameRes.json()
-    const foundArtist = artistsByName.artists.items.find((x: any) => x.name.toLowerCase() === bandName.toLowerCase())
-    console.log(foundArtist)
-    
     if (foundArtist) {
       const artistInfoRes = await fetch(`https://api.spotify.com/v1/artists/${foundArtist.id}`, {
         method: 'GET',
@@ -113,17 +96,39 @@ const Peepee = () => {
         },
       })
       const artistResults = await artistInfoRes.json()
-      console.log(artistResults);
+      const discoveredOn = await getArtistDiscoveredOn(foundArtist.id)
       setArtistInfo({
         name: artistResults.name,
         followCount: artistResults.followers?.total,
         genres: artistResults.genres.join(' | '),
         popularity: artistResults.popularity,
-        images: artistResults.images || []
+        images: artistResults.images || [],
+        discoveredOn
       })
     } else {
       setArtistInfo({})
     }
+
+    if (searchTerm) {
+      const q = `${searchTerm}`
+      let searchEndpoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(q)}&type=playlist&limit=50`
+      if (newEndpoint) searchEndpoint = newEndpoint
+
+      const searchResponse = await fetch(searchEndpoint, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token.toString()}`,
+        },
+      })
+      const results = await searchResponse.json()
+      const searchData = await snagData(results.playlists?.items)
+      setSearchResults(searchData)
+      setNextUrl(results.playlists.next)
+      setPrevUrl(results.playlists.previous)
+      setTotalResults(results.playlists.total)
+      getPageCount(results.playlists.href)
+    }
+    setLoading(false)
   }
 
   const getPageCount = (href: string) => {
@@ -133,12 +138,12 @@ const Peepee = () => {
   }
 
   const snagData = async (pls: SpotifyPlaylist[]) => {
-    const playlists = pls.filter((x:SpotifyPlaylist) => x.owner.display_name.toLowerCase() !== 'spotify')
+    const playlists = pls.filter((x:SpotifyPlaylist) => x.owner?.display_name.toLowerCase() !== 'spotify')
     const emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\'.+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
     for (let i = 0; i < playlists.length; i++) {
       let pl = playlists[i]
       const desc = pl.description
-      const emails = emailRegex.exec(desc)
+      const emails = emailRegex.exec(desc || '')
       if (emails && emails[0]) pl.email = emails[0]
       pl = await getExtraPLInfo(pl)
     }
@@ -156,26 +161,17 @@ const Peepee = () => {
     const results = await res.json()
     const followCount = results.followers?.total
     playlist.followCount = followCount
-    playlist.hasChugs = checkForChugs(results.tracks)
     playlist.pitch = checkForPitch(playlist.name)
     return playlist
   }
 
-  const checkForChugs = (tracks: any) => {
-    let hasChugs = false
-    for (let i = 0; i < tracks.items.length; i++) {
-      const song = tracks.items[i].track
-      const artistNames = song?.artists.map((x:any) => x.name.toLowerCase())
-      if (artistNames?.includes(bandName.toLowerCase())) {
-        hasChugs = true
-        break
-      }
-    }
-    return hasChugs
+  const getArtistDiscoveredOn = async (bandId: string) => {
+    const response = await fetch(`/api/scraper?id=${bandId}`, { method: 'GET' })
+    const data: SpotifyPlaylist[] = await response.json()
+    return data
   }
 
   const checkForPitch = (pln: string) => {
-    const regex = /[^A-Za-z0-9]/g
     const plName = pln.replace(regex, '').toLowerCase()
     const match = gSheetData.find((x:gSheetPlaylist) => x.name.replace(regex, '').toLowerCase() === plName)
     if (match !== undefined) return match.pitch
@@ -202,7 +198,7 @@ const Peepee = () => {
       <NextSeo noindex={true} nofollow={true} />
       <h2>Spotify Playlist Search</h2>
       {pass !== passWord ? (
-        <><p><input type="password" onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
+        <><p><input autoFocus type="password" onChange={(e) => setPass(e.target.value)} placeholder={`What's the password bitch?`} /></p></>
       ) : (
         <>
           {!token ? <p>Failed to retrieve spotify token. Try again later</p> : (
@@ -211,7 +207,7 @@ const Peepee = () => {
                 <button onClick={() => logout()}>Logout</button>
               </p>
               <p>
-                <input type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' />
+                <input type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' autoFocus />
                 <input type='text' required onChange={(e) => setBandName(e.target.value)} placeholder='Exact Band Name' value={bandName} />
               </p>
               <p>
@@ -243,12 +239,12 @@ const Peepee = () => {
                   </div>
                   {searchResults.map((pl: SpotifyPlaylist) => (
                     <div key={pl.id} className="results-item">
-                      {pl.images[0]?.url && (
+                      {pl.images && pl.images[0]?.url && (
                         <div className="results-img" style={{backgroundImage: `url(${pl.images[0].url})`}}></div>
                       )}
                       <div className="results-data">
                         <h4><a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a></h4>
-                        <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner.external_urls.spotify}>{pl.owner.display_name}</a></p>
+                        <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner?.external_urls.spotify}>{pl.owner?.display_name}</a></p>
                         {pl.email && (
                           <p>
                             Email:
@@ -260,13 +256,13 @@ const Peepee = () => {
                           </p>
                         )}
                         <p>Followers: {pl.followCount}</p>
-                        <p>Song count: {pl.tracks.total}</p>
+                        <p>Song count: {pl.tracks?.total}</p>
                         <p>{pl.description}</p>
                       </div>
                       {pl.pitch !== undefined && (
                         <div className="results-tag pitched" onClick={() => openModal(pl) }>PITCHED</div>
                       )}
-                      {pl.hasChugs && (
+                      {Array.isArray(artistInfo?.discoveredOn) && !!artistInfo?.discoveredOn?.find((x:any) => x.id === pl.id) && (
                         <div className="results-tag chugged">CHUGGED</div>
                       )}
                     </div>
@@ -296,9 +292,15 @@ const Peepee = () => {
               <div className="modal-bg" onClick={() => closeModal() }></div>
               <div className="modal">
                   <h3>{artistInfo.name}</h3>
-                  <p>Followers: {artistInfo.followCount}</p>
-                  <p>Popularity: {artistInfo.popularity}</p>
-                  <p>Genres: {artistInfo.genres}</p>
+                  <p><b>Followers:</b> {artistInfo.followCount}</p>
+                  <p><b>Popularity:</b> {artistInfo.popularity}</p>
+                  <p><b>Genres:</b> {artistInfo.genres}</p>
+                  <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
+                  {Array.isArray(artistInfo.discoveredOn) && artistInfo.discoveredOn?.map((pl) => (
+                    <p  key={`${pl.id}-do`}>
+                      <a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a>
+                    </p>
+                  ))}
               </div>
             </>
             )}
