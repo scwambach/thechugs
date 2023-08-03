@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 
 const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> => {
-  const browser = await puppeteer.launch({headless: 'new'})
+  const browser = await puppeteer.launch()
   const page = await browser.newPage()
   const url = `https://open.spotify.com/artist/${id}/discovered-on`
 
