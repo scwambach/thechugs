@@ -24,7 +24,7 @@ const Peepee = () => {
   const [modalPlaylist, setModalPlaylist] = useState<SpotifyPlaylist>()
   const [artistInfo, setArtistInfo] = useState<SpotifyArtist>()
   const [showArtistModal, setShowArtistModal] = useState(false)
-  const [artistDiscoveredOn, setArtistDiscoveredOn] = useState<string[]>([])
+  const [artistDiscoveredOn, setArtistDiscoveredOn] = useState<SpotifyPlaylist[]>([])
 
   const passWord = `red`
   const regex = /[^A-Za-z0-9]/g
@@ -106,15 +106,16 @@ const Peepee = () => {
         },
       })
       const artistResults = await artistInfoRes.json()
+      const discoveredOn = await getArtistDiscoveredOn(foundArtist.id)
       setArtistInfo({
         name: artistResults.name,
         followCount: artistResults.followers?.total,
         genres: artistResults.genres.join(' | '),
         popularity: artistResults.popularity,
-        images: artistResults.images || []
+        images: artistResults.images || [],
+        discoveredOn
       })
 
-      await getArtistDiscoveredOn(foundArtist.id)
       const searchData = await snagData(results.playlists?.items)
       setSearchResults(searchData)
       setNextUrl(results.playlists.next)
@@ -157,15 +158,15 @@ const Peepee = () => {
     const results = await res.json()
     const followCount = results.followers?.total
     playlist.followCount = followCount
-    playlist.hasChugs = !!artistDiscoveredOn.find((x:any) => x.id.toLowerCase() === playlist.id.toLowerCase());
+    playlist.hasChugs = !!artistInfo?.discoveredOn?.find((x:any) => x.id.toLowerCase() === playlist.id.toLowerCase());
     playlist.pitch = checkForPitch(playlist.name)
     return playlist
   }
 
   const getArtistDiscoveredOn = async (bandId: string) => {
     const response = await fetch(`/api/scraper?id=${bandId}`, { method: 'GET' })
-    const data:any = await response.json()
-    setArtistDiscoveredOn(data);
+    const data: SpotifyPlaylist[] = await response.json()
+    return data
   }
 
   const checkForPitch = (pln: string) => {
@@ -289,9 +290,15 @@ const Peepee = () => {
               <div className="modal-bg" onClick={() => closeModal() }></div>
               <div className="modal">
                   <h3>{artistInfo.name}</h3>
-                  <p>Followers: {artistInfo.followCount}</p>
-                  <p>Popularity: {artistInfo.popularity}</p>
-                  <p>Genres: {artistInfo.genres}</p>
+                  <p><b>Followers:</b> {artistInfo.followCount}</p>
+                  <p><b>Popularity:</b> {artistInfo.popularity}</p>
+                  <p><b>Genres:</b> {artistInfo.genres}</p>
+                  <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
+                  {artistInfo.discoveredOn?.map((pl) => (
+                    <p  key={`${pl.id}-do`}>
+                      <a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a>
+                    </p>
+                  ))}
               </div>
             </>
             )}

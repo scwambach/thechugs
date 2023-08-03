@@ -136,12 +136,14 @@
   }
 
   .modal {
-    top: 200px;
+    top: 10%;
     left: calc(50% - 350px);
     background-color: $white;
     position: fixed;
     width: 700px;
     margin: 0 auto;
     padding: 20px;
+    height: 80%;
+    overflow: auto;
   }
 }
