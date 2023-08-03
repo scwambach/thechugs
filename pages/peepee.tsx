@@ -263,7 +263,7 @@ const Peepee = () => {
                       {pl.pitch !== undefined && (
                         <div className="results-tag pitched" onClick={() => openModal(pl) }>PITCHED</div>
                       )}
-                      {artistInfo?.discoveredOn && !!artistInfo?.discoveredOn?.find((x:any) => x.id === pl.id) && (
+                      {Array.isArray(artistInfo?.discoveredOn) && !!artistInfo?.discoveredOn?.find((x:any) => x.id === pl.id) && (
                         <div className="results-tag chugged">CHUGGED</div>
                       )}
                     </div>
@@ -297,7 +297,7 @@ const Peepee = () => {
                   <p><b>Popularity:</b> {artistInfo.popularity}</p>
                   <p><b>Genres:</b> {artistInfo.genres}</p>
                   <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
-                  {artistInfo.discoveredOn && artistInfo.discoveredOn.map((pl) => (
+                  {Array.isArray(artistInfo.discoveredOn) && artistInfo.discoveredOn?.map((pl) => (
                     <p  key={`${pl.id}-do`}>
                       <a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a>
                     </p>
