@@ -1,5 +1,5 @@
 // pages/api/scrape-playlists.ts
-import { ArtistDiscoveredOn } from '@utils/types'
+import { SpotifyPlaylist } from '@utils/types'
 import { NextApiRequest, NextApiResponse } from 'next'
 import puppeteer from 'puppeteer'
 
@@ -23,7 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 }
 
-const scrapePlaylistsFromURL = async (id: string): Promise<ArtistDiscoveredOn[]> => {
+const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> => {
   const browser = await puppeteer.launch({headless: 'new'})
   const page = await browser.newPage()
   const url = `https://open.spotify.com/artist/${id}/discovered-on`
@@ -32,7 +32,7 @@ const scrapePlaylistsFromURL = async (id: string): Promise<ArtistDiscoveredOn[]>
     await page.goto(url, { waitUntil: 'networkidle2' })
     const playlists = await page.evaluate(() => {
       const playlistLinks = document.querySelectorAll('section[data-testid="artist-page"] a[title][href]')
-      const playlists: ArtistDiscoveredOn[] = []
+      const playlists: SpotifyPlaylist[] = []
       playlistLinks.forEach((link) => {
         const playlistName = link.getAttribute('title') || ''
         const playlistUrl = link.getAttribute('href') || ''
