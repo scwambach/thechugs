@@ -1,7 +1,9 @@
 // pages/api/scrape-playlists.ts
 import { SpotifyPlaylist } from '@utils/types'
 import { NextApiRequest, NextApiResponse } from 'next'
-import puppeteer, { executablePath } from 'puppeteer'
+import puppeteer from 'puppeteer'
+
+const IS_PRODUCTION = process.env.NEXT_PUBLIC_ENV === 'prod';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
@@ -18,15 +20,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const playlists = await scrapePlaylistsFromURL(id)
     return res.status(200).json(playlists)
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ error: `Internal Server Error: ${error}` })
   }
 }
 
 const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> => {
-  const browser = await puppeteer.launch({
-    executablePath: executablePath(),
-    headless: 'new',
-  })
+  let browser
+  if (IS_PRODUCTION) {
+    browser = await puppeteer.connect({
+      browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.NEXT_PUBLIC_BLESS_TOKEN}`,
+    })
+  } else {
+    browser = await puppeteer.launch({headless: 'new'})
+  }
   const page = await browser.newPage()
   const url = `https://open.spotify.com/artist/${id}/discovered-on`
 
