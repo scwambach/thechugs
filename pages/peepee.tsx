@@ -135,12 +135,12 @@ const Peepee = () => {
   }
 
   const snagData = async (pls: SpotifyPlaylist[]) => {
-    const playlists = pls.filter((x:SpotifyPlaylist) => x.owner.display_name.toLowerCase() !== 'spotify')
+    const playlists = pls.filter((x:SpotifyPlaylist) => x.owner?.display_name.toLowerCase() !== 'spotify')
     const emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\'.+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
     for (let i = 0; i < playlists.length; i++) {
       let pl = playlists[i]
       const desc = pl.description
-      const emails = emailRegex.exec(desc)
+      const emails = emailRegex.exec(desc || '')
       if (emails && emails[0]) pl.email = emails[0]
       pl = await getExtraPLInfo(pl)
     }
@@ -237,12 +237,12 @@ const Peepee = () => {
                   </div>
                   {searchResults.map((pl: SpotifyPlaylist) => (
                     <div key={pl.id} className="results-item">
-                      {pl.images[0]?.url && (
+                      {pl.images && pl.images[0]?.url && (
                         <div className="results-img" style={{backgroundImage: `url(${pl.images[0].url})`}}></div>
                       )}
                       <div className="results-data">
                         <h4><a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a></h4>
-                        <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner.external_urls.spotify}>{pl.owner.display_name}</a></p>
+                        <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner?.external_urls.spotify}>{pl.owner?.display_name}</a></p>
                         {pl.email && (
                           <p>
                             Email:
@@ -254,7 +254,7 @@ const Peepee = () => {
                           </p>
                         )}
                         <p>Followers: {pl.followCount}</p>
-                        <p>Song count: {pl.tracks.total}</p>
+                        <p>Song count: {pl.tracks?.total}</p>
                         <p>{pl.description}</p>
                       </div>
                       {pl.pitch !== undefined && (
