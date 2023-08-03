@@ -263,7 +263,7 @@ const Peepee = () => {
                       {pl.pitch !== undefined && (
                         <div className="results-tag pitched" onClick={() => openModal(pl) }>PITCHED</div>
                       )}
-                      {!!artistInfo?.discoveredOn?.find((x:any) => x.id === pl.id) && (
+                      {artistInfo?.discoveredOn && !!artistInfo?.discoveredOn?.find((x:any) => x.id === pl.id) && (
                         <div className="results-tag chugged">CHUGGED</div>
                       )}
                     </div>
