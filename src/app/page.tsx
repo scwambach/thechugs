@@ -10,6 +10,17 @@ export default function Home() {
           <code className={styles.code}>src/app/page.tsx</code>
         </p>
         <div>
+          <h1
+            style={{
+              height: '0',
+              overflow: 'hidden',
+              position: 'absolute',
+              width: '0',
+              opacity: '0',
+            }}
+          >
+            NextJs by Vercel
+          </h1>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
