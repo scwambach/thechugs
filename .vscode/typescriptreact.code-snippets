@@ -1,0 +1,161 @@
+{
+  "New Block Query": {
+    "prefix": "newBlockQuery",
+    "body": [
+      "import { groq } from 'next-sanity';",
+      "import { commonBlockProps } from './common';",
+      "",
+      "export const ${TM_FILENAME_BASE/(.*)/${1:/camelcase}/} = groq`",
+      "_type == '${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}' => {",
+      "  ${${commonBlockProps}},",
+      "  ...,",
+      "}",
+      "`;",
+      ""
+    ],
+    "description": "Module"
+  },
+  "New Test": {
+    "prefix": "newTest",
+    "body": [
+      "import { ${TM_FILENAME_BASE/([^.]+).*/${1}/} } from '@components';",
+      "import { cleanup, render } from '@testing-library/react';",
+      "",
+      "afterEach(cleanup);",
+      "",
+      "describe('<${TM_FILENAME_BASE/([^.]+).*/${1}/} />', () => {",
+      "  test('$1', () => {",
+      "    const { getByTestId } = render(",
+      "      <${TM_FILENAME_BASE/([^.]+).*/${1}/} />",
+      "    );",
+      "    const component = getByTestId('$3');",
+      "    expect(component).toBeVisible();",
+      "  });",
+      "});      "
+    ],
+    "description": "Module"
+  },
+  "New Component": {
+    "prefix": "newComponent",
+    "body": [
+      "interface ${TM_FILENAME_BASE/(.*)/${1}/}Props {}",
+      "",
+      "const ${TM_FILENAME_BASE/(.*)/${1}/} = (props: ${TM_FILENAME_BASE/(.*)/${1}/}Props) => {",
+      "  return (",
+      "    <code>",
+      "      <pre",
+      "        style={{",
+      "          fontFamily: 'monospace',",
+      "          display: 'block',",
+      "          padding: '50px',",
+      "          color: '#88ffbf',",
+      "          backgroundColor: 'black',",
+      "          textAlign: 'left',",
+      "          whiteSpace: 'pre-wrap',",
+      "        }}",
+      "      >",
+      "        {JSON.stringify(props, null, '    ')}",
+      "      </pre>",
+      "    </code>",
+      "  );",
+      "};",
+      "",
+      "export { ${TM_FILENAME_BASE/(.*)/${1}/} };",
+      ""
+    ],
+    "description": "Module"
+  },
+  "New Block": {
+    "prefix": "newBlock",
+    "body": [
+      "import { BlockProps, Container, Heading } from '@components';",
+      "import { breakpoints } from '@styles';",
+      "",
+      "interface ${TM_FILENAME_BASE/(.*)/${1}/}Props extends BlockProps {}",
+      "",
+      "const ${TM_FILENAME_BASE/(.*)/${1}/} = ({",
+      "  children,",
+      "  className,",
+      "  heading,",
+      "  index,",
+      "  subHeading,",
+      "}: ${TM_FILENAME_BASE/(.*)/${1}/}Props) => {",
+      "  const headingProps = {",
+      "    heading,",
+      "    index,",
+      "    maxWidth: breakpoints.xl,",
+      "    subHeading,",
+      "  };",
+      "  return (",
+      "    <div",
+      "      className={`${TM_FILENAME_BASE/(.*)/${1:/camelcase}/} relative py-20${",
+      "        className ? ` ${${className}}` : ''",
+      "      }`}",
+      "    >",
+      "      {children}",
+      "      {(heading || subHeading) && <Heading {...headingProps} />}",
+      "      <div className='relative'>",
+      "        <Container maxWidth={breakpoints.xl}>${TM_FILENAME_BASE/(.*)/${1}/}</Container>",
+      "      </div>",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export { ${TM_FILENAME_BASE/(.*)/${1}/} };",
+      ""
+    ],
+    "description": "Block"
+  },
+  "New SVG": {
+    "prefix": "newSvg",
+    "body": [
+      "interface Props {",
+      "  size?: number;",
+      "  color?: string;",
+      "}",
+      "",
+      "const ${TM_FILENAME_BASE/(.*)/${1}/} = ({ size, color }: Props) => {",
+      "  return (",
+      "    $1",
+      "  );",
+      "};",
+      "",
+      "export default ${TM_FILENAME_BASE/(.*)/${1}/};",
+      ""
+    ],
+    "description": "New SVG"
+  },
+  "Map Loop": {
+    "prefix": "map-loop",
+    "body": ["{$1.map($2 => (", "  $3", "))}"]
+  },
+  "Dangerously Set HTML": {
+    "prefix": "danger-html",
+    "body": ["<div dangerouslySetInnerHTML={{", "  __html: copy,", "}}", "/>"]
+  },
+  "Dump": {
+    "prefix": "dump",
+    "body": [
+      "",
+      "",
+      "",
+      "<code>",
+      "  <pre style={{",
+      "    fontFamily: 'monospace',",
+      "    display: 'block',",
+      "    padding: '50px',",
+      "    color: '#88ffbf',",
+      "    backgroundColor: 'black',",
+      "    textAlign: 'left',",
+      "    whiteSpace: 'pre-wrap',",
+      "  }}",
+      "  >",
+      "    {JSON.stringify($1, null, '    ')}",
+      "  </pre>",
+      "</code>",
+      "",
+      "",
+      ""
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "Map Loop": {
+    "prefix": "map-loop",
+    "body": ["{$1.map($2 => (", "  $3", "))}"]
+  },
+  "Dangerously Set HTML": {
+    "prefix": "danger-html",
+    "body": ["<div dangerouslySetInnerHTML={{", "  __html: copy,", "}}", "/>"]
+  },
+  "SanityComponent": {
+    "prefix": "sanityComponent",
+    "body": [
+      "import { componentFields, componentFieldsets } from '../commonFields';",
+      "import { FaStar } from '@meronex/icons/fa';",
+      "",
+      "export default {",
+      "  name: '${TM_FILENAME_BASE/(.*)/${1:/camelcase}/}',",
+      "  title: '$1',",
+      "  type: 'object',",
+      "  fieldsets: componentFieldsets,",
+      "  fields: [...componentFields()],",
+      "  preview: {",
+      "    select: {",
+      "      title: 'heading',",
+      "      image: 'backgroundImage',",
+      "    },",
+      "    prepare({ title, image }) {",
+      "      return {",
+      "        title: '$1',",
+      "        subtitle: title,",
+      "        media: image || FaStar,",
+      "      };",
+      "    },",
+      "  },",
+      "};",
+      ""
+    ]
+  },
+  "Dump": {
+    "prefix": "dump",
+    "body": [
+      "",
+      "",
+      "",
+      "<code>",
+      "  <pre style={{",
+      "    fontFamily: 'monospace',",
+      "    display: 'block',",
+      "    padding: '50px',",
+      "    color: '#88ffbf',",
+      "    backgroundColor: 'black',",
+      "    textAlign: 'left',",
+      "    whiteSpace: 'pre-wrap',",
+      "  }}",
+      "  >",
+      "    {JSON.stringify($1, null, '    ')}",
+      "  </pre>",
+      "</code>",
+      "",
+      "",
+      ""
+    ]
+  }
+}
