@@ -1,19 +1,19 @@
-- name: Cypress Tests
-  on: 
-    push:
-      branches: [ "version-2.0" ]
-    pull_request:
-      branches: [ "version-2.0" ]
-  jobs:
-    cypress-run:
-      runs-on: ubuntu-22.04
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v3
-        # Install NPM dependencies, cache them correctly
-        # and run all Cypress tests
-        - name: Cypress run
-          uses: cypress-io/github-action@v5
-          with:
-            build: npm run build
-            start: npm start
+name: Cypress Tests
+on: 
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          build: npm run build
+          start: npm start
