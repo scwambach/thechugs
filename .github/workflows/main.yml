@@ -1,9 +1,9 @@
 - name: Cypress Tests
   on: 
     push:
-      branches: [ "main" ]
+      branches: [ "version-2.0" ]
     pull_request:
-      branches: [ "main" ]
+      branches: [ "version-2.0" ]
   jobs:
     cypress-run:
       runs-on: ubuntu-22.04
