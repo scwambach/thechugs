@@ -6,3 +6,4 @@ coverage
 *.setup.js
 *.json
 README.md
+.husky

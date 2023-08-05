@@ -1,0 +1,20 @@
+echo "Pre-Commit ✅"
+
+npm check-format
+
+# Check ESLint Standards
+npm check-lint ||
+(
+  echo 'Found some lint that needs cleaning.'
+  false;
+)
+
+echo 'So far so good! Testing the build now.'
+
+npm run build ||
+(
+  echo 'Next build failed: View the errors above to see why.'
+  false;
+)
+
+echo 'All looks good! Committing now.'

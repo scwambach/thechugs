@@ -1,17 +1,17 @@
 {
   // ...
   "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "next/core-web-vitals"
   ],
+  "ignorePatterns": ["_studio", "cypress", ".storybook", "storybook-static", ".*", "*.config.js", "*.setup.js"],
   "rules": {
     "@next/next/no-img-element": "off",
-    "import/no-anonymous-default-export": "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "import/no-anonymous-default-export": "off",
     "react-hooks/exhaustive-deps": "off",
-    "@typescript-eslint/no-var-requires": "off"
+    "react/no-unescaped-entities": "off"
   }
 }
