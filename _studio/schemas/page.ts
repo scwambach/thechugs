@@ -50,6 +50,14 @@ export const page = defineType({
           name: 'river',
           type: 'river',
         }),
+        defineArrayMember({
+          name: 'members',
+          type: 'members',
+        }),
+        defineArrayMember({
+          name: 'gallery',
+          type: 'gallery',
+        }),
       ],
       validation: (Rule: any) => Rule.required(),
     }),

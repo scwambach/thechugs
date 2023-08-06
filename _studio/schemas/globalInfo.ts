@@ -52,5 +52,41 @@ export const globalInfo = {
         },
       ],
     },
+    {
+      title: 'Members',
+      name: 'members',
+      type: 'array',
+      validation: (Rule: any) => Rule.required(),
+      of: [
+        {
+          title: 'Member',
+          name: 'member',
+          type: 'object',
+          fields: [
+            {
+              title: 'Name',
+              name: 'name',
+              type: 'string',
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
+              title: 'Role',
+              name: 'role',
+              type: 'string',
+              validation: (Rule: any) => Rule.required(),
+            },
+            {
+              title: 'Image',
+              name: 'image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+              validation: (Rule: any) => Rule.required(),
+            },
+          ],
+        },
+      ],
+    },
   ],
 }
