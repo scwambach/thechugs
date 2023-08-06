@@ -11,6 +11,9 @@
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
   },
+  "engines": {
+    "yarn": "please-use-npm"
+  },
   "keywords": [
     "sanity"
   ],

@@ -16,6 +16,9 @@
     "storybook": "storybook dev -p 6006",
     "test": "jest"
   },
+  "engines": {
+    "yarn": "please-use-npm"
+  },
   "dependencies": {
     "@types/node": "20.4.7",
     "@types/react": "18.2.18",
