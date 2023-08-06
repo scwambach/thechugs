@@ -1,0 +1,57 @@
+import {defineArrayMember, defineField, defineType} from 'sanity'
+
+// TODO: Allow for "/" in a slug for the home page
+
+export const page = defineType({
+  name: 'page',
+  title: 'Page',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: (Rule: any) => Rule.required(),
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      description:
+        'Please click the Generate button to create a slug. Do not edit this field manually. If you do, you will break the link to this page.',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
+      validation: (Rule: any) => Rule.required(),
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      description:
+        'This is used for SEO purposes, and will appear in search results. It should be a short sentence or two.',
+      type: 'text',
+      rows: 3,
+    }),
+    defineField({
+      name: 'pageImage',
+      title: 'Page Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      validation: (Rule: any) => Rule.required(),
+    }),
+    defineField({
+      name: 'pageBlocks',
+      title: 'Page Blocks',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          name: 'river',
+          type: 'river',
+        }),
+      ],
+      validation: (Rule: any) => Rule.required(),
+    }),
+  ],
+})
