@@ -58,6 +58,10 @@ export const page = defineType({
           name: 'gallery',
           type: 'gallery',
         }),
+        defineArrayMember({
+          name: 'form',
+          type: 'form',
+        }),
       ],
       validation: (Rule: any) => Rule.required(),
     }),

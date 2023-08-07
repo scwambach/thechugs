@@ -11,10 +11,12 @@ import {product} from './product'
 import {release} from './release'
 import {river} from './pageBlocks/river'
 import {video} from './video'
+import {form} from './pageBlocks/form'
 
 export const schemaTypes = [
   article,
   event,
+  form,
   gallery,
   globalInfo,
   homePage,
