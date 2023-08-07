@@ -62,6 +62,10 @@ export const page = defineType({
           name: 'form',
           type: 'form',
         }),
+        defineArrayMember({
+          name: 'videos',
+          type: 'videos',
+        }),
       ],
       validation: (Rule: any) => Rule.required(),
     }),

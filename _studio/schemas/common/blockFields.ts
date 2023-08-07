@@ -9,6 +9,7 @@ export const blockFields = [
   defineField({
     name: 'subheading',
     title: 'Subheading',
-    type: 'string',
+    type: 'text',
+    rows: 2,
   }),
 ]

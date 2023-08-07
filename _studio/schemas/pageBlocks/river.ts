@@ -1,9 +1,11 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 import {stylesMarks} from '../common/stylesMarks'
+import {PiWavesBold} from 'react-icons/pi'
 
 export const river = defineType({
   name: 'river',
   title: 'River',
+  icon: PiWavesBold,
   type: 'object',
   preview: {
     select: {

@@ -1,9 +1,11 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 import {blockFields} from '../common/blockFields'
+import {GrGallery} from 'react-icons/gr'
 
 export const gallery = defineType({
   name: 'gallery',
   title: 'Gallery',
+  icon: GrGallery,
   type: 'object',
   fields: [
     ...blockFields,
