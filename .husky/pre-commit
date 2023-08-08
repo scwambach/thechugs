@@ -1,9 +1,9 @@
 echo "Pre-Commit ✅"
 
-npm check-format
+npm run check-format
 
 # Check ESLint Standards
-npm check-lint ||
+npm run check-lint ||
 (
   echo 'Found some lint that needs cleaning.'
   false;

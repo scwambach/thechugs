@@ -1,5 +1,6 @@
 import {article} from './article'
 import {event} from './event'
+import {featuredProducts} from './pageBlocks/featuredProducts'
 import {form} from './pageBlocks/form'
 import {gallery} from './pageBlocks/gallery'
 import {globalInfo} from './globalInfo'
@@ -17,6 +18,7 @@ import {videos} from './pageBlocks/videos'
 export const schemaTypes = [
   article,
   event,
+  featuredProducts,
   form,
   gallery,
   globalInfo,

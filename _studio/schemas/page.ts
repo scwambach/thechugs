@@ -1,7 +1,5 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-// TODO: Allow for "/" in a slug for the home page
-
 export const page = defineType({
   name: 'page',
   title: 'Page',
@@ -65,6 +63,10 @@ export const page = defineType({
         defineArrayMember({
           name: 'videos',
           type: 'videos',
+        }),
+        defineArrayMember({
+          name: 'featuredProducts',
+          type: 'featuredProducts',
         }),
       ],
       validation: (Rule: any) => Rule.required(),

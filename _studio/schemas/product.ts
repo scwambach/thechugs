@@ -1,3 +1,5 @@
+// TODO: Add a preview
+
 export const product = {
   name: 'product',
   title: 'Product',
