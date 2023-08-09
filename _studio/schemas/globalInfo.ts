@@ -1,3 +1,5 @@
+import {links} from './common/links'
+
 export const globalInfo = {
   title: 'Global Info',
   name: 'globalInfo',
@@ -84,6 +86,7 @@ export const globalInfo = {
               },
               validation: (Rule: any) => Rule.required(),
             },
+            ...links,
           ],
         },
       ],

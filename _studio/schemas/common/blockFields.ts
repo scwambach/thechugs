@@ -24,8 +24,7 @@ export const blockFields = [
   defineField({
     name: 'subheading',
     title: 'Subheading',
-    type: 'text',
-    rows: 2,
+    type: 'string',
   }),
   defineField({
     name: 'backgroundColor',

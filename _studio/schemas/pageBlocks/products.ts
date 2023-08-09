@@ -2,11 +2,22 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 import {blockFields} from '../common/blockFields'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 
-export const featuredProducts = defineType({
-  name: 'featuredProducts',
-  title: 'Featured Products',
+export const products = defineType({
+  name: 'products',
+  title: 'Products',
   type: 'object',
   icon: AiOutlineShoppingCart,
+  preview: {
+    select: {
+      title: 'heading',
+    },
+    prepare({title}) {
+      return {
+        title: title || 'Products',
+        subtitle: title ? 'Products' : undefined,
+      }
+    },
+  },
   fields: [
     ...blockFields,
     defineField({

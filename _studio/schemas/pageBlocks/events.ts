@@ -1,20 +1,20 @@
 import {defineType} from 'sanity'
 import {blockFields} from '../common/blockFields'
-import {FaUsers} from 'react-icons/fa'
+import {MdEventAvailable} from 'react-icons/md'
 
-export const members = defineType({
-  name: 'members',
-  title: 'Members',
+export const events = defineType({
+  name: 'events',
+  title: 'Events',
   type: 'object',
-  icon: FaUsers,
+  icon: MdEventAvailable,
   preview: {
     select: {
       title: 'heading',
     },
     prepare({title}) {
       return {
-        title: title || 'Members',
-        subtitle: title ? 'Members' : undefined,
+        title: title || 'Events',
+        subtitle: title ? 'Events' : undefined,
       }
     },
   },

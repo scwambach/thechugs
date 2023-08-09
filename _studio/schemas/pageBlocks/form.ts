@@ -8,6 +8,17 @@ export const form = defineType({
   title: 'Form',
   icon: AiOutlineForm,
   type: 'object',
+  preview: {
+    select: {
+      title: 'title',
+    },
+    prepare({title}) {
+      return {
+        title: title || 'Form',
+        subtitle: title ? 'Form' : undefined,
+      }
+    },
+  },
   fields: [
     defineField({
       name: 'title',

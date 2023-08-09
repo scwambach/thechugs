@@ -7,6 +7,17 @@ export const gallery = defineType({
   title: 'Gallery',
   icon: GrGallery,
   type: 'object',
+  preview: {
+    select: {
+      title: 'heading',
+    },
+    prepare({title}) {
+      return {
+        title: title || 'Gallery',
+        subtitle: title ? 'Gallery' : undefined,
+      }
+    },
+  },
   fields: [
     ...blockFields,
     defineField({

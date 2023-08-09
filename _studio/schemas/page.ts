@@ -44,30 +44,16 @@ export const page = defineType({
       title: 'Page Blocks',
       type: 'array',
       of: [
-        defineArrayMember({
-          name: 'river',
-          type: 'river',
-        }),
-        defineArrayMember({
-          name: 'members',
-          type: 'members',
-        }),
-        defineArrayMember({
-          name: 'gallery',
-          type: 'gallery',
-        }),
-        defineArrayMember({
-          name: 'form',
-          type: 'form',
-        }),
-        defineArrayMember({
-          name: 'videos',
-          type: 'videos',
-        }),
-        defineArrayMember({
-          name: 'featuredProducts',
-          type: 'featuredProducts',
-        }),
+        defineArrayMember({name: 'articles', type: 'articles'}),
+        defineArrayMember({name: 'ctaBanner', type: 'ctaBanner'}),
+        defineArrayMember({name: 'events', type: 'events'}),
+        defineArrayMember({name: 'form', type: 'form'}),
+        defineArrayMember({name: 'gallery', type: 'gallery'}),
+        defineArrayMember({name: 'members', type: 'members'}),
+        defineArrayMember({name: 'posts', type: 'posts'}),
+        defineArrayMember({name: 'products', type: 'products'}),
+        defineArrayMember({name: 'river', type: 'river'}),
+        defineArrayMember({name: 'videos', type: 'videos'}),
       ],
       validation: (Rule: any) => Rule.required(),
     }),

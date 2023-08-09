@@ -7,6 +7,17 @@ export const videos = defineType({
   title: 'Videos',
   icon: AiOutlineVideoCamera,
   type: 'object',
+  preview: {
+    select: {
+      title: 'heading',
+    },
+    prepare({title}) {
+      return {
+        title: title || 'Videos',
+        subtitle: title ? 'Videos' : undefined,
+      }
+    },
+  },
   fields: [
     ...blockFields,
     defineField({

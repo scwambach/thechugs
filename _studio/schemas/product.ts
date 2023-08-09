@@ -4,6 +4,19 @@ export const product = {
   name: 'product',
   title: 'Product',
   type: 'document',
+  preview: {
+    select: {
+      title: 'title',
+      media: 'images',
+    },
+    prepare({title, media}: any) {
+      console.log({media: media[0]})
+      return {
+        title,
+        media: media[0],
+      }
+    },
+  },
   fields: [
     {
       title: 'Title',

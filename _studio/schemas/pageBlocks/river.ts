@@ -1,6 +1,7 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 import {stylesMarks} from '../common/stylesMarks'
 import {PiWavesBold} from 'react-icons/pi'
+import {links} from '../common/links'
 
 export const river = defineType({
   name: 'river',
@@ -10,13 +11,11 @@ export const river = defineType({
   preview: {
     select: {
       title: 'items[0].heading',
-      media: 'items[0].image',
     },
-    prepare({title, media}) {
+    prepare({title}) {
       return {
-        title,
-        subtitle: 'River',
-        media,
+        title: title || 'River',
+        subtitle: title ? 'River' : undefined,
       }
     },
   },
@@ -50,28 +49,7 @@ export const river = defineType({
                 }),
               ],
             }),
-            defineField({
-              name: 'link',
-              title: 'Link',
-              type: 'object',
-              fields: [
-                defineField({
-                  name: 'text',
-                  title: 'Text',
-                  type: 'string',
-                }),
-                defineField({
-                  name: 'url',
-                  title: 'URL',
-                  type: 'url',
-                  validation: (Rule) =>
-                    Rule.uri({
-                      allowRelative: true,
-                      scheme: ['http', 'https', 'mailto', 'tel'],
-                    }),
-                }),
-              ],
-            }),
+            ...links,
             defineField({
               name: 'image',
               validation: (Rule: any) => Rule.required(),

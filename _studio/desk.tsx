@@ -21,6 +21,7 @@ export const desk = deskTool({
           .icon(AiFillHome),
 
         S.listItem().title('Pages').child(S.documentTypeList('page').title('Pages')),
+        S.listItem().title('Posts').child(S.documentTypeList('post').title('Posts')),
         S.listItem()
           .title('Videos')
           .child(S.documentTypeList('video').title('Videos'))
