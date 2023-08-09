@@ -145,5 +145,27 @@
     padding: 20px;
     height: 80%;
     overflow: auto;
+
+    .playlists-do {
+      display: flex;
+      flex-wrap: wrap;
+      columns: 3;
+      gap: 1rem;
+    }
+
+    .playlist-item {
+      border: 1px solid $gray;
+      flex: 1 1 0;
+      width: 150px;
+      padding: 5px;
+    }
+
+    .playlist-img {
+      height: 150px;
+      width: 150px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin: 0 auto;
+    }
   }
 }

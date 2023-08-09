@@ -296,11 +296,16 @@ const Peepee = () => {
                   <p><b>Popularity:</b> {artistInfo.popularity}</p>
                   <p><b>Genres:</b> {artistInfo.genres}</p>
                   <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
-                  {Array.isArray(artistInfo.discoveredOn) && artistInfo.discoveredOn?.map((pl) => (
-                    <p  key={`${pl.id}-do`}>
-                      <a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a>
-                    </p>
-                  ))}
+                  <div className="playlists-do">
+                    {Array.isArray(artistInfo.discoveredOn) && artistInfo.discoveredOn?.map((pl) => (
+                      <div className="playlist-item"  key={`${pl.id}-do`}>
+                          <a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>
+                        {pl.images && <div className="playlist-img" style={{backgroundImage: `url(${pl.images[0].url})`}}></div>}
+                        <p>{pl.name}</p>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
               </div>
             </>
             )}

@@ -39,9 +39,11 @@ const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> =>
   try {
     await page.goto(url, { waitUntil: 'networkidle2' })
     const playlists = await page.evaluate(() => {
+      const playlistImgs = document.querySelectorAll('section[data-testid="artist-page"] img[data-testid="card-image"]')
       const playlistLinks = document.querySelectorAll('section[data-testid="artist-page"] a[title][href]')
       const playlists: SpotifyPlaylist[] = []
-      playlistLinks.forEach((link) => {
+      playlistLinks.forEach((link, i) => {
+        const playlistImgUrl = playlistImgs[i].getAttribute('src') || ''
         const playlistName = link.getAttribute('title') || ''
         const playlistUrl = link.getAttribute('href') || ''
         const playlistId = playlistUrl.replace('/playlist/','') || ''
@@ -49,7 +51,8 @@ const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> =>
           playlists.push({
             name: playlistName,
             id: playlistId,
-            external_urls: { spotify: `https://open.spotify.com${playlistUrl}`}
+            external_urls: { spotify: `https://open.spotify.com${playlistUrl}`},
+            images: [{url: playlistImgUrl}]
           })
         }
       })
