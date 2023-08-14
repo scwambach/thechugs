@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "build-storybook": "storybook build",
+    "fullstack": "concurrently \"npm run dev\" \"cd _studio && npm run dev\"",
+    "fullapp": "concurrently \"npm run dev\" \"cd _studio && npm run dev\" \"npm run storybook\"",
     "build": "next build",
     "check-format": "prettier --write .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
@@ -42,6 +44,7 @@
     "@storybook/react": "^7.2.1",
     "@storybook/testing-library": "^0.2.0",
     "@types/jest": "^29.5.3",
+    "concurrently": "^8.2.0",
     "cypress": "^12.17.3",
     "cypress-axe": "^1.4.0",
     "eslint": "^8.46.0",
