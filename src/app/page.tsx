@@ -1,106 +1,60 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import { Container } from '@components/modules/Container'
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
+    <main>
+      <Container>
+        <h1>This is a Heading 1</h1>
+        <h2>This is a Heading 2</h2>
+        <h3>This is a Heading 3</h3>
+        <h4>This is a Heading 4</h4>
+        <h5>This is a Heading 5</h5>
+        <h6>This is a Heading 6</h6>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
+          This is a <strong>strong</strong> word and this is an{' '}
+          <em>emphasized</em> word in a paragraph.
         </p>
-        <div>
-          <h1
-            style={{
-              height: '0',
-              overflow: 'hidden',
-              position: 'absolute',
-              width: '0',
-              opacity: '0',
-            }}
-          >
-            NextJs by Vercel
-          </h1>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+        <p>
+          Here's a <a href="#">link</a> and some <code>code</code> inline within
+          this paragraph.
+        </p>
+        <p>
+          You can also use <sup>superscript</sup> and <sub>subscript</sub> text
+          if needed.
+        </p>
+        <button>Maecenas convallis ligula.</button>
+        <p>
+          This is <span style={{ color: 'blue' }}>colored blue</span> text in a
+          paragraph.
+        </p>
+        <p>
+          <del>This text is deleted</del> while <ins>this text is inserted</ins>{' '}
+          in the paragraph.
+        </p>
+        <h2>Unordered List:</h2>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+        </ul>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <h2>Ordered List:</h2>
+        <ol>
+          <li>First Item</li>
+          <li>Second Item</li>
+          <li>Third Item</li>
+        </ol>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <h2>Description List:</h2>
+        <dl>
+          <dt>HTML</dt>
+          <dd>HyperText Markup Language</dd>
+          <dt>CSS</dt>
+          <dd>Cascading Style Sheets</dd>
+          <dt>JS</dt>
+          <dd>JavaScript</dd>
+        </dl>
+      </Container>
     </main>
   )
 }

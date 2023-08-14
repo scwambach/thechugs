@@ -1,0 +1,19 @@
+main {
+  font-family: $font-family;
+}
+
+*::selection {
+  background: $primary;
+  color: $white;
+}
+
+a {
+  color: $tertiary;
+  transition-duration: $animation-speed;
+
+  &:hover {
+    @media screen and (min-width: ($tablet-md)) {
+      color: $primary;
+    }
+  }
+}

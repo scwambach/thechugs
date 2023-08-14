@@ -1,3 +1,10 @@
-#storybook-docs > div > div {
-  max-width: 1500px;
-}
+// Global
+@import './reset';
+@import './settings';
+@import './typography';
+@import './global';
+
+// Modules
+@import './modules/buttons';
+@import './modules/container';
+@import './modules/imageBlock';

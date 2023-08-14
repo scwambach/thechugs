@@ -1,0 +1,17 @@
+.container {
+  max-width: $desktop-lg;
+  margin: 0 auto;
+  padding: 0 $size-16;
+
+  &.wide {
+    max-width: $widescreen;
+  }
+
+  &.full {
+    max-width: none;
+  }
+
+  &.narrow {
+    max-width: $desktop;
+  }
+}

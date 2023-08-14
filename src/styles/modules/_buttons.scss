@@ -1,0 +1,36 @@
+.button,
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+  background-color: $primary;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin: 4px 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition-duration: $animation-speed;
+
+  &:hover {
+    @media screen and (min-width: ($tablet-md)) {
+      background-color: $primary-light;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.secondary {
+    background-color: $secondary;
+    color: $black;
+  }
+
+  &.tertiary {
+    background-color: $tertiary;
+  }
+}
