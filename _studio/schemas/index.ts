@@ -11,6 +11,7 @@ import {location} from './location'
 import {members} from './pageBlocks/members'
 import {otherBand} from './otherBand'
 import {page} from './page'
+import {pageBanner} from './pageBlocks/pageBanner'
 import {post} from './post'
 import {posts} from './pageBlocks/posts'
 import {product} from './product'
@@ -34,6 +35,7 @@ export const schemaTypes = [
   members,
   otherBand,
   page,
+  pageBanner,
   post,
   posts,
   product,

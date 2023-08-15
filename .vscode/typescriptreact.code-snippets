@@ -157,5 +157,26 @@
       "",
       ""
     ]
+  },
+  "Story": {
+    "prefix": "new-story",
+    "body": [
+      "import { ${TM_FILENAME_BASE/^(.*?)(?:\\.stories)?(?:\\.\\w+)?$/$1/} as ${TM_FILENAME_BASE/^(.*?)(?:\\.stories)?(?:\\.\\w+)?$/$1/}Item } from \"@components/$1/${TM_FILENAME_BASE/^(.*?)(?:\\.stories)?(?:\\.\\w+)?$/$1/}\";",
+      "import type { Meta, StoryObj } from \"@storybook/react\";",
+      "",
+      "const meta: Meta<typeof ${TM_FILENAME_BASE/^(.*?)(?:\\.stories)?(?:\\.\\w+)?$/$1/}Item> = {",
+      "  title: \"Components/$2\",",
+      "  component: ${TM_FILENAME_BASE/^(.*?)(?:\\.stories)?(?:\\.\\w+)?$/$1/}Item,",
+      "  tags: [\"autodocs\"],",
+      "};",
+      "",
+      "export default meta;",
+      "type Story = StoryObj<typeof ${TM_FILENAME_BASE/^(.*?)(?:\\.stories)?(?:\\.\\w+)?$/$1/}Item>;",
+      "",
+      "export const ${TM_FILENAME_BASE/^(.*?)(?:\\.stories)?(?:\\.\\w+)?$/$1/}: Story = {",
+      "  args: {},",
+      "};",
+      ""
+    ]
   }
 }

@@ -1,5 +1,5 @@
 import {defineArrayMember, defineField} from 'sanity'
-
+import {AiOutlineLink} from 'react-icons/ai'
 export const links = [
   defineField({
     name: 'links',
@@ -10,6 +10,7 @@ export const links = [
         name: 'link',
         title: 'Link',
         type: 'object',
+        icon: AiOutlineLink,
         fields: [
           defineField({
             name: 'text',
