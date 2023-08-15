@@ -1,17 +1,7 @@
+import { ImageBlockProps } from '@utils/types/modules/ImageBlock'
 import Image from 'next/image'
 
-interface ImageProps {
-  alt?: string
-  height?: number
-  isBackground?: boolean
-  lqip?: string
-  sizes?: string
-  src: string
-  width?: number
-  className?: string
-}
-
-const ImageBlock = ({
+export const ImageBlock = ({
   alt = '',
   height,
   isBackground,
@@ -20,7 +10,7 @@ const ImageBlock = ({
   src,
   width,
   className,
-}: ImageProps) => {
+}: ImageBlockProps) => {
   return (
     <div
       className={`imageBlock ${
@@ -40,5 +30,3 @@ const ImageBlock = ({
     </div>
   )
 }
-
-export { ImageBlock }

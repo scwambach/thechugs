@@ -1,23 +1,41 @@
-interface ButtonProps {}
+import { ButtonProps } from '@utils/types/modules/Button'
 
-const Button = (props: ButtonProps) => {
+export const Button = ({
+  children,
+  className,
+  disabled,
+  onClick,
+  tagType,
+  text,
+  url,
+}: ButtonProps) => {
+  const ButtonTag =
+    tagType === 'a'
+      ? ('a' as keyof JSX.IntrinsicElements)
+      : ('button' as keyof JSX.IntrinsicElements)
+
+  const isExternal = url?.startsWith('http')
+
   return (
-    <code>
-      <pre
-        style={{
-          fontFamily: 'monospace',
-          display: 'block',
-          padding: '50px',
-          color: '#88ffbf',
-          backgroundColor: 'black',
-          textAlign: 'left',
-          whiteSpace: 'pre-wrap',
-        }}
-      >
-        {JSON.stringify(props, null, '    ')}
-      </pre>
-    </code>
+    <ButtonTag
+      className={`button${className ? ` ${className}` : ''}`}
+      href={tagType === 'a' ? url : undefined}
+      target={tagType === 'a' ? (isExternal ? '_blank' : undefined) : undefined}
+      disabled={disabled}
+      onClick={() => {
+        if (onClick) {
+          onClick()
+        }
+      }}
+      rel={
+        tagType === 'a'
+          ? isExternal
+            ? 'noopener noreferrer'
+            : undefined
+          : undefined
+      }
+    >
+      {children || text}
+    </ButtonTag>
   )
 }
-
-export { Button }

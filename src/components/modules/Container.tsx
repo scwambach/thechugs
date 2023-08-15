@@ -3,8 +3,6 @@ interface ContainerProps {
   size?: 'wide' | 'narrow' | 'full'
 }
 
-const Container = ({ children, size }: ContainerProps) => {
+export const Container = ({ children, size }: ContainerProps) => {
   return <div className={`container${size ? ` ${size}` : ''}`}>{children}</div>
 }
-
-export { Container }

@@ -17,3 +17,24 @@ a {
     }
   }
 }
+
+ol,
+ul {
+  &.unstyled {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.mobile-only {
+  @media screen and (min-width: ($tablet-md)) {
+    display: none;
+  }
+}
+
+.desktop-only {
+  @media screen and (max-width: ($tablet-md - 1)) {
+    display: none;
+  }
+}

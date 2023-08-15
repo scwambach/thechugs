@@ -40,7 +40,7 @@
     "body": [
       "interface ${TM_FILENAME_BASE/(.*)/${1}/}Props {}",
       "",
-      "const ${TM_FILENAME_BASE/(.*)/${1}/} = (props: ${TM_FILENAME_BASE/(.*)/${1}/}Props) => {",
+      "export const ${TM_FILENAME_BASE/(.*)/${1}/} = (props: ${TM_FILENAME_BASE/(.*)/${1}/}Props) => {",
       "  return (",
       "    <code>",
       "      <pre",
@@ -59,8 +59,6 @@
       "    </code>",
       "  );",
       "};",
-      "",
-      "export { ${TM_FILENAME_BASE/(.*)/${1}/} };",
       ""
     ],
     "description": "Module"

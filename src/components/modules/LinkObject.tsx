@@ -1,6 +1,6 @@
 interface LinkObjectProps {}
 
-const LinkObject = (props: LinkObjectProps) => {
+export const LinkObject = (props: LinkObjectProps) => {
   return (
     <code>
       <pre
@@ -19,5 +19,3 @@ const LinkObject = (props: LinkObjectProps) => {
     </code>
   )
 }
-
-export { LinkObject }

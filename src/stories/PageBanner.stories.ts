@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { mockPageBanner } from './mock/mockPageBanner'
 
 const meta: Meta<typeof PageBannerItem> = {
-  title: 'Components',
+  title: 'Components/Blocks',
   component: PageBannerItem,
   tags: ['autodocs'],
 }

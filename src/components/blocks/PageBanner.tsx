@@ -1,39 +1,27 @@
+import { ButtonList } from '@components/modules/ButtonList'
 import { Container } from '@components/modules/Container'
 import { Heading } from '@components/modules/Heading'
 import { ImageBlock } from '@components/modules/ImageBlock'
-import { PortableTextBlock } from '@portabletext/types'
+import { PortableText } from '@portabletext/react'
+import { PageBannerProps } from '@utils/types/blocks/PageBanner'
 import { urlFor } from '@utils/urlFor'
 
-interface PageBannerProps {
-  _type: string
-  _key: string
-  heading: string
-  subheading?: string
-  image: {
-    asset: {
-      _ref: string
-      _type: string
-    }
-    lqip: string
-  }
-  links?: {
-    _key: string
-    linkType: 'social' | 'url'
-    text: string
-    url: string
-  }[]
-  copy?: PortableTextBlock[]
-}
-
-const PageBanner = ({ image, heading }: PageBannerProps) => {
+export const PageBanner = ({
+  image,
+  heading,
+  subheading,
+  copy,
+  links,
+}: PageBannerProps) => {
   return (
     <div className="pageBanner">
       <ImageBlock src={urlFor(image).url()} lqip={image.lqip} isBackground />
       <Container size="wide">
+        {subheading && <p>{subheading}</p>}
         <Heading level={1}>{heading}</Heading>
+        {copy && <PortableText value={copy} />}
+        {links && <ButtonList items={links} />}
       </Container>
     </div>
   )
 }
-
-export { PageBanner }
