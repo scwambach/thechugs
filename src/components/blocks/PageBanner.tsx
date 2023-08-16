@@ -17,8 +17,10 @@ export const PageBanner = ({
     <div className="pageBanner">
       <ImageBlock src={urlFor(image).url()} lqip={image.lqip} isBackground />
       <Container size="wide">
-        {subheading && <p>{subheading}</p>}
+        {subheading && <p className="subheading">{subheading}</p>}
         <Heading level={1}>{heading}</Heading>
+      </Container>
+      <Container size="narrower" className="copy">
         {copy && <PortableText value={copy} />}
         {links && <ButtonList items={links} />}
       </Container>

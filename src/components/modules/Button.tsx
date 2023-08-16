@@ -1,6 +1,7 @@
 import { ButtonProps } from '@utils/types/modules/Button'
 
 export const Button = ({
+  buttonStyle,
   children,
   className,
   disabled,
@@ -18,7 +19,9 @@ export const Button = ({
 
   return (
     <ButtonTag
-      className={`button${className ? ` ${className}` : ''}`}
+      className={`button${className ? ` ${className}` : ''}${
+        buttonStyle ? ` ${buttonStyle}` : ''
+      }`}
       href={tagType === 'a' ? url : undefined}
       target={tagType === 'a' ? (isExternal ? '_blank' : undefined) : undefined}
       disabled={disabled}

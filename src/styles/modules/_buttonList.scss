@@ -1,0 +1,20 @@
+.buttonList {
+  display: flex;
+  gap: $size-16;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: ($tablet - 1)) {
+    flex-direction: column;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  .button {
+    @media screen and (max-width: ($mobile-lg - 1)) {
+      display: block;
+      width: 100%;
+    }
+  }
+}

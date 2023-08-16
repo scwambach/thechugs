@@ -38,6 +38,9 @@ hr,
 table,
 fieldset {
   margin: $size-16 0;
+  font-family: $font-family;
+  line-height: 1.5;
+  font-size: $size-16;
 
   &:first-child {
     margin-top: 0;
@@ -56,7 +59,7 @@ h5,
 h6 {
   margin: $size-32 0 $size-16;
   font-weight: normal;
-  line-height: 1.2;
+  line-height: 1;
   font-family: $heading-family;
 
   &:first-child {

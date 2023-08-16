@@ -1,0 +1,35 @@
+@mixin headingOne {
+  font-size: $heading-1;
+
+  @media screen and (max-width: ($tablet-lg - 1)) {
+    font-size: $heading-2;
+  }
+
+  @media screen and (max-width: ($tablet - 1)) {
+    font-size: $heading-3;
+  }
+}
+
+@mixin headingTwo {
+  font-size: $heading-2;
+
+  @media screen and (max-width: ($tablet-lg - 1)) {
+    font-size: $heading-3;
+  }
+
+  @media screen and (max-width: ($tablet - 1)) {
+    font-size: $heading-4;
+  }
+}
+
+@mixin headingThree {
+  font-size: $heading-3;
+
+  @media screen and (max-width: ($tablet-lg - 1)) {
+    font-size: $heading-4;
+  }
+
+  @media screen and (max-width: ($tablet - 1)) {
+    font-size: $heading-5;
+  }
+}

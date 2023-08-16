@@ -1,6 +1,6 @@
 import { PageBanner as PageBannerItem } from '@components/blocks/PageBanner'
 import type { Meta, StoryObj } from '@storybook/react'
-import { mockPageBanner } from './mock/mockPageBanner'
+import { mockPageBanner } from '../mock/mockPageBanner'
 
 const meta: Meta<typeof PageBannerItem> = {
   title: 'Components/Blocks',

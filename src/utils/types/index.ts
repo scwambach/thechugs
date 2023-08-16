@@ -8,6 +8,10 @@ export type ButtonStyle =
   | 'secondary-outline'
   | 'tertiary-outline'
   | 'quaternary-outline'
+  | 'black'
+  | 'black-outline'
+  | 'white'
+  | 'white-outline'
 export type HeadingSize = 'large' | 'medium' | 'small'
 export type LinkTypes = 'social' | 'url'
 

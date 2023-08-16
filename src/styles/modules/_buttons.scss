@@ -5,9 +5,8 @@ input[type='reset'],
 input[type='button'] {
   background-color: $primary;
   border: none;
-  color: white;
+  color: $secondary;
   padding: 15px 32px;
-  margin: 4px 2px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -18,6 +17,7 @@ input[type='button'] {
   &:hover {
     @media screen and (min-width: ($tablet-md)) {
       background-color: $primary-light;
+      color: $secondary;
     }
   }
 
@@ -28,9 +28,97 @@ input[type='button'] {
   &.secondary {
     background-color: $secondary;
     color: $black;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $secondary-dark;
+      }
+    }
+  }
+
+  &.secondary-outline {
+    background-color: transparent;
+    color: $secondary;
+    outline: 2px solid $secondary;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $secondary;
+        color: $black;
+      }
+    }
   }
 
   &.tertiary {
     background-color: $tertiary;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $tertiary-dark;
+      }
+    }
+  }
+
+  &.tertiary-outline {
+    background-color: transparent;
+    color: $tertiary;
+    outline: 2px solid $tertiary;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $tertiary;
+        color: $secondary;
+      }
+    }
+  }
+
+  &.black {
+    background-color: $black;
+    color: $white;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $white;
+        color: $black;
+      }
+    }
+  }
+
+  &.black-outline {
+    background-color: transparent;
+    outline: 2px solid $black;
+    color: $black;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+
+  &.white {
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+
+  &.white-outline {
+    background-color: transparent;
+    outline: 2px solid $white;
+    color: $white;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $white;
+        color: $black;
+      }
+    }
   }
 }
