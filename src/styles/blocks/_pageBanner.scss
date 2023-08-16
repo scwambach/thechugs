@@ -2,8 +2,16 @@
   position: relative;
   color: $white;
   text-align: center;
-  padding: $size-144 0;
+  padding: $size-45;
   color: $secondary;
+
+  @media screen and (min-width: ($tablet)) {
+    padding: $size-100 0;
+  }
+
+  @media screen and (min-width: ($tablet-lg)) {
+    padding: $size-144 0;
+  }
 
   &::before {
     content: '';
