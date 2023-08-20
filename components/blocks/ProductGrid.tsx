@@ -1,6 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
 import { Container } from '@components/modules/Container'
+import Modal from '@components/modules/Modal'
 import PrintfulProduct from './PrintfulProduct'
 import { breakpoints } from '@utils/settings'
 import React, { useEffect, useState } from 'react'
@@ -10,7 +11,6 @@ import { useRouter } from 'next/router'
 const ProductGrid = ({ products }: { products: any }) => {
   if (!products || products.length === 0) return null
   const router = useRouter()
-  const [queryId, setQueryId] = useState('')
   const [orderedProducts, setOrderedProducts] = useState([])
   const [queryProd, setQueryProd] = useState(null)
 
@@ -31,10 +31,8 @@ const ProductGrid = ({ products }: { products: any }) => {
     setOrderedProducts(orderProds);
 
     const { prodId } = router.query
-    if (prodId !== '') {
+    if (prodId !== undefined) {
       const idAsNum = parseInt(prodId);
-      console.log(orderProds)
-      console.log(orderProds.find((x:any) => x.id === idAsNum || x._id === prodId))
       setQueryProd(orderProds.find((x:any) => x.id === idAsNum || x._id === prodId))
     }
 
@@ -58,18 +56,13 @@ const ProductGrid = ({ products }: { products: any }) => {
         </div>
       </Container>
       {queryProd && (
-        <>
-          <div className="modal-bg" onClick={() => setQueryProd(null)}></div>
-          <div className="modal">
-            <div className="modal-container">
-              {queryProd.external_id ? (
-                <PrintfulProduct key={queryProd.id} {...queryProd} />
-              ) : (
-                <SanityProduct key={queryProd._id} {...queryProd} />
-              )}
-            </div>
-          </div>
-        </>
+        <Modal firstOpen={true} onClose={() => setQueryProd(null)}>
+          {queryProd.external_id ? (
+            <PrintfulProduct key={queryProd.id} {...queryProd} />
+          ) : (
+            <SanityProduct key={queryProd._id} {...queryProd} />
+          )}
+        </Modal>
       )}
     </section>
   )
