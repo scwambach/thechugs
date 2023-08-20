@@ -84,6 +84,7 @@ const PrintfulProduct = (product: any) => {
         data-item-custom1-type="hidden"
         data-item-custom1-name="PrintfulProduct"
         data-item-custom1-value="true"
+        data-queryid={id}
       >
         Add to Cart
       </button>

@@ -4,6 +4,7 @@ import { SpotifyArtist, SpotifyPlaylist, gSheetPlaylist } from '@utils/types'
 import { DynamicIcon } from '@components/modules/DynamicIcon'
 import { colors } from '@utils/settings'
 import { NextSeo } from 'next-seo'
+import Modal from '@components/modules/Modal'
 
 const clientId = '374d2ce6617f4668835df65099ff14fa'
 const clientSecret = '888e73625ae845968a65d60297ffa5a9'
@@ -272,15 +273,12 @@ const Peepee = () => {
             </>
           )}
           {showModal && modalPlaylist && (
-            <>
-            <div className="modal-bg" onClick={() => closeModal() } ></div>
-            <div className="modal">
-                <h3>{modalPlaylist.name}</h3>
-                <p>Song: {modalPlaylist.pitch?.song}</p>
-                <p>Response: {modalPlaylist.pitch?.response}</p>
-                <p>Placement: {modalPlaylist.pitch?.placement}</p>
-            </div>
-            </>
+            <Modal firstOpen={true} onClose={() => closeModal() }>
+              <h3>{modalPlaylist.name}</h3>
+              <p>Song: {modalPlaylist.pitch?.song}</p>
+              <p>Response: {modalPlaylist.pitch?.response}</p>
+              <p>Placement: {modalPlaylist.pitch?.placement}</p>
+            </Modal>
           )}
           {artistInfo && (
             <>
@@ -288,26 +286,23 @@ const Peepee = () => {
               <div onClick={() => setShowArtistModal(true) } className="artist-img" style={{backgroundImage: `url(${artistInfo.images[0].url})`}}></div>
             )}
             {showArtistModal && (
-            <>
-              <div className="modal-bg" onClick={() => closeModal() }></div>
-              <div className="modal">
-                  <h3>{artistInfo.name}</h3>
-                  <p><b>Followers:</b> {artistInfo.followCount}</p>
-                  <p><b>Popularity:</b> {artistInfo.popularity}</p>
-                  <p><b>Genres:</b> {artistInfo.genres}</p>
-                  <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
-                  <div className="playlists-do">
-                    {Array.isArray(artistInfo.discoveredOn) && artistInfo.discoveredOn?.map((pl) => (
-                      <div className="playlist-item"  key={`${pl.id}-do`}>
-                          <a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>
-                        {pl.images && <div className="playlist-img" style={{backgroundImage: `url(${pl.images[0].url})`}}></div>}
-                        <p>{pl.name}</p>
-                        </a>
-                      </div>
-                    ))}
-                  </div>
-              </div>
-            </>
+              <Modal firstOpen={true} onClose={() => closeModal() }>
+                <h3>{artistInfo.name}</h3>
+                <p><b>Followers:</b> {artistInfo.followCount}</p>
+                <p><b>Popularity:</b> {artistInfo.popularity}</p>
+                <p><b>Genres:</b> {artistInfo.genres}</p>
+                <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
+                <div className="playlists-do">
+                  {Array.isArray(artistInfo.discoveredOn) && artistInfo.discoveredOn?.map((pl) => (
+                    <div className="playlist-item"  key={`${pl.id}-do`}>
+                        <a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>
+                      {pl.images && <div className="playlist-img" style={{backgroundImage: `url(${pl.images[0].url})`}}></div>}
+                      <p>{pl.name}</p>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </Modal>
             )}
             </>
           )}

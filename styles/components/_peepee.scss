@@ -125,47 +125,4 @@
       rotate: -90deg;
     }
   }
-
-  .modal-bg {
-    top: 0;
-    left: 0;
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba($black, .75);
-  }
-
-  .modal {
-    top: 10%;
-    left: calc(50% - 350px);
-    background-color: $white;
-    position: fixed;
-    width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    height: 80%;
-    overflow: auto;
-
-    .playlists-do {
-      display: flex;
-      flex-wrap: wrap;
-      columns: 3;
-      gap: 1rem;
-    }
-
-    .playlist-item {
-      border: 1px solid $gray;
-      flex: 1 1 0;
-      width: 150px;
-      padding: 5px;
-    }
-
-    .playlist-img {
-      height: 150px;
-      width: 150px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      margin: 0 auto;
-    }
-  }
 }
