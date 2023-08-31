@@ -1,17 +1,19 @@
+import { ButtonStyle } from '@utils/types'
+
 export const mockPageBanner = {
   links: [
     {
       _key: 'ce7d74774861',
       url: '/about',
       _type: 'link',
-      buttonStyle: 'primary',
+      buttonStyle: 'primary' as ButtonStyle,
       linkType: 'url' as 'social' | 'url',
       text: 'Orci varius natoque',
     },
     {
       text: 'Vivamus dignissim',
       _key: '008b005e29c1',
-      buttonStyle: 'secondary',
+      buttonStyle: 'secondary' as ButtonStyle,
       url: 'https://spotify.com',
       _type: 'link',
       linkType: 'url' as 'social' | 'url',
