@@ -1,3 +1,4 @@
+import { buttonStyles } from './../../../_studio/schemas/common/buttonStyles'
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 export type ButtonStyle =
   | 'primary'
@@ -27,6 +28,7 @@ export interface ImageProps {
 
 export interface LinkProps {
   _key: string
+  buttonStyle?: ButtonStyle
   linkType: LinkTypes
   text: string
   url: string

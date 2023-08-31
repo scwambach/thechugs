@@ -1,5 +1,6 @@
 import {defineArrayMember, defineField} from 'sanity'
 import {AiOutlineLink} from 'react-icons/ai'
+import {buttonStyles} from './buttonStyles'
 export const links = [
   defineField({
     name: 'links',
@@ -28,6 +29,17 @@ export const links = [
                 {title: 'social', value: 'social'},
                 {title: 'url', value: 'url'},
               ],
+            },
+          }),
+          defineField({
+            name: 'buttonStyle',
+            title: 'Button style',
+            type: 'string',
+            hidden: ({parent}: any) => parent?.linkType === 'social',
+            description:
+              'Only applies to links of type "url" and only if the link is in a button group.',
+            options: {
+              list: buttonStyles,
             },
           }),
           defineField({

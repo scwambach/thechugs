@@ -1,8 +1,9 @@
-import { LinkProps } from '@utils/types'
+import { ButtonStyle, LinkProps } from '@utils/types'
 import { Button } from './Button'
 
 interface ButtonListProps {
   items: LinkProps[]
+  buttonStyle?: ButtonStyle
 }
 
 export const ButtonList = ({ items }: ButtonListProps) => {

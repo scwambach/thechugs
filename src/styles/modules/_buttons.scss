@@ -8,6 +8,7 @@ input[type='button'] {
   color: $secondary;
   padding: 15px 32px;
   text-align: center;
+  font-family: $heading-family;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
@@ -25,6 +26,35 @@ input[type='button'] {
     outline: none;
   }
 
+  &:disabled {
+    background-color: $primary-light;
+    cursor: not-allowed;
+  }
+
+  &[class$='-outline'] {
+    outline-width: 4px;
+    outline-style: solid;
+  }
+
+  &.primary-outline {
+    background-color: transparent;
+    color: $primary;
+    outline-color: $primary;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $primary;
+        color: $secondary;
+      }
+    }
+
+    &:disabled {
+      background-color: $primary-light;
+      color: $gray-dark;
+      outline-color: $gray-dark;
+    }
+  }
+
   &.secondary {
     background-color: $secondary;
     color: $black;
@@ -34,18 +64,28 @@ input[type='button'] {
         background-color: $secondary-dark;
       }
     }
+
+    &:disabled {
+      background-color: $gray-light;
+    }
   }
 
   &.secondary-outline {
     background-color: transparent;
     color: $secondary;
-    outline: 2px solid $secondary;
+    outline-color: $secondary;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
         background-color: $secondary;
         color: $black;
       }
+    }
+
+    &:disabled {
+      background-color: $gray-light;
+      color: $gray;
+      outline-color: $gray;
     }
   }
 
@@ -57,18 +97,29 @@ input[type='button'] {
         background-color: $tertiary-dark;
       }
     }
+
+    &:disabled {
+      background-color: $tertiary-light;
+      color: $gray-dark;
+    }
   }
 
   &.tertiary-outline {
     background-color: transparent;
     color: $tertiary;
-    outline: 2px solid $tertiary;
+    outline-color: $tertiary;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
         background-color: $tertiary;
         color: $secondary;
       }
+    }
+
+    &:disabled {
+      background-color: $tertiary-light;
+      color: $gray-dark;
+      outline-color: $gray-dark;
     }
   }
 
@@ -82,11 +133,16 @@ input[type='button'] {
         color: $black;
       }
     }
+
+    &:disabled {
+      background-color: $gray-light;
+      color: $gray-dark;
+    }
   }
 
   &.black-outline {
     background-color: transparent;
-    outline: 2px solid $black;
+    outline-color: $black;
     color: $black;
 
     &:hover {
@@ -94,6 +150,12 @@ input[type='button'] {
         background-color: $black;
         color: $white;
       }
+    }
+
+    &:disabled {
+      background-color: $gray-light;
+      color: $gray-dark;
+      outline-color: $gray-dark;
     }
   }
 
@@ -107,11 +169,16 @@ input[type='button'] {
         color: $white;
       }
     }
+
+    &:disabled {
+      background-color: $gray-light;
+      color: $gray-dark;
+    }
   }
 
   &.white-outline {
     background-color: transparent;
-    outline: 2px solid $white;
+    outline-color: $white;
     color: $white;
 
     &:hover {
@@ -119,6 +186,12 @@ input[type='button'] {
         background-color: $white;
         color: $black;
       }
+    }
+
+    &:disabled {
+      background-color: $gray-light;
+      color: $gray-dark;
+      outline-color: $gray-dark;
     }
   }
 }
