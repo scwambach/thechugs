@@ -1,0 +1,13 @@
+.sectionHeading {
+  margin-bottom: $size-32;
+
+  .headingTag {
+    margin: 0;
+    @include headingThree;
+  }
+
+  .subheading {
+    margin: 0;
+    @include headingSix;
+  }
+}

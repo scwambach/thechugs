@@ -2,8 +2,10 @@ export const mockArticles = {
   _type: 'articles',
   _key: '663b13624bc5',
   heading: 'Articles',
-  subheading:
-    'Integer a bibendum nibh. Praesent in nisl vel sapien viverra imperdiet a.',
+  headingLevel: '2',
+  subheading: 'Integer a bibendum nibh.',
+  backgroundColor: 'white',
+  latest: false,
   articles: [
     {
       _id: '629021b5-c610-4019-a83a-4fa0942ff3e4',

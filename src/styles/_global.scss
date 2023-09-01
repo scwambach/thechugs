@@ -15,6 +15,21 @@ a {
     @media screen and (min-width: ($tablet-md)) {
       color: $primary;
     }
+
+    .zoom-image {
+      @media screen and (min-width: ($tablet-md)) {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .zoom-image {
+    position: relative;
+    transform: scale(1) rotate(0deg);
+    transition-duration: $animation-speed;
+    transition-timing-function: ease-in-out;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -36,5 +51,14 @@ ul {
 .desktop-only {
   @media screen and (max-width: ($tablet-md - 1)) {
     display: none;
+  }
+}
+
+.flex-row {
+  display: flex;
+  gap: $size-32;
+
+  @media screen and (max-width: ($tablet-md - 1)) {
+    flex-direction: column;
   }
 }

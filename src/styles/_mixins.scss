@@ -33,3 +33,27 @@
     font-size: $heading-5;
   }
 }
+
+@mixin headingFour {
+  font-size: $heading-4;
+
+  @media screen and (max-width: ($tablet-lg - 1)) {
+    font-size: $heading-5;
+  }
+
+  @media screen and (max-width: ($tablet - 1)) {
+    font-size: $heading-6;
+  }
+}
+
+@mixin headingFive {
+  font-size: $heading-5;
+
+  @media screen and (max-width: ($tablet-lg - 1)) {
+    font-size: $heading-6;
+  }
+}
+
+@mixin headingSix {
+  font-size: $heading-6;
+}

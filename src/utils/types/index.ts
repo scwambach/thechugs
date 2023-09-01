@@ -1,4 +1,7 @@
-export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
+import { PortableTextBlock } from '@portabletext/types'
+
+export type HeadingLevel = '1' | '2' | '3' | '4' | '5' | '6'
+export type BackgroundColor = 'white' | 'black' | 'blue'
 export type ButtonStyle =
   | 'primary'
   | 'secondary'
@@ -33,7 +36,15 @@ export interface LinkProps {
   url: string
 }
 
-export interface PageBlockProps {
+export interface SectionHeadingProps {
+  copy?: PortableTextBlock[]
+  heading: string
+  headingLevel: HeadingLevel
+  subheading?: string
+  backgroundColor?: BackgroundColor
+}
+
+export interface PageBlockProps extends SectionHeadingProps {
   _type: string
   _key: string
 }

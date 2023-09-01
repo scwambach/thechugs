@@ -11,7 +11,7 @@ export const Heading = ({ level, children, className }: HeadingProps) => {
   const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements
 
   return (
-    <HeadingTag className={`heading-tag${className ? ` ${className}` : ''}`}>
+    <HeadingTag className={`headingTag${className ? ` ${className}` : ''}`}>
       {children}
     </HeadingTag>
   )
