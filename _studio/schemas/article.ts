@@ -28,6 +28,13 @@ export const article = {
       type: 'date',
     },
     {
+      title: 'Description',
+      name: 'description',
+      validation: (Rule: any) => Rule.required(),
+      type: 'text',
+      rows: 3,
+    },
+    {
       title: 'Link',
       name: 'link',
       validation: (Rule: any) => Rule.required(),
