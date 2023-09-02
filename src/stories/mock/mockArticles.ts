@@ -1,10 +1,12 @@
+import { BackgroundColor, HeadingLevel } from '@utils/types'
+
 export const mockArticles = {
   _type: 'articles',
   _key: '663b13624bc5',
   heading: 'Articles',
-  headingLevel: '2',
+  headingLevel: '2' as HeadingLevel,
   subheading: 'Integer a bibendum nibh.',
-  backgroundColor: 'white',
+  backgroundColor: 'white' as BackgroundColor,
   latest: false,
   articles: [
     {
