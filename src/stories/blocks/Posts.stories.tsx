@@ -1,0 +1,15 @@
+import { Posts as PostsItem } from '@components/blocks/Posts'
+import type { Meta, StoryObj } from '@storybook/react'
+
+const meta: Meta<typeof PostsItem> = {
+  title: 'Components/Blocks',
+  component: PostsItem,
+  tags: ['autodocs'],
+}
+
+export default meta
+type Story = StoryObj<typeof PostsItem>
+
+export const Posts: Story = {
+  args: {},
+}
