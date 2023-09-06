@@ -37,7 +37,7 @@ export const posts = defineType({
           name: 'article',
           title: 'Article',
           type: 'reference',
-          to: [{type: 'article'}],
+          to: [{type: 'post'}],
         }),
       ],
     }),

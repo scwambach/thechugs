@@ -1,5 +1,3 @@
-// TODO: Add a preview
-
 export const product = {
   name: 'product',
   title: 'Product',
@@ -23,6 +21,14 @@ export const product = {
       name: 'title',
       type: 'string',
       validation: (Rule: any) => Rule.required(),
+    },
+    {
+      title: 'Slug',
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+      },
     },
     {
       title: 'Description',
