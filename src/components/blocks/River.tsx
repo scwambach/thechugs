@@ -1,7 +1,10 @@
 import { Container } from '@components/modules/Container'
 import { PageBlockProps } from '@utils/types'
+import { RiverItemProps } from '@utils/types/modules/RiverItemProps'
 
-interface RiverProps extends PageBlockProps {}
+interface RiverProps extends PageBlockProps {
+  items: RiverItemProps[]
+}
 
 export const River = (props: RiverProps) => {
   return (

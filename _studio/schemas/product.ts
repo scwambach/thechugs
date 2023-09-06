@@ -8,7 +8,6 @@ export const product = {
       media: 'images',
     },
     prepare({title, media}: any) {
-      console.log({media: media[0]})
       return {
         title,
         media: media[0],
@@ -26,6 +25,7 @@ export const product = {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
+      validation: (Rule: any) => Rule.required(),
       options: {
         source: 'title',
       },
@@ -47,6 +47,7 @@ export const product = {
       name: 'images',
       title: 'Images',
       type: 'array',
+      validation: (Rule: any) => Rule.required(),
       of: [
         {
           type: 'image',

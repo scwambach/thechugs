@@ -1,7 +1,10 @@
 import { Container } from '@components/modules/Container'
 import { PageBlockProps } from '@utils/types'
+import { VideoItemProps } from '@utils/types/modules/VideoItemProps'
 
-interface VideosProps extends PageBlockProps {}
+interface VideosProps extends PageBlockProps {
+  items: VideoItemProps[]
+}
 
 export const Videos = (props: VideosProps) => {
   return (

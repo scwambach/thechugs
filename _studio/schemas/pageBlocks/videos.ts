@@ -24,6 +24,7 @@ export const videos = defineType({
       name: 'items',
       title: 'Items',
       type: 'array',
+      validation: (Rule: any) => Rule.required(),
       of: [
         defineArrayMember({
           name: 'video',
