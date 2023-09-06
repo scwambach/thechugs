@@ -1,7 +1,10 @@
 import { Container } from '@components/modules/Container'
 import { PageBlockProps } from '@utils/types'
+import { PostCardProps } from '@utils/types/modules/PostCardProps'
 
-interface PostsProps extends PageBlockProps {}
+interface PostsProps extends PageBlockProps {
+  posts: PostCardProps[]
+}
 
 export const Posts = (props: PostsProps) => {
   return (

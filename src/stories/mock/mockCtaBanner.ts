@@ -1,26 +1,31 @@
-import { BackgroundColor, HeadingLevel } from '@utils/types'
+import {
+  BackgroundColor,
+  ButtonStyle,
+  HeadingLevel,
+  LinkTypes,
+} from '@utils/types'
 
 export const mockCtaBanner = {
   heading: 'Quisque ex sem, rutrum sed',
   _type: 'ctaBanner',
   links: [
     {
-      linkType: 'url',
+      linkType: 'url' as LinkTypes,
       text: 'Morbi pulvinar',
       _key: 'd6358de4d956',
       url: 'https://google.com',
-      buttonStyle: 'quaternary',
+      buttonStyle: 'quaternary' as ButtonStyle,
       _type: 'link',
     },
     {
       _type: 'link',
-      linkType: 'social',
+      linkType: 'social' as LinkTypes,
       _key: '0eebc4388bf0',
       url: 'https://instagram.com',
     },
     {
       _type: 'link',
-      linkType: 'social',
+      linkType: 'social' as LinkTypes,
       _key: '38ir9ofi30980',
       url: 'https://facebook.com',
     },

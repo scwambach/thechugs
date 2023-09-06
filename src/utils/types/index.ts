@@ -55,8 +55,9 @@ export interface ImageProps {
 export interface LinkProps {
   _key: string
   buttonStyle?: ButtonStyle
-  linkType: LinkTypes
-  text: string
+  linkType?: LinkTypes
+  text?: string
+  copy?: string
   url: string
 }
 

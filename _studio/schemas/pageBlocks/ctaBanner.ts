@@ -25,7 +25,6 @@ export const ctaBanner = defineType({
     defineField({
       name: 'copy',
       title: 'Copy',
-      validation: (Rule: any) => Rule.required(),
       type: 'array',
       of: [
         defineArrayMember({

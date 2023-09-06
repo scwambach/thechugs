@@ -1,7 +1,10 @@
 import { Container } from '@components/modules/Container'
-import { PageBlockProps } from '@utils/types'
+import { ImageProps, LinkProps, PageBlockProps } from '@utils/types'
 
-interface CtaBannerProps extends PageBlockProps {}
+interface CtaBannerProps extends PageBlockProps {
+  backgroundImage: ImageProps
+  links?: LinkProps[]
+}
 
 export const CtaBanner = (props: CtaBannerProps) => {
   return (

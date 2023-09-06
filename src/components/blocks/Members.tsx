@@ -1,7 +1,14 @@
 import { Container } from '@components/modules/Container'
-import { PageBlockProps } from '@utils/types'
+import { ImageProps, LinkProps, PageBlockProps } from '@utils/types'
 
-interface MembersProps extends PageBlockProps {}
+interface MembersProps extends PageBlockProps {
+  members: {
+    name: string
+    role: string
+    image: ImageProps
+    links?: LinkProps[]
+  }[]
+}
 
 export const Members = (props: MembersProps) => {
   return (

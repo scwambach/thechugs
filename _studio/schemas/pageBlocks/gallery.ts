@@ -24,6 +24,7 @@ export const gallery = defineType({
       name: 'images',
       title: 'Images',
       type: 'array',
+      validation: (Rule) => Rule.required(),
       of: [
         defineArrayMember({
           name: 'image',

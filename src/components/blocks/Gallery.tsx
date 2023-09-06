@@ -1,7 +1,9 @@
 import { Container } from '@components/modules/Container'
-import { PageBlockProps } from '@utils/types'
+import { ImageProps, PageBlockProps } from '@utils/types'
 
-interface GalleryProps extends PageBlockProps {}
+interface GalleryProps extends PageBlockProps {
+  images: ImageProps[]
+}
 
 export const Gallery = (props: GalleryProps) => {
   return (

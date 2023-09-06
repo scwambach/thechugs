@@ -80,16 +80,10 @@ export const mockPosts = {
       publishedAt: '2023-09-06T15:41:00.000Z',
       _id: '32cc0308-44e0-41f9-bfbd-fcc3af49f86f',
       title: 'Mauris massa erat, efficitur eget ullamcorper',
-      slug: {
-        current: 'mauris-massa-erat-efficitur-eget-ullamcorper',
-        _type: 'slug',
-      },
+      slug: 'mauris-massa-erat-efficitur-eget-ullamcorper',
     },
     {
-      slug: {
-        current: 'quisque-vel-sapien-eget-orci-euismod-commodo-in',
-        _type: 'slug',
-      },
+      slug: 'quisque-vel-sapien-eget-orci-euismod-commodo-in',
       mainImage: {
         _type: 'image',
         asset: {
@@ -169,10 +163,7 @@ export const mockPosts = {
       title: 'Quisque vel sapien eget orci euismod commodo in',
     },
     {
-      slug: {
-        current: 'vestibulum-egestas-ex-non-nunc',
-        _type: 'slug',
-      },
+      slug: 'vestibulum-egestas-ex-non-nunc',
       mainImage: {
         asset: {
           _ref: 'image-73588bf61fd67162f31a622a722304a2b61f7d32-6000x4000-jpg',

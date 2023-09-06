@@ -42,7 +42,7 @@ export const mockEvents = {
       ],
       title: 'Live at Space Monkey Records!',
       dateTime: '2023-04-20T22:45:00.000Z',
-      otherBands: null,
+      otherBands: undefined,
       location: {
         title: 'Space Monkey Records',
         link: 'https://spacemonkeyrecords424240203.wordpress.com/',
@@ -122,7 +122,7 @@ export const mockEvents = {
       ],
       title: "First Friday in Haynie's Corner",
       dateTime: '2023-07-07T22:00:00.000Z',
-      otherBands: null,
+      otherBands: undefined,
       location: {
         title: "Haynie's Corner",
         link: 'https://hayniescorner.com',

@@ -1,7 +1,10 @@
 import { Container } from '@components/modules/Container'
 import { PageBlockProps } from '@utils/types'
+import { EventProps } from '@utils/types/modules/EventProps'
 
-interface EventsProps extends PageBlockProps {}
+interface EventsProps extends PageBlockProps {
+  events: EventProps[]
+}
 
 export const Events = (props: EventsProps) => {
   return (

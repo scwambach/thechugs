@@ -1,7 +1,17 @@
 import { Container } from '@components/modules/Container'
+import { PortableTextBlock } from '@portabletext/types'
 import { PageBlockProps } from '@utils/types'
+import { FormFieldProps } from '@utils/types/modules/FormFieldProps'
 
-interface FormProps extends PageBlockProps {}
+interface FormProps extends PageBlockProps {
+  description?: PortableTextBlock[]
+  beforeSubmit?: PortableTextBlock[]
+  thankYouMessage: string
+  errorMessage: string
+  recipients: string
+  title: string
+  formFields: FormFieldProps[]
+}
 
 export const Form = (props: FormProps) => {
   return (

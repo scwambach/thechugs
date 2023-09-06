@@ -1,20 +1,14 @@
 import { Container } from '@components/modules/Container'
 import { ImageBlock } from '@components/modules/ImageBlock'
 import { clippedContent } from '@utils/clippedContent'
-import { ImageProps, PageBlockProps } from '@utils/types'
+import { PageBlockProps } from '@utils/types'
+import { ArticleCardProps } from '@utils/types/modules/ArticleCardProps'
 import { urlFor } from '@utils/urlFor'
 import dayjs from 'dayjs'
 
 interface ArticlesProps extends PageBlockProps {
   latest?: boolean
-  articles?: {
-    _id: string
-    date: string
-    description: string
-    image: ImageProps
-    link: string
-    title: string
-  }[]
+  articles?: ArticleCardProps[]
 }
 
 export const Articles = ({ articles }: ArticlesProps) => {

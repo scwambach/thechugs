@@ -43,7 +43,6 @@ export const form = defineType({
     defineField({
       name: 'description',
       title: 'Description',
-      validation: (Rule: any) => Rule.required(),
       type: 'array',
       of: [
         defineArrayMember({
