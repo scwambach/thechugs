@@ -17,6 +17,30 @@ export type ButtonStyle =
   | 'white-outline'
 export type HeadingSize = 'large' | 'medium' | 'small'
 export type LinkTypes = 'social' | 'url'
+export type InputTypes =
+  | 'text'
+  | 'email'
+  | 'tel'
+  | 'textarea'
+  | 'select'
+  | 'radio'
+  | 'checkbox'
+  | 'hidden'
+  | 'number'
+  | 'month'
+  | 'time'
+  | 'url'
+  | 'week'
+  | 'date'
+  | 'datetime-local'
+  | 'file'
+  | 'image'
+  | 'color'
+  | 'range'
+  | 'search'
+  | 'submit'
+  | 'reset'
+  | 'button'
 
 export interface AssetProps {
   _ref: string
@@ -38,8 +62,8 @@ export interface LinkProps {
 
 export interface SectionHeadingProps {
   copy?: PortableTextBlock[]
-  heading: string
-  headingLevel: HeadingLevel
+  heading?: string
+  headingLevel?: HeadingLevel
   subheading?: string
   backgroundColor?: BackgroundColor
 }

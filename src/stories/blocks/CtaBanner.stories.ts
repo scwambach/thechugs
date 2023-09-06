@@ -1,3 +1,4 @@
+import { mockCtaBanner } from './../mock/mockCtaBanner'
 import { CtaBanner as CtaBannerItem } from '@components/blocks/CtaBanner'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -11,5 +12,5 @@ export default meta
 type Story = StoryObj<typeof CtaBannerItem>
 
 export const CtaBanner: Story = {
-  args: {},
+  args: mockCtaBanner,
 }

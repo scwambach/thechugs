@@ -1,6 +1,8 @@
 import {defineArrayMember, defineField} from 'sanity'
 import {AiOutlineLink} from 'react-icons/ai'
 import {buttonStyles} from './buttonStyles'
+import * as Icon from 'react-icons/si'
+
 export const links = [
   defineField({
     name: 'links',
@@ -12,6 +14,39 @@ export const links = [
         title: 'Link',
         type: 'object',
         icon: AiOutlineLink,
+        preview: {
+          select: {
+            title: 'text',
+            url: 'url',
+            linkType: 'linkType',
+          },
+          prepare({title, url, linkType}) {
+            if (linkType === 'social') {
+              const getDomain = url
+                .replace('http://', '')
+                .replace('https://', '')
+                .replace('www.', '')
+                .replace('.com', '')
+                .replace('.org', '')
+                .replace('.net', '')
+                .replace('.io', '')
+                .split(/[/?#]/)[0]
+
+              const iconName = `Si${getDomain.charAt(0).toUpperCase() + getDomain.slice(1)}`
+
+              return {
+                title: title || url,
+                subtitle: getDomain.charAt(0).toUpperCase() + getDomain.slice(1),
+                // @ts-ignore
+                media: Icon[iconName],
+              }
+            }
+
+            return {
+              title: title || url,
+            }
+          },
+        },
         fields: [
           defineField({
             name: 'text',

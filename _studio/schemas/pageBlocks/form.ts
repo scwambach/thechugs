@@ -2,6 +2,7 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 import {stylesMarks} from '../common/stylesMarks'
 import {AiOutlineForm} from 'react-icons/ai'
 import {MdInput} from 'react-icons/md'
+import {BsCheckSquare} from 'react-icons/bs'
 
 export const form = defineType({
   name: 'form',
@@ -63,6 +64,18 @@ export const form = defineType({
           title: 'Field',
           type: 'object',
           icon: MdInput,
+          preview: {
+            select: {
+              title: 'label',
+              subtitle: 'type',
+            },
+            prepare({title, subtitle}) {
+              return {
+                title,
+                subtitle,
+              }
+            },
+          },
           fields: [
             defineField({
               name: 'type',
@@ -119,6 +132,7 @@ export const form = defineType({
                   name: 'choice',
                   title: 'Choice',
                   type: 'object',
+                  icon: BsCheckSquare,
                   fields: [
                     defineField({
                       name: 'label',
