@@ -62,3 +62,63 @@ ul {
     flex-direction: column;
   }
 }
+
+.bg-white,
+.bg-blue,
+.bg-black,
+.bg-image {
+  li {
+    &.social {
+      a {
+        &:hover {
+          @media screen and (min-width: ($tablet-md)) {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bg-white {
+  background-color: $white;
+  color: $black;
+
+  a {
+    color: $black;
+  }
+}
+
+.bg-blue {
+  background-color: $tertiary;
+  color: $secondary;
+
+  a {
+    color: $secondary;
+  }
+}
+
+.bg-black {
+  background-color: $black;
+  color: $secondary;
+
+  a {
+    color: $secondary;
+  }
+}
+
+.bg-image {
+  color: $secondary;
+
+  a {
+    color: $secondary;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

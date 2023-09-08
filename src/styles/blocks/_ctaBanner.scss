@@ -1,0 +1,51 @@
+.ctaBanner {
+  position: relative;
+  padding: $size-64 0;
+
+  @media screen and (max-width: ($tablet-md - 1)) {
+    padding: $size-32 0;
+  }
+
+  .overlay {
+    @include absoluteOverlay;
+    background-color: rgba($black, 0.6);
+
+    &:before {
+      @include absoluteOverlay;
+      content: '';
+      mix-blend-mode: color;
+      background-color: rgba($black, 0.6);
+    }
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .headingTag {
+    @include headingFour;
+  }
+
+  .subheading {
+    text-transform: uppercase;
+    letter-spacing: $size-2;
+
+    @media screen and (max-width: ($tablet-md - 1)) {
+      font-size: $size-14;
+    }
+  }
+
+  .message {
+    margin: $size-16 0 $size-24;
+
+    @media screen and (min-width: ($tablet-md)) {
+      max-width: $size-416;
+    }
+  }
+
+  .copy {
+    @media screen and (min-width: ($tablet-md)) {
+      max-width: $size-640;
+    }
+  }
+}

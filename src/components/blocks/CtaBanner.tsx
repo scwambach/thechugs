@@ -1,30 +1,59 @@
+import { ButtonList } from '@components/modules/ButtonList'
 import { Container } from '@components/modules/Container'
+import { Heading } from '@components/modules/Heading'
+import { ImageBlock } from '@components/modules/ImageBlock'
+import { PortableText } from '@portabletext/react'
+import { noOrphans } from '@utils/noOrphans'
 import { ImageProps, LinkProps, PageBlockProps } from '@utils/types'
+import { urlFor } from '@utils/urlFor'
 
 interface CtaBannerProps extends PageBlockProps {
   backgroundImage: ImageProps
   links?: LinkProps[]
 }
 
-export const CtaBanner = (props: CtaBannerProps) => {
+export const CtaBanner = ({
+  heading,
+  headingLevel = '2',
+  subheading,
+  backgroundImage,
+  backgroundColor,
+  copy,
+  links,
+}: CtaBannerProps) => {
   return (
-    <div className="ctaBanner">
-      <Container size="wide">
-        <code>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              display: 'block',
-              padding: '50px',
-              color: '#88ffbf',
-              backgroundColor: 'black',
-              textAlign: 'left',
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {JSON.stringify(props, null, '    ')}
-          </pre>
-        </code>
+    <div
+      className={`ctaBanner${
+        backgroundColor && !backgroundImage
+          ? ` bg-${backgroundColor}`
+          : !!backgroundImage
+          ? ' bg-image'
+          : ''
+      }`}
+    >
+      {!!backgroundImage && (
+        <>
+          <ImageBlock
+            isBackground
+            src={urlFor(backgroundImage).url()}
+            lqip={backgroundImage.lqip}
+          />
+          <div className="overlay" />
+        </>
+      )}
+      <Container>
+        <div className="copy">
+          {heading && (
+            <Heading level={headingLevel}>{noOrphans(heading)}</Heading>
+          )}
+          {subheading && <p className="subheading">{subheading}</p>}
+          {copy && (
+            <div className="message">
+              <PortableText value={copy} />
+            </div>
+          )}
+          {links && <ButtonList items={links} />}
+        </div>
       </Container>
     </div>
   )

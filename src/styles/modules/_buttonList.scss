@@ -2,13 +2,22 @@
   display: flex;
   gap: $size-16;
   flex-wrap: wrap;
-
-  @media screen and (max-width: ($tablet - 1)) {
-    flex-direction: column;
-  }
+  align-items: center;
 
   li {
     margin: 0;
+
+    &.social {
+      a {
+        width: $size-32;
+        height: $size-32;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        padding: 0;
+      }
+    }
   }
 
   .button {

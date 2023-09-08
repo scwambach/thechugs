@@ -40,10 +40,6 @@
   @media screen and (max-width: ($tablet-lg - 1)) {
     font-size: $heading-5;
   }
-
-  @media screen and (max-width: ($tablet - 1)) {
-    font-size: $heading-6;
-  }
 }
 
 @mixin headingFive {
@@ -56,4 +52,12 @@
 
 @mixin headingSix {
   font-size: $heading-6;
+}
+
+@mixin absoluteOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
