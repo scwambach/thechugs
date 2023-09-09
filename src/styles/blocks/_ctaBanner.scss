@@ -6,20 +6,22 @@
     padding: $size-32 0;
   }
 
-  &:before,
-  &::after {
-    @include absoluteOverlay;
-    content: '';
-    mix-blend-mode: color;
-    z-index: 1;
-  }
+  &.bg-image {
+    &:before,
+    &::after {
+      @include absoluteOverlay;
+      content: '';
+      mix-blend-mode: color;
+      z-index: 1;
+    }
 
-  &:before {
-    background-image: linear-gradient(
-      120deg,
-      rgba($tertiary, 1) 0%,
-      rgba($primary, 1) 100%
-    );
+    &:before {
+      background-image: linear-gradient(
+        120deg,
+        rgba($tertiary, 1) 0%,
+        rgba($primary, 1) 100%
+      );
+    }
   }
 
   .overlay {

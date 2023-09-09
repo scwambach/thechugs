@@ -81,10 +81,10 @@ ul {
 }
 
 .bg-white {
-  background-color: $white;
+  background-color: $secondary;
   color: $black;
 
-  a {
+  a:not(.button) {
     color: $black;
   }
 }
@@ -93,7 +93,7 @@ ul {
   background-color: $tertiary;
   color: $secondary;
 
-  a {
+  a:not(.button) {
     color: $secondary;
   }
 }
@@ -102,7 +102,7 @@ ul {
   background-color: $black;
   color: $secondary;
 
-  a {
+  a:not(.button) {
     color: $secondary;
   }
 }
@@ -110,7 +110,7 @@ ul {
 .bg-image {
   color: $secondary;
 
-  a {
+  a:not(.button) {
     color: $secondary;
   }
 }

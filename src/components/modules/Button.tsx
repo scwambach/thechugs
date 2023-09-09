@@ -38,7 +38,7 @@ export const Button = ({
           : undefined
       }
     >
-      {children || text}
+      {children || text || url}
     </ButtonTag>
   )
 }
