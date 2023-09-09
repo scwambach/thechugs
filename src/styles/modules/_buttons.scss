@@ -6,7 +6,7 @@ input[type='button'] {
   background-color: $primary;
   border: none;
   color: $secondary;
-  padding: 15px 32px;
+  padding: $size-16 $size-32;
   text-align: center;
   font-family: $heading-family;
   text-decoration: none;
@@ -193,5 +193,9 @@ input[type='button'] {
       color: $gray-dark;
       outline-color: $gray-dark;
     }
+  }
+
+  &.lessPadding {
+    padding: $size-16 $size-8;
   }
 }

@@ -1,0 +1,75 @@
+.events {
+  .list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: $size-32;
+
+    @media screen and (min-width: ($tablet-md)) {
+      width: calc(100% - $size-416);
+    }
+
+    > div {
+      display: flex;
+      width: 100%;
+      align-items: flex-start;
+      gap: $size-16;
+      justify-content: space-between;
+
+      @media screen and (max-width: ($tablet-md - 1)) {
+        flex-wrap: wrap;
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .date {
+    font-size: $size-40;
+    width: $size-120;
+    line-height: 1.2;
+  }
+
+  .location {
+    font-size: $size-14;
+    width: calc(100% - $size-144);
+
+    @media screen and (min-width: ($tablet-md)) {
+      width: calc(100% - $size-320);
+    }
+
+    span {
+      font-size: $size-20;
+      font-family: $heading-family;
+    }
+  }
+
+  .links {
+    width: $size-200;
+
+    a {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .image {
+    height: auto;
+    border-radius: $size-40;
+    overflow: hidden;
+    position: relative;
+
+    @media screen and (min-width: ($tablet-md)) {
+      margin: $size-32 0 $size-56;
+      width: $size-416;
+    }
+
+    @media screen and (max-width: ($tablet-md - 1)) {
+      border-radius: $size-14;
+      padding-bottom: 50%;
+      margin-right: $size-124;
+    }
+  }
+}

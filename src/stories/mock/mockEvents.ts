@@ -1,6 +1,28 @@
 export const mockEvents = {
   _key: '4b3a0af4ae24',
   _type: 'events',
+  image: {
+    _type: 'image',
+    asset: {
+      _ref: 'image-cbefa3b8cae6860de3a917764cc467221e543730-5497x4160-jpg',
+      _type: 'reference',
+    },
+    crop: {
+      left: 0,
+      bottom: 0,
+      _type: 'sanity.imageCrop',
+      right: 0,
+      top: 0,
+    },
+    hotspot: {
+      width: 0.5000000000000004,
+      x: 0.5,
+      y: 0.5,
+      height: 0.7093955427288764,
+      _type: 'sanity.imageHotspot',
+    },
+    lqip: 'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAPABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAYHAgX/xAAjEAACAgICAQQDAAAAAAAAAAACAwEFAAQREgYTMTJxQUJR/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AJpt07AqkWcB31znquY9/uYxgtlNXV6lOzSQTNsYfLR/UY/OcunuUavjdctsE0lsjsufiQzjDfXesu8r1jrwAtVBCUc8iM+w/WBLN8d2q3XaqW9gEueRn+4ZvyZ6E3+8HpycepMxMzhgf//Z',
+  },
   events: [
     {
       links: [

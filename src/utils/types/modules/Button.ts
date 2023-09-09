@@ -5,6 +5,7 @@ export interface ButtonProps {
   children?: ReactNode
   className?: string
   disabled?: boolean
+  lessPadding?: boolean
   onClick?: () => void
   tagType?: 'a' | 'button'
   buttonStyle?: ButtonStyle

@@ -5,6 +5,7 @@ export const Button = ({
   children,
   className,
   disabled,
+  lessPadding,
   onClick,
   tagType,
   text,
@@ -21,7 +22,7 @@ export const Button = ({
     <ButtonTag
       className={`button${className ? ` ${className}` : ''}${
         buttonStyle ? ` ${buttonStyle}` : ''
-      }`}
+      }${lessPadding ? ' lessPadding' : ''}`}
       href={tagType === 'a' ? url : undefined}
       target={tagType === 'a' ? (isExternal ? '_blank' : undefined) : undefined}
       disabled={disabled}

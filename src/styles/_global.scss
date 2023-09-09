@@ -61,6 +61,16 @@ ul {
   @media screen and (max-width: ($tablet-md - 1)) {
     flex-direction: column;
   }
+
+  &.reverse {
+    @media screen and (max-width: ($tablet-md - 1)) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &.center {
+    align-items: center;
+  }
 }
 
 .bg-white,

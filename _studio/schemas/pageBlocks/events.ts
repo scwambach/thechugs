@@ -1,4 +1,4 @@
-import {defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 import {blockFields} from '../common/blockFields'
 import {MdEventAvailable} from 'react-icons/md'
 
@@ -18,5 +18,17 @@ export const events = defineType({
       }
     },
   },
-  fields: [...blockFields],
+  fields: [
+    ...blockFields,
+    defineField({
+      name: 'image',
+      title: 'Image',
+      description: 'This will display next to the listing of events.',
+      type: 'image',
+      validation: (Rule) => Rule.required(),
+      options: {
+        hotspot: true,
+      },
+    }),
+  ],
 })
