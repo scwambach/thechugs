@@ -1,14 +1,20 @@
 import { ButtonList } from '@components/modules/ButtonList'
 import { Container } from '@components/modules/Container'
 import { Heading } from '@components/modules/Heading'
-import { ImageBlock } from '@components/modules/ImageBlock'
 import { PortableText } from '@portabletext/react'
+import { bgStyles } from '@utils/bgStyles'
+import { client } from '@utils/client'
 import { ImageProps, LinkProps, PageBlockProps } from '@utils/types'
-import { urlFor } from '@utils/urlFor'
+import { useNextSanityImage } from 'next-sanity-image'
+import Image from 'next/image'
 
 interface PageBannerProps extends PageBlockProps {
   image: ImageProps
   links?: LinkProps[]
+}
+
+const pageBannerImage = (imageUrlBuilder: any, _options: any) => {
+  return imageUrlBuilder.width(2000)
 }
 
 export const PageBanner = ({
@@ -18,9 +24,20 @@ export const PageBanner = ({
   links,
   subheading,
 }: PageBannerProps) => {
+  const imageProps = useNextSanityImage(client, image, {
+    imageBuilder: pageBannerImage,
+  })
+
   return (
     <div className="pageBanner">
-      <ImageBlock src={urlFor(image).url()} lqip={image.lqip} isBackground />
+      <Image
+        {...imageProps}
+        alt=""
+        className="bg-fit"
+        blurDataURL={image.lqip}
+        style={bgStyles as any}
+        placeholder="blur"
+      />
       <Container size="wide">
         {subheading && <p className="subheading">{subheading}</p>}
         <Heading level="1">{heading}</Heading>

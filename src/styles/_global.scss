@@ -122,3 +122,11 @@ ul {
   height: 1px;
   overflow: hidden;
 }
+
+.bg-fit {
+  object-fit: cover;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-text-select: none;
+  -webkit-user-select: none;
+}

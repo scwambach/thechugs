@@ -6,6 +6,22 @@
     padding: $size-32 0;
   }
 
+  &:before,
+  &::after {
+    @include absoluteOverlay;
+    content: '';
+    mix-blend-mode: color;
+    z-index: 1;
+  }
+
+  &:before {
+    background-image: linear-gradient(
+      120deg,
+      rgba($tertiary, 1) 0%,
+      rgba($primary, 1) 100%
+    );
+  }
+
   .overlay {
     @include absoluteOverlay;
     background-color: rgba($black, 0.6);
@@ -44,6 +60,8 @@
   }
 
   .copy {
+    position: relative;
+    z-index: 2;
     @media screen and (min-width: ($tablet-md)) {
       max-width: $size-640;
     }

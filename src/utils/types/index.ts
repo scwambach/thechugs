@@ -48,7 +48,22 @@ export interface AssetProps {
 }
 
 export interface ImageProps {
+  _type: string
   asset: AssetProps
+  crop?: {
+    top: number
+    left: number
+    bottom: number
+    _type: string
+    right: number
+  }
+  hotspot?: {
+    _type: string
+    width: number
+    x: number
+    y: number
+    height: number
+  }
   lqip: string
 }
 
