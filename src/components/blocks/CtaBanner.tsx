@@ -65,6 +65,7 @@ export const CtaBanner = ({
               <PortableText value={copy} />
             </div>
           )}
+
           {links && <ButtonList items={links} />}
         </div>
       </Container>

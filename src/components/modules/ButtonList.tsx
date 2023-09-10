@@ -31,7 +31,11 @@ export const ButtonList = ({
             className={item.linkType === 'social' ? 'social' : undefined}
           >
             {item.linkType === 'url' && (
-              <Button {...item} tagType={tagType} buttonStyle={buttonStyle} />
+              <Button
+                {...item}
+                tagType={tagType}
+                buttonStyle={item.buttonStyle || buttonStyle}
+              />
             )}
             {item.linkType === 'social' && (
               <a href={item.url}>

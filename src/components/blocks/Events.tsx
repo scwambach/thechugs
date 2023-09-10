@@ -26,10 +26,10 @@ export const Events = ({ events, image }: EventsProps) => {
   return (
     <div className="events">
       <Container>
-        <div className="flex-row reverse">
+        <div className="flex-row">
           <div className="list">
             {events.map((event) => (
-              <div key={event._id}>
+              <div key={event._id} className="event">
                 <p className="date">{dayjs(event.dateTime).format('MM.DD')}</p>
                 <p className="location">
                   <a
@@ -48,7 +48,6 @@ export const Events = ({ events, image }: EventsProps) => {
                   {event.links.map((link) => (
                     <Button
                       buttonStyle="primary"
-                      lessPadding
                       tagType="a"
                       text={link.copy}
                       url={link.url}

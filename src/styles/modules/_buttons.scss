@@ -15,6 +15,11 @@ input[type='button'] {
   cursor: pointer;
   transition-duration: $animation-speed;
 
+  @media screen and (max-width: ($tablet-md - 1)) {
+    font-size: $size-14;
+    padding: $size-8 $size-16;
+  }
+
   &:hover {
     @media screen and (min-width: ($tablet-md)) {
       background-color: $primary-light;
@@ -118,6 +123,40 @@ input[type='button'] {
 
     &:disabled {
       background-color: $tertiary-light;
+      color: $gray-dark;
+      outline-color: $gray-dark;
+    }
+  }
+
+  &.quaternary {
+    background-color: $quaternary;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $quaternary-dark;
+      }
+    }
+
+    &:disabled {
+      background-color: $quaternary-light;
+      color: $gray-dark;
+    }
+  }
+
+  &.quaternary-outline {
+    background-color: transparent;
+    color: $quaternary;
+    outline-color: $quaternary;
+
+    &:hover {
+      @media screen and (min-width: ($tablet-md)) {
+        background-color: $quaternary;
+        color: $secondary;
+      }
+    }
+
+    &:disabled {
+      background-color: $quaternary-light;
       color: $gray-dark;
       outline-color: $gray-dark;
     }
