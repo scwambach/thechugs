@@ -131,6 +131,11 @@ input[type='button'] {
   &.quaternary {
     background-color: $quaternary;
 
+    &::selection {
+      background: $quaternary-dark;
+      color: $white;
+    }
+
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
         background-color: $quaternary-dark;
@@ -152,6 +157,11 @@ input[type='button'] {
       @media screen and (min-width: ($tablet-md)) {
         background-color: $quaternary;
         color: $secondary;
+
+        &::selection {
+          background: $quaternary-dark;
+          color: $white;
+        }
       }
     }
 
