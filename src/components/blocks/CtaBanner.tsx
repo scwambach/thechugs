@@ -15,7 +15,7 @@ interface CtaBannerProps extends PageBlockProps {
 }
 
 const ctaBannerImage = (imageUrlBuilder: any, _options: any) => {
-  return imageUrlBuilder.width(1200).saturation(-100)
+  return imageUrlBuilder.width(1200)
 }
 
 export const CtaBanner = ({

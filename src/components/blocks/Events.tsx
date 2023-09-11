@@ -25,7 +25,7 @@ export const Events = ({ events, image }: EventsProps) => {
 
   return (
     <div className="events">
-      <Container>
+      <Container size="wide">
         <div className="flex-row">
           <div className="list">
             {events.map((event) => (
@@ -43,6 +43,36 @@ export const Events = ({ events, image }: EventsProps) => {
                     <br />
                     {event.location.cityStateZip}
                   </a>
+                  {event.otherBands && (
+                    <p>
+                      with:{' '}
+                      {event.otherBands.map((band, index) => {
+                        return (
+                          <>
+                            {event.otherBands?.length === 2 && index > 0
+                              ? ' and '
+                              : event.otherBands?.length === 1
+                              ? ''
+                              : index + 1 === event.otherBands?.length
+                              ? ', and '
+                              : index > 0 && ', '}
+                            {band.link ? (
+                              <a
+                                className="band"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                href={band.link}
+                              >
+                                {band.bandName}
+                              </a>
+                            ) : (
+                              <span className="band">{band.bandName}</span>
+                            )}
+                          </>
+                        )
+                      })}
+                    </p>
+                  )}
                 </p>
                 <div className="links">
                   {event.links.map((link) => (

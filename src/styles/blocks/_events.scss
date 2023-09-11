@@ -5,7 +5,7 @@
 
   .list {
     @media screen and (min-width: ($tablet-md - 1)) {
-      width: calc(100% - $size-352);
+      width: calc(100% - $size-448);
     }
 
     @media (max-width: ($tablet-lg - 1)) and (min-width: ($tablet-md - 1)) {
@@ -24,7 +24,7 @@
     @media screen and (min-width: ($tablet-md - 1)) {
       height: 0;
       padding-bottom: 30%;
-      width: $size-352;
+      width: $size-448;
     }
     @media (max-width: ($tablet-lg - 1)) and (min-width: ($tablet-md - 1)) {
       width: $size-256;
@@ -33,9 +33,15 @@
 
   .event {
     display: flex;
-    gap: $size-8;
+    gap: $size-32;
     width: 100%;
     justify-content: space-between;
+    border-bottom: $size-1 solid $secondary-dark;
+    padding-bottom: $size-16;
+
+    &:last-child {
+      border-bottom: none;
+    }
 
     @media screen and (max-width: ($mobile-md - 1)) {
       flex-direction: column;
@@ -94,6 +100,16 @@
     width: calc(100% - $size-320);
     font-size: $size-12;
 
+    a {
+      color: $black;
+
+      &:hover {
+        span {
+          text-decoration: underline;
+        }
+      }
+    }
+
     @media screen and (max-width: ($tablet-lg - 1)) {
       width: calc(100% - $size-230);
     }
@@ -106,6 +122,14 @@
       font-size: $size-20;
       line-height: 1;
       font-family: $heading-family;
+    }
+
+    a.band {
+      &:hover {
+        @media screen and (min-width: ($tablet-md)) {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
