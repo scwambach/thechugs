@@ -20,6 +20,8 @@ import ProductGrid from '@components/blocks/ProductGrid'
 
 const today = moment(new Date()).format('YYYY-MM-DD')
 
+export const revalidate = 86400
+
 export default function Home({ data }: { data: HomePageProps }) {
   const hasArticles = data.articles && data.articles.length > 0
   const hasVideos = data.videos && data.videos.length > 0
