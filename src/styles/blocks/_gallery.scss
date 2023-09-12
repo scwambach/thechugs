@@ -29,6 +29,11 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: $size-16;
+
+    button {
+      border-radius: $size-8;
+      overflow: hidden;
+    }
   }
 
   .modal {
