@@ -6,8 +6,6 @@ import { useNextSanityImage } from 'next-sanity-image'
 import Image from 'next/image'
 import { useState } from 'react'
 
-// TODO: Fix all this mess
-
 interface ImageBlockProps {
   image: ImageProps
   width?: number
@@ -15,6 +13,7 @@ interface ImageBlockProps {
   desaturate?: boolean
   alt?: string
   className?: string
+  setImageLoaded?: (isImageLoaded: boolean) => void
   isBackground?: boolean
 }
 
@@ -25,10 +24,9 @@ export const ImageBlock = ({
   image,
   width = 800,
   height,
+  setImageLoaded,
   desaturate,
 }: ImageBlockProps) => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false)
-
   const customBuilder = (imageUrlBuilder: any, _options: any) => {
     if (height && desaturate) {
       return (imageUrlBuilder = imageUrlBuilder
@@ -53,7 +51,11 @@ export const ImageBlock = ({
   })
 
   const handleImageLoad = () => {
-    setIsImageLoaded(true)
+    if (setImageLoaded) {
+      setTimeout(() => {
+        setImageLoaded(true)
+      }, 300)
+    }
   }
 
   return (
@@ -62,9 +64,7 @@ export const ImageBlock = ({
       alt={alt}
       className={`${isBackground ? 'bg-fit' : ''}${
         isBackground && className ? ' ' : ''
-      }${className ? `${className}` : ''}${
-        isImageLoaded ? ' loaded' : ' loading'
-      }`}
+      }${className ? `${className}` : ''}`}
       style={isBackground ? (bgStyles as any) : undefined}
       placeholder="blur"
       blurDataURL={image.lqip}

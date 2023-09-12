@@ -15,7 +15,7 @@
     "lint": "next lint",
     "prepare": "husky install",
     "start": "next start",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 --no-open",
     "test": "jest"
   },
   "engines": {

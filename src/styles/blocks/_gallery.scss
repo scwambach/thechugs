@@ -43,25 +43,44 @@
     align-items: center;
     justify-content: center;
     pointer-events: none;
+    transition-duration: $animation-speed;
+    transition-timing-function: ease-in-out;
+    opacity: 0;
 
-    button {
-      color: $white;
-      position: absolute;
-      width: $size-48;
-      height: $size-48;
-      top: $size-16;
-      right: $size-16;
-      z-index: 1001;
+    &.open {
+      pointer-events: all;
+      opacity: 1;
     }
 
-    .loaded {
-      &:before {
-        content: '';
+    button {
+      &.close {
+        color: $white;
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: purple;
+        width: $size-48;
+        height: $size-48;
+        top: $size-16;
+        right: $size-16;
+        z-index: 1001;
+      }
+    }
+
+    .inner {
+      padding: $size-16;
+      width: 100%;
+
+      .activeImage {
+        opacity: 1;
+        transition-duration: $animation-speed;
+        transition-timing-function: ease-in-out;
+        height: auto;
+        width: 100%;
+        max-width: $size-800;
+      }
+
+      &.mainImgLoading {
+        .activeImage {
+          opacity: 0;
+        }
       }
     }
   }
