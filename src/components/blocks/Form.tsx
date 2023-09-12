@@ -2,7 +2,6 @@ import { Container } from '@components/modules/Container'
 import { FormField } from '@components/modules/FormField'
 import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
-import { PageBlockProps } from '@utils/types'
 import { FormFieldProps } from '@utils/types/modules/FormFieldProps'
 
 interface FormProps {

@@ -1,102 +1,28 @@
 import { Button } from '@components/modules/Button'
-import { ButtonList } from '@components/modules/ButtonList'
 import { Container } from '@components/modules/Container'
-import { bgStyles } from '@utils/bgStyles'
-import { client } from '@utils/client'
+import { Event } from '@components/modules/Event'
+import { ImageBlock } from '@components/modules/ImageBlock'
 import { ImageProps, PageBlockProps } from '@utils/types'
 import { EventProps } from '@utils/types/modules/EventProps'
 import dayjs from 'dayjs'
-import { useNextSanityImage } from 'next-sanity-image'
-import Image from 'next/image'
 
 interface EventsProps extends PageBlockProps {
   events: EventProps[]
   image: ImageProps
 }
 
-const eventsImage = (imageUrlBuilder: any, _options: any) => {
-  return imageUrlBuilder.width(800)
-}
-
 export const Events = ({ events, image }: EventsProps) => {
-  const imageProps = useNextSanityImage(client, image, {
-    imageBuilder: eventsImage,
-  })
-
   return (
     <div className="events">
       <Container size="wide">
         <div className="flex-row">
           <div className="list">
             {events.map((event) => (
-              <div key={event._id} className="event">
-                <p className="date">{dayjs(event.dateTime).format('MM.DD')}</p>
-                <p className="location">
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={`https://www.google.com/maps/search/?api=1&query=${event.location.address}+${event.location.cityStateZip}`}
-                  >
-                    <span>{event.location.title}</span>
-                    <br />
-                    {event.location.address}
-                    <br />
-                    {event.location.cityStateZip}
-                  </a>
-                  {event.otherBands && (
-                    <p>
-                      with:{' '}
-                      {event.otherBands.map((band, index) => {
-                        return (
-                          <>
-                            {event.otherBands?.length === 2 && index > 0
-                              ? ' and '
-                              : event.otherBands?.length === 1
-                              ? ''
-                              : index + 1 === event.otherBands?.length
-                              ? ', and '
-                              : index > 0 && ', '}
-                            {band.link ? (
-                              <a
-                                className="band"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                href={band.link}
-                              >
-                                {band.bandName}
-                              </a>
-                            ) : (
-                              <span className="band">{band.bandName}</span>
-                            )}
-                          </>
-                        )
-                      })}
-                    </p>
-                  )}
-                </p>
-                <div className="links">
-                  {event.links.map((link) => (
-                    <Button
-                      buttonStyle="primary"
-                      tagType="a"
-                      text={link.copy}
-                      url={link.url}
-                      key={link._key}
-                    />
-                  ))}
-                </div>
-              </div>
+              <Event key={event._id} {...event} />
             ))}
           </div>
           <div className="image">
-            <Image
-              {...imageProps}
-              alt=""
-              className="bg-fit"
-              blurDataURL={image.lqip}
-              style={bgStyles as any}
-              placeholder="blur"
-            />
+            <ImageBlock image={image} isBackground />
           </div>
         </div>
       </Container>

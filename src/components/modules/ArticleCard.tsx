@@ -1,14 +1,7 @@
-import { bgStyles } from '@utils/bgStyles'
-import { client } from '@utils/client'
 import { clippedContent } from '@utils/clippedContent'
 import { ArticleCardProps } from '@utils/types/modules/ArticleCardProps'
 import dayjs from 'dayjs'
-import { useNextSanityImage } from 'next-sanity-image'
-import Image from 'next/image'
-
-const articleCardImage = (imageUrlBuilder: any, _options: any) => {
-  return imageUrlBuilder.width(600)
-}
+import { ImageBlock } from './ImageBlock'
 
 export const ArticleCard = ({
   title,
@@ -17,10 +10,6 @@ export const ArticleCard = ({
   description,
   image,
 }: ArticleCardProps) => {
-  const imageProps = useNextSanityImage(client, image, {
-    imageBuilder: articleCardImage,
-  })
-
   return (
     <a
       href={link}
@@ -30,14 +19,7 @@ export const ArticleCard = ({
     >
       <div className="image">
         <div className="zoom-image">
-          <Image
-            {...imageProps}
-            alt=""
-            className="bg-fit"
-            blurDataURL={image.lqip}
-            style={bgStyles as any}
-            placeholder="blur"
-          />
+          <ImageBlock isBackground image={image} width={800} />
         </div>
       </div>
       <div className="info">

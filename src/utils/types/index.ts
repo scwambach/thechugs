@@ -49,6 +49,7 @@ export interface AssetProps {
 
 export interface ImageProps {
   _type: string
+  _key?: string
   asset: AssetProps
   crop?: {
     top: number

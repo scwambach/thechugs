@@ -1,21 +1,14 @@
 import { ButtonList } from '@components/modules/ButtonList'
 import { Container } from '@components/modules/Container'
 import { Heading } from '@components/modules/Heading'
+import { ImageBlock } from '@components/modules/ImageBlock'
 import { PortableText } from '@portabletext/react'
-import { bgStyles } from '@utils/bgStyles'
-import { client } from '@utils/client'
 import { noOrphans } from '@utils/noOrphans'
 import { ImageProps, LinkProps, PageBlockProps } from '@utils/types'
-import { useNextSanityImage } from 'next-sanity-image'
-import Image from 'next/image'
 
 interface CtaBannerProps extends PageBlockProps {
   backgroundImage: ImageProps
   links?: LinkProps[]
-}
-
-const ctaBannerImage = (imageUrlBuilder: any, _options: any) => {
-  return imageUrlBuilder.width(1200)
 }
 
 export const CtaBanner = ({
@@ -27,10 +20,6 @@ export const CtaBanner = ({
   copy,
   links,
 }: CtaBannerProps) => {
-  const imageProps = useNextSanityImage(client, backgroundImage, {
-    imageBuilder: ctaBannerImage,
-  })
-
   return (
     <div
       className={`ctaBanner${
@@ -43,14 +32,7 @@ export const CtaBanner = ({
     >
       {!!backgroundImage && (
         <>
-          <Image
-            {...imageProps}
-            alt=""
-            className="bg-fit"
-            blurDataURL={backgroundImage.lqip}
-            style={bgStyles as any}
-            placeholder="blur"
-          />
+          <ImageBlock image={backgroundImage} isBackground width={1200} />
           <div className="overlay" />
         </>
       )}
