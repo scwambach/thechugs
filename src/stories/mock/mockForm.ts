@@ -18,7 +18,6 @@ export const mockForm = {
       _type: 'block',
     },
   ],
-  heading: 'Maecenas finibus molestie finibus.',
   thankYouMessage:
     'Thank you! We appreciate you contacting us. We will get back in touch with you soon! Have a great day!',
   recipients: 'thechugsband@gmail.com',
@@ -44,6 +43,7 @@ export const mockForm = {
   ],
   formFields: [
     {
+      _key: 'as87dvgais76dcgv4478jd',
       readOnly: false,
       type: 'text' as InputTypes,
       required: true,
@@ -54,6 +54,65 @@ export const mockForm = {
       initialValue: 'Maecenas vestibulum, ante quis accumsan.',
     },
     {
+      _key: '4d57e2d7bda59',
+      choices: [
+        {
+          _type: 'choice',
+          label: 'Nunc vel orci vitae.',
+          _key: '246b7f7b4aac',
+          value: 'Curabitur ut.',
+        },
+        {
+          label: 'Nullam scelerisque mollis rutrum.',
+          _key: '4efd19597acd',
+          value: 'In id.',
+          _type: 'choice',
+        },
+        {
+          _type: 'choice',
+          label: 'Vivamus vehicula vulputate ligula.',
+          _key: '5e36c74f9b99',
+          value: 'Mauris bibendum.',
+        },
+      ],
+      type: 'select',
+      required: true,
+      desciprtion:
+        'Aenean orci neque, semper in ligula eget, luctus porta nunc. Nam ullamcorper cursus semper. Nulla.',
+      _type: 'field',
+      label: 'Maecenas eu quam non.',
+    },
+    {
+      _key: '4d57e27bda59',
+      choices: [
+        {
+          _type: 'choice',
+          label: 'Nunc vel orci vitae.',
+          _key: '246b7f7b4aac',
+          value: 'Curabitur ut.',
+        },
+        {
+          label: 'Nullam scelerisque mollis rutrum.',
+          _key: '4efd19597acd',
+          value: 'In id.',
+          _type: 'choice',
+        },
+        {
+          _type: 'choice',
+          label: 'Vivamus vehicula vulputate ligula.',
+          _key: '5e36c74f9b99',
+          value: 'Mauris bibendum.',
+        },
+      ],
+      type: 'radio',
+      required: true,
+      desciprtion:
+        'Aliquam erat volutpat. Donec aliquet erat arcu, sit amet fringilla sem elementum ac. Suspendisse.',
+      _type: 'field',
+      label: 'Mauris eget tempus tortor.',
+    },
+    {
+      _key: '34twg456e4hsr6j',
       initialValue: undefined,
       readOnly: undefined,
       type: 'checkbox' as InputTypes,
@@ -78,6 +137,7 @@ export const mockForm = {
       ],
     },
     {
+      _key: '9p8dyfu98dfho7vs87fb',
       type: 'textarea' as InputTypes,
       required: true,
       label: 'Phasellus bibendum',

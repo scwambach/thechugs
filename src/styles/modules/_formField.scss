@@ -1,0 +1,41 @@
+.formField {
+  p {
+    margin: 0;
+  }
+
+  .labelTag {
+    @include headingSix;
+    font-family: $heading-family;
+    margin-bottom: $size-8;
+    display: block;
+
+    &.hidden {
+      height: 0;
+      width: 0;
+      opacity: 0;
+      position: absolute;
+    }
+  }
+
+  .description {
+    margin-bottom: $size-16;
+    max-width: $size-640;
+  }
+
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
+  }
+
+  .radio,
+  .checkbox {
+    label {
+      display: flex;
+      align-items: center;
+      gap: $size-8;
+      cursor: pointer;
+      width: 100%;
+    }
+  }
+}

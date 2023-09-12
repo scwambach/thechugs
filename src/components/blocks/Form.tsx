@@ -1,37 +1,55 @@
 import { Container } from '@components/modules/Container'
+import { FormField } from '@components/modules/FormField'
+import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
 import { PageBlockProps } from '@utils/types'
 import { FormFieldProps } from '@utils/types/modules/FormFieldProps'
 
-interface FormProps extends PageBlockProps {
-  description?: PortableTextBlock[]
+interface FormProps {
   beforeSubmit?: PortableTextBlock[]
-  thankYouMessage: string
+  description?: PortableTextBlock[]
   errorMessage: string
-  recipients: string
-  title: string
   formFields: FormFieldProps[]
+  recipients: string
+  submitCopy?: string
+  thankYouMessage: string
+  title: string
 }
 
-export const Form = (props: FormProps) => {
+// TODO: Add form functionality
+
+export const Form = ({
+  beforeSubmit,
+  description,
+  errorMessage,
+  formFields,
+  recipients,
+  submitCopy = 'Submit',
+  thankYouMessage,
+  title,
+}: FormProps) => {
   return (
     <div className="form">
       <Container size="wide">
-        <code>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              display: 'block',
-              padding: '50px',
-              color: '#88ffbf',
-              backgroundColor: 'black',
-              textAlign: 'left',
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {JSON.stringify(props, null, '    ')}
-          </pre>
-        </code>
+        <p className="title">{title}</p>
+        {description && (
+          <div className="description">
+            <PortableText value={description} />
+          </div>
+        )}
+        <form>
+          <div className="fields">
+            {formFields.map((field, index) => (
+              <FormField key={field._key} {...field} index={index} />
+            ))}
+            {beforeSubmit && (
+              <div className="beforeSubmit">
+                <PortableText value={beforeSubmit} />
+              </div>
+            )}
+          </div>
+          <button type="submit">{submitCopy}</button>
+        </form>
       </Container>
     </div>
   )

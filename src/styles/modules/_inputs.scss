@@ -1,0 +1,59 @@
+input:not([type='checkbox']):not([type='radio']),
+textarea {
+  display: block;
+  border: $size-2 solid $black;
+  width: 100%;
+  padding: $size-8 $size-8;
+  background-color: transparent;
+  border-radius: $size-3;
+
+  &::placeholder {
+    color: $black;
+    opacity: 0.5;
+  }
+}
+
+select {
+  appearance: none;
+  display: block;
+  border-radius: $size-3;
+  border: $size-2 solid $black;
+  padding: $size-8 $size-8;
+  width: 100%;
+  background-color: transparent;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  opacity: 0;
+  position: absolute;
+
+  + [class$='-indicator'] {
+    outline: $size-2 solid $black;
+    overflow: hidden;
+    height: $size-16;
+    width: $size-16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  + .radio-indicator {
+    border-radius: 100%;
+  }
+
+  + .checkbox-indicator {
+    border-radius: $size-3;
+  }
+
+  &:checked + [class$='-indicator'] {
+    background-color: $primary;
+    color: $secondary;
+  }
+}
+
+label {
+  font-family: $font-family;
+}

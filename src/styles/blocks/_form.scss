@@ -1,0 +1,18 @@
+.form {
+  .title {
+    @include headingFive;
+    font-family: $heading-family;
+  }
+
+  .description,
+  .beforeSubmit {
+    margin-bottom: $size-16;
+    max-width: $size-512;
+  }
+
+  .fields {
+    display: flex;
+    flex-direction: column;
+    gap: $size-16;
+  }
+}

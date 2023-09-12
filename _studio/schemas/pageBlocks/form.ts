@@ -36,11 +36,6 @@ export const form = defineType({
       initialValue: 'thechugsband@gmail.com',
     }),
     defineField({
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
-    }),
-    defineField({
       name: 'description',
       title: 'Description',
       type: 'array',

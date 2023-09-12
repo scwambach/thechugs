@@ -1,17 +1,24 @@
+import { ChangeEvent } from 'react'
 import { InputTypes } from '..'
 
 export interface FormFieldProps {
-  type: InputTypes
-  label: string
-  hideLanel?: boolean
-  description?: string
+  _key: string
   choices?: {
+    _key: string
     label: string
     value: string
   }[]
-  required?: boolean
-  initialValue?: string
-  placeholder?: string
-  readonly?: boolean
+  description?: string
   disabled?: boolean
+  hideLabel?: boolean
+  index: number
+  initialValue?: string
+  label: string
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  onChangeArea?: (e: ChangeEvent<HTMLTextAreaElement>) => void
+  onChangeSelect?: (e: ChangeEvent<HTMLSelectElement>) => void
+  placeholder?: string
+  readOnly?: boolean
+  required?: boolean
+  type: InputTypes
 }
