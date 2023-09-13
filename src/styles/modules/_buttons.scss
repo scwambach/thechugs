@@ -4,15 +4,16 @@ input[type='submit'],
 input[type='reset'],
 input[type='button'] {
   background-color: $primary;
+  border-radius: $size-5;
   border: none;
   color: $secondary;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $heading-family;
+  font-size: 16px;
   padding: $size-16 $size-32;
   text-align: center;
-  font-family: $heading-family;
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
   transition-duration: $animation-speed;
 
   @media screen and (max-width: ($tablet-md - 1)) {

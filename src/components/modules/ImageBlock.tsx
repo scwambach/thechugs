@@ -36,14 +36,20 @@ export const ImageBlock = ({
     }
 
     if (desaturate && !height) {
-      return (imageUrlBuilder = imageUrlBuilder.saturation(-100).width(width))
+      return (imageUrlBuilder = imageUrlBuilder
+        .saturation(-100)
+        .width(width)
+        .fit('scale'))
     }
 
     if (height && !desaturate) {
-      return (imageUrlBuilder = imageUrlBuilder.width(width).height(height))
+      return (imageUrlBuilder = imageUrlBuilder
+        .width(width)
+        .height(height)
+        .fit('scale'))
     }
 
-    return imageUrlBuilder.width(width)
+    return imageUrlBuilder.width(width).fit('scale')
   }
 
   const imageProps = useNextSanityImage(client, image, {

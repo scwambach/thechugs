@@ -3,8 +3,9 @@ import { Container } from '@components/modules/Container'
 import { ImageBlock } from '@components/modules/ImageBlock'
 import { Loading } from '@components/modules/Loading'
 import { ImageProps, PageBlockProps } from '@utils/types'
-import { useEffect, useState } from 'react'
-import { AiOutlineClose } from 'react-icons/ai'
+import { use, useEffect, useState } from 'react'
+import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+
 interface GalleryProps extends PageBlockProps {
   images: ImageProps[]
 }
@@ -12,7 +13,7 @@ interface GalleryProps extends PageBlockProps {
 // TODO: figure out why the images shrink after one cycle
 
 export const Gallery = ({ images }: GalleryProps) => {
-  const [activeImageGroup, setActiveImageGroup] = useState<ImageProps>()
+  const [activeImage, setActiveImage] = useState<ImageProps>()
   const [open, setOpen] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
 
@@ -25,21 +26,6 @@ export const Gallery = ({ images }: GalleryProps) => {
         setOpen(false)
       }
     }
-
-    // click anything that isn't the .modal.image element to close
-    document.addEventListener('click', (e) => {
-      if (
-        e.target &&
-        e.target instanceof HTMLElement &&
-        (e.target.className === 'modal open' ||
-          e.target.className === 'modal image')
-      ) {
-        setTimeout(() => {
-          setImageLoaded(false)
-        }, 300)
-        setOpen(false)
-      }
-    })
   }, [])
 
   return (
@@ -61,24 +47,25 @@ export const Gallery = ({ images }: GalleryProps) => {
           <button
             onClick={() => {
               const index = images.findIndex(
-                (image) => image._key === activeImageGroup?._key
+                (image) => image._key === activeImage?._key
               )
               if (index === 0) {
-                setActiveImageGroup(images[images.length - 1])
+                setActiveImage(images[images.length - 1])
               } else {
-                setActiveImageGroup(images[index - 1])
+                setActiveImage(images[index - 1])
               }
             }}
           >
-            Prev
+            <AiOutlineLeft size={40} />
+
+            <span className="sr-only">Prev</span>
           </button>
         </div>
         <div className="image">
-          {activeImageGroup && (
+          {activeImage && (
             <div className={`inner${imageLoaded ? '' : ' mainImgLoading'}`}>
               <ImageBlock
-                image={activeImageGroup}
-                height={800}
+                image={activeImage}
                 className="activeImage"
                 setImageLoaded={setImageLoaded}
               />
@@ -89,17 +76,22 @@ export const Gallery = ({ images }: GalleryProps) => {
         <div className="next">
           <button
             onClick={() => {
-              const index = images.findIndex(
-                (image) => image._key === activeImageGroup?._key
-              )
-              if (index === images.length - 1) {
-                setActiveImageGroup(images[0])
-              } else {
-                setActiveImageGroup(images[index + 1])
-              }
+              setActiveImage(undefined)
+              setImageLoaded(false)
+              setTimeout(() => {
+                const index = images.findIndex(
+                  (image) => image._key === activeImage?._key
+                )
+                if (index === images.length - 1) {
+                  setActiveImage(images[0])
+                } else {
+                  setActiveImage(images[index + 1])
+                }
+              }, 10)
             }}
           >
-            Next
+            <AiOutlineRight size={40} />
+            <span className="sr-only">Next</span>
           </button>
         </div>
       </div>
@@ -110,7 +102,7 @@ export const Gallery = ({ images }: GalleryProps) => {
             <button
               key={image._key}
               onClick={() => {
-                setActiveImageGroup(image)
+                setActiveImage(image)
                 setOpen(true)
               }}
             >
