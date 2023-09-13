@@ -1,3 +1,5 @@
+import { ButtonStyle, LinkTypes } from '@utils/types'
+
 export const mockMembers = {
   _key: 'da628fcbfdc4',
   _type: 'members',
@@ -27,11 +29,39 @@ export const mockMembers = {
         _type: 'image',
         lqip: 'data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAUGB//EACAQAAICAgIDAQEAAAAAAAAAAAECAwQABREhEjFRBoH/xAAWAQEBAQAAAAAAAAAAAAAAAAAEAQL/xAAcEQEAAgIDAQAAAAAAAAAAAAABAAIRIRMxMsH/2gAMAwEAAhEDEQA/AK2LXxDcW7AsqI2djyB67+4z3kVa3XRFvxqxA6B9ZP8A4KJd3oI47ZcAAk+Le+MUzstrQb6SVB5VE84+PoOIKVRR6hVsNTHr5KfU0oq0U0Uj8sspBP8ABhmJ6Ka9uKkls7CxXLSEFI266A7wyZrXSzXEuyf/2Q==',
       },
+      links: [
+        {
+          _type: 'link',
+          linkType: 'social' as LinkTypes,
+          _key: '0eebc4388bf0',
+          url: 'https://instagram.com',
+        },
+        {
+          _type: 'link',
+          linkType: 'social' as LinkTypes,
+          _key: '38ir9ofi30980',
+          url: 'https://facebook.com',
+        },
+      ],
       role: 'Vocals / Drums',
     },
     {
       _key: '89b3cca8179f',
       name: 'Brian Harding',
+      links: [
+        {
+          _type: 'link',
+          linkType: 'social' as LinkTypes,
+          _key: '0eebc4388bf0',
+          url: 'https://instagram.com',
+        },
+        {
+          _type: 'link',
+          linkType: 'social' as LinkTypes,
+          _key: '38ir9ofi30980',
+          url: 'https://facebook.com',
+        },
+      ],
       image: {
         asset: {
           _ref: 'image-4389c25d5d38ad9422684e2182fd0ba57b6a7fbc-5653x4160-jpg',

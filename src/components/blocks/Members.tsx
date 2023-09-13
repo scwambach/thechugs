@@ -1,34 +1,21 @@
 import { Container } from '@components/modules/Container'
-import { ImageProps, LinkProps, PageBlockProps } from '@utils/types'
+import { Member } from '@components/modules/Member'
+import { PageBlockProps } from '@utils/types'
+import { MemberProps } from '@utils/types/modules/Member'
 
 interface MembersProps extends PageBlockProps {
-  members: {
-    name: string
-    role: string
-    image: ImageProps
-    links?: LinkProps[]
-  }[]
+  members: MemberProps[]
 }
 
-export const Members = (props: MembersProps) => {
+export const Members = ({ members }: MembersProps) => {
   return (
     <div className="members">
       <Container size="wide">
-        <code>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              display: 'block',
-              padding: '50px',
-              color: '#88ffbf',
-              backgroundColor: 'black',
-              textAlign: 'left',
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {JSON.stringify(props, null, '    ')}
-          </pre>
-        </code>
+        <div className="inner">
+          {members.map((item) => (
+            <Member key={item._key} {...item} />
+          ))}
+        </div>
       </Container>
     </div>
   )

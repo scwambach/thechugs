@@ -1,0 +1,66 @@
+.members {
+  .inner {
+    display: flex;
+    gap: $size-32;
+
+    @media screen and (max-width: ($tablet-xl - 1)) {
+      gap: $size-16;
+    }
+
+    @media screen and (max-width: ($tablet - 1)) {
+      flex-wrap: wrap;
+    }
+  }
+
+  .member {
+    width: 100%;
+  }
+}
+
+.member {
+  @media screen and (max-width: ($tablet - 1)) {
+    text-align: center;
+  }
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: $size-368;
+
+    @media screen and (max-width: ($tablet-xl - 1)) {
+      height: $size-200;
+    }
+
+    @media screen and (max-width: ($tablet - 1)) {
+      max-width: $size-288;
+      margin: 0 auto;
+    }
+  }
+  img {
+    border-radius: $size-10;
+    overflow: hidden;
+    display: block;
+  }
+
+  p {
+    margin: $size-8 0;
+
+    strong {
+      font-size: $size-20;
+
+      @media screen and (min-width: ($tablet-md)) {
+        font-size: $size-24;
+      }
+    }
+  }
+
+  .buttonList {
+    @media screen and (max-width: ($tablet - 1)) {
+      justify-content: center;
+    }
+    .social {
+      a {
+        width: $size-20;
+      }
+    }
+  }
+}
