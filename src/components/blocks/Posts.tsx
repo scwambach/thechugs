@@ -1,4 +1,6 @@
 import { Container } from '@components/modules/Container'
+import { MediaCard } from '@components/modules/MediaCard'
+import { postToMediaCard } from '@utils/postToMediaCard'
 import { PageBlockProps } from '@utils/types'
 import { PostCardProps } from '@utils/types/modules/PostCardProps'
 
@@ -6,25 +8,15 @@ interface PostsProps extends PageBlockProps {
   posts: PostCardProps[]
 }
 
-export const Posts = (props: PostsProps) => {
+export const Posts = ({ posts }: PostsProps) => {
   return (
     <div className="posts">
       <Container size="wide">
-        <code>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              display: 'block',
-              padding: '50px',
-              color: '#88ffbf',
-              backgroundColor: 'black',
-              textAlign: 'left',
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {JSON.stringify(props, null, '    ')}
-          </pre>
-        </code>
+        <div className="list">
+          {posts?.map((post) => {
+            return <MediaCard key={post._id} {...postToMediaCard(post)} />
+          })}
+        </div>
       </Container>
     </div>
   )

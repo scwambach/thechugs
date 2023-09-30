@@ -1,13 +1,12 @@
 .articles {
   .list {
-    flex-wrap: wrap;
-    display: flex;
-    gap: $size-32;
-  }
+    // grid but just 2 per row on desktop
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $size-24;
 
-  .mediaCard {
-    @media screen and (min-width: ($tablet-md)) {
-      width: calc(50% - $size-32);
+    @media screen and (max-width: ($tablet-md - 1)) {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }
