@@ -5,7 +5,7 @@ import { PortableText } from '@portabletext/react'
 
 export const SectionHeading = ({
   heading,
-  headingLevel,
+  headingLevel = '2',
   copy,
   subheading,
 }: SectionHeadingProps) => {
