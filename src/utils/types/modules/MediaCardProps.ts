@@ -1,6 +1,6 @@
 import { ImageProps } from '..'
 
-export interface ArticleCardProps {
+export interface MediaCardProps {
   _id: string
   date: string
   description: string

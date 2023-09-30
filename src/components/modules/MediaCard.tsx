@@ -1,21 +1,20 @@
-import { clippedContent } from '@utils/clippedContent'
-import { ArticleCardProps } from '@utils/types/modules/ArticleCardProps'
 import dayjs from 'dayjs'
 import { ImageBlock } from './ImageBlock'
+import { MediaCardProps } from '@utils/types/modules/MediaCardProps'
 
-export const ArticleCard = ({
+export const MediaCard = ({
   title,
   date,
   link,
   description,
   image,
-}: ArticleCardProps) => {
+}: MediaCardProps) => {
   return (
     <a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      className="article"
+      className="mediaCard"
     >
       <div className="image">
         <div className="zoom-image">
@@ -24,9 +23,7 @@ export const ArticleCard = ({
       </div>
       <div className="info">
         {title && <p className="title">{title}</p>}
-        {description && (
-          <p className="description">{clippedContent(description, 100)}</p>
-        )}
+        {description && <p className="description">{description}</p>}
         {date && <p className="date">{dayjs(date).format('MMMM DD, YYYY')}</p>}
       </div>
     </a>

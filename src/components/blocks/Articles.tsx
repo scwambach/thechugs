@@ -1,20 +1,20 @@
-import { ArticleCard } from '@components/modules/ArticleCard'
+import { MediaCard } from '@components/modules/MediaCard'
 import { Container } from '@components/modules/Container'
 import { PageBlockProps } from '@utils/types'
-import { ArticleCardProps } from '@utils/types/modules/ArticleCardProps'
+import { MediaCardProps } from '@utils/types/modules/MediaCardProps'
 
 interface ArticlesProps extends PageBlockProps {
   latest?: boolean
-  articles?: ArticleCardProps[]
+  articles?: MediaCardProps[]
 }
 
 export const Articles = ({ articles }: ArticlesProps) => {
   return (
     <div className="articles">
       <Container size="wide">
-        <div className="flex-row">
+        <div className="list">
           {articles?.map((article) => {
-            return <ArticleCard key={article._id} {...article} />
+            return <MediaCard key={article._id} {...article} />
           })}
         </div>
       </Container>
