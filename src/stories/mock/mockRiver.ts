@@ -1,4 +1,4 @@
-import { LinkTypes } from '@utils/types'
+import { LinkProps, LinkTypes } from '@utils/types'
 
 export const mockRiver = {
   _key: '85806ce8e978',
@@ -16,27 +16,27 @@ export const mockRiver = {
       heading: 'Nullam imperdiet, ipsum in ultrices.',
       links: [
         {
-          url: 'https://google.com',
-          buttonStyle: 'tertiary',
+          _key: 'e8769e40245b',
           _type: 'link',
+          buttonStyle: 'tertiary',
           linkType: 'url' as LinkTypes,
           text: 'Cras ornare.',
-          _key: 'e8769e40245b',
+          url: 'https://google.com',
         },
         {
-          text: 'Suspendisse ac.',
           _key: '0d7aa6900a8a',
-          url: 'https://facebook.com',
           _type: 'link',
           linkType: 'social' as LinkTypes,
+          text: 'Suspendisse ac.',
+          url: 'https://facebook.com',
         },
         {
           _key: 'e75ac02484af',
-          url: 'https://bandcamp.com',
           _type: 'link',
           linkType: 'social' as LinkTypes,
+          url: 'https://bandcamp.com',
         },
-      ],
+      ] as LinkProps[],
       copy: [
         {
           markDefs: [],
@@ -66,11 +66,13 @@ export const mockRiver = {
       heading: 'Donec in magna vitae orci.',
       links: [
         {
+          _key: 'ee1b9fbedeae',
           _type: 'link',
           linkType: 'url' as LinkTypes,
-          _key: 'ee1b9fbedeae',
+          text: 'Suspendisse potenti.',
+          url: 'https://google.com',
         },
-      ],
+      ] as LinkProps[],
       copy: [
         {
           style: 'normal',

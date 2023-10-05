@@ -39,7 +39,7 @@ export const Form = ({
         <form>
           <div className="fields">
             {formFields.map((field, index) => (
-              <FormField key={field._key} {...field} index={index} />
+              <FormField key={field._key} {...field} fieldIndex={index} />
             ))}
             {beforeSubmit && (
               <div className="beforeSubmit">

@@ -75,7 +75,7 @@ export const mockForm = {
           value: 'Mauris bibendum.',
         },
       ],
-      type: 'select',
+      type: 'select' as InputTypes,
       required: true,
       desciprtion:
         'Aenean orci neque, semper in ligula eget, luctus porta nunc. Nam ullamcorper cursus semper. Nulla.',
@@ -104,7 +104,7 @@ export const mockForm = {
           value: 'Mauris bibendum.',
         },
       ],
-      type: 'radio',
+      type: 'radio' as InputTypes,
       required: true,
       desciprtion:
         'Aliquam erat volutpat. Donec aliquet erat arcu, sit amet fringilla sem elementum ac. Suspendisse.',

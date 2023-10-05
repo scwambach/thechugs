@@ -9,7 +9,7 @@ export const FormField = ({
   description,
   disabled,
   hideLabel,
-  index,
+  fieldIndex,
   initialValue,
   label,
   onChange,
@@ -70,11 +70,13 @@ export const FormField = ({
                       key={choice._key}
                       htmlFor={`${slugify(choice.label)}_${
                         choice._key
-                      }-${index}`}
+                      }-${fieldIndex}`}
                     >
                       <input
                         type={type}
-                        id={`${slugify(choice.label)}_${choice._key}-${index}`}
+                        id={`${slugify(choice.label)}_${
+                          choice._key
+                        }-${fieldIndex}`}
                         name={fieldId}
                         onChange={onChange}
                         value={choice.value}

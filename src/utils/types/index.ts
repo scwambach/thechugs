@@ -70,6 +70,7 @@ export interface ImageProps {
 
 export interface LinkProps {
   _key: string
+  _type?: string
   buttonStyle?: ButtonStyle
   linkType?: LinkTypes
   text?: string

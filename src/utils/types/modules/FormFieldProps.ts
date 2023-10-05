@@ -11,7 +11,7 @@ export interface FormFieldProps {
   description?: string
   disabled?: boolean
   hideLabel?: boolean
-  index: number
+  fieldIndex?: number
   initialValue?: string
   label: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void

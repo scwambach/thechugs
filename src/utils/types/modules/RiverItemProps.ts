@@ -2,7 +2,7 @@ import { PortableTextBlock } from '@portabletext/types'
 import { ImageProps, LinkProps } from '..'
 
 export interface RiverItemProps {
-  heading: string
+  heading?: string
   copy: PortableTextBlock[]
   links?: LinkProps[]
   image: ImageProps
