@@ -1,12 +1,12 @@
 import { MediaCard } from '@components/modules/MediaCard'
 import { Container } from '@components/modules/Container'
 import { PageBlockProps } from '@utils/types'
-import { MediaCardProps } from '@utils/types/modules/MediaCardProps'
 import dayjs from 'dayjs'
+import { ArticleProps } from '@utils/types/modules/ArticleProps'
 
 interface ArticlesProps extends PageBlockProps {
   latest?: boolean
-  articles?: MediaCardProps[]
+  articles?: ArticleProps[]
 }
 
 export const Articles = ({ articles }: ArticlesProps) => {
