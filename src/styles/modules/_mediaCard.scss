@@ -20,16 +20,16 @@
     outline: $size-1 solid $gray-lighter;
   }
 
-  .title {
-    @extend .heading;
-    @include headingSix;
-  }
-
-  .info {
+  .meta {
     display: flex;
     gap: $size-12;
     flex-direction: column;
     padding: $size-16 0 0;
+
+    .title {
+      @extend .heading;
+      @include headingSix;
+    }
 
     p {
       margin: 0;

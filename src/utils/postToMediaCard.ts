@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { MediaCardProps } from './types/modules/MediaCardProps'
 import { PostCardProps } from './types/modules/PostCardProps'
 
@@ -7,7 +8,7 @@ export const postToMediaCard = (post: PostCardProps): MediaCardProps => {
     ...rest,
     _id,
     image: post.mainImage,
-    date: publishedAt,
+    info: dayjs(publishedAt).format('MMMM DD, YYYY'),
     link: `/blog/${slug}`,
   }
 }

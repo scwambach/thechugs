@@ -1,21 +1,30 @@
-interface LinkObjectProps {}
+import Link from 'next/link'
+import { ReactNode } from 'react'
 
-export const LinkObject = (props: LinkObjectProps) => {
+interface LinkObjectProps {
+  href: string
+  children: ReactNode
+  className?: string
+}
+
+export const LinkObject = ({ href, children, className }: LinkObjectProps) => {
+  const isExternal = href.startsWith('http')
   return (
-    <code>
-      <pre
-        style={{
-          fontFamily: 'monospace',
-          display: 'block',
-          padding: '50px',
-          color: '#88ffbf',
-          backgroundColor: 'black',
-          textAlign: 'left',
-          whiteSpace: 'pre-wrap',
-        }}
-      >
-        {JSON.stringify(props, null, '    ')}
-      </pre>
-    </code>
+    <>
+      {isExternal ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={className}
+        >
+          {children}
+        </a>
+      ) : (
+        <Link href={href} className={className}>
+          {children}
+        </Link>
+      )}
+    </>
   )
 }
