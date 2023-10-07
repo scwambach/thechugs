@@ -4,23 +4,21 @@
     flex-direction: column;
     gap: $size-32;
   }
+}
+.riverItem {
+  display: flex;
+  flex-direction: column;
 
-  .riverItem {
-    display: flex;
-    flex-direction: column;
-
-    @media screen and (min-width: ($tablet-md)) {
-      gap: $size-32;
-      flex-direction: row-reverse;
-    }
-
-    &:nth-child(even) {
-      @media screen and (min-width: ($tablet-md)) {
-        flex-direction: row;
-      }
-    }
+  @media screen and (min-width: ($tablet-md)) {
+    gap: $size-32;
+    flex-direction: row-reverse;
   }
 
+  &:nth-child(even) {
+    @media screen and (min-width: ($tablet-md)) {
+      flex-direction: row;
+    }
+  }
   .image,
   .content {
     width: 100%;
