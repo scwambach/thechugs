@@ -1,0 +1,46 @@
+.river {
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: $size-32;
+  }
+
+  .riverItem {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: ($tablet-md)) {
+      gap: $size-32;
+      flex-direction: row-reverse;
+    }
+
+    &:nth-child(even) {
+      @media screen and (min-width: ($tablet-md)) {
+        flex-direction: row;
+      }
+    }
+  }
+
+  .image,
+  .content {
+    width: 100%;
+  }
+
+  .image {
+    position: relative;
+    border-radius: $size-20;
+    overflow: hidden;
+
+    @media screen and (max-width: ($tablet-md - 1)) {
+      height: 0;
+      padding-bottom: 56.25%;
+    }
+  }
+
+  .content {
+    padding: $size-52 0;
+    @media screen and (max-width: ($tablet-md - 1)) {
+      padding: $size-32 0 $size-52;
+    }
+  }
+}

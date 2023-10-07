@@ -1,4 +1,7 @@
+import { ButtonList } from '@components/modules/ButtonList'
 import { Container } from '@components/modules/Container'
+import { ImageBlock } from '@components/modules/ImageBlock'
+import { PortableText } from '@portabletext/react'
 import { PageBlockProps } from '@utils/types'
 import { RiverItemProps } from '@utils/types/modules/RiverItemProps'
 
@@ -6,25 +9,24 @@ interface RiverProps extends PageBlockProps {
   items: RiverItemProps[]
 }
 
-export const River = (props: RiverProps) => {
+export const River = ({ items }: RiverProps) => {
   return (
     <div className="river">
       <Container size="wide">
-        <code>
-          <pre
-            style={{
-              fontFamily: 'monospace',
-              display: 'block',
-              padding: '50px',
-              color: '#88ffbf',
-              backgroundColor: 'black',
-              textAlign: 'left',
-              whiteSpace: 'pre-wrap',
-            }}
-          >
-            {JSON.stringify(props, null, '    ')}
-          </pre>
-        </code>
+        <div className="inner">
+          {items.map((item) => (
+            <div className="riverItem" key={item._key}>
+              <div className="image">
+                <ImageBlock image={item.image} width={800} isBackground />
+              </div>
+              <div className="content">
+                {item.heading && <h3>{item.heading}</h3>}
+                {item.copy && <PortableText value={item.copy} />}
+                {item.links && <ButtonList items={item.links} />}
+              </div>
+            </div>
+          ))}
+        </div>
       </Container>
     </div>
   )

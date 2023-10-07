@@ -5,6 +5,7 @@ export const mockRiver = {
   _type: 'river',
   items: [
     {
+      _key: 'igsuehnv3984',
       image: {
         _type: 'image',
         asset: {
@@ -55,6 +56,7 @@ export const mockRiver = {
       ],
     },
     {
+      _key: '973fnj0v8cj20[9',
       image: {
         _type: 'image',
         asset: {
