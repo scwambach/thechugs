@@ -45,6 +45,7 @@ export const page = defineType({
       type: 'array',
       of: [
         defineArrayMember({name: 'articles', type: 'articles'}),
+        defineArrayMember({name: 'bigBanner', type: 'bigBanner'}),
         defineArrayMember({name: 'ctaBanner', type: 'ctaBanner'}),
         defineArrayMember({name: 'events', type: 'events'}),
         defineArrayMember({name: 'form', type: 'form'}),
