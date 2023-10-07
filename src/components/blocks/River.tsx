@@ -1,5 +1,6 @@
 import { ButtonList } from '@components/modules/ButtonList'
 import { Container } from '@components/modules/Container'
+import { Heading } from '@components/modules/Heading'
 import { ImageBlock } from '@components/modules/ImageBlock'
 import { PortableText } from '@portabletext/react'
 import { PageBlockProps } from '@utils/types'
@@ -20,7 +21,7 @@ export const River = ({ items }: RiverProps) => {
                 <ImageBlock image={item.image} width={800} isBackground />
               </div>
               <div className="content">
-                {item.heading && <h3>{item.heading}</h3>}
+                {item.heading && <Heading level="3">{item.heading}</Heading>}
                 {item.copy && <PortableText value={item.copy} />}
                 {item.links && <ButtonList items={item.links} />}
               </div>
