@@ -90,3 +90,81 @@ export interface PageBlockProps extends SectionHeadingProps {
   _type: string
   _key: string
 }
+
+export interface ProductProps {
+  _type: string
+  productId: number
+  externalId: string
+  title: string
+  thumbnail: string
+  slug: {
+    current: string
+  }
+  variants: {
+    title: string
+    itemId: string
+    variantId: number
+    sku: string
+    externalId: string
+    syncProductId: number
+    image: string
+    price: number
+  }[]
+}
+
+export interface ProductDataProps {
+  sync_product: {
+    external_id: string
+    id: number
+    is_ignored: boolean
+    name: string
+    synced: number
+    thumbnail_url: string
+    variants: number
+  }
+  sync_variants: {
+    availability_status: string
+    color: string
+    currency: string
+    external_id: string
+    files: {
+      id: number
+      type: string
+      hash: string
+      url?: string
+      filename: string
+      mime_type: string
+      size: number
+      width: number
+      height: number
+      dpi?: string
+      status: string
+      created: number
+      thumbnail_url: string
+      preview_url: string
+      visible: boolean
+      is_temporary: boolean
+    }[]
+    id: number
+    is_ignored: boolean
+    main_category_id: number
+    name: string
+    options: {
+      id: string
+      value: any
+    }[]
+    product: {
+      variant_id: number
+      product_id: number
+      image: string
+      name: string
+    }
+    retail_price: string
+    size: string
+    sku: string
+    sync_product_id: number
+    synced: boolean
+    variant_id: number
+    warehouse_product_variant_id: string
+  }[]
+}

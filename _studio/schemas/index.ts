@@ -22,6 +22,7 @@ import {posts} from './pageBlocks/posts'
 import {products} from './pageBlocks/products'
 import {river} from './pageBlocks/river'
 import {videos} from './pageBlocks/videos'
+import {merch} from './merch'
 
 export const schemaTypes = [
   article,
@@ -36,6 +37,7 @@ export const schemaTypes = [
   homePage,
   location,
   members,
+  merch,
   otherBand,
   page,
   pageBanner,
