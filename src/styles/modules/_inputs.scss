@@ -5,7 +5,7 @@ textarea {
   width: 100%;
   padding: $size-8 $size-8;
   background-color: transparent;
-  border-radius: $size-3;
+  border-radius: $size-5;
 
   &::placeholder {
     color: $black;
@@ -16,7 +16,7 @@ textarea {
 select {
   appearance: none;
   display: block;
-  border-radius: $size-3;
+  border-radius: $size-5;
   border: $size-2 solid $black;
   padding: $size-8 $size-8;
   width: 100%;

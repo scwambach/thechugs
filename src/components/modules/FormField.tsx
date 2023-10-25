@@ -1,5 +1,6 @@
 import { slugify } from '@utils/slugify'
 import { FormFieldProps } from '@utils/types/modules/FormFieldProps'
+import { AiFillCaretDown } from 'react-icons/ai'
 import { FaCheck } from 'react-icons/fa'
 import { GoDotFill } from 'react-icons/go'
 
@@ -48,6 +49,7 @@ export const FormField = ({
             <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
               {label}
             </span>
+            <AiFillCaretDown />
             {description && <p className="description">{description}</p>}
             <select name={fieldId} onChange={onChangeSelect} id={fieldId}>
               {placeholder && <option value="">- {placeholder} -</option>}

@@ -1,9 +1,8 @@
 .products {
   .list {
-    // grid but just 2 per row on desktop
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: $size-24;
+    gap: $size-48;
 
     @media screen and (max-width: ($tablet-xl - 1)) {
       grid-template-columns: repeat(3, 1fr);
@@ -21,5 +20,10 @@
   .info {
     font-family: $heading-family;
     font-size: $size-24;
+  }
+
+  .productCard {
+    border-bottom: $size-1 solid $secondary-dark;
+    padding-bottom: $size-24;
   }
 }

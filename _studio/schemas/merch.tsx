@@ -1,4 +1,5 @@
 import React from 'react'
+import {AiFillTag} from 'react-icons/ai'
 import {defineArrayMember, defineField} from 'sanity'
 
 export const merch = {
@@ -36,6 +37,24 @@ export const merch = {
       options: {
         source: 'title',
       },
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      rows: 4,
+    }),
+    defineField({
+      name: 'tags',
+      type: 'array',
+      title: 'Tags for item',
+      of: [
+        defineArrayMember({
+          type: 'string',
+          name: 'tag',
+          title: 'Tag',
+        }),
+      ],
     }),
     defineField({
       name: 'price',

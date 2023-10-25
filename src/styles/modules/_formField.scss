@@ -39,3 +39,13 @@
     }
   }
 }
+
+.select {
+  position: relative;
+
+  svg {
+    position: absolute;
+    bottom: $size-10;
+    right: $size-16;
+  }
+}
