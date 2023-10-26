@@ -1,5 +1,13 @@
 import { ImageProps } from '..'
 
+export interface VariantProps {
+  _id: string
+  externalId: string
+  price: number
+  image: string
+  title: string
+}
+
 export interface ProductCardProps {
   _id: string
   externalId?: string

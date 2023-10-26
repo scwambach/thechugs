@@ -3,14 +3,12 @@ import { Container } from '@components/modules/Container'
 import { ImageBlock } from '@components/modules/ImageBlock'
 import { Loading } from '@components/modules/Loading'
 import { ImageProps, PageBlockProps } from '@utils/types'
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
 interface GalleryProps extends PageBlockProps {
   images: ImageProps[]
 }
-
-// TODO: figure out why the images shrink after one cycle
 
 export const Gallery = ({ images }: GalleryProps) => {
   const [activeImage, setActiveImage] = useState<ImageProps>()

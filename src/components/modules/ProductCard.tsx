@@ -13,6 +13,8 @@ import { Button } from './Button'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { getTypeOfVariant } from '@utils/getTypeOfVariant'
 
+// TODO: disable "Add to cart" button if no variant is selected
+
 export const ProductCard = (props: ProductCardProps) => {
   const [activeVariant, setActiveVariant] = useState<VariantProps | undefined>(
     props.variants ? props.variants[0] : undefined
@@ -53,7 +55,7 @@ export const ProductCard = (props: ProductCardProps) => {
       </div>
       <div className="content">
         <p className="title">{props.title}</p>
-        {props.variants && props.variants.length > 1 && (
+        {props.variants && props.variants.length > 1 ? (
           <FormField
             type="select"
             choices={[
@@ -75,6 +77,8 @@ export const ProductCard = (props: ProductCardProps) => {
             _key="jneklfvbhwo3409n"
             label=""
           />
+        ) : (
+          <div className="spacer" />
         )}
         <div className="button-group">
           <Button text="Add to Cart" buttonStyle="white" tagType="button">

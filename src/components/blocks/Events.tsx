@@ -1,10 +1,8 @@
-import { Button } from '@components/modules/Button'
 import { Container } from '@components/modules/Container'
 import { Event } from '@components/modules/Event'
 import { ImageBlock } from '@components/modules/ImageBlock'
 import { ImageProps, PageBlockProps } from '@utils/types'
 import { EventProps } from '@utils/types/modules/EventProps'
-import dayjs from 'dayjs'
 
 interface EventsProps extends PageBlockProps {
   events: EventProps[]
