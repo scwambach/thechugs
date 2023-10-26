@@ -32,6 +32,7 @@ export const merch = {
     }),
     defineField({
       name: 'slug',
+      validation: (Rule: any) => Rule.required(),
       title: 'Slug',
       type: 'slug',
       options: {
@@ -47,6 +48,7 @@ export const merch = {
     defineField({
       name: 'tags',
       type: 'array',
+      validation: (Rule: any) => Rule.required(),
       title: 'Tags for item',
       of: [
         defineArrayMember({

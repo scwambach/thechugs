@@ -140,3 +140,27 @@ ul {
   -webkit-text-select: none;
   -webkit-user-select: none;
 }
+
+.button-group {
+  display: flex;
+
+  .button {
+    width: 100%;
+    padding: $size-8 $size-16;
+    border-radius: 0;
+    border: $size-2 solid;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:first-child {
+      border-left: $size-2 solid;
+      border-radius: $size-5 0 0 $size-5;
+    }
+
+    &:last-child {
+      border-radius: 0 $size-5 $size-5 0;
+    }
+  }
+}

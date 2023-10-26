@@ -76,7 +76,7 @@ export const ProductCard = (props: ProductCardProps) => {
             label=""
           />
         )}
-        <div className="group">
+        <div className="button-group">
           <Button text="Add to Cart" buttonStyle="white" tagType="button">
             Add to <AiOutlineShoppingCart size={20} />
           </Button>
