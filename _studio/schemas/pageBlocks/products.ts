@@ -21,16 +21,21 @@ export const products = defineType({
   fields: [
     ...blockFields,
     defineField({
+      name: 'allProducts',
+      title: 'All Products',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'products',
       title: 'Products',
       type: 'array',
-      validation: (Rule) => Rule.required().min(1),
+      hidden: ({parent}) => parent?.allProducts,
       of: [
         defineArrayMember({
           name: 'product',
           title: 'Product',
           type: 'reference',
-          to: [{type: 'product'}],
+          to: [{type: 'merch'}],
         }),
       ],
     }),

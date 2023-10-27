@@ -3,6 +3,7 @@ import { Button } from './Button'
 import * as Icon from 'react-icons/si'
 import { IconType } from 'react-icons'
 import { getDomain } from '@utils/getDomain'
+import { iconNames } from '@utils/iconNames'
 
 interface ButtonListProps {
   items: LinkProps[]
@@ -15,16 +16,20 @@ export const ButtonList = ({
   tagType = 'a',
   buttonStyle = 'primary',
 }: ButtonListProps) => {
+  const getIconName = (url: string) => {
+    const iconName = iconNames.find((iconName) => {
+      return url.includes(iconName.toLowerCase())
+    })
+
+    return iconName ? `Si${iconName}` : 'SiReact'
+  }
+
   return (
     <ul className="buttonList unstyled">
       {items.map((item) => {
-        const iconName = `Si${
-          getDomain(item.url).charAt(0).toUpperCase() +
-          getDomain(item.url).slice(1)
-        }`
-
-        // @ts-ignore
-        const SelectedIcon = Icon[iconName] as IconType
+        const SelectedIcon = Icon[
+          getIconName(item.url) as keyof typeof Icon
+        ] as IconType
         return (
           <li
             key={item._key}
@@ -38,7 +43,7 @@ export const ButtonList = ({
               />
             )}
             {item.linkType === 'social' && (
-              <a href={item.url}>
+              <a href={item.url} target="_blank" rel="noopener noreferrer">
                 <SelectedIcon size={22} />
                 <div className="sr-only">link to {getDomain(item.url)}</div>
               </a>
