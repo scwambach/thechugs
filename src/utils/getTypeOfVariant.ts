@@ -1,6 +1,6 @@
 export const getTypeOfVariant = (variants: string[]) => {
   // check if there's a color option before size (e.g. "Red / S")
-  const hasColor = variants.some((variant) => variant.includes('/'))
+  const hasColor = variants.some((variant) => variant.includes(' / '))
 
   if (hasColor) {
     return 'color and size'

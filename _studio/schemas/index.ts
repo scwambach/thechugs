@@ -3,6 +3,8 @@ import {event} from './event'
 import {globalInfo} from './globalInfo'
 import {homePage} from './homePage'
 import {location} from './location'
+import {merch} from './merch'
+import {merchCategory} from './merchCategory'
 import {otherBand} from './otherBand'
 import {page} from './page'
 import {post} from './post'
@@ -22,7 +24,6 @@ import {posts} from './pageBlocks/posts'
 import {products} from './pageBlocks/products'
 import {river} from './pageBlocks/river'
 import {videos} from './pageBlocks/videos'
-import {merch} from './merch'
 
 export const schemaTypes = [
   article,
@@ -38,6 +39,7 @@ export const schemaTypes = [
   location,
   members,
   merch,
+  merchCategory,
   otherBand,
   page,
   pageBanner,

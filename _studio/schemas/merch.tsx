@@ -1,8 +1,7 @@
 import React from 'react'
-import {AiFillTag} from 'react-icons/ai'
-import {defineArrayMember, defineField} from 'sanity'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
-export const merch = {
+export const merch = defineType({
   name: 'merch',
   title: 'Merch',
   type: 'document',
@@ -46,9 +45,14 @@ export const merch = {
       rows: 4,
     }),
     defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'reference',
+      to: [{type: 'merchCategory'}],
+    }),
+    defineField({
       name: 'tags',
       type: 'array',
-      validation: (Rule: any) => Rule.required(),
       title: 'Tags for item',
       of: [
         defineArrayMember({
@@ -207,4 +211,4 @@ export const merch = {
       ],
     }),
   ],
-}
+})
