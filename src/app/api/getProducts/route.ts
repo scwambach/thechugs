@@ -60,27 +60,29 @@ export async function GET() {
     return {
       createOrReplace: {
         _type: 'merch',
-        _key: item.sync_product.id,
+        _key: `${item.sync_product.id}`,
         productId: item.sync_product.id,
-        externalId: item.sync_product.external_id,
-        title: item.sync_product.name,
-        thumbnail: item.sync_product.thumbnail_url,
+        externalId: `${item.sync_product.external_id}`,
+        title: `${item.sync_product.name}`,
+        thumbnail: `${item.sync_product.thumbnail_url}`,
         slug: {
           _type: 'slug',
-          current: slugify(item.sync_product.name),
+          current: `${slugify(item.sync_product.name)}`,
         },
         variants: item.sync_variants.map((variant: any) => {
           return {
-            _key: variant.variant_id,
-            title: variant.name,
+            _key: `${variant.variant_id}`,
+            title: `${variant.name}`,
             itemId: variant.id,
             variantId: variant.variant_id,
             sku: variant.sku,
-            externalId: variant.external_id,
+            externalId: `${variant.external_id}`,
             syncProductId: variant.sync_product_id,
-            image: variant.files[1]
-              ? variant.files[1].preview_url
-              : item.sync_product.thumbnail_url,
+            image: `${
+              variant.files[1]
+                ? variant.files[1].preview_url
+                : item.sync_product.thumbnail_url
+            }`,
             price: parseInt(variant.retail_price),
           }
         }),

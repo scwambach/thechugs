@@ -9,6 +9,8 @@ interface EventsProps extends PageBlockProps {
   image: ImageProps
 }
 
+// TODO: Add event metadata for Google Events
+
 export const Events = ({ events, image }: EventsProps) => {
   return (
     <div className="events">
