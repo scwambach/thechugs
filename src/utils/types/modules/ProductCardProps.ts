@@ -12,7 +12,12 @@ export interface ProductCardProps {
   _id: string
   externalId?: string
   description?: string
-  tags: string[]
+  tags?: string[]
+  category: {
+    _id: string
+    title: string
+    slug: string
+  }
   images?: { image: ImageProps }[]
   thumbnail?: string
   slug?: string

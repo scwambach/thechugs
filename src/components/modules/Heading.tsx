@@ -3,15 +3,24 @@ import { ReactNode } from 'react'
 
 interface HeadingProps {
   children: ReactNode
+  headingId?: string
   className?: string
   level: HeadingLevel
 }
 
-export const Heading = ({ level, children, className }: HeadingProps) => {
+export const Heading = ({
+  level,
+  children,
+  headingId,
+  className,
+}: HeadingProps) => {
   const HeadingTag = `h${level}` as keyof JSX.IntrinsicElements
 
   return (
-    <HeadingTag className={`headingTag${className ? ` ${className}` : ''}`}>
+    <HeadingTag
+      id={headingId ? headingId : undefined}
+      className={`headingTag${className ? ` ${className}` : ''}`}
+    >
       {children}
     </HeadingTag>
   )

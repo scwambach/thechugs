@@ -1,0 +1,27 @@
+.merchFilter {
+  display: flex;
+  flex-direction: column;
+  gap: $size-100;
+
+  .headingTag {
+    margin-bottom: $size-48;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+
+    .headingTag {
+      position: sticky;
+      top: $size-16;
+      padding: $size-8 $size-16;
+      z-index: 4;
+      background-color: $tertiary;
+      color: $white;
+
+      @media screen and (max-width: ($tablet-md - 1)) {
+        font-size: $size-28;
+      }
+    }
+  }
+}

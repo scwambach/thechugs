@@ -16,6 +16,7 @@ textarea {
 select {
   appearance: none;
   display: block;
+  cursor: pointer;
   border-radius: $size-5;
   border: $size-2 solid $black;
   padding: $size-8 $size-8;
