@@ -15,6 +15,7 @@ input[type='button'] {
   text-align: center;
   text-decoration: none;
   transition-duration: $animation-speed;
+  @include outlineBox;
 
   @media screen and (max-width: ($tablet-md - 1)) {
     font-size: $size-14;
@@ -38,7 +39,7 @@ input[type='button'] {
   }
 
   &[class$='-outline'] {
-    outline-width: 4px;
+    outline-width: $border-size;
     outline-style: solid;
   }
 

@@ -149,14 +149,12 @@ ul {
     width: 100%;
     padding: $size-8 $size-16;
     border-radius: 0;
-    border: $size-2 solid;
     border-left: none;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:first-child {
-      border-left: $size-2 solid;
       border-radius: $size-5 0 0 $size-5;
     }
 
@@ -174,6 +172,6 @@ ul {
 }
 
 .page-component:not(.component_bigBanner) {
-  border-top: $size-2 solid $black;
+  border-top: $border-size solid $black;
   padding: $size-100 0;
 }

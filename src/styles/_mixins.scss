@@ -61,3 +61,13 @@
   width: 100%;
   height: 100%;
 }
+
+@mixin outlineBox {
+  outline: $border-size solid $black;
+
+  .bg-blue &,
+  .bg-black &,
+  .bg-image & {
+    outline-color: $white;
+  }
+}

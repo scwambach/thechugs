@@ -22,6 +22,17 @@
     @media screen and (max-width: ($mobile-md - 1)) {
       height: $size-128;
     }
+
+    &:not(.close) {
+      @include outlineBox;
+    }
+  }
+
+  .next,
+  .prev {
+    button {
+      outline: none;
+    }
   }
 
   .items {

@@ -17,6 +17,7 @@
     width: 100%;
     max-width: $size-416;
     height: $size-320;
+    @include outlineBox;
 
     @media screen and (min-width: ($tablet-md - 1)) {
       height: 0;

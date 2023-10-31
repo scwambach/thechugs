@@ -28,10 +28,11 @@
     position: relative;
     border-radius: $size-20;
     overflow: hidden;
+    @include outlineBox;
 
     @media screen and (max-width: ($tablet-md - 1)) {
       height: 0;
-      padding-bottom: 56.25%;
+      padding-bottom: 75%;
     }
 
     &.fitImage {

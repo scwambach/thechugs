@@ -3,7 +3,7 @@
   gap: $size-32;
   width: 100%;
   justify-content: space-between;
-  border-bottom: $size-1 solid $secondary-dark;
+  border-bottom: $border-size solid $secondary-dark;
   padding-bottom: $size-16;
 
   &:last-child {

@@ -9,6 +9,9 @@
     overflow: hidden;
     padding-bottom: 56.25% !important;
     position: relative;
+    border-radius: $size-20;
+    overflow: hidden;
+    @include outlineBox;
 
     > div {
       height: 100% !important;

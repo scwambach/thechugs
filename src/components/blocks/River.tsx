@@ -17,7 +17,7 @@ export const River = ({ items }: RiverProps) => {
         <div className="inner">
           {items.map((item) => (
             <div className="riverItem" key={item._key}>
-              <div className={`image${item.fitImage ? ' fitImage' : ''}`}>
+              <div className="image">
                 <ImageBlock image={item.image} width={800} isBackground />
               </div>
               <div className="content">

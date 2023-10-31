@@ -18,13 +18,7 @@
     background-color: $white;
     border-radius: $size-10;
     overflow: hidden;
-    border: $size-2 solid $black;
-
-    .bg-blue &,
-    .bg-black &,
-    .bg-image & {
-      border-color: $white;
-    }
+    @include outlineBox;
 
     img {
       position: absolute;

@@ -38,16 +38,10 @@
   }
 
   img {
-    border: $size-2 solid $black;
     border-radius: $size-10;
     overflow: hidden;
     display: block;
-
-    .bg-blue &,
-    .bg-black &,
-    .bg-image & {
-      border-color: $white;
-    }
+    @include outlineBox;
   }
 
   p {

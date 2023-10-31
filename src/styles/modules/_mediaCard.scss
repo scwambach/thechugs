@@ -17,7 +17,7 @@
     width: 100%;
     border-radius: $size-10;
     overflow: hidden;
-    outline: $size-1 solid $gray-lighter;
+    @include outlineBox;
   }
 
   .meta {
