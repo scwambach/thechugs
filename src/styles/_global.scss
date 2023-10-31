@@ -1,5 +1,6 @@
 main {
   font-family: $font-family;
+  background-color: $white;
 }
 
 *::selection {
@@ -163,4 +164,15 @@ ul {
       border-radius: 0 $size-5 $size-5 0;
     }
   }
+}
+
+.heading-container {
+  .inner {
+    max-width: $tablet;
+    margin-bottom: $size-48;
+  }
+}
+
+.page-component:not(.component_bigBanner) {
+  padding: $size-100 0;
 }

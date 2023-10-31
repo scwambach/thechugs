@@ -33,6 +33,13 @@
       height: 0;
       padding-bottom: 56.25%;
     }
+
+    &.fitImage {
+      img {
+        background-size: contain !important;
+        object-fit: contain;
+      }
+    }
   }
 
   .content {

@@ -42,6 +42,11 @@
 
 .select {
   position: relative;
+  color: $black;
+
+  select {
+    background-color: $white;
+  }
 
   svg {
     position: absolute;

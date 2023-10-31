@@ -5,6 +5,7 @@ export const river = `_type == 'river' => {
     _key,
     heading,
     links,
+    fitImage,
     copy,
     image {
       ${imageQuery}

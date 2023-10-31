@@ -15,6 +15,9 @@
     height: $size-200;
     position: relative;
     margin: 0 auto;
+    background-color: $white;
+    border-radius: $size-10;
+    overflow: hidden;
 
     img {
       position: absolute;

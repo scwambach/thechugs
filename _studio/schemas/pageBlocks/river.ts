@@ -37,6 +37,22 @@ export const river = defineType({
               validation: (Rule: any) => Rule.required(),
             }),
             defineField({
+              name: 'image',
+              validation: (Rule: any) => Rule.required(),
+              title: 'Image',
+              type: 'image',
+              options: {
+                hotspot: true,
+              },
+            }),
+            defineField({
+              name: 'fitImage',
+              title: 'Fit Image',
+              type: 'boolean',
+              description: 'Fit image to container',
+              initialValue: false,
+            }),
+            defineField({
               name: 'copy',
               title: 'Copy',
               validation: (Rule: any) => Rule.required(),
@@ -50,15 +66,6 @@ export const river = defineType({
               ],
             }),
             ...links,
-            defineField({
-              name: 'image',
-              validation: (Rule: any) => Rule.required(),
-              title: 'Image',
-              type: 'image',
-              options: {
-                hotspot: true,
-              },
-            }),
           ],
         }),
       ],

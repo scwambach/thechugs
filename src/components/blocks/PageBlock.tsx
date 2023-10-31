@@ -24,16 +24,24 @@ export const PageBlock = (props: PageBlockProps) => {
   return (
     <section
       id={`component_${props._type}_${props._key}`}
-      className={`page-component component_${props._type}`}
+      className={`page-component component_${props._type}${
+        props.backgroundColor ? ` bg-${props.backgroundColor}` : ''
+      }`}
     >
-      <div className="heading-container">
-        {props.heading && (
-          <Heading level={(props.headingLevel || '2') as HeadingLevel}>
-            {props.heading}
-          </Heading>
-        )}
-        {props.subheading && <p className="subheading">{props.subheading}</p>}
-      </div>
+      {(props.heading || props.subheading) && (
+        <div className="heading-container container wide">
+          <div className="inner">
+            {props.heading && (
+              <Heading level={(props.headingLevel || '2') as HeadingLevel}>
+                {props.heading}
+              </Heading>
+            )}
+            {props.subheading && (
+              <p className="subheading">{props.subheading}</p>
+            )}
+          </div>
+        </div>
+      )}
       <PageBlock {...props} />
     </section>
   )
