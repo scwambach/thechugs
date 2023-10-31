@@ -174,5 +174,6 @@ ul {
 }
 
 .page-component:not(.component_bigBanner) {
+  border-top: $size-2 solid $black;
   padding: $size-100 0;
 }

@@ -21,6 +21,7 @@
   @media screen and (max-width: ($tablet - 1)) {
     text-align: center;
   }
+
   .image-container {
     position: relative;
     width: 100%;
@@ -35,10 +36,18 @@
       margin: 0 auto;
     }
   }
+
   img {
+    border: $size-2 solid $black;
     border-radius: $size-10;
     overflow: hidden;
     display: block;
+
+    .bg-blue &,
+    .bg-black &,
+    .bg-image & {
+      border-color: $white;
+    }
   }
 
   p {
