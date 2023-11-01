@@ -7,14 +7,15 @@ import { Button } from '@components/modules/Button'
 
 interface ProductsProps extends PageBlockProps {
   products: ProductCardProps[]
+  allProducts?: boolean
   filter?: boolean
 }
 
-export const Products = ({ products, filter }: ProductsProps) => {
+export const Products = ({ products, allProducts }: ProductsProps) => {
   return (
     <div className="products">
       <Container size="wide">
-        {filter ? (
+        {allProducts ? (
           <MerchFilter items={products} />
         ) : (
           <>
@@ -24,7 +25,7 @@ export const Products = ({ products, filter }: ProductsProps) => {
               ))}
             </div>
             <div className="links">
-              <Button url="/merch" buttonStyle="quaternary">
+              <Button tagType="a" url="/merch" buttonStyle="quaternary">
                 Check out ALL the merch here!
               </Button>
             </div>

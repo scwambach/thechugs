@@ -171,15 +171,22 @@ ul {
   }
 }
 
-.page-component:not(.component_bigBanner) {
+.page-component {
   border-top: $border-size solid $black;
-  padding: $size-100 0;
 
-  @media screen and (max-width: ($tablet-md - 1)) {
-    padding: $size-48 0;
+  &:first-child {
+    border-top: none;
   }
 
-  @media screen and (max-width: ($tablet - 1)) {
-    border-width: $mobile-border-size;
+  &:not(.component_bigBanner, .component_ctaBanner) {
+    padding: $size-100 0;
+
+    @media screen and (max-width: ($tablet-md - 1)) {
+      padding: $size-48 0;
+    }
+
+    @media screen and (max-width: ($tablet - 1)) {
+      border-width: $mobile-border-size;
+    }
   }
 }

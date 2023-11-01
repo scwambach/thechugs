@@ -1,4 +1,4 @@
-import { bigBanner } from './blockQueries/bigBanner'
+import { products } from '@utils/products'
 
 export const imageQuery = `...,
 "lqip": asset -> metadata.lqip`

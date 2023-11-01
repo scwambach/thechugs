@@ -17,6 +17,8 @@ export const PageBlock = (props: PageBlockProps) => {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
+  const isUniqueBlock = props._type === 'ctaBanner'
+
   const componentName = capitalizeFirstLetter(props._type)
 
   const PageBlock = Block[componentName as keyof typeof Block] as any
@@ -28,7 +30,7 @@ export const PageBlock = (props: PageBlockProps) => {
         props.backgroundColor ? ` bg-${props.backgroundColor}` : ''
       }`}
     >
-      {(props.heading || props.subheading) && (
+      {(props.heading || props.subheading) && !isUniqueBlock && (
         <div className="heading-container container wide">
           <div className="inner">
             {props.heading && (
