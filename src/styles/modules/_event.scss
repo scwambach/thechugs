@@ -6,6 +6,10 @@
   border-bottom: $border-size solid $secondary-dark;
   padding-bottom: $size-16;
 
+  @media screen and (max-width: ($tablet - 1)) {
+    border-width: $mobile-border-size;
+  }
+
   &:last-child {
     border-bottom: none;
   }

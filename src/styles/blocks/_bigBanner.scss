@@ -5,7 +5,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  max-height: $mobile;
+
+  @media screen and (min-width: ($tablet-md)) {
+    height: 100vh;
+    max-height: $desktop;
+  }
 
   &:before,
   &:after {

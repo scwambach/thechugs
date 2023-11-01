@@ -147,13 +147,14 @@ ul {
 
   .button {
     width: 100%;
-    padding: $size-8 $size-16;
+    padding: $size-8;
     border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &:first-child {
+      border-right: 0;
       border-radius: $size-5 0 0 $size-5;
     }
 
@@ -173,4 +174,12 @@ ul {
 .page-component:not(.component_bigBanner) {
   border-top: $border-size solid $black;
   padding: $size-100 0;
+
+  @media screen and (max-width: ($tablet-md - 1)) {
+    padding: $size-48 0;
+  }
+
+  @media screen and (max-width: ($tablet - 1)) {
+    border-width: $mobile-border-size;
+  }
 }

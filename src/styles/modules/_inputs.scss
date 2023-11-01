@@ -1,11 +1,11 @@
 input:not([type='checkbox']):not([type='radio']),
 textarea {
   display: block;
-  border: $border-size solid $black;
   width: 100%;
   padding: $size-8 $size-8;
   background-color: transparent;
   border-radius: $size-5;
+  @include outlineBox;
 
   &::placeholder {
     color: $black;
@@ -18,10 +18,10 @@ select {
   display: block;
   cursor: pointer;
   border-radius: $size-5;
-  border: $border-size solid $black;
   padding: $size-8 $size-8;
   width: 100%;
   background-color: transparent;
+  @include outlineBox;
 }
 
 input[type='radio'],
@@ -32,13 +32,13 @@ input[type='checkbox'] {
   position: absolute;
 
   + [class$='-indicator'] {
-    outline: $border-size solid $black;
     overflow: hidden;
-    height: $size-16;
-    width: $size-16;
+    height: $size-24;
+    width: $size-24;
     display: flex;
     align-items: center;
     justify-content: center;
+    @include outlineBox;
   }
 
   + .radio-indicator {

@@ -63,11 +63,15 @@
 }
 
 @mixin outlineBox {
-  outline: $border-size solid $black;
+  border: $border-size solid $black;
+
+  @media screen and (max-width: ($tablet - 1)) {
+    border-width: $mobile-border-size;
+  }
 
   .bg-blue &,
   .bg-black &,
   .bg-image & {
-    outline-color: $white;
+    border-color: $white;
   }
 }
