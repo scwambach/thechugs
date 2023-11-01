@@ -178,7 +178,7 @@ ul {
     border-top: none;
   }
 
-  &:not(.component_bigBanner, .component_ctaBanner) {
+  &:not(.component_bigBanner, .component_ctaBanner, .component_pageBanner) {
     padding: $size-100 0;
 
     @media screen and (max-width: ($tablet-md - 1)) {

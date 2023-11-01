@@ -17,7 +17,8 @@ export const PageBlock = (props: PageBlockProps) => {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
 
-  const isUniqueBlock = props._type === 'ctaBanner'
+  const isUniqueBlock =
+    props._type === 'ctaBanner' || props._type === 'pageBanner'
 
   const componentName = capitalizeFirstLetter(props._type)
 

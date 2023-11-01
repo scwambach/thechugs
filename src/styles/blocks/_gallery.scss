@@ -31,7 +31,7 @@
   .next,
   .prev {
     button {
-      outline: none;
+      border: none;
     }
   }
 
@@ -94,7 +94,6 @@
       border: none;
       color: $white;
       position: absolute;
-
       top: 50%;
       transform: translateY(-50%);
       z-index: 1001;
