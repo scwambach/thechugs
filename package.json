@@ -16,7 +16,8 @@
     "prepare": "husky install",
     "start": "next start",
     "storybook": "storybook dev -p 6006 --no-open",
-    "test": "jest"
+    "test": "jest",
+    "deploy-storybook": "npx chromatic --project-token=chpt_ce7c97b39513953"
   },
   "engines": {
     "yarn": "please-use-npm"
@@ -53,6 +54,7 @@
     "@storybook/react": "^7.2.1",
     "@storybook/testing-library": "^0.2.0",
     "@types/jest": "^29.5.3",
+    "chromatic": "^7.6.0",
     "concurrently": "^8.2.0",
     "cypress": "^12.17.3",
     "cypress-axe": "^1.4.0",
@@ -70,5 +72,7 @@
     "storybook": "^7.2.1",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "thechugs@0.1.0"
 }
