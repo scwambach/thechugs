@@ -77,6 +77,12 @@
     a {
       color: $black;
 
+      .bg-blue &,
+      .bg-image &,
+      .bg-black & {
+        color: $white;
+      }
+
       &:hover {
         span {
           text-decoration: underline;

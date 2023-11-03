@@ -10,6 +10,7 @@ interface PageBlockProps {
   headingLevel?: string
   subheading?: string
   backgroundColor?: string
+  events?: any[]
 }
 
 export const PageBlock = (props: PageBlockProps) => {
@@ -45,6 +46,7 @@ export const PageBlock = (props: PageBlockProps) => {
           </div>
         </div>
       )}
+
       <PageBlock {...props} />
     </section>
   )
