@@ -73,7 +73,9 @@
   .location {
     width: calc(100% - $size-320);
     font-size: $size-12;
-
+    display: flex;
+    flex-direction: column;
+    gap: $size-8;
     a {
       color: $black;
 
@@ -102,6 +104,11 @@
       font-size: $size-20;
       line-height: 1;
       font-family: $heading-family;
+
+      &.otherBands {
+        line-height: 1.2;
+        display: block;
+      }
     }
 
     a.band {

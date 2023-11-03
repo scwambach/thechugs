@@ -15,4 +15,8 @@
     flex-direction: column;
     gap: $size-16;
   }
+
+  .required {
+    color: $danger;
+  }
 }

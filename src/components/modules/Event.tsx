@@ -24,7 +24,7 @@ export const Event = ({
           {location.cityStateZip}
         </a>
         {otherBands && (
-          <p>
+          <span className="otherBands">
             with:{' '}
             {otherBands.map((band, index) => {
               return (
@@ -51,7 +51,7 @@ export const Event = ({
                 </>
               )
             })}
-          </p>
+          </span>
         )}
       </p>
       <div className="links">

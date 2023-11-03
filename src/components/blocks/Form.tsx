@@ -5,6 +5,7 @@ import { PortableTextBlock } from '@portabletext/types'
 import { FormFieldProps } from '@utils/types/modules/FormFieldProps'
 
 interface FormProps {
+  _key: string
   beforeSubmit?: PortableTextBlock[]
   description?: PortableTextBlock[]
   errorMessage: string
@@ -18,6 +19,7 @@ interface FormProps {
 // TODO: Add form functionality
 
 export const Form = ({
+  _key,
   beforeSubmit,
   description,
   errorMessage,
@@ -36,7 +38,7 @@ export const Form = ({
             <PortableText value={description} />
           </div>
         )}
-        <form>
+        <form id={`form_${_key}`}>
           <div className="fields">
             {formFields.map((field, index) => (
               <FormField key={field._key} {...field} fieldIndex={index} />

@@ -2,6 +2,7 @@ import { articles } from './blockQueries/articles'
 import { bigBanner } from './blockQueries/bigBanner'
 import { ctaBanner } from './blockQueries/ctaBanner'
 import { events } from './blockQueries/events'
+import { form } from './blockQueries/form'
 import { gallery } from './blockQueries/gallery'
 import { members } from './blockQueries/members'
 import { pageBanner } from './blockQueries/pageBanner'
@@ -16,6 +17,7 @@ ${articles},
 ${bigBanner},
 ${ctaBanner},
 ${events},
+${form},
 ${gallery},
 ${members},
 ${pageBanner},

@@ -31,6 +31,7 @@ export const FormField = ({
           <label className={type} htmlFor={fieldId}>
             <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
               {label}
+              {required && <span className="required">*</span>}
             </span>
             {description && <p className="description">{description}</p>}
             <textarea
@@ -42,7 +43,11 @@ export const FormField = ({
               readOnly={readOnly}
               required={required}
               onChange={onChangeArea}
-              placeholder={placeholder}
+              placeholder={
+                hideLabel && required
+                  ? `${placeholder || label} (required)`
+                  : placeholder
+              }
               defaultValue={initialValue}
             />
           </label>
@@ -50,11 +55,20 @@ export const FormField = ({
           <label className={type} htmlFor={fieldId}>
             <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
               {label}
+              {required && <span className="required">*</span>}
             </span>
             <AiFillCaretDown />
             {description && <p className="description">{description}</p>}
             <select name={fieldId} onChange={onChangeSelect} id={fieldId}>
-              {placeholder && <option value="">- {placeholder} -</option>}
+              {placeholder && (
+                <option value="">
+                  -{' '}
+                  {hideLabel && required
+                    ? `${placeholder || label} (required)`
+                    : placeholder}{' '}
+                  -
+                </option>
+              )}
               {choices?.map((option) => (
                 <option key={option._key} value={option.value}>
                   {option.label}
@@ -64,7 +78,10 @@ export const FormField = ({
           </label>
         ) : type === 'checkbox' || type === 'radio' ? (
           <div className={type}>
-            <p className={`labelTag${hideLabel ? ' hidden' : ''}`}>{label}</p>
+            <p className={`labelTag${hideLabel ? ' hidden' : ''}`}>
+              {label}
+              {required && <span className="required">*</span>}
+            </p>
             {description && <p className="description">{description}</p>}
             <div className="choices">
               {choices?.map(
@@ -99,6 +116,7 @@ export const FormField = ({
           <label className={type} htmlFor={fieldId}>
             <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
               {label}
+              {required && <span className="required">*</span>}
             </span>
             {description && <p className="description">{description}</p>}
             <input
@@ -110,7 +128,11 @@ export const FormField = ({
               onChange={onChange}
               readOnly={readOnly}
               required={required}
-              placeholder={placeholder}
+              placeholder={
+                hideLabel && required
+                  ? `${placeholder || label} (required)`
+                  : placeholder
+              }
               defaultValue={initialValue}
             />
           </label>
