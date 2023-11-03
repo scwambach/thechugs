@@ -7,7 +7,6 @@ import {merch} from './merch'
 import {merchCategory} from './merchCategory'
 import {otherBand} from './otherBand'
 import {page} from './page'
-import {post} from './post'
 import {product} from './product'
 import {release} from './release'
 import {video} from './video'
@@ -20,7 +19,6 @@ import {form} from './pageBlocks/form'
 import {gallery} from './pageBlocks/gallery'
 import {members} from './pageBlocks/members'
 import {pageBanner} from './pageBlocks/pageBanner'
-import {posts} from './pageBlocks/posts'
 import {products} from './pageBlocks/products'
 import {river} from './pageBlocks/river'
 import {videos} from './pageBlocks/videos'
@@ -43,8 +41,6 @@ export const schemaTypes = [
   otherBand,
   page,
   pageBanner,
-  post,
-  posts,
   product,
   products,
   release,

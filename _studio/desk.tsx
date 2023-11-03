@@ -6,7 +6,6 @@ import {
   AiOutlineCalendar,
   AiOutlineShoppingCart,
 } from 'react-icons/ai'
-import {FiEdit} from 'react-icons/fi'
 import {GrMultiple} from 'react-icons/gr'
 import {BiAlbum} from 'react-icons/bi'
 import {BsGlobe} from 'react-icons/bs'
@@ -26,7 +25,6 @@ export const desk = deskTool({
           .title('Pages')
           .child(S.documentTypeList('page').title('Pages'))
           .icon(GrMultiple),
-        S.listItem().title('Posts').child(S.documentTypeList('post').title('Posts')).icon(FiEdit),
         S.listItem()
           .title('Videos')
           .child(S.documentTypeList('video').title('Videos'))

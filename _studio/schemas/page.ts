@@ -52,7 +52,6 @@ export const page = defineType({
         defineArrayMember({name: 'gallery', type: 'gallery'}),
         defineArrayMember({name: 'members', type: 'members'}),
         defineArrayMember({name: 'pageBanner', type: 'pageBanner'}),
-        defineArrayMember({name: 'posts', type: 'posts'}),
         defineArrayMember({name: 'products', type: 'products'}),
         defineArrayMember({name: 'river', type: 'river'}),
         defineArrayMember({name: 'videos', type: 'videos'}),
