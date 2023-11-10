@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 export const Event = ({
   dateTime,
   location,
+  title,
   otherBands,
   links,
 }: EventProps) => {
@@ -12,6 +13,7 @@ export const Event = ({
     <div className="event">
       <p className="date">{dayjs(dateTime).format('MM.DD')}</p>
       <p className="location">
+        <span className="title">{title}</span>
         <a
           target="_blank"
           rel="noopener noreferrer"

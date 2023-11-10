@@ -16,20 +16,11 @@ export const CtaBanner = ({
   headingLevel = '2',
   subheading,
   backgroundImage,
-  backgroundColor,
   copy,
   links,
 }: CtaBannerProps) => {
   return (
-    <div
-      className={`ctaBanner${
-        backgroundColor && !backgroundImage
-          ? ` bg-${backgroundColor}`
-          : !!backgroundImage
-          ? ' bg-image'
-          : ''
-      }`}
-    >
+    <div className="ctaBanner">
       {!!backgroundImage && (
         <>
           <ImageBlock image={backgroundImage} isBackground width={1200} />

@@ -26,6 +26,11 @@
     margin: 0;
   }
 
+  .title {
+    font-size: $size-24;
+    font-family: $heading-family;
+  }
+
   .date {
     font-size: $size-36;
     width: $size-104;
@@ -75,7 +80,7 @@
     font-size: $size-12;
     display: flex;
     flex-direction: column;
-    gap: $size-8;
+    gap: $size-10;
     a {
       color: $black;
 
@@ -103,7 +108,6 @@
     span {
       font-size: $size-20;
       line-height: 1;
-      font-family: $heading-family;
 
       &.otherBands {
         line-height: 1.2;

@@ -10,6 +10,7 @@ interface PageBlockProps {
   headingLevel?: string
   subheading?: string
   backgroundColor?: string
+  backgroundImage?: any
   events?: any[]
 }
 
@@ -29,7 +30,11 @@ export const PageBlock = (props: PageBlockProps) => {
     <section
       id={`component_${props._type}_${props._key}`}
       className={`page-component component_${props._type}${
-        props.backgroundColor ? ` bg-${props.backgroundColor}` : ''
+        props.backgroundColor && !props.backgroundImage
+          ? ` bg-${props.backgroundColor}`
+          : props.backgroundImage
+          ? ' bg-image'
+          : ''
       }`}
     >
       {(props.heading || props.subheading) && !isUniqueBlock && (

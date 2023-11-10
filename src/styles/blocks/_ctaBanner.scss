@@ -6,7 +6,7 @@
     padding: $size-32 0;
   }
 
-  &.bg-image {
+  .bg-image & {
     &:before,
     &::after {
       @include absoluteOverlay;
