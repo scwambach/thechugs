@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 
 export const VideoItem = ({ title, video, image }: VideoItemProps) => {
   const [hasWindow, setHasWindow] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -22,8 +23,12 @@ export const VideoItem = ({ title, video, image }: VideoItemProps) => {
         <ReactPlayer
           url={video}
           controls
+          playing={isPlaying}
           playIcon={<BsPlayCircleFill size={80} color="#dea211" />}
           light={urlFor(image).width(600).url()}
+          onClickPreview={() => {
+            setIsPlaying(true)
+          }}
         />
       )}
     </div>
