@@ -19,4 +19,26 @@
   .required {
     color: $danger;
   }
+
+  .response {
+    max-width: $size-704;
+
+    p {
+      font-family: $heading-family;
+      line-height: 1.2;
+      font-size: $size-32;
+
+      @media screen and (max-width: ($tablet-md - 1)) {
+        font-size: $size-24;
+      }
+    }
+
+    .error {
+      color: $danger;
+    }
+
+    .success {
+      color: $success;
+    }
+  }
 }

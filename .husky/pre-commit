@@ -11,4 +11,5 @@ npm run check-lint ||
 
 echo 'So far so good! Testing the build now.'
 
+
 echo 'All looks good! Committing now.'
