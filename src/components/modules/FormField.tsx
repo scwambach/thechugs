@@ -4,8 +4,6 @@ import { AiFillCaretDown } from 'react-icons/ai'
 import { FaCheck } from 'react-icons/fa'
 import { GoDotFill } from 'react-icons/go'
 
-// TODO: Center the dot in the radio button better
-
 export const FormField = ({
   _key,
   choices,
