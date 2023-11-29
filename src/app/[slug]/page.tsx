@@ -1,4 +1,5 @@
 import { PageFactory } from '@components/global/PageFacorty'
+import { PageTemplate } from '@components/global/PageTemplate'
 import { client } from '@utils/client'
 import { PAGE_QUERY } from '@utils/queries/PAGE_QUERY'
 import { notFound } from 'next/navigation'
@@ -11,9 +12,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main>
+    <PageTemplate nav={data.nav}>
       <PageFactory components={data.pageBlocks} />
-    </main>
+    </PageTemplate>
   )
 }
 

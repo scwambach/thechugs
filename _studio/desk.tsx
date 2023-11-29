@@ -4,6 +4,7 @@ import {
   AiFillHome,
   AiFillVideoCamera,
   AiOutlineCalendar,
+  AiOutlineMenu,
   AiOutlineShoppingCart,
 } from 'react-icons/ai'
 import {GrMultiple} from 'react-icons/gr'
@@ -41,6 +42,10 @@ export const desk = deskTool({
           .title('Products')
           .child(S.documentTypeList('product').title('Products'))
           .icon(AiOutlineShoppingCart),
+        S.listItem()
+          .title('Menus')
+          .child(S.documentTypeList('menu').title('Menus'))
+          .icon(AiOutlineMenu),
         S.listItem()
           .title('Merch')
           .child(S.documentTypeList('merch').title('Merch'))

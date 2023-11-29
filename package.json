@@ -11,7 +11,7 @@
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "dev": "next dev -p 3030",
+    "dev": "next dev",
     "lint": "next lint",
     "prepare": "husky install",
     "start": "next start",

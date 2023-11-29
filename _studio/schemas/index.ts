@@ -3,6 +3,7 @@ import {event} from './event'
 import {globalInfo} from './globalInfo'
 import {homePage} from './homePage'
 import {location} from './location'
+import {menu} from './menu'
 import {merch} from './merch'
 import {merchCategory} from './merchCategory'
 import {otherBand} from './otherBand'
@@ -36,6 +37,7 @@ export const schemaTypes = [
   homePage,
   location,
   members,
+  menu,
   merch,
   merchCategory,
   otherBand,

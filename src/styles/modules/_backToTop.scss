@@ -1,0 +1,17 @@
+.backToTop {
+  position: fixed;
+  width: $size-72;
+  height: $size-60;
+  text-align: center;
+  padding: $size-8;
+  z-index: 10;
+  bottom: $size-16;
+  right: $size-16;
+  transition-duration: $animation-speed;
+  transition-timing-function: ease-in-out;
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,21 @@
+header {
+  background-color: $tertiary;
+  padding: $size-16;
+
+  a {
+    color: $white;
+    font-size: $size-16;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    gap: $size-16;
+  }
+
+  li {
+    margin: 0;
+  }
+}

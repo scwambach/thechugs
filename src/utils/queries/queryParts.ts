@@ -11,3 +11,5 @@ export const commonProps = `
   subheading,
   backgroundColor
 `
+
+export const mainNavQuery = `"nav": *[_type == 'menu' && title == 'Main Nav'][0].items`

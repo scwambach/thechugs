@@ -1,4 +1,5 @@
 import { pageBlocks } from './pageBlocks'
+import { mainNavQuery } from './queryParts'
 
 export const HOME_QUERY = `*[_type == 'page' && title == 'Home'][0]{
   title,
@@ -9,5 +10,6 @@ export const HOME_QUERY = `*[_type == 'page' && title == 'Home'][0]{
   },
   pageBlocks[] {
     ${pageBlocks}
-  }
+  },
+  ${mainNavQuery}
 }`

@@ -1,4 +1,5 @@
 import { PageFactory } from '@components/global/PageFacorty'
+import { PageTemplate } from '@components/global/PageTemplate'
 import { client } from '@utils/client'
 import { HOME_QUERY } from '@utils/queries/HOME_QUERY'
 import { urlFor } from '@utils/urlFor'
@@ -29,8 +30,8 @@ export default async function Home() {
   const data = await getData()
 
   return (
-    <main>
+    <PageTemplate nav={data.nav}>
       <PageFactory components={data.pageBlocks} />
-    </main>
+    </PageTemplate>
   )
 }

@@ -168,3 +168,10 @@ export interface ProductDataProps {
     warehouse_product_variant_id: string
   }[]
 }
+
+export interface NavItemProps {
+  _key: string
+  title: string
+  url: string
+  subItems?: NavItemProps[]
+}
