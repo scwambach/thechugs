@@ -62,10 +62,11 @@
 
     a {
       width: 100%;
+      padding: $size-16 $size-8;
 
       @media screen and (max-width: ($tablet-lg - 1)) {
         font-size: $size-14;
-        padding: $size-8 $size-16;
+        padding: $size-8;
       }
 
       @media screen and (max-width: ($mobile-md - 1)) {

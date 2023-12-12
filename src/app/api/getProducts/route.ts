@@ -48,7 +48,7 @@ export async function GET() {
   // Use Promise.all to concurrently fetch data for each product.
   const newArray = await Promise.all(
     productIds.map(async (item: any) => {
-      const res = await fetch(`http://localhost:3030/api/getProduct/${item}`, {
+      const res = await fetch(`http://localhost:3000/api/getProduct/${item}`, {
         next: { revalidate: 0 }, // Set revalidation options for caching.
       })
       const data = await res.json()
