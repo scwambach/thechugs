@@ -1,12 +1,25 @@
-$font-family: 'FU Book', monospace;
-$heading-family: 'ME Bold', monospace;
+$system:
+  system-ui,
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  Roboto,
+  Oxygen,
+  Ubuntu,
+  Cantarell,
+  'Open Sans',
+  'Helvetica Neue',
+  sans-serif;
+$font-family: 'Jost', $system;
+$font-bold: 'Jost Bold', $system;
+$heading-family: 'Regards', $system;
 
 $primary: #cf1e3a;
 $primary-light: #ef8080;
 $primary-lighter: #fdeded;
 $primary-dark: #a31414;
 $primary-darker: #490909;
-$secondary: #f2f2ec;
+$secondary: #eae5db;
 $secondary-dark: #c5c5aa;
 $secondary-darker: #6d6d4a;
 $tertiary: #3c5ba9;
@@ -109,6 +122,7 @@ $tablet-md: 768px;
 $tablet-lg: 880px;
 $tablet-xl: 992px;
 $desktop: 1024px;
+$desktop-md: 1100px;
 $desktop-lg: 1200px;
 $widescreen: 1400px;
 
@@ -122,5 +136,5 @@ $subheading: $size-36;
 $body: $size-16;
 $small: $size-14;
 
-$border-size: $size-2;
-$mobile-border-size: $size-2;
+$border-size: 0;
+$mobile-border-size: 0;

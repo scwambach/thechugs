@@ -6,34 +6,24 @@
     padding: $size-32 0;
   }
 
-  .bg-image & {
-    &:before,
-    &::after {
-      @include absoluteOverlay;
-      content: '';
-      mix-blend-mode: color;
-      z-index: 1;
+  &.contained {
+    max-width: $widescreen;
+    margin: 0 auto;
+    border-radius: $size-52;
+    overflow: hidden;
+    padding: $size-60 $size-32 $size-288;
+
+    @media screen and (max-width: ($widescreen - 1)) {
+      border-radius: 0;
     }
 
-    &:before {
-      background-image: linear-gradient(
-        120deg,
-        rgba($quaternary-dark, 0.7) 0%,
-        rgba($tertiary, 0.7) 50%,
-        rgba($primary, 0) 100%
-      );
+    @media screen and (min-width: ($tablet-md)) {
+      padding: $size-144 $size-32 $size-288;
     }
-  }
 
-  .overlay {
-    @include absoluteOverlay;
-    background-color: rgba($black, 0.7);
-
-    &:before {
-      @include absoluteOverlay;
-      content: '';
-      mix-blend-mode: color;
-      background-color: rgba($black, 0.7);
+    .container {
+      padding: 0;
+      max-width: $desktop-md;
     }
   }
 
@@ -65,8 +55,39 @@
   .copy {
     position: relative;
     z-index: 2;
+
     @media screen and (min-width: ($tablet-md)) {
       max-width: $size-640;
+    }
+
+    &.flex {
+      display: flex;
+      max-width: none;
+      align-items: flex-start;
+      gap: $size-32;
+      flex-direction: column;
+
+      @media screen and (min-width: ($tablet-md)) {
+        flex-direction: row-reverse;
+      }
+
+      > div,
+      > img {
+        display: block;
+        height: auto;
+      }
+
+      > div {
+        @media screen and (min-width: ($tablet-md)) {
+          width: 45%;
+        }
+      }
+
+      > img {
+        @media screen and (min-width: ($tablet-md)) {
+          width: 55%;
+        }
+      }
     }
   }
 }

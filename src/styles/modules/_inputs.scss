@@ -5,11 +5,10 @@ textarea {
   padding: $size-8 $size-8;
   background-color: transparent;
   border-radius: $size-5;
-  @include outlineBox;
+  border: 1px solid;
 
   &::placeholder {
-    color: $black;
-    opacity: 0.5;
+    opacity: 0.8;
   }
 }
 
@@ -21,7 +20,7 @@ select {
   padding: $size-8 $size-8;
   width: 100%;
   background-color: transparent;
-  @include outlineBox;
+  border: 1px solid $black;
 }
 
 input[type='radio'],
@@ -38,7 +37,7 @@ input[type='checkbox'] {
     display: flex;
     align-items: center;
     justify-content: center;
-    @include outlineBox;
+    border: 1px solid $black;
   }
 
   + .radio-indicator {

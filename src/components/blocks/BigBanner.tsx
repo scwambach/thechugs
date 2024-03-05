@@ -7,7 +7,6 @@ import VanillaTilt from 'vanilla-tilt'
 const BigBanner = ({
   componentId = 'bigBanner',
   backgroundImage,
-  logo,
   screenReaderText,
 }: BigBannerProps) => {
   const [hasWindow, setHasWindow] = useState<boolean>(false)
@@ -40,13 +39,8 @@ const BigBanner = ({
 
   return (
     <div className="bigBanner" id={componentId}>
-      <ImageBlock image={backgroundImage} isBackground={true} />
-      <div className="logo">
-        <div className="logoTilt" ref={tilt}>
-          <ImageBlock image={logo} alt={screenReaderText} />
-        </div>
-        <span className="sr-only">{screenReaderText}</span>
-      </div>
+      <ImageBlock image={backgroundImage} isBackground={true} width={2000} />
+      <span className="sr-only">{screenReaderText}</span>
     </div>
   )
 }

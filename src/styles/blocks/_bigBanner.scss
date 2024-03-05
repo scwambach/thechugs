@@ -5,33 +5,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: $mobile;
+  height: 100svh;
+  max-height: $mobile-md;
 
   @media screen and (min-width: ($tablet-md)) {
-    height: 100vh;
     max-height: $desktop;
-  }
-
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  &:before {
-    background-color: $tertiary;
-    mix-blend-mode: color;
-  }
-
-  &:after {
-    background-color: $tertiary;
-    opacity: 0.6;
   }
 
   img {
@@ -51,6 +29,18 @@
 
     @media screen and (max-width: ($tablet-md - 1)) {
       width: 80%;
+    }
+  }
+}
+
+.component_bigBanner {
+  + section {
+    &.component_ctaBanner {
+      .contained {
+        @media screen and (min-width: ($widescreen)) {
+          margin-top: -$size-100;
+        }
+      }
     }
   }
 }

@@ -30,11 +30,7 @@ export const PageBlock = (props: PageBlockProps) => {
     <section
       id={`component_${props._type}_${props._key}`}
       className={`page-component component_${props._type}${
-        props.backgroundColor && !props.backgroundImage
-          ? ` bg-${props.backgroundColor}`
-          : props.backgroundImage
-          ? ' bg-image'
-          : ''
+        props.backgroundColor ? ` bg-${props.backgroundColor}` : ' no-bg'
       }`}
     >
       {(props.heading || props.subheading) && !isUniqueBlock && (

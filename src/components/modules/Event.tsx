@@ -11,7 +11,7 @@ export const Event = ({
 }: EventProps) => {
   return (
     <div className="event">
-      <p className="date">{dayjs(dateTime).format('MM.DD')}</p>
+      <p className="date">{dayjs(dateTime).format('MM/DD')}</p>
       <p className="location">
         <span className="title">{title}</span>
         <a
@@ -59,7 +59,7 @@ export const Event = ({
       <div className="links">
         {links.map((link) => (
           <Button
-            buttonStyle="primary"
+            buttonStyle="black-outline"
             tagType="a"
             text={link.copy}
             url={link.url}

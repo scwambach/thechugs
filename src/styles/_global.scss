@@ -4,12 +4,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  cursor: url('/can.png'), auto;
+  position: relative;
 }
 
 main {
   font-family: $font-family;
-  background-color: $white;
+  position: relative;
 }
 
 *::selection {
@@ -100,19 +100,10 @@ ul {
   }
 }
 
-.bg-blue,
-.bg-black,
-.bg-image {
-  + .bg-blue,
-  + .bg-black,
-  + .bg-image {
-    border-top-color: $white;
-  }
-}
-
 .bg-white {
   background-color: $secondary;
   color: $black;
+  border-color: $black;
 
   a:not(.button) {
     color: $black;
@@ -122,6 +113,7 @@ ul {
 .bg-blue {
   background-color: $tertiary;
   color: $secondary;
+  border-color: $secondary;
 
   a:not(.button) {
     color: $secondary;
@@ -131,14 +123,17 @@ ul {
 .bg-black {
   background-color: $black;
   color: $secondary;
+  border-color: $secondary;
 
   a:not(.button) {
     color: $secondary;
   }
 }
 
-.bg-image {
+.no-bg {
+  background-color: transparent;
   color: $secondary;
+  border-color: $secondary;
 
   a:not(.button) {
     color: $secondary;
@@ -154,6 +149,8 @@ ul {
 }
 
 .bg-fit {
+  pointer-events: none;
+  user-select: none;
   object-fit: cover;
   user-select: none;
   -moz-user-select: none;
@@ -207,5 +204,37 @@ ul {
     @media screen and (max-width: ($tablet - 1)) {
       border-width: $mobile-border-size;
     }
+  }
+}
+
+[data-label='image-container'],
+[data-label='background-container'] {
+  position: relative;
+}
+
+[data-label='background-container'] {
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+
+  img {
+    object-fit: cover;
+  }
+
+  &.mainBg {
+    position: fixed;
+  }
+}
+
+[data-label='image-container'] {
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }

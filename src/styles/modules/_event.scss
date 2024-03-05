@@ -3,15 +3,11 @@
   gap: $size-32;
   width: 100%;
   justify-content: space-between;
-  border-bottom: $border-size solid $secondary-dark;
-  padding-bottom: $size-16;
+  border-top: $size-2 solid $black;
+  padding-top: $size-32;
 
   @media screen and (max-width: ($tablet - 1)) {
     border-width: $mobile-border-size;
-  }
-
-  &:last-child {
-    border-bottom: none;
   }
 
   @media screen and (max-width: ($mobile-md - 1)) {

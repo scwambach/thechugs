@@ -4,13 +4,16 @@ input[type='submit'],
 input[type='reset'],
 input[type='button'] {
   background-color: $primary;
-  border-radius: $size-5;
+  border-radius: $size-52;
   border: none;
   color: $secondary;
   cursor: pointer;
   display: inline-block;
-  font-family: $heading-family;
-  font-size: 16px;
+  font-family: $font-family;
+  font-weight: bold;
+  font-size: $size-16;
+  text-transform: uppercase;
+  letter-spacing: $size-1;
   padding: $size-16 $size-32;
   text-align: center;
   text-decoration: none;
@@ -39,7 +42,7 @@ input[type='button'] {
   }
 
   &[class$='-outline'] {
-    border-width: $border-size;
+    border-width: $size-2;
     border-style: solid;
 
     @media screen and (max-width: ($tablet - 1)) {

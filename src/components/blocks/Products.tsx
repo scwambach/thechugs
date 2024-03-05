@@ -25,7 +25,7 @@ export const Products = ({ products, allProducts }: ProductsProps) => {
               ))}
             </div>
             <div className="links">
-              <Button tagType="a" url="/merch" buttonStyle="quaternary">
+              <Button tagType="a" url="/merch" buttonStyle="secondary">
                 Check out ALL the merch here!
               </Button>
             </div>

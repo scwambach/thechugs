@@ -27,12 +27,6 @@ export const bigBanner = defineType({
       },
     },
     {
-      name: 'logo',
-      title: 'Logo',
-      validation: (Rule) => Rule.required(),
-      type: 'image',
-    },
-    {
       name: 'screenReaderText',
       title: 'Screen Reader Text',
       validation: (Rule) => Rule.required(),

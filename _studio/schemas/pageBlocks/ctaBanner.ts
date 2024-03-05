@@ -35,9 +35,23 @@ export const ctaBanner = defineType({
       ],
     }),
     defineField({
+      name: 'contained',
+      title: 'Contained',
+      type: 'boolean',
+    }),
+    defineField({
+      name: 'foregroundImage',
+      title: 'Foreground Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'backgroundImage',
       title: 'Background Image',
       type: 'image',
+      validation: (Rule) => Rule.required(),
       options: {
         hotspot: true,
       },

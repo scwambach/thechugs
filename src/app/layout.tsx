@@ -1,6 +1,8 @@
+import { OverlayTool } from '@components/Overlaytool'
 import '@styles/main.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import image from '@utils/overlayImages/image.png'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,6 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* <OverlayTool image={image} /> */}
       <body>{children}</body>
     </html>
   )

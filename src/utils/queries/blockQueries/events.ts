@@ -8,6 +8,9 @@ export const events = `_type == 'events' => {
   "events": *[_type == "event" && dateTime >= now()] | order(dateTime asc) {
     _id,
     dateTime,
+    flyer {
+      ${imageQuery}
+    },
     otherBands[] -> {
       _id,
       link,

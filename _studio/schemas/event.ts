@@ -12,6 +12,11 @@ export const event = {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      title: 'Flyer',
+      name: 'flyer',
+      type: 'image',
+    },
+    {
       title: 'Date and Time',
       name: 'dateTime',
       type: 'datetime',

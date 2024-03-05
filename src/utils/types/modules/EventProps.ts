@@ -1,10 +1,11 @@
-import { LinkProps } from '..'
+import { ImageProps, LinkProps } from '..'
 
 export interface EventProps {
   _id: string
   links: LinkProps[]
   title: string
   dateTime: string
+  flyer?: ImageProps
   otherBands?: {
     _id: string
     link?: string
