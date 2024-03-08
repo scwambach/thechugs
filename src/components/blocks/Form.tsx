@@ -3,10 +3,11 @@ import { Container } from '@components/modules/Container'
 import { FormField } from '@components/modules/FormField'
 import { PortableText } from '@portabletext/react'
 import { PortableTextBlock } from '@portabletext/types'
+import { PageBlockProps } from '@utils/types'
 import { FormFieldProps } from '@utils/types/modules/FormFieldProps'
 import { useState } from 'react'
 
-interface FormProps {
+interface FormProps extends PageBlockProps {
   _key: string
   beforeSubmit?: PortableTextBlock[]
   description?: PortableTextBlock[]
@@ -15,7 +16,7 @@ interface FormProps {
   recipients: string
   submitCopy?: string
   thankYouMessage: string
-  title: string
+  title?: string
 }
 
 export const Form = ({
@@ -25,6 +26,7 @@ export const Form = ({
   errorMessage,
   formFields,
   recipients,
+  heading,
   submitCopy = 'Submit',
   thankYouMessage,
   title,
@@ -40,7 +42,7 @@ export const Form = ({
           ...formFieldsValues,
         },
         recipients,
-        subject: title,
+        subject: title || heading,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -54,8 +56,8 @@ export const Form = ({
 
   return (
     <div className="form">
-      <Container size="wide">
-        <p className="title">{title}</p>
+      <Container size="narrow">
+        {!heading && title && <p className="title">{title}</p>}
         {description && (
           <div className="description">
             <PortableText value={description} />

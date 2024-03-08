@@ -5,6 +5,7 @@ import { Header } from './Header'
 import { BackToTop } from '@components/modules/BackToTop'
 import BackgroundImage from '../../media/wood.jpg'
 import { ImageObject } from '@components/modules/ImageObject'
+import { Footer } from './Footer'
 
 interface ContextProps {
   nav: NavItemProps[]
@@ -32,6 +33,7 @@ export const PageTemplate = ({
       <main>
         <Header />
         {children}
+        <Footer />
         <BackToTop />
       </main>
     </AppContext.Provider>

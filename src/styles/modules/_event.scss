@@ -24,11 +24,12 @@
 
   .title {
     font-size: $size-24;
-    font-family: $heading-family;
+    font-family: $font-extra;
   }
 
   .date {
-    font-size: $size-36;
+    font-size: $size-20;
+    font-family: $font-extra;
     width: $size-104;
     line-height: 1;
 
@@ -113,9 +114,11 @@
     }
 
     a.band {
+      text-decoration: underline;
+
       &:hover {
         @media screen and (min-width: ($tablet-md)) {
-          text-decoration: underline;
+          opacity: 0.3;
         }
       }
     }

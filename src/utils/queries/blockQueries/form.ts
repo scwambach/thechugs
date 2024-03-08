@@ -1,4 +1,7 @@
+import { commonProps } from '../queryParts'
+
 export const form = `_type == 'form' => {
+  ${commonProps},
   title,
   recipients,
   description,

@@ -12,6 +12,7 @@ export interface ProductCardProps {
   _id: string
   externalId?: string
   description?: string
+  minimal?: boolean
   tags?: string[]
   category: {
     _id: string

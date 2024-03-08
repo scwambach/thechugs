@@ -22,8 +22,14 @@ export const CtaBanner = ({
   contained,
   links,
 }: CtaBannerProps) => {
+  const isFeature = foregroundImage && links && contained
+
   return (
-    <div className={`ctaBanner${contained ? ' contained' : ''}`}>
+    <div
+      className={`ctaBanner${contained ? ' contained' : ''}${
+        isFeature ? ' feature' : ''
+      }`}
+    >
       {!!backgroundImage && (
         <ImageBlock image={backgroundImage} isBackground width={1200} />
       )}

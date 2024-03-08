@@ -1,7 +1,7 @@
 .merchFilter {
   display: flex;
   flex-direction: column;
-  gap: $size-100;
+  gap: $size-64;
 
   .headingTag {
     margin-bottom: $size-48;
@@ -13,12 +13,13 @@
 
     .headingTag {
       position: sticky;
-      top: $size-16;
+      font-size: $size-60;
+      top: 0;
+      text-align: center;
       padding: $size-8 $size-16;
       z-index: 4;
       background-color: $secondary;
       color: $black;
-      @include outlineBox;
 
       @media screen and (max-width: ($tablet-md - 1)) {
         font-size: $size-28;

@@ -12,6 +12,7 @@ import { slugify } from '@utils/slugify'
 import { Button } from './Button'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { getTypeOfVariant } from '@utils/getTypeOfVariant'
+import { LinkObject } from './LinkObject'
 
 // TODO: disable "Add to cart" button if no variant is selected
 
@@ -34,12 +35,8 @@ export const ProductCard = (props: ProductCardProps) => {
       })
     : []
 
-  return (
-    <div
-      className={`productCard${
-        props.variants && props.variants.length > 1 ? ' hasVariants' : ''
-      }`}
-    >
+  const content = (
+    <>
       <div className="image">
         {props.thumbnail && !activeVariant ? (
           <Image src={props.thumbnail} alt="" width={300} height={300} />
@@ -55,7 +52,7 @@ export const ProductCard = (props: ProductCardProps) => {
       </div>
       <div className="content">
         <p className="title">{props.title}</p>
-        {props.variants && props.variants.length > 1 ? (
+        {!props.minimal && props.variants && props.variants.length > 1 ? (
           <FormField
             type="select"
             choices={[
@@ -77,24 +74,48 @@ export const ProductCard = (props: ProductCardProps) => {
             _key="jneklfvbhwo3409n"
             label=""
           />
-        ) : (
+        ) : !props.minimal ? (
           <div className="spacer" />
+        ) : (
+          <></>
         )}
-        <div className="button-group">
-          <Button text="Add to Cart" buttonStyle="white" tagType="button">
-            Add to <AiOutlineShoppingCart size={20} />
-          </Button>
-          <Button
-            text="View Details"
-            buttonStyle="white"
-            tagType="a"
-            url={`/merch/${props.slug}?variant=${activeVariant?.externalId}`}
-          />
-        </div>
+        {!props.minimal && (
+          <>
+            <div className="button-group">
+              <Button text="Add to Cart" buttonStyle="white" tagType="button">
+                Add to <AiOutlineShoppingCart size={20} />
+              </Button>
+              <Button
+                text="View Details"
+                buttonStyle="white"
+                tagType="a"
+                url={`/merch/${props.slug}?variant=${activeVariant?.externalId}`}
+              />
+            </div>
+          </>
+        )}
         <p className="price">
           {toUsCurrency(activeVariant?.price || props.price)}
         </p>
       </div>
+    </>
+  )
+
+  return (
+    <div
+      className={`productCard${
+        props.variants && props.variants.length > 1 ? ' hasVariants' : ''
+      }${props.minimal ? ' minimal' : ''}`}
+    >
+      {props.minimal ? (
+        <LinkObject
+          href={`/merch/${props.slug}?variant=${activeVariant?.externalId}`}
+        >
+          {content}
+        </LinkObject>
+      ) : (
+        content
+      )}
     </div>
   )
 }

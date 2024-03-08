@@ -5,7 +5,7 @@
 
   .labelTag {
     @include headingSix;
-    font-family: $heading-family;
+    font-family: $font-bold;
     margin-bottom: $size-8;
     display: block;
 
@@ -43,10 +43,6 @@
 .select {
   position: relative;
   color: $black;
-
-  select {
-    background-color: $white;
-  }
 
   svg {
     position: absolute;

@@ -37,8 +37,9 @@
   + section {
     &.component_ctaBanner {
       .contained {
-        @media screen and (min-width: ($widescreen)) {
+        @media screen and (min-width: ($desktop-lg)) {
           margin-top: -$size-100;
+          margin-bottom: 0;
         }
       }
     }

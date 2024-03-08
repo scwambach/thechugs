@@ -21,7 +21,7 @@ export const Products = ({ products, allProducts }: ProductsProps) => {
           <>
             <div className="list">
               {products.map((product) => (
-                <ProductCard {...product} key={product._id} />
+                <ProductCard {...product} key={product._id} minimal />
               ))}
             </div>
             <div className="links">

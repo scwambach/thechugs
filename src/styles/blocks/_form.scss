@@ -41,4 +41,8 @@
       color: $success;
     }
   }
+
+  button[type='submit'] {
+    margin-top: $size-32;
+  }
 }

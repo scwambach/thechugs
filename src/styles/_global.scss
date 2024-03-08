@@ -181,9 +181,15 @@ ul {
 }
 
 .heading-container {
+  text-align: center;
+
+  .headingTag {
+    font-size: $size-60;
+  }
+
   .inner {
-    max-width: $tablet;
-    margin-bottom: $size-48;
+    max-width: $desktop;
+    margin: 0 auto $size-48;
   }
 }
 

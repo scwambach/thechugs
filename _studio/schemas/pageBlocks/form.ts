@@ -3,6 +3,7 @@ import {stylesMarks} from '../common/stylesMarks'
 import {AiOutlineForm} from 'react-icons/ai'
 import {MdInput} from 'react-icons/md'
 import {BsCheckSquare} from 'react-icons/bs'
+import {blockFields} from '../common/blockFields'
 
 export const form = defineType({
   name: 'form',
@@ -21,11 +22,11 @@ export const form = defineType({
     },
   },
   fields: [
+    ...blockFields,
     defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
     }),
     defineField({
       name: 'recipients',
