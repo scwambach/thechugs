@@ -12,7 +12,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <PageTemplate nav={data.nav}>
+    <PageTemplate nav={data.nav} global={data.globalInfo}>
       <PageFactory components={data.pageBlocks} />
     </PageTemplate>
   )

@@ -3,4 +3,12 @@ footer {
   color: $white;
   padding: $size-20;
   text-align: center;
+
+  .buttonList {
+    justify-content: center;
+
+    a {
+      color: $white;
+    }
+  }
 }

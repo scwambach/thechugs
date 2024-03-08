@@ -1,5 +1,3 @@
-import { products } from '@utils/products'
-
 export const imageQuery = `...,
 "lqip": asset -> metadata.lqip`
 
@@ -13,3 +11,9 @@ export const commonProps = `
 `
 
 export const mainNavQuery = `"nav": *[_type == 'menu' && title == 'Main Nav'][0].items`
+export const globalInfoQuery = `"globalInfo": *[_type == 'globalInfo'][0] {
+  title,
+  contactInfo,
+  description,
+  siteImage
+}`

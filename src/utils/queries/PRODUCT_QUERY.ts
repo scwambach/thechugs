@@ -1,4 +1,4 @@
-import { mainNavQuery } from './queryParts'
+import { globalInfoQuery, mainNavQuery } from './queryParts'
 
 export const PRODUCT_QUERY = `*[_type == 'merch' && slug.current == $slug][0]{
   "page": {
@@ -15,5 +15,6 @@ export const PRODUCT_QUERY = `*[_type == 'merch' && slug.current == $slug][0]{
       slug,
     }
   },
-  ${mainNavQuery}
+  ${mainNavQuery},
+  ${globalInfoQuery}
 }`

@@ -17,9 +17,13 @@ export const ButtonList = ({
   buttonStyle = 'primary',
 }: ButtonListProps) => {
   const getIconName = (url: string) => {
-    const iconName = iconNames.find((iconName) => {
+    let iconName = iconNames.find((iconName) => {
       return url.includes(iconName.toLowerCase())
     })
+
+    if (iconName === 'Apple') {
+      iconName = 'Applemusic'
+    }
 
     return iconName ? `Si${iconName}` : 'SiReact'
   }

@@ -1,5 +1,5 @@
 import { pageBlocks } from './pageBlocks'
-import { mainNavQuery } from './queryParts'
+import { globalInfoQuery, mainNavQuery } from './queryParts'
 
 export const PAGE_QUERY = `*[_type == 'page' && slug.current == $slug][0]{
   title,
@@ -12,5 +12,6 @@ export const PAGE_QUERY = `*[_type == 'page' && slug.current == $slug][0]{
   pageBlocks[] {
     ${pageBlocks}
   },
-  ${mainNavQuery}
+  ${mainNavQuery},
+  ${globalInfoQuery}
 }`
