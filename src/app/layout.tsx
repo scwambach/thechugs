@@ -1,4 +1,5 @@
 import '@styles/main.scss'
+import { logoArt } from '@utils/art'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -11,6 +12,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  console.log(logoArt)
   return (
     <html lang="en">
       <body>{children}</body>

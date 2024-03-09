@@ -30,9 +30,7 @@ export const CtaBanner = ({
         isFeature ? ' feature' : ''
       }`}
     >
-      {!!backgroundImage && (
-        <ImageBlock image={backgroundImage} isBackground width={1200} />
-      )}
+      {!!backgroundImage && <ImageBlock image={backgroundImage} isBackground />}
       <Container>
         <div className={`copy${foregroundImage ? ' flex' : ''}`}>
           {foregroundImage && <ImageBlock image={foregroundImage} />}

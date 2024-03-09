@@ -67,6 +67,7 @@ export const ImageBlock = ({
     <Image
       {...imageProps}
       alt={alt}
+      unoptimized
       className={`${isBackground ? 'bg-fit' : ''}${
         isBackground && className ? ' ' : ''
       }${className ? `${className}` : ''}`}
