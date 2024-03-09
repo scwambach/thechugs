@@ -59,12 +59,19 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
       <div className="flex-row">
         <div>
           {activeVariant ? (
-            <Image src={activeVariant.image} alt="" width={700} height={700} />
+            <Image
+              priority
+              src={activeVariant.image}
+              alt=""
+              width={700}
+              height={700}
+            />
           ) : (
             content.images && (
               <ImageBlock
                 image={content.images[0].image}
                 alt=""
+                priority
                 width={700}
                 height={700}
               />

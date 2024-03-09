@@ -11,6 +11,7 @@ interface ImageBlockProps {
   height?: number
   desaturate?: boolean
   alt?: string
+  priority?: boolean
   className?: string
   setImageLoaded?: (isImageLoaded: boolean) => void
   isBackground?: boolean
@@ -21,6 +22,7 @@ export const ImageBlock = ({
   alt = '',
   className,
   image,
+  priority,
   width = 800,
   height,
   setImageLoaded,
@@ -68,6 +70,7 @@ export const ImageBlock = ({
       {...imageProps}
       alt={alt}
       unoptimized
+      priority={priority}
       className={`${isBackground ? 'bg-fit' : ''}${
         isBackground && className ? ' ' : ''
       }${className ? `${className}` : ''}`}
