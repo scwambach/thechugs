@@ -1,6 +1,7 @@
 import { EventProps } from '@utils/types/modules/EventProps'
 import { Button } from './Button'
 import dayjs from 'dayjs'
+import { Fragment } from 'react'
 
 export const Event = ({
   dateTime,
@@ -30,7 +31,7 @@ export const Event = ({
             with:{' '}
             {otherBands.map((band, index) => {
               return (
-                <>
+                <Fragment key={band._id}>
                   {otherBands?.length === 2 && index > 0
                     ? ' and '
                     : otherBands?.length === 1
@@ -50,7 +51,7 @@ export const Event = ({
                   ) : (
                     <span className="band">{band.bandName}</span>
                   )}
-                </>
+                </Fragment>
               )
             })}
           </span>

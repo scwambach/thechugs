@@ -6,6 +6,7 @@ import { BackToTop } from '@components/modules/BackToTop'
 import BackgroundImage from '../../media/wood.jpg'
 import { ImageObject } from '@components/modules/ImageObject'
 import { Footer } from './Footer'
+import { logoArt } from '@utils/art'
 
 interface ContextProps {
   nav: NavItemProps[]
@@ -28,6 +29,7 @@ export const PageTemplate = ({
   children: ReactNode
   global: GlobalInfoProps
 }) => {
+  console.log(logoArt)
   return (
     <AppContext.Provider value={{ nav, darkMode: darkMode }}>
       <ImageObject
