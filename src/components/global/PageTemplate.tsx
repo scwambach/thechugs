@@ -6,7 +6,6 @@ import { BackToTop } from '@components/modules/BackToTop'
 import BackgroundImage from '../../media/wood.jpg'
 import { ImageObject } from '@components/modules/ImageObject'
 import { Footer } from './Footer'
-import { ImageProps } from 'next/image'
 
 interface ContextProps {
   nav: NavItemProps[]

@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com', 'cdn.sanity.io', 'files.cdn.printful.com'],
+    domains: ['images.unsplash.com', 'cdn.sanity.io', 'files.cdn.printful.com', 'fakeimg.pl'],
     deviceSizes: [480, 600, 768, 900, 1024, 1152, 1280, 1440],
   },
   env: {

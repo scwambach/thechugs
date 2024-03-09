@@ -3,6 +3,10 @@ footer {
   color: $white;
   padding: $size-20;
   text-align: center;
+  min-height: $size-144;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   .buttonList {
     justify-content: center;

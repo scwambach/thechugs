@@ -38,17 +38,30 @@ export const ProductCard = (props: ProductCardProps) => {
   const content = (
     <>
       <div className="image">
-        {props.thumbnail && !activeVariant ? (
-          <Image src={props.thumbnail} alt="" width={300} height={300} />
-        ) : (
-          activeVariant && (
-            <Image src={activeVariant?.image} alt="" width={300} height={300} />
-          )
-        )}
+        <LinkObject
+          href={`/merch/${props.slug}?variant=${activeVariant?.externalId}`}
+        >
+          {props.thumbnail && !activeVariant ? (
+            <Image src={props.thumbnail} alt="" width={300} height={300} />
+          ) : (
+            activeVariant && (
+              <Image
+                src={activeVariant?.image}
+                alt=""
+                width={300}
+                height={300}
+              />
+            )
+          )}
 
-        {props.images && !props.thumbnail && !activeVariant && (
-          <ImageBlock image={props.images[0].image} height={300} width={300} />
-        )}
+          {props.images && !props.thumbnail && !activeVariant && (
+            <ImageBlock
+              image={props.images[0].image}
+              height={300}
+              width={300}
+            />
+          )}
+        </LinkObject>
       </div>
       <div className="content">
         <p className="title">{props.title}</p>

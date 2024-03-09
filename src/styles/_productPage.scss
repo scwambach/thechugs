@@ -1,0 +1,89 @@
+.productPage {
+  background-color: $secondary;
+  padding: $size-100 0;
+
+  h1 {
+    margin: $size-16 0 $size-48;
+  }
+
+  .disclaimer {
+    text-align: center;
+    margin-top: $size-52;
+  }
+
+  .price {
+    font-size: $size-32;
+    font-family: $font-bold;
+  }
+
+  .flex-row {
+    display: flex;
+
+    > div {
+      &:first-child {
+        width: $size-416;
+
+        @media screen and (max-width: ($desktop-lg - 1)) {
+          width: 50%;
+        }
+
+        @media screen and (max-width: ($tablet-md - 1)) {
+          width: 100%;
+        }
+
+        > * {
+          width: 100%;
+          height: auto;
+          background-color: $white;
+          border-radius: $size-10;
+        }
+      }
+
+      &:last-child {
+        width: calc(100% - $size-416);
+
+        display: flex;
+        flex-direction: column;
+        gap: $size-28;
+        @media screen and (max-width: ($desktop-lg - 1)) {
+          width: 50%;
+        }
+
+        @media screen and (max-width: ($tablet-md - 1)) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .button {
+    align-items: center;
+    display: inline-flex;
+    gap: $size-8;
+    justify-content: center;
+
+    &.back {
+      padding: $size-4 $size-12;
+      font-size: $size-12;
+    }
+  }
+
+  .field-group {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: $size-32;
+
+    @media screen and (max-width: ($desktop-lg - 1)) {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $size-16;
+    }
+  }
+
+  .formField {
+    @media screen and (min-width: ($desktop-lg)) {
+      width: calc(100% - $size-230);
+    }
+  }
+}

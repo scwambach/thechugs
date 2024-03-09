@@ -17,6 +17,7 @@ body {
 main {
   font-family: $font-family;
   position: relative;
+  color: $black;
 }
 
 *::selection {
@@ -256,4 +257,8 @@ ul {
     width: 100%;
     height: auto;
   }
+}
+
+.innerPage {
+  min-height: calc(100svh - $size-144);
 }

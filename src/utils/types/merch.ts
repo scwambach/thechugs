@@ -1,4 +1,5 @@
-import { GlobalInfoProps, NavItemProps } from '.'
+import { GlobalInfoProps, ImageProps, NavItemProps } from '.'
+import { ProductCardProps } from './modules/ProductCardProps'
 
 export interface VariantProps {
   price: number
@@ -13,16 +14,21 @@ export interface VariantProps {
 }
 
 export interface ProductProps {
-  variants: VariantProps[]
-  category: any
-  thumbnail: string
   _id: string
-  productId: number
-  title: string
+  category: any
+  description?: string
   externalId: string
+  price?: number
+  images?: {
+    image: ImageProps
+  }[]
+  productId?: number
   slug: {
     current: string
   }
+  thumbnail?: string
+  title: string
+  variants?: VariantProps[]
 }
 
 export interface ProductPageProps {

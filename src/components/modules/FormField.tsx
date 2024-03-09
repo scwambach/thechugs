@@ -27,10 +27,12 @@ export const FormField = ({
       <>
         {type === 'textarea' ? (
           <label className={type} htmlFor={fieldId}>
-            <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
-              {label}
-              {required && <span className="required">*</span>}
-            </span>
+            {label && (
+              <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
+                {label}
+                {required && <span className="required">*</span>}
+              </span>
+            )}
             {description && <p className="description">{description}</p>}
             <textarea
               name={fieldId}
@@ -51,10 +53,12 @@ export const FormField = ({
           </label>
         ) : type === 'select' ? (
           <label className={type} htmlFor={fieldId}>
-            <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
-              {label}
-              {required && <span className="required">*</span>}
-            </span>
+            {label && (
+              <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
+                {label}
+                {required && <span className="required">*</span>}
+              </span>
+            )}
             <AiFillCaretDown />
             {description && <p className="description">{description}</p>}
             <select name={fieldId} onChange={onChangeSelect} id={fieldId}>
@@ -76,10 +80,12 @@ export const FormField = ({
           </label>
         ) : type === 'checkbox' || type === 'radio' ? (
           <div className={type}>
-            <p className={`labelTag${hideLabel ? ' hidden' : ''}`}>
-              {label}
-              {required && <span className="required">*</span>}
-            </p>
+            {label && (
+              <p className={`labelTag${hideLabel ? ' hidden' : ''}`}>
+                {label}
+                {required && <span className="required">*</span>}
+              </p>
+            )}
             {description && <p className="description">{description}</p>}
             <div className="choices">
               {choices?.map(
@@ -112,10 +118,12 @@ export const FormField = ({
           </div>
         ) : (
           <label className={type} htmlFor={fieldId}>
-            <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
-              {label}
-              {required && <span className="required">*</span>}
-            </span>
+            {label && (
+              <span className={`labelTag${hideLabel ? ' hidden' : ''}`}>
+                {label}
+                {required && <span className="required">*</span>}
+              </span>
+            )}
             {description && <p className="description">{description}</p>}
             <input
               name={fieldId}

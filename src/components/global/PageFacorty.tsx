@@ -11,7 +11,7 @@ export const PageFactory = ({ components }: { components: any[] }) => {
   )
 
   return (
-    <>
+    <div className="innerPage">
       {(isEventsEmpty ? sansEventsComponents : components).map(
         (component: any) => (
           <>
@@ -23,6 +23,6 @@ export const PageFactory = ({ components }: { components: any[] }) => {
           </>
         )
       )}
-    </>
+    </div>
   )
 }

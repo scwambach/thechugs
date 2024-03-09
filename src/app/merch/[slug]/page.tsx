@@ -2,7 +2,6 @@ import { PageTemplate } from '@components/global/PageTemplate'
 import { client } from '@utils/client'
 import { PRODUCT_QUERY } from '@utils/queries/PRODUCT_QUERY'
 import { ProductPageProps } from '@utils/types/merch'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { Details } from './components/Details'
 
@@ -11,15 +10,15 @@ export async function generateMetadata({
 }: {
   params: { slug: string }
 }) {
-  const data = await client.fetch(PRODUCT_QUERY, {
+  const { page } = await client.fetch(PRODUCT_QUERY, {
     slug,
   })
 
   return {
-    title: `${data.title} | Merch | The Chugs - The Band... Refreshing!`,
-    description: data.description,
+    title: `${page.title} | Merch | The Chugs - The Band... Refreshing!`,
+    description: page.description,
     openGraph: {
-      images: data.thumbnail,
+      images: page.thumbnail,
     },
     icons: {
       icon: '/favicon.png',
@@ -47,26 +46,12 @@ export default async function ProductPage({
   }
 
   return (
-    <PageTemplate nav={nav} global={globalInfo}>
-      {page && (
-        <Details content={page} initialVariantId={searchParams.variant} />
-      )}
-
-      <code>
-        <pre
-          style={{
-            fontFamily: 'monospace',
-            display: 'block',
-            padding: '50px',
-            color: '#88ffbf',
-            backgroundColor: 'black',
-            textAlign: 'left',
-            whiteSpace: 'pre-wrap',
-          }}
-        >
-          {JSON.stringify(page, null, '    ')}
-        </pre>
-      </code>
+    <PageTemplate nav={nav} global={globalInfo} darkMode>
+      <div className="innerPage productPage">
+        {page && (
+          <Details content={page} initialVariantId={searchParams.variant} />
+        )}
+      </div>
     </PageTemplate>
   )
 }

@@ -8,10 +8,15 @@ import { Button } from '@components/modules/Button'
 interface ProductsProps extends PageBlockProps {
   products: ProductCardProps[]
   allProducts?: boolean
+  noButton?: boolean
   filter?: boolean
 }
 
-export const Products = ({ products, allProducts }: ProductsProps) => {
+export const Products = ({
+  products,
+  allProducts,
+  noButton,
+}: ProductsProps) => {
   return (
     <div className="products">
       <Container size="wide">
@@ -24,11 +29,13 @@ export const Products = ({ products, allProducts }: ProductsProps) => {
                 <ProductCard {...product} key={product._id} minimal />
               ))}
             </div>
-            <div className="links">
-              <Button tagType="a" url="/merch" buttonStyle="secondary">
-                Check out ALL the merch here!
-              </Button>
-            </div>
+            {!noButton && (
+              <div className="links">
+                <Button tagType="a" url="/merch" buttonStyle="secondary">
+                  Check out ALL the merch here!
+                </Button>
+              </div>
+            )}
           </>
         )}
       </Container>
