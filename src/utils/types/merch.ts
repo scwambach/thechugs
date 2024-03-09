@@ -1,4 +1,4 @@
-import { NavItemProps } from '.'
+import { GlobalInfoProps, NavItemProps } from '.'
 
 export interface VariantProps {
   price: number
@@ -28,4 +28,5 @@ export interface ProductProps {
 export interface ProductPageProps {
   page: ProductProps
   nav: NavItemProps[]
+  globalInfo: GlobalInfoProps
 }

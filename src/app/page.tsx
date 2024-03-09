@@ -30,7 +30,7 @@ export default async function Home() {
   const data = await getData()
 
   return (
-    <PageTemplate nav={data.nav}>
+    <PageTemplate nav={data.nav} global={data.globalInfo}>
       <PageFactory components={data.pageBlocks} />
     </PageTemplate>
   )

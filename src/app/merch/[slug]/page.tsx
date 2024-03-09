@@ -38,14 +38,16 @@ export default async function ProductPage({
     slug: string
   }
 }) {
-  const { page, nav } = (await getData(params.slug)) as ProductPageProps
+  const { page, nav, globalInfo } = (await getData(
+    params.slug
+  )) as ProductPageProps
 
   if (!page) {
     return notFound()
   }
 
   return (
-    <PageTemplate nav={nav}>
+    <PageTemplate nav={nav} global={globalInfo}>
       {page && (
         <Details content={page} initialVariantId={searchParams.variant} />
       )}

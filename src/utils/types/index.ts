@@ -175,3 +175,13 @@ export interface NavItemProps {
   url: string
   subItems?: NavItemProps[]
 }
+
+export interface GlobalInfoProps {
+  title?: string
+  description?: string
+  contactInfo?: {
+    socials?: string[]
+    email?: string
+  }
+  siteImage?: ImageProps
+}

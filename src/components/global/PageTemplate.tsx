@@ -1,5 +1,5 @@
 'use client'
-import { NavItemProps } from '@utils/types'
+import { GlobalInfoProps, NavItemProps } from '@utils/types'
 import { ReactNode, createContext } from 'react'
 import { Header } from './Header'
 import { BackToTop } from '@components/modules/BackToTop'
@@ -23,15 +23,7 @@ export const PageTemplate = ({
 }: {
   nav: NavItemProps[]
   children: ReactNode
-  global: {
-    title?: string
-    description?: string
-    contactInfo?: {
-      socials?: string[]
-      email?: string
-    }
-    siteImage?: ImageProps
-  }
+  global: GlobalInfoProps
 }) => {
   return (
     <AppContext.Provider value={{ nav }}>
@@ -44,7 +36,8 @@ export const PageTemplate = ({
       <main>
         <Header />
         {children}
-        <Footer socials={global.contactInfo?.socials} />
+
+        <Footer socials={global?.contactInfo?.socials} />
         <BackToTop />
       </main>
     </AppContext.Provider>
