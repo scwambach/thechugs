@@ -36,6 +36,8 @@
 .component_bigBanner {
   + section {
     &.component_ctaBanner {
+      padding-bottom: $size-100;
+
       .contained {
         @media screen and (min-width: ($desktop-lg)) {
           margin-top: -$size-100;

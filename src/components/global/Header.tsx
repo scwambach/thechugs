@@ -5,9 +5,9 @@ import { AppContext } from './PageTemplate'
 import { LinkObject } from '@components/modules/LinkObject'
 
 export const Header = () => {
-  const { nav } = useContext(AppContext)
+  const { nav, darkMode } = useContext(AppContext)
   return (
-    <header>
+    <header className={darkMode ? 'dark' : undefined}>
       <ul>
         {nav.map((item) => (
           <li key={item._key}>

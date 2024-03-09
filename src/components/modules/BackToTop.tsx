@@ -20,7 +20,7 @@ export const BackToTop = () => {
 
   return (
     <Button
-      buttonStyle="white"
+      buttonStyle="secondary"
       className={`backToTop ${show ? 'show' : 'hide'}`}
       onClick={() => {
         window.scrollTo({

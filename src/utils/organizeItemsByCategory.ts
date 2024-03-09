@@ -34,5 +34,29 @@ export const organizeItemsByCategory = (items: ProductCardProps[]) => {
     })
   })
 
+  organizedItems.sort((a, b) => {
+    if (a.title === 'Clothing') return -1
+    if (a.title === 'Music') return -1
+    if (b.title === 'Clothing') return 1
+    if (b.title === 'Music') return 1
+    return a.title.localeCompare(b.title)
+  })
+
+  const clothingIndex = organizedItems.findIndex(
+    (item) => item.title === 'Clothing'
+  )
+
+  const musicIndex = organizedItems.findIndex((item) => item.title === 'Music')
+
+  if (clothingIndex !== -1) {
+    const clothing = organizedItems.splice(clothingIndex, 1)
+    organizedItems.unshift(clothing[0])
+  }
+
+  if (musicIndex !== -1) {
+    const music = organizedItems.splice(musicIndex, 1)
+    organizedItems.unshift(music[0])
+  }
+
   return organizedItems
 }

@@ -12,7 +12,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <PageTemplate nav={data.nav} global={data.globalInfo}>
+    <PageTemplate
+      nav={data.nav}
+      global={data.globalInfo}
+      darkMode={data.pageBlocks[0].backgroundColor === 'white'}
+    >
       <PageFactory components={data.pageBlocks} />
     </PageTemplate>
   )

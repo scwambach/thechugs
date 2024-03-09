@@ -7,6 +7,13 @@ body {
   position: relative;
 }
 
+* {
+  &:focus {
+    outline: $size-4 solid $primary !important;
+    outline-offset: $size-4 !important;
+  }
+}
+
 main {
   font-family: $font-family;
   position: relative;
@@ -23,12 +30,12 @@ a {
 
   &:hover {
     @media screen and (min-width: ($tablet-md)) {
-      color: $primary;
+      color: $tertiary-light;
     }
 
     .zoom-image {
       @media screen and (min-width: ($tablet-md)) {
-        transform: scale(1.1);
+        transform: scale(1);
       }
     }
   }
@@ -195,6 +202,12 @@ ul {
 
 .page-component {
   border-top: $border-size solid $black;
+
+  &.bg-white + .bg-white,
+  &.bg-blue + .bg-blue,
+  &.bg-black + .bg-black {
+    padding-top: 0;
+  }
 
   &:first-child {
     border-top: none;

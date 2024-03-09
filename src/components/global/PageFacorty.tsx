@@ -14,7 +14,13 @@ export const PageFactory = ({ components }: { components: any[] }) => {
     <>
       {(isEventsEmpty ? sansEventsComponents : components).map(
         (component: any) => (
-          <PageBlock {...component} key={component._key} />
+          <>
+            {component._type === 'events' &&
+            component.events &&
+            component.events.length === 0 ? null : (
+              <PageBlock {...component} key={component._key} />
+            )}
+          </>
         )
       )}
     </>
