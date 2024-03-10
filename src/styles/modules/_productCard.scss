@@ -78,15 +78,48 @@
   }
 
   .button-group {
+    // @media screen and (min-width: ($tablet-md)) {
     margin-top: $size-16;
+    // }
+
+    @media screen and (max-width: ($tablet-md - 1)) {
+      margin-top: $size-8;
+      flex-direction: column;
+      gap: $size-8;
+    }
 
     > * {
       font-size: $size-12;
       line-height: 1.2;
       border: $size-1 solid $black;
+      background: $secondary;
+
+      @media screen and (max-width: ($tablet-md - 1)) {
+        &:first-child {
+          border-right: $size-1 solid $black;
+          border-radius: $size-5;
+          // display: none;
+        }
+
+        &:last-child {
+          border-radius: $size-5;
+        }
+      }
 
       + * {
         border-left: $size-1 solid $black;
+      }
+    }
+  }
+
+  .formField {
+    @media screen and (max-width: ($tablet-md - 1)) {
+      // display: none;
+      font-size: $size-14;
+
+      select {
+        white-space: nowrap;
+        padding-right: $size-32;
       }
     }
   }

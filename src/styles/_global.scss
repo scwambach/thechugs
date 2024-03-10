@@ -193,6 +193,10 @@ ul {
 
   .headingTag {
     font-size: $size-60;
+
+    @media screen and (max-width: ($tablet-md - 1)) {
+      font-size: $size-45;
+    }
   }
 
   .inner {

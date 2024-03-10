@@ -1,6 +1,6 @@
 .backToTop {
   position: fixed;
-  width: $size-72;
+  width: $size-60;
   height: $size-60;
   text-align: center;
   line-height: 1;
@@ -10,6 +10,18 @@
   right: $size-16;
   transition-duration: $animation-speed;
   transition-timing-function: ease-in-out;
+  border: $size-2 solid $black;
+
+  @media screen and (max-width: ($tablet-md - 1)) {
+    padding: $size-4;
+    height: $size-48;
+    width: $size-48;
+
+    svg {
+      width: $size-24;
+      height: $size-24;
+    }
+  }
 
   &.hide {
     opacity: 0;

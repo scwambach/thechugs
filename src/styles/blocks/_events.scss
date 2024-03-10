@@ -1,11 +1,11 @@
 .events {
   .list {
-    @media screen and (min-width: ($tablet-md - 1)) {
-      width: calc(100% - $size-448);
+    @media screen and (max-width: ($tablet-xl - 1)) {
+      width: 100%;
     }
 
-    @media (max-width: ($tablet-lg - 1)) and (min-width: ($tablet-md - 1)) {
-      width: calc(100% - $size-256);
+    @media screen and (min-width: ($tablet-xl - 1)) {
+      width: calc(100% - $size-448);
     }
   }
 
@@ -26,6 +26,10 @@
     }
     @media (max-width: ($tablet-lg - 1)) and (min-width: ($tablet-md - 1)) {
       width: $size-256;
+    }
+
+    @media screen and (max-width: ($tablet-xl - 1)) {
+      display: none;
     }
   }
 }

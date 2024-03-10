@@ -57,7 +57,11 @@ export const ProductCard = (props: ProductCardProps) => {
           imageLogic
         ) : (
           <LinkObject
-            href={`/merch/${props.slug}?variant=${activeVariant?.externalId}`}
+            href={`/merch/${props.slug}${
+              activeVariant?.externalId
+                ? `?variant=${activeVariant?.externalId}`
+                : ''
+            }`}
           >
             {imageLogic}
           </LinkObject>

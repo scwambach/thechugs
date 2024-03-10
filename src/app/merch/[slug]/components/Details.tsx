@@ -37,6 +37,14 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
     : []
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY > 0) {
+        window.scrollTo(0, 0)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     if (initialVariantId) {
       const variant = content.variants?.find(
         (variant) => variant.externalId === initialVariantId

@@ -43,10 +43,6 @@ input[type='button'] {
   &[class$='-outline'] {
     border-width: $size-2;
     border-style: solid;
-
-    @media screen and (max-width: ($tablet - 1)) {
-      border-width: $mobile-border-size;
-    }
   }
 
   &.primary-outline {

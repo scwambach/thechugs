@@ -15,6 +15,7 @@
 
     @media screen and (max-width: ($tablet-md - 1)) {
       margin: 0 auto $size-100 auto;
+      padding: $size-60 $size-32;
     }
 
     @media screen and (max-width: ($desktop-lg - 1)) {
@@ -42,8 +43,8 @@
       }
 
       @media screen and (max-width: ($desktop-lg - 1)) {
-        padding-left: $size-16;
-        padding-right: $size-16;
+        padding-left: $size-32;
+        padding-right: $size-32;
       }
 
       .headingTag {
