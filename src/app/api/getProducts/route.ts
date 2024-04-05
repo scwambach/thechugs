@@ -109,6 +109,6 @@ export async function GET() {
   // Construct a response in ndJSON format to be used in Sanity.
   return NextResponse.json({
     status: 200,
-    body: mutations,
+    body: mutations.length > 0 ? mutations : 'No new items to add',
   })
 }
