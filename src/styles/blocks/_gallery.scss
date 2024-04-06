@@ -79,6 +79,9 @@
         position: absolute;
         width: $size-48;
         height: $size-48;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         top: $size-16;
         right: $size-16;
         z-index: 1001;
