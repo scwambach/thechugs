@@ -14,12 +14,12 @@ export const PageFactory = ({ components }: { components: any[] }) => {
   return (
     <div className="innerPage">
       {(isEventsEmpty ? sansEventsComponents : components).map(
-        (component: any) => (
+        (component: any, index: number) => (
           <Fragment key={component._key}>
             {component._type === 'events' &&
             component.events &&
             component.events.length === 0 ? null : (
-              <PageBlock {...component} />
+              <PageBlock {...component} className={`pageOrder_${index + 1}`} />
             )}
           </Fragment>
         )
