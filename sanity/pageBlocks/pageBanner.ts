@@ -1,4 +1,4 @@
-import {stylesMarks} from './../common/stylesMarks'
+import {stylesMarks} from '../common/stylesMarks'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 import {links} from '../common/links'
 import {BsFillImageFill} from 'react-icons/bs'

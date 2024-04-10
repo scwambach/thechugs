@@ -1,4 +1,4 @@
-import {stylesMarks} from './../common/stylesMarks'
+import {stylesMarks} from '../common/stylesMarks'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 import {blockFields} from '../common/blockFields'
 import {links} from '../common/links'

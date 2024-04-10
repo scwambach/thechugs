@@ -1,4 +1,4 @@
-import {blockContent} from './common/blockContent'
+import {blockContent} from '../common/blockContent'
 
 export const homePage = {
   name: 'homePage',
@@ -77,14 +77,6 @@ export const homePage = {
         },
         blockContent({title: 'Copy', name: 'copy'}),
       ],
-    },
-    {
-      name: 'musicPlayerCode',
-      title: 'Music Player Code',
-      type: 'code',
-      options: {
-        language: 'html',
-      },
     },
     {
       title: 'Image Gallery',
