@@ -1,4 +1,4 @@
-import {blockContent} from '../common/blockContent'
+import { blockContent } from '../common/blockContent'
 
 export const homePage = {
   name: 'homePage',
@@ -75,7 +75,7 @@ export const homePage = {
           type: 'string',
           validation: (Rule: any) => Rule.required(),
         },
-        blockContent({title: 'Copy', name: 'copy'}),
+        blockContent({ title: 'Copy', name: 'copy' }),
       ],
     },
     {

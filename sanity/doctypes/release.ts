@@ -35,7 +35,7 @@ export const release = {
       title: 'Product',
       name: 'product',
       type: 'reference',
-      to: [{type: 'product'}],
+      to: [{ type: 'product' }],
     },
     {
       title: 'Pre-Save Link',

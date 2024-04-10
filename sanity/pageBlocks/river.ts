@@ -1,7 +1,7 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {stylesMarks} from '../common/stylesMarks'
-import {PiWavesBold} from 'react-icons/pi'
-import {links} from '../common/links'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { stylesMarks } from '../common/stylesMarks'
+import { PiWavesBold } from 'react-icons/pi'
+import { links } from '../common/links'
 
 export const river = defineType({
   name: 'river',
@@ -12,7 +12,7 @@ export const river = defineType({
     select: {
       title: 'items[0].heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'River',
         subtitle: title ? 'River' : undefined,

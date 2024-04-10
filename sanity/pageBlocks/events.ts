@@ -1,6 +1,6 @@
-import {defineField, defineType} from 'sanity'
-import {blockFields} from '../common/blockFields'
-import {MdEventAvailable} from 'react-icons/md'
+import { defineField, defineType } from 'sanity'
+import { blockFields } from '../common/blockFields'
+import { MdEventAvailable } from 'react-icons/md'
 
 export const events = defineType({
   name: 'events',
@@ -11,7 +11,7 @@ export const events = defineType({
     select: {
       title: 'heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Events',
         subtitle: title ? 'Events' : undefined,

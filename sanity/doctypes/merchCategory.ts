@@ -1,5 +1,5 @@
-import {FaStar} from 'react-icons/fa'
-import {defineField, defineType} from 'sanity'
+import { FaStar } from 'react-icons/fa'
+import { defineField, defineType } from 'sanity'
 
 export const merchCategory = defineType({
   name: 'merchCategory',

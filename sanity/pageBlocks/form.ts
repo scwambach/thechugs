@@ -1,9 +1,9 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {stylesMarks} from '../common/stylesMarks'
-import {AiOutlineForm} from 'react-icons/ai'
-import {MdInput} from 'react-icons/md'
-import {BsCheckSquare} from 'react-icons/bs'
-import {blockFields} from '../common/blockFields'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { stylesMarks } from '../common/stylesMarks'
+import { AiOutlineForm } from 'react-icons/ai'
+import { MdInput } from 'react-icons/md'
+import { BsCheckSquare } from 'react-icons/bs'
+import { blockFields } from '../common/blockFields'
 
 export const form = defineType({
   name: 'form',
@@ -14,7 +14,7 @@ export const form = defineType({
     select: {
       title: 'title',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Form',
         subtitle: title ? 'Form' : undefined,
@@ -64,7 +64,7 @@ export const form = defineType({
               title: 'label',
               subtitle: 'type',
             },
-            prepare({title, subtitle}) {
+            prepare({ title, subtitle }) {
               return {
                 title,
                 subtitle,
@@ -79,21 +79,21 @@ export const form = defineType({
               type: 'string',
               options: {
                 list: [
-                  {title: 'checkbox', value: 'checkbox'},
-                  {title: 'date', value: 'date'},
-                  {title: 'datetime-local', value: 'datetime-local'},
-                  {title: 'email', value: 'email'},
-                  {title: 'hidden', value: 'hidden'},
-                  {title: 'month', value: 'month'},
-                  {title: 'number', value: 'number'},
-                  {title: 'radio', value: 'radio'},
-                  {title: 'tel', value: 'tel'},
-                  {title: 'text', value: 'text'},
-                  {title: 'textarea', value: 'textarea'},
-                  {title: 'time', value: 'time'},
-                  {title: 'url', value: 'url'},
-                  {title: 'week', value: 'week'},
-                  {title: 'select', value: 'select'},
+                  { title: 'checkbox', value: 'checkbox' },
+                  { title: 'date', value: 'date' },
+                  { title: 'datetime-local', value: 'datetime-local' },
+                  { title: 'email', value: 'email' },
+                  { title: 'hidden', value: 'hidden' },
+                  { title: 'month', value: 'month' },
+                  { title: 'number', value: 'number' },
+                  { title: 'radio', value: 'radio' },
+                  { title: 'tel', value: 'tel' },
+                  { title: 'text', value: 'text' },
+                  { title: 'textarea', value: 'textarea' },
+                  { title: 'time', value: 'time' },
+                  { title: 'url', value: 'url' },
+                  { title: 'week', value: 'week' },
+                  { title: 'select', value: 'select' },
                 ],
               },
             }),
@@ -118,7 +118,7 @@ export const form = defineType({
               name: 'choices',
               title: 'Choices',
               type: 'array',
-              hidden: ({parent}: any) =>
+              hidden: ({ parent }: any) =>
                 parent?.type !== 'radio' &&
                 parent?.type !== 'checkbox' &&
                 parent?.type !== 'select',
@@ -154,7 +154,7 @@ export const form = defineType({
               name: 'initialValue',
               title: 'Initial Value',
               type: 'string',
-              hidden: ({parent}: any) =>
+              hidden: ({ parent }: any) =>
                 parent?.type === 'radio' &&
                 parent?.type === 'checkbox' &&
                 parent?.type === 'select',
@@ -163,7 +163,7 @@ export const form = defineType({
               name: 'placeholder',
               title: 'Placeholder',
               type: 'string',
-              hidden: ({parent}: any) =>
+              hidden: ({ parent }: any) =>
                 parent?.type === 'radio' &&
                 parent?.type === 'checkbox' &&
                 parent?.type === 'select',
@@ -172,7 +172,7 @@ export const form = defineType({
               name: 'readOnly',
               title: 'Read Only',
               type: 'boolean',
-              hidden: ({parent}: any) =>
+              hidden: ({ parent }: any) =>
                 parent?.type === 'radio' &&
                 parent?.type === 'checkbox' &&
                 parent?.type === 'select',
@@ -181,7 +181,7 @@ export const form = defineType({
               name: 'disabled',
               title: 'Disabled',
               type: 'boolean',
-              hidden: ({parent}: any) =>
+              hidden: ({ parent }: any) =>
                 parent?.type === 'radio' &&
                 parent?.type === 'checkbox' &&
                 parent?.type === 'select',

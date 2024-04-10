@@ -1,4 +1,4 @@
-import {FaLink} from 'react-icons/fa'
+import { FaLink } from 'react-icons/fa'
 
 export const event = {
   title: 'Event',
@@ -42,13 +42,13 @@ export const event = {
       name: 'location',
       type: 'reference',
       validation: (Rule: any) => Rule.required(),
-      to: [{type: 'location'}],
+      to: [{ type: 'location' }],
     },
     {
       title: 'Other Bands',
       name: 'otherBands',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'otherBand'}]}],
+      of: [{ type: 'reference', to: [{ type: 'otherBand' }] }],
     },
     {
       name: 'links',

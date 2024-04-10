@@ -1,5 +1,5 @@
-import {BsFillImageFill} from 'react-icons/bs'
-import {defineType} from 'sanity'
+import { BsFillImageFill } from 'react-icons/bs'
+import { defineType } from 'sanity'
 export const bigBanner = defineType({
   name: 'bigBanner',
   title: 'Big Banner',
@@ -9,7 +9,7 @@ export const bigBanner = defineType({
     select: {
       title: 'screenReaderText',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Big Banner',
         subtitle: title ? 'Big Banner' : undefined,

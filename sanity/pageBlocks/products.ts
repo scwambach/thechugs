@@ -1,6 +1,6 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {blockFields} from '../common/blockFields'
-import {AiOutlineShoppingCart} from 'react-icons/ai'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { blockFields } from '../common/blockFields'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 export const products = defineType({
   name: 'products',
@@ -11,7 +11,7 @@ export const products = defineType({
     select: {
       title: 'heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Products',
         subtitle: title ? 'Products' : undefined,
@@ -29,13 +29,13 @@ export const products = defineType({
       name: 'products',
       title: 'Products',
       type: 'array',
-      hidden: ({parent}) => parent?.allProducts,
+      hidden: ({ parent }) => parent?.allProducts,
       of: [
         defineArrayMember({
           name: 'product',
           title: 'Product',
           type: 'reference',
-          to: [{type: 'merch'}],
+          to: [{ type: 'merch' }],
         }),
       ],
     }),

@@ -1,4 +1,4 @@
-import {defineField} from 'sanity'
+import { defineField } from 'sanity'
 
 export const blockFields = [
   defineField({
@@ -12,12 +12,12 @@ export const blockFields = [
     type: 'string',
     options: {
       list: [
-        {title: 'H1', value: '1'},
-        {title: 'H2', value: '2'},
-        {title: 'H3', value: '3'},
-        {title: 'H4', value: '4'},
-        {title: 'H5', value: '5'},
-        {title: 'H6', value: '6'},
+        { title: 'H1', value: '1' },
+        { title: 'H2', value: '2' },
+        { title: 'H3', value: '3' },
+        { title: 'H4', value: '4' },
+        { title: 'H5', value: '5' },
+        { title: 'H6', value: '6' },
       ],
     },
   }),
@@ -32,9 +32,9 @@ export const blockFields = [
     type: 'string',
     options: {
       list: [
-        {title: 'White', value: 'white'},
-        {title: 'Black', value: 'black'},
-        {title: 'Blue', value: 'blue'},
+        { title: 'White', value: 'white' },
+        { title: 'Black', value: 'black' },
+        { title: 'Blue', value: 'blue' },
       ],
     },
   }),

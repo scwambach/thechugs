@@ -1,5 +1,5 @@
 import React from 'react'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const merch = defineType({
   name: 'merch',
@@ -12,9 +12,10 @@ export const merch = defineType({
       images: 'images',
       variants: 'variants',
     },
-    prepare({title, media, images, variants}: any) {
+    prepare({ title, media, images, variants }: any) {
       const hasImages = images && images.length > 0
-      const subtitle = variants && variants.length > 0 ? `Variants: ${variants.length}` : ''
+      const subtitle =
+        variants && variants.length > 0 ? `Variants: ${variants.length}` : ''
       return {
         title,
         subtitle,
@@ -48,7 +49,7 @@ export const merch = defineType({
       name: 'category',
       title: 'Category',
       type: 'reference',
-      to: [{type: 'merchCategory'}],
+      to: [{ type: 'merchCategory' }],
     }),
     defineField({
       name: 'tags',
@@ -66,7 +67,7 @@ export const merch = defineType({
       name: 'price',
       title: 'Price',
       type: 'number',
-      hidden: ({parent}: any) => !!parent.productId,
+      hidden: ({ parent }: any) => !!parent.productId,
     }),
     defineField({
       name: 'images',
@@ -75,7 +76,7 @@ export const merch = defineType({
       options: {
         layout: 'grid',
       },
-      hidden: ({parent}: any) => !!parent.productId,
+      hidden: ({ parent }: any) => !!parent.productId,
       of: [
         defineArrayMember({
           name: 'productImage',
@@ -86,7 +87,7 @@ export const merch = defineType({
               title: 'title',
               media: 'image',
             },
-            prepare({title, media}: any) {
+            prepare({ title, media }: any) {
               return {
                 title,
                 media,
@@ -109,7 +110,7 @@ export const merch = defineType({
     defineField({
       name: 'productId',
       readOnly: true,
-      hidden: ({parent}: any) => !!parent.images,
+      hidden: ({ parent }: any) => !!parent.images,
       title: 'Product ID',
       type: 'number',
     }),
@@ -117,13 +118,13 @@ export const merch = defineType({
       name: 'externalId',
       title: 'External ID',
       readOnly: true,
-      hidden: ({parent}: any) => !!parent.images,
+      hidden: ({ parent }: any) => !!parent.images,
       type: 'string',
     }),
     defineField({
       name: 'thumbnail',
       readOnly: true,
-      hidden: ({parent}: any) => !!parent.images,
+      hidden: ({ parent }: any) => !!parent.images,
       title: 'Thumbnail',
       type: 'url',
     }),
@@ -131,7 +132,7 @@ export const merch = defineType({
       name: 'variants',
       title: 'Variants',
       readOnly: true,
-      hidden: ({parent}: any) => !!parent.images,
+      hidden: ({ parent }: any) => !!parent.images,
       type: 'array',
       of: [
         defineArrayMember({
@@ -144,7 +145,7 @@ export const merch = defineType({
               title: 'title',
               media: 'image',
             },
-            prepare({title, media}: any) {
+            prepare({ title, media }: any) {
               return {
                 title,
                 media: <img src={media} />,
@@ -167,7 +168,7 @@ export const merch = defineType({
             defineField({
               name: 'image',
               readOnly: true,
-              hidden: ({parent}: any) => !!parent.images,
+              hidden: ({ parent }: any) => !!parent.images,
               title: 'Image',
               type: 'url',
             }),
@@ -175,20 +176,20 @@ export const merch = defineType({
               name: 'externalId',
               title: 'External ID',
               readOnly: true,
-              hidden: ({parent}: any) => !!parent.images,
+              hidden: ({ parent }: any) => !!parent.images,
               type: 'string',
             }),
             defineField({
               name: 'sku',
               readOnly: true,
-              hidden: ({parent}: any) => !!parent.images,
+              hidden: ({ parent }: any) => !!parent.images,
               title: 'SKU',
               type: 'string',
             }),
             defineField({
               name: 'syncProductId',
               readOnly: true,
-              hidden: ({parent}: any) => !!parent.images,
+              hidden: ({ parent }: any) => !!parent.images,
               title: 'Sync Product ID',
               type: 'number',
             }),
@@ -196,13 +197,13 @@ export const merch = defineType({
               name: 'variantId',
               title: 'Variant ID',
               readOnly: true,
-              hidden: ({parent}: any) => !!parent.images,
+              hidden: ({ parent }: any) => !!parent.images,
               type: 'number',
             }),
             defineField({
               name: 'itemId',
               readOnly: true,
-              hidden: ({parent}: any) => !!parent.images,
+              hidden: ({ parent }: any) => !!parent.images,
               title: 'Item ID',
               type: 'number',
             }),

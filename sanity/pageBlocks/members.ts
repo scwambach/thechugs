@@ -1,6 +1,6 @@
-import {defineType} from 'sanity'
-import {blockFields} from '../common/blockFields'
-import {FaUsers} from 'react-icons/fa'
+import { defineType } from 'sanity'
+import { blockFields } from '../common/blockFields'
+import { FaUsers } from 'react-icons/fa'
 
 export const members = defineType({
   name: 'members',
@@ -11,7 +11,7 @@ export const members = defineType({
     select: {
       title: 'heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Members',
         subtitle: title ? 'Members' : undefined,

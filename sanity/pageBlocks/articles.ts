@@ -1,6 +1,6 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {blockFields} from '../common/blockFields'
-import {BsNewspaper} from 'react-icons/bs'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { blockFields } from '../common/blockFields'
+import { BsNewspaper } from 'react-icons/bs'
 
 export const articles = defineType({
   name: 'articles',
@@ -11,7 +11,7 @@ export const articles = defineType({
     select: {
       title: 'heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Articles',
         subtitle: title ? 'Articles' : undefined,
@@ -30,14 +30,14 @@ export const articles = defineType({
     defineField({
       name: 'articles',
       title: 'Articles',
-      hidden: ({parent}) => parent?.latest,
+      hidden: ({ parent }) => parent?.latest,
       type: 'array',
       of: [
         defineArrayMember({
           name: 'article',
           title: 'Article',
           type: 'reference',
-          to: [{type: 'article'}],
+          to: [{ type: 'article' }],
         }),
       ],
     }),

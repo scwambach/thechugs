@@ -1,5 +1,5 @@
-import {AiOutlineLink} from 'react-icons/ai'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import { AiOutlineLink } from 'react-icons/ai'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const menu = defineType({
   name: 'menu',
@@ -27,7 +27,7 @@ export const menu = defineType({
               title: 'title',
               subtitle: 'url',
             },
-            prepare({title, subtitle}) {
+            prepare({ title, subtitle }) {
               return {
                 title,
                 subtitle,
@@ -62,7 +62,7 @@ export const menu = defineType({
                       title: 'title',
                       subtitle: 'url',
                     },
-                    prepare({title, subtitle}) {
+                    prepare({ title, subtitle }) {
                       return {
                         title,
                         subtitle,

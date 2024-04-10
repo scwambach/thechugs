@@ -1,6 +1,6 @@
-import {defineArrayMember, defineField} from 'sanity'
-import {AiOutlineLink} from 'react-icons/ai'
-import {buttonStyles} from './buttonStyles'
+import { defineArrayMember, defineField } from 'sanity'
+import { AiOutlineLink } from 'react-icons/ai'
+import { buttonStyles } from './buttonStyles'
 import * as Icon from 'react-icons/si'
 
 export const links = [
@@ -20,7 +20,7 @@ export const links = [
             url: 'url',
             linkType: 'linkType',
           },
-          prepare({title, url, linkType}) {
+          prepare({ title, url, linkType }) {
             if (linkType === 'social') {
               const getDomain = url
                 .replace('http://', '')
@@ -36,7 +36,8 @@ export const links = [
 
               return {
                 title: title || url,
-                subtitle: getDomain.charAt(0).toUpperCase() + getDomain.slice(1),
+                subtitle:
+                  getDomain.charAt(0).toUpperCase() + getDomain.slice(1),
                 // @ts-ignore
                 media: Icon[iconName],
               }
@@ -52,7 +53,7 @@ export const links = [
             name: 'text',
             title: 'Text',
             type: 'string',
-            hidden: ({parent}: any) => parent?.linkType === 'social',
+            hidden: ({ parent }: any) => parent?.linkType === 'social',
           }),
           defineField({
             name: 'linkType',
@@ -61,8 +62,8 @@ export const links = [
             initialValue: 'url',
             options: {
               list: [
-                {title: 'social', value: 'social'},
-                {title: 'url', value: 'url'},
+                { title: 'social', value: 'social' },
+                { title: 'url', value: 'url' },
               ],
             },
           }),
@@ -70,7 +71,7 @@ export const links = [
             name: 'buttonStyle',
             title: 'Button style',
             type: 'string',
-            hidden: ({parent}: any) => parent?.linkType === 'social',
+            hidden: ({ parent }: any) => parent?.linkType === 'social',
             description:
               'Only applies to links of type "url" and only if the link is in a button group.',
             options: {

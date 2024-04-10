@@ -1,4 +1,4 @@
-import {GrArticle} from 'react-icons/gr'
+import { GrArticle } from 'react-icons/gr'
 
 export const article = {
   title: 'Article',

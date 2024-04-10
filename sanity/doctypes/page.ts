@@ -1,4 +1,4 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export const page = defineType({
   name: 'page',
@@ -44,17 +44,17 @@ export const page = defineType({
       title: 'Page Blocks',
       type: 'array',
       of: [
-        defineArrayMember({name: 'articles', type: 'articles'}),
-        defineArrayMember({name: 'bigBanner', type: 'bigBanner'}),
-        defineArrayMember({name: 'ctaBanner', type: 'ctaBanner'}),
-        defineArrayMember({name: 'events', type: 'events'}),
-        defineArrayMember({name: 'form', type: 'form'}),
-        defineArrayMember({name: 'gallery', type: 'gallery'}),
-        defineArrayMember({name: 'members', type: 'members'}),
-        defineArrayMember({name: 'pageBanner', type: 'pageBanner'}),
-        defineArrayMember({name: 'products', type: 'products'}),
-        defineArrayMember({name: 'river', type: 'river'}),
-        defineArrayMember({name: 'videos', type: 'videos'}),
+        defineArrayMember({ name: 'articles', type: 'articles' }),
+        defineArrayMember({ name: 'bigBanner', type: 'bigBanner' }),
+        defineArrayMember({ name: 'ctaBanner', type: 'ctaBanner' }),
+        defineArrayMember({ name: 'events', type: 'events' }),
+        defineArrayMember({ name: 'form', type: 'form' }),
+        defineArrayMember({ name: 'gallery', type: 'gallery' }),
+        defineArrayMember({ name: 'members', type: 'members' }),
+        defineArrayMember({ name: 'pageBanner', type: 'pageBanner' }),
+        defineArrayMember({ name: 'products', type: 'products' }),
+        defineArrayMember({ name: 'river', type: 'river' }),
+        defineArrayMember({ name: 'videos', type: 'videos' }),
       ],
       validation: (Rule: any) => Rule.required(),
     }),

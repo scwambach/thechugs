@@ -1,7 +1,7 @@
-import {stylesMarks} from '../common/stylesMarks'
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {links} from '../common/links'
-import {BsFillImageFill} from 'react-icons/bs'
+import { stylesMarks } from '../common/stylesMarks'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { links } from '../common/links'
+import { BsFillImageFill } from 'react-icons/bs'
 
 export const pageBanner = defineType({
   name: 'pageBanner',
@@ -12,7 +12,7 @@ export const pageBanner = defineType({
     select: {
       title: 'heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Page Banner',
         subtitle: title ? 'Page Banner' : undefined,

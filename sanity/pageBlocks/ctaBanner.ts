@@ -1,8 +1,8 @@
-import {stylesMarks} from '../common/stylesMarks'
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {blockFields} from '../common/blockFields'
-import {links} from '../common/links'
-import {PiFlagBannerBold} from 'react-icons/pi'
+import { stylesMarks } from '../common/stylesMarks'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { blockFields } from '../common/blockFields'
+import { links } from '../common/links'
+import { PiFlagBannerBold } from 'react-icons/pi'
 
 export const ctaBanner = defineType({
   name: 'ctaBanner',
@@ -13,7 +13,7 @@ export const ctaBanner = defineType({
     select: {
       title: 'heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'CTA Banner',
         subtitle: title ? 'CTA Banner' : undefined,

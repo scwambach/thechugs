@@ -1,6 +1,6 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {blockFields} from '../common/blockFields'
-import {AiOutlineVideoCamera} from 'react-icons/ai'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { blockFields } from '../common/blockFields'
+import { AiOutlineVideoCamera } from 'react-icons/ai'
 
 export const videos = defineType({
   name: 'videos',
@@ -11,7 +11,7 @@ export const videos = defineType({
     select: {
       title: 'heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Videos',
         subtitle: title ? 'Videos' : undefined,
@@ -30,7 +30,7 @@ export const videos = defineType({
           name: 'video',
           title: 'Video',
           type: 'reference',
-          to: [{type: 'video'}],
+          to: [{ type: 'video' }],
         }),
       ],
     }),

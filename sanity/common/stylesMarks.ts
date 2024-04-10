@@ -1,12 +1,12 @@
 export const stylesMarks = {
   styles: [
-    {title: 'Normal', value: 'normal'},
-    {title: 'H2', value: 'h2'},
-    {title: 'H3', value: 'h3'},
-    {title: 'H4', value: 'h4'},
-    {title: 'H5', value: 'h5'},
-    {title: 'H6', value: 'h6'},
-    {title: 'Quote', value: 'blockquote'},
+    { title: 'Normal', value: 'normal' },
+    { title: 'H2', value: 'h2' },
+    { title: 'H3', value: 'h3' },
+    { title: 'H4', value: 'h4' },
+    { title: 'H5', value: 'h5' },
+    { title: 'H6', value: 'h6' },
+    { title: 'Quote', value: 'blockquote' },
   ],
   marks: {
     annotations: [
@@ -55,7 +55,7 @@ export const customBlocks: any = [
         validation: (Rule: any) => Rule.required(),
         title: 'Feature Video',
         type: 'reference',
-        to: [{type: 'video'}],
+        to: [{ type: 'video' }],
       },
       {
         name: 'caption',
@@ -69,7 +69,7 @@ export const customBlocks: any = [
         subtitle: 'featureVideo.url',
         media: 'featureVideo.poster',
       },
-      prepare({title, subtitle, media}: any) {
+      prepare({ title, subtitle, media }: any) {
         return {
           media,
           title,
@@ -95,7 +95,7 @@ export const customBlocks: any = [
       select: {
         subtitle: 'code',
       },
-      prepare({subtitle}: any) {
+      prepare({ subtitle }: any) {
         return {
           title: 'General Embed',
           subtitle,

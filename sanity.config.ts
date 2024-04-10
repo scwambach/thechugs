@@ -1,16 +1,22 @@
-import { BiAlbum } from 'react-icons/bi';
+import { BiAlbum } from 'react-icons/bi'
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
 
-import {visionTool} from '@sanity/vision'
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
+import { visionTool } from '@sanity/vision'
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import {apiVersion, dataset, projectId} from './sanity/env'
-import {schema} from './sanity/schema'
-import { AiFillHome, AiFillVideoCamera, AiOutlineCalendar, AiOutlineMenu, AiOutlineShoppingCart } from 'react-icons/ai'
+import { apiVersion, dataset, projectId } from './sanity/env'
+import { schema } from './sanity/schema'
+import {
+  AiFillHome,
+  AiFillVideoCamera,
+  AiOutlineCalendar,
+  AiOutlineMenu,
+  AiOutlineShoppingCart,
+} from 'react-icons/ai'
 import { GrArticle, GrMultiple } from 'react-icons/gr'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { BsGlobe } from 'react-icons/bs'
@@ -69,12 +75,14 @@ export default defineConfig({
               .icon(GrArticle),
             S.listItem()
               .title('Global Info')
-              .child(S.document().schemaType('globalInfo').documentId('globalInfo'))
+              .child(
+                S.document().schemaType('globalInfo').documentId('globalInfo')
+              )
               .icon(BsGlobe),
           ]),
     }),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({defaultApiVersion: apiVersion}),
+    visionTool({ defaultApiVersion: apiVersion }),
   ],
 })

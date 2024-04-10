@@ -1,4 +1,4 @@
-import {GiGuitar} from 'react-icons/gi'
+import { GiGuitar } from 'react-icons/gi'
 export const otherBand = {
   title: 'Other Band',
   name: 'otherBand',

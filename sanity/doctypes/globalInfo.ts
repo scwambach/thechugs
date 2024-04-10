@@ -1,4 +1,4 @@
-import {links} from '../common/links'
+import { links } from '../common/links'
 
 export const globalInfo = {
   title: 'Global Info',

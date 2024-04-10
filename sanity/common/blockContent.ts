@@ -1,4 +1,4 @@
-import {stylesMarks} from './stylesMarks'
+import { stylesMarks } from './stylesMarks'
 
 export const blockContent = (props: {
   title?: string

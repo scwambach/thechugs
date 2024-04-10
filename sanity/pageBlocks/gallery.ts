@@ -1,6 +1,6 @@
-import {defineArrayMember, defineField, defineType} from 'sanity'
-import {blockFields} from '../common/blockFields'
-import {GrGallery} from 'react-icons/gr'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { blockFields } from '../common/blockFields'
+import { GrGallery } from 'react-icons/gr'
 
 export const gallery = defineType({
   name: 'gallery',
@@ -11,7 +11,7 @@ export const gallery = defineType({
     select: {
       title: 'heading',
     },
-    prepare({title}) {
+    prepare({ title }) {
       return {
         title: title || 'Gallery',
         subtitle: title ? 'Gallery' : undefined,

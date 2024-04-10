@@ -7,7 +7,7 @@ export const product = {
       title: 'title',
       media: 'images',
     },
-    prepare({title, media}: any) {
+    prepare({ title, media }: any) {
       return {
         title,
         media: media[0],
