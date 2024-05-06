@@ -1,39 +1,39 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { printful } from "@lib/printful-client";
+import { printful } from '@lib/printful-client'
 import type {
   SnipcartShippingRate,
   PrintfulShippingItem,
-} from "@utils/storeTypes";
+} from '@utils/storeTypes'
 
-const physicalItemShippingCosts: any = 6.99;
+const physicalItemShippingCosts: any = 6.99
 
 interface SnipcartRequest extends NextApiRequest {
   body: {
-    eventName: string;
-    mode: string;
-    createdOn: string;
-    content: { [key: string]: any };
-  };
+    eventName: string
+    mode: string
+    createdOn: string
+    content: { [key: string]: any }
+  }
 }
 
 type Data = {
   /** An array of shipping rates. */
-  rates: SnipcartShippingRate[];
-};
+  rates: SnipcartShippingRate[]
+}
 
 type Error = {
-  errors: { key: string; message: string }[];
-};
+  errors: { key: string; message: string }[]
+}
 
 export default async function handler(
   req: SnipcartRequest,
   res: NextApiResponse<Data | Error>
 ) {
-  const { eventName, content } = req.body;
+  const { eventName, content } = req.body
 
-  if (eventName !== "shippingrates.fetch") return res.status(200).end();
-  if (content.items.length === 0) return res.status(200).end();
+  if (eventName !== 'shippingrates.fetch') return res.status(200).end()
+  if (content.items.length === 0) return res.status(200).end()
 
   const {
     items: cartItems,
@@ -44,7 +44,7 @@ export default async function handler(
     shippingAddressProvince,
     shippingAddressPostalCode,
     shippingAddressPhone,
-  } = content;
+  } = content
 
   const recipient = {
     ...(shippingAddress1 && { address1: shippingAddress1 }),
@@ -54,35 +54,35 @@ export default async function handler(
     ...(shippingAddressProvince && { state_code: shippingAddressProvince }),
     ...(shippingAddressPostalCode && { zip: shippingAddressPostalCode }),
     ...(shippingAddressPhone && { phone: shippingAddressPhone }),
-  };
+  }
 
-  const printfulItems: any[] = [];
-  let hasPhysicalItems = false;
+  const printfulItems: any[] = []
+  let hasPhysicalItems = false
 
   cartItems.forEach((item: any) => {
     item?.customFields?.forEach((field: any) => {
       if (field.name === 'PrintfulProduct') {
-        if (field.value === 'true') printfulItems.push(item);
+        if (field.value === 'true') printfulItems.push(item)
         if (field.value === 'false') {
-          hasPhysicalItems = true;
+          hasPhysicalItems = true
         }
       }
-    });
-  });
+    })
+  })
 
   const printfulShippingItems: PrintfulShippingItem[] = printfulItems.map(
     (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,
     })
-  );
+  )
 
   try {
     if (printfulShippingItems.length > 0) {
-      const { result } = await printful.post("shipping/rates", {
+      const { result } = await printful.post('shipping/rates', {
         recipient,
         items: printfulShippingItems,
-      });
+      })
 
       res.status(200).json({
         rates: result.map((rate: any) => ({
@@ -91,19 +91,21 @@ export default async function handler(
           userDefinedId: rate.id,
           guaranteedDaysToDelivery: rate.maxDeliveryDays,
         })),
-      });
+      })
     } else {
       res.status(200).json({
-        rates: [{
-          cost: physicalItemShippingCosts,
-          description: 'Flat Rate',
-          userDefinedId: 'SNAILMAIL',
-          guaranteedDaysToDelivery: 10,
-        }]
-      });
+        rates: [
+          {
+            cost: physicalItemShippingCosts,
+            description: 'Flat Rate',
+            userDefinedId: 'SNAILMAIL',
+            guaranteedDaysToDelivery: 10,
+          },
+        ],
+      })
     }
   } catch (error: any) {
-    console.log(error);
+    console.log(error)
     res.status(200).json({
       errors: [
         {
@@ -111,11 +113,11 @@ export default async function handler(
           message: error?.message,
         },
       ],
-    });
+    })
   }
 }
 
 const roundShippingCost = (cost: number, hasPhysicalItems: boolean) => {
-  const newCost = hasPhysicalItems ? cost*1+physicalItemShippingCosts : cost;
-  return (Math.round(newCost * 100) / 100).toFixed(2);
-};
+  const newCost = hasPhysicalItems ? cost * 1 + physicalItemShippingCosts : cost
+  return (Math.round(newCost * 100) / 100).toFixed(2)
+}

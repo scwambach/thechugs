@@ -33,10 +33,10 @@ export const Button = ({
       }}
       rel={
         tagType === 'a'
-        ? isExternal
-        ? 'noopener noreferrer'
-        : undefined
-        : undefined
+          ? isExternal
+            ? 'noopener noreferrer'
+            : undefined
+          : undefined
       }
     >
       {children || text || url}

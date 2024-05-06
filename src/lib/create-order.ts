@@ -1,6 +1,9 @@
-import { printful } from "./printful-client";
+import { printful } from './printful-client'
 
-import type { SnipcartWebhookContent, PrintfulShippingItem } from "@utils/storeTypes";
+import type {
+  SnipcartWebhookContent,
+  PrintfulShippingItem,
+} from '@utils/storeTypes'
 
 const createOrder = async ({
   invoiceNumber,
@@ -21,36 +24,36 @@ const createOrder = async ({
     ...(shippingAddress.postalCode && { zip: shippingAddress.postalCode }),
     ...(shippingAddress.phone && { phone: shippingAddress.phone }),
     email,
-  };
+  }
 
   items.forEach((item: any) => {
     item?.customFields?.forEach((field: any) => {
       if (field.name === 'PrintfulProduct') {
         if (field.value === 'false') {
-          const index = items.indexOf(item);
+          const index = items.indexOf(item)
           if (index > -1) {
-            items.splice(index, 1);
+            items.splice(index, 1)
           }
         }
       }
-    });
-  });
+    })
+  })
 
   const printfulItems: PrintfulShippingItem[] = items.map(
     (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,
     })
-  );
+  )
 
-  const { result } = await printful.post("orders", {
+  const { result } = await printful.post('orders', {
     external_id: invoiceNumber,
     recipient,
     items: printfulItems,
     shipping: shippingRateUserDefinedId,
-  });
+  })
 
-  return result;
-};
+  return result
+}
 
-export default createOrder;
+export default createOrder
