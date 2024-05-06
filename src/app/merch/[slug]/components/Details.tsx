@@ -118,9 +118,21 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
                 label=""
               />
             )}
-            <Button text="Add to Cart" buttonStyle="white" tagType="button">
+            <button
+              className="snipcart-add-item button white"
+              data-item-id={activeVariant?.externalId}
+              data-item-price={activeVariant?.price}
+              data-item-url={`/api/products/${activeVariant?.externalId}`}
+              data-item-description={activeVariant?.title}
+              data-item-image={activeVariant?.image || undefined}
+              data-item-name={`${activeVariant?.title}`}
+              data-item-custom1-type="hidden"
+              data-item-custom1-name="PrintfulProduct"
+              data-item-custom1-value="true"
+              // data-queryid={id}
+            >
               Add to <AiOutlineShoppingCart size={20} />
-            </Button>
+            </button>
           </div>
           {content.description && <Markdown>{content.description}</Markdown>}
         </div>
