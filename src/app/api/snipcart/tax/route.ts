@@ -26,7 +26,6 @@ export async function POST(req: NextApiRequest) {
   const data = await req.json()
   const { eventName, content } = data
 
-
   if (eventName !== 'taxes.calculate' || content.items.length === 0) {
     return NextResponse.json({}, { status: 200 })
   }
@@ -92,7 +91,6 @@ export async function POST(req: NextApiRequest) {
     )
   } catch (error: any) {
     console.log(error)
-
 
     return NextResponse.json(
       {
