@@ -5,19 +5,8 @@ import moment from 'moment'
 import { NextRequest, NextResponse } from 'next/server'
 import { productsQuery } from '@utils/queries/products'
 
-type Data = {
-  id: string
-  price: number
-  url: string
-  customFields: any
-}
-
-type Error = {
-  errors: { key: string; message: string }[]
-}
 export async function GET(
   req: NextRequest,
-  res: NextApiResponse<Data | Error>
 ) {
   const id = req.url.split('/')[req.url.split('/').length - 1]
   try {

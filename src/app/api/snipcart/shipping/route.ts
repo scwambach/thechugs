@@ -5,6 +5,7 @@ import type {
   SnipcartShippingRate,
   PrintfulShippingItem,
 } from '@utils/storeTypes'
+import { NextRequest, NextResponse } from 'next/server'
 
 const physicalItemShippingCosts: any = 6.99
 
@@ -17,23 +18,15 @@ interface SnipcartRequest extends NextApiRequest {
   }
 }
 
-type Data = {
-  /** An array of shipping rates. */
-  rates: SnipcartShippingRate[]
-}
-
-type Error = {
-  errors: { key: string; message: string }[]
-}
-
-export default async function handler(
-  req: SnipcartRequest,
-  res: NextApiResponse<Data | Error>
+export async function POST(
+  req: NextApiRequest,
 ) {
-  const { eventName, content } = req.body
+  const data = await req.json();
+  const { eventName, content } = data
 
-  if (eventName !== 'shippingrates.fetch') return res.status(200).end()
-  if (content.items.length === 0) return res.status(200).end()
+  if (eventName !== 'shippingrates.fetch' || content.items.length === 0) {
+    return NextResponse.json( {}, {status: 200} );
+  }
 
   const {
     items: cartItems,
@@ -84,36 +77,32 @@ export default async function handler(
         items: printfulShippingItems,
       })
 
-      res.status(200).json({
-        rates: result.map((rate: any) => ({
-          cost: roundShippingCost(rate.rate, hasPhysicalItems),
-          description: rate.name,
-          userDefinedId: rate.id,
-          guaranteedDaysToDelivery: rate.maxDeliveryDays,
-        })),
-      })
+      const rates = result.map((rate: any) => ({
+        cost: roundShippingCost(rate.rate, hasPhysicalItems),
+        description: rate.name,
+        userDefinedId: rate.id,
+        guaranteedDaysToDelivery: rate.maxDeliveryDays,
+      }));
+
+      return NextResponse.json(  { rates: rates }, { status: 200 } );
     } else {
-      res.status(200).json({
-        rates: [
-          {
-            cost: physicalItemShippingCosts,
-            description: 'Flat Rate',
-            userDefinedId: 'SNAILMAIL',
-            guaranteedDaysToDelivery: 10,
-          },
-        ],
-      })
+      const rates = [
+        {
+          cost: physicalItemShippingCosts,
+          description: 'Flat Rate',
+          userDefinedId: 'SNAILMAIL',
+          guaranteedDaysToDelivery: 10,
+        },
+      ]
+      return NextResponse.json(  { rates: rates }, { status: 200 } );
     }
   } catch (error: any) {
-    console.log(error)
-    res.status(200).json({
-      errors: [
-        {
-          key: error?.reason,
-          message: error?.message,
-        },
-      ],
-    })
+    return NextResponse.json(  { errors: [
+      {
+        key: error?.reason,
+        message: error?.message,
+      },
+    ] }, { status: 200 } );
   }
 }
 
