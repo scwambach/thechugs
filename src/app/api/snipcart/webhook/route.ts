@@ -1,23 +1,18 @@
-import type { NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 import createOrder from '@lib/create-order'
 
 import type { SnipcartRequest, SnipcartWebhookEvent } from '@utils/storeTypes'
+import { NextResponse } from 'next/server'
 
-export default async function handler(
-  req: SnipcartRequest,
-  res: NextApiResponse
-) {
+export async function POST(req: NextApiRequest) {
   const allowedEvents: SnipcartWebhookEvent[] = [
     'order.completed',
     'customauth:customer_updated',
   ]
-
-  console.log(req.headers)
-  const token = req.headers['x-snipcart-requesttoken']
-  console.log(token)
-
-  const { eventName, content } = req.body
+  
+  const data = await req.json()
+  const { eventName, content } = data
 
   if (req.method !== 'POST')
     return res.status(405).json({ message: 'Method not allowed' })
@@ -47,16 +42,45 @@ export default async function handler(
         await createOrder(content)
         break
       case 'customauth:customer_updated':
-        return res
-          .status(200)
-          .json({ message: 'Customer updated - no action taken' })
+        return NextResponse.json(
+          {
+            errors: [
+              {
+                key: 'Success',
+                message: 'Customer Updated',
+              },
+            ],
+          },
+          { status: 200 }
+        )
       default:
         throw new Error('No such event handler exists')
     }
 
-    res.status(200).json({ message: 'Done' })
+
+    return NextResponse.json(
+      {
+        errors: [
+          {
+            key: 'Success',
+            message: 'Done',
+          },
+        ],
+      },
+      { status: 200 }
+    )
   } catch (err) {
-    console.log(err)
-    res.status(500).json({ message: 'Something went wrong' })
+    console.log(err);
+    return NextResponse.json(
+      {
+        errors: [
+          {
+            key: 'Error',
+            message: 'Something went wrong',
+          },
+        ],
+      },
+      { status: 500 }
+    )
   }
 }
