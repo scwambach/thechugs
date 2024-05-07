@@ -14,6 +14,11 @@ export const Header = () => {
             <LinkObject href={item.url}>{item.title}</LinkObject>
           </li>
         ))}
+        <li>
+          <a className="snipcart-checkout" href="#">
+            Cart
+          </a>
+        </li>
       </ul>
     </header>
   )
