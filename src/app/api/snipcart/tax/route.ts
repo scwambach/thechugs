@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { printful } from '@lib/printful-client'
 import type { SnipcartTaxItem, PrintfulShippingItem } from '@utils/storeTypes'
+import { NextRequest, NextResponse } from 'next/server'
 
 interface SnipcartRequest extends NextApiRequest {
   body: {
@@ -21,23 +22,14 @@ type Error = {
   errors: { key: string; message: string }[]
 }
 
-export default async function handler(
-  req: SnipcartRequest,
-  res: NextApiResponse<Data | Error>
-) {
-  const { eventName, content } = req.body
+export async function POST(req: NextApiRequest) {
+  const data = await req.json()
+  const { eventName, content } = data
 
-  if (eventName !== 'taxes.calculate') return res.status(200).end()
 
-  if (content.items.length === 0)
-    return res.status(200).json({
-      errors: [
-        {
-          key: 'no_items',
-          message: 'No items in cart to calculate taxes.',
-        },
-      ],
-    })
+  if (eventName !== 'taxes.calculate' || content.items.length === 0) {
+    return NextResponse.json({}, { status: 200 })
+  }
 
   const {
     items: cartItems,
@@ -45,15 +37,19 @@ export default async function handler(
     shippingRateUserDefinedId,
   } = content
 
-  if (!shippingAddress)
-    return res.status(200).json({
-      errors: [
-        {
-          key: 'no_address',
-          message: 'No address to calculate taxes.',
-        },
-      ],
-    })
+  if (!shippingAddress) {
+    return NextResponse.json(
+      {
+        errors: [
+          {
+            key: 'no_address',
+            message: 'No address to calculate taxes',
+          },
+        ],
+      },
+      { status: 200 }
+    )
+  }
 
   const { address1, address2, city, country, province, postalCode, phone } =
     shippingAddress
@@ -82,24 +78,32 @@ export default async function handler(
       items,
     })
 
-    res.status(200).json({
-      taxes: [
-        {
-          name: 'VAT',
-          amount: result.costs.vat,
-          rate: 0,
-        },
-      ],
-    })
+    return NextResponse.json(
+      {
+        taxes: [
+          {
+            name: 'VAT',
+            amount: result.costs.vat,
+            rate: 0,
+          },
+        ],
+      },
+      { status: 200 }
+    )
   } catch (error: any) {
     console.log(error)
-    res.status(200).json({
-      errors: [
-        {
-          key: error?.reason,
-          message: error?.message,
-        },
-      ],
-    })
+
+
+    return NextResponse.json(
+      {
+        errors: [
+          {
+            key: error?.reason,
+            message: error?.message,
+          },
+        ],
+      },
+      { status: 200 }
+    )
   }
 }
