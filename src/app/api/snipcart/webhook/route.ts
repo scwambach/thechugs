@@ -14,11 +14,18 @@ export async function POST(req: NextApiRequest) {
   const data = await req.json()
   const { eventName, content } = data
 
-  if (req.method !== 'POST')
-    return res.status(405).json({ message: 'Method not allowed' })
-
-  if (!allowedEvents.includes(eventName))
-    return res.status(400).json({ message: 'This event is not permitted' })
+  if (req.method !== 'POST' || !allowedEvents.includes(eventName))
+    return NextResponse.json(
+      {
+        errors: [
+          {
+            key: 'Not allowed',
+            message: 'Not allowed',
+          },
+        ],
+      },
+      { status: 400 }
+    )
 
   // if (!token) return res.status(401).json({ message: "Not Authorized" });
 
