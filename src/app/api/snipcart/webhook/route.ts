@@ -10,7 +10,7 @@ export async function POST(req: NextApiRequest) {
     'order.completed',
     'customauth:customer_updated',
   ]
-  
+
   const data = await req.json()
   const { eventName, content } = data
 
@@ -57,7 +57,6 @@ export async function POST(req: NextApiRequest) {
         throw new Error('No such event handler exists')
     }
 
-
     return NextResponse.json(
       {
         errors: [
@@ -70,7 +69,7 @@ export async function POST(req: NextApiRequest) {
       { status: 200 }
     )
   } catch (err) {
-    console.log(err);
+    console.log(err)
     return NextResponse.json(
       {
         errors: [
