@@ -5,9 +5,7 @@ import moment from 'moment'
 import { NextRequest, NextResponse } from 'next/server'
 import { productsQuery } from '@utils/queries/products'
 
-export async function GET(
-  req: NextRequest,
-) {
+export async function GET(req: NextRequest) {
   const id = req.url.split('/')[req.url.split('/').length - 1]
   try {
     const today = moment(new Date()).format('YYYY-MM-DD')

@@ -18,14 +18,12 @@ interface SnipcartRequest extends NextApiRequest {
   }
 }
 
-export async function POST(
-  req: NextApiRequest,
-) {
-  const data = await req.json();
+export async function POST(req: NextApiRequest) {
+  const data = await req.json()
   const { eventName, content } = data
 
   if (eventName !== 'shippingrates.fetch' || content.items.length === 0) {
-    return NextResponse.json( {}, {status: 200} );
+    return NextResponse.json({}, { status: 200 })
   }
 
   const {
@@ -82,9 +80,9 @@ export async function POST(
         description: rate.name,
         userDefinedId: rate.id,
         guaranteedDaysToDelivery: rate.maxDeliveryDays,
-      }));
+      }))
 
-      return NextResponse.json(  { rates: rates }, { status: 200 } );
+      return NextResponse.json({ rates: rates }, { status: 200 })
     } else {
       const rates = [
         {
@@ -94,15 +92,20 @@ export async function POST(
           guaranteedDaysToDelivery: 10,
         },
       ]
-      return NextResponse.json(  { rates: rates }, { status: 200 } );
+      return NextResponse.json({ rates: rates }, { status: 200 })
     }
   } catch (error: any) {
-    return NextResponse.json(  { errors: [
+    return NextResponse.json(
       {
-        key: error?.reason,
-        message: error?.message,
+        errors: [
+          {
+            key: error?.reason,
+            message: error?.message,
+          },
+        ],
       },
-    ] }, { status: 200 } );
+      { status: 200 }
+    )
   }
 }
 
