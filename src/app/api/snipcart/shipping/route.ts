@@ -1,9 +1,7 @@
 import type { NextApiRequest } from 'next'
 
 import { printful } from '@lib/printful-client'
-import type {
-  PrintfulShippingItem,
-} from '@utils/storeTypes'
+import type { PrintfulShippingItem } from '@utils/storeTypes'
 import { NextResponse } from 'next/server'
 
 const physicalItemShippingCosts: any = 6.99
