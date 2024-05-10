@@ -22,7 +22,7 @@ type Error = {
   errors: { key: string; message: string }[]
 }
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: Request) {
   const data = await req.json()
   const { eventName, content } = data
 

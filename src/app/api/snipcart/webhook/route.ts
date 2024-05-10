@@ -5,7 +5,7 @@ import createOrder from '@lib/create-order'
 import type { SnipcartRequest, SnipcartWebhookEvent } from '@utils/storeTypes'
 import { NextResponse } from 'next/server'
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: Request) {
   const allowedEvents: SnipcartWebhookEvent[] = [
     'order.completed',
     'customauth:customer_updated',

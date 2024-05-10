@@ -1,11 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest } from 'next'
 
 import { printful } from '@lib/printful-client'
 import type {
-  SnipcartShippingRate,
   PrintfulShippingItem,
 } from '@utils/storeTypes'
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 const physicalItemShippingCosts: any = 6.99
 
@@ -18,7 +17,7 @@ interface SnipcartRequest extends NextApiRequest {
   }
 }
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: Request) {
   const data = await req.json()
   const { eventName, content } = data
 
