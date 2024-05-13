@@ -10,8 +10,7 @@ export async function GET(req: NextRequest) {
   try {
     const today = moment(new Date()).format('YYYY-MM-DD')
     const sanityProducts = await client.fetch(productsQuery, { today })
-    const sanityProduct = sanityProducts?.find((x: any) => x.externalId === id)
-    console.log(sanityProduct)
+    const sanityProduct = sanityProducts?.find((x: any) => x._id === id)
     if (sanityProduct) {
       return NextResponse.json(
         {

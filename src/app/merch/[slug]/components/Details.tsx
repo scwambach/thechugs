@@ -18,6 +18,7 @@ interface DetailsProps {
 }
 
 export const Details = ({ content, initialVariantId }: DetailsProps) => {
+  const [printfulProduct, setPrintfulProduct] = useState(false);
   const [activeVariant, setActiveVariant] = useState<VariantProps | undefined>(
     content.variants ? content.variants[0] : undefined
   )
@@ -37,6 +38,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
     : []
 
   useEffect(() => {
+    if (content.externalId) setPrintfulProduct(true);
     if (typeof window !== 'undefined') {
       if (window.scrollY > 0) {
         window.scrollTo(0, 0)
@@ -120,16 +122,15 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
             )}
             <button
               className="snipcart-add-item button white"
-              data-item-id={activeVariant?.externalId}
-              data-item-price={activeVariant?.price}
-              data-item-url={`/api/products/${activeVariant?.externalId}`}
-              data-item-description={activeVariant?.title}
+              data-item-id={printfulProduct ? activeVariant?.externalId : content._id}
+              data-item-price={printfulProduct ? activeVariant?.price : content.price}
+              data-item-url={`/api/products/${printfulProduct ? activeVariant?.externalId : content._id}`}
+              data-item-description={printfulProduct ? activeVariant?.title : content.title}
               data-item-image={activeVariant?.image || undefined}
-              data-item-name={`${activeVariant?.title}`}
+              data-item-name={`${printfulProduct ? activeVariant?.title : content.title}`}
               data-item-custom1-type="hidden"
               data-item-custom1-name="PrintfulProduct"
-              data-item-custom1-value="true"
-              // data-queryid={id}
+              data-item-custom1-value={printfulProduct}
             >
               Add to <AiOutlineShoppingCart size={20} />
             </button>
