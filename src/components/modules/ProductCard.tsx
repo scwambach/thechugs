@@ -17,6 +17,7 @@ import { LinkObject } from './LinkObject'
 // TODO: disable "Add to cart" button if no variant is selected
 
 export const ProductCard = (props: ProductCardProps) => {
+  const [disableButton, setDisableButton] = useState(true)
   const [printfulProduct, setPrintfulProduct] = useState(false)
   const [activeVariant, setActiveVariant] = useState<VariantProps | undefined>(
     props.variants ? props.variants[0] : undefined
@@ -91,6 +92,8 @@ export const ProductCard = (props: ProductCardProps) => {
               ...variantKeyValuePair,
             ]}
             onChangeSelect={(e) => {
+              setDisableButton(true)
+              if (e.target.value) setDisableButton(false)
               const variant = props.variants?.find(
                 (variant) => variant.externalId === e.target.value
               )
@@ -108,6 +111,7 @@ export const ProductCard = (props: ProductCardProps) => {
           <>
             <div className="button-group">
               <button
+                disabled={disableButton}
                 className="snipcart-add-item button white"
                 data-item-id={
                   printfulProduct ? activeVariant?.externalId : props._id

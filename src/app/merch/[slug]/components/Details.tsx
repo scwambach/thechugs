@@ -18,6 +18,7 @@ interface DetailsProps {
 }
 
 export const Details = ({ content, initialVariantId }: DetailsProps) => {
+  const [disableButton, setDisableButton] = useState(true)
   const [printfulProduct, setPrintfulProduct] = useState(false)
   const [activeVariant, setActiveVariant] = useState<VariantProps | undefined>(
     content.variants ? content.variants[0] : undefined
@@ -109,6 +110,8 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
                   ...variantKeyValuePair,
                 ]}
                 onChangeSelect={(e) => {
+                  setDisableButton(true)
+                  if (e.target.value) setDisableButton(false)
                   const variant = content.variants?.find(
                     (variant) => variant.externalId === e.target.value
                   )
@@ -121,6 +124,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
               />
             )}
             <button
+              disabled={disableButton}
               className="snipcart-add-item button white"
               data-item-id={
                 printfulProduct ? activeVariant?.externalId : content._id
