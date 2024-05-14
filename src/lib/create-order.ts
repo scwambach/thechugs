@@ -13,7 +13,7 @@ const createOrder = async ({
   shippingRateUserDefinedId,
 }: SnipcartWebhookContent) => {
   const recipient = {
-    ...(shippingAddress.name && { name: shippingAddress.name }),
+    ...(shippingAddress.fullName && { name: shippingAddress.fullName }),
     ...(shippingAddress.address1 && { address1: shippingAddress.address1 }),
     ...(shippingAddress.address2 && { address2: shippingAddress.address2 }),
     ...(shippingAddress.city && { city: shippingAddress.city }),
