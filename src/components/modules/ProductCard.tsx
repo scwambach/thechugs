@@ -25,7 +25,6 @@ export const ProductCard = (props: ProductCardProps) => {
   useEffect(() => {
     if (props.externalId) setPrintfulProduct(true)
   }, [])
-  
 
   const removeTitleFromVariantName = (variantName: string) => {
     return variantName.replace(`${props.title} - `, '')
