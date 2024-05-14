@@ -5,7 +5,7 @@ import {
 } from '@utils/types/modules/ProductCardProps'
 import { ImageBlock } from './ImageBlock'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FormField } from './FormField'
 import { toUsCurrency } from '@utils/toUsCurrency'
 import { slugify } from '@utils/slugify'
@@ -17,9 +17,15 @@ import { LinkObject } from './LinkObject'
 // TODO: disable "Add to cart" button if no variant is selected
 
 export const ProductCard = (props: ProductCardProps) => {
+  const [printfulProduct, setPrintfulProduct] = useState(false)
   const [activeVariant, setActiveVariant] = useState<VariantProps | undefined>(
     props.variants ? props.variants[0] : undefined
   )
+
+  useEffect(() => {
+    if (props.externalId) setPrintfulProduct(true)
+  }, [])
+  
 
   const removeTitleFromVariantName = (variantName: string) => {
     return variantName.replace(`${props.title} - `, '')
@@ -69,6 +75,9 @@ export const ProductCard = (props: ProductCardProps) => {
       </div>
       <div className="content">
         <p className="title">{props.title}</p>
+        <p className="price">
+          {toUsCurrency(activeVariant?.price || props.price)}
+        </p>
         {!props.minimal && props.variants && props.variants.length > 1 ? (
           <FormField
             type="select"
@@ -99,9 +108,30 @@ export const ProductCard = (props: ProductCardProps) => {
         {!props.minimal && (
           <>
             <div className="button-group">
-              <Button text="Add to Cart" buttonStyle="white" tagType="button">
+              <button
+                className="snipcart-add-item button white"
+                data-item-id={
+                  printfulProduct ? activeVariant?.externalId : props._id
+                }
+                data-item-price={
+                  printfulProduct ? activeVariant?.price : props.price
+                }
+                data-item-url={`/api/products/${
+                  printfulProduct ? activeVariant?.externalId : props._id
+                }`}
+                data-item-description={
+                  printfulProduct ? activeVariant?.title : props.title
+                }
+                data-item-image={activeVariant?.image || undefined}
+                data-item-name={`${
+                  printfulProduct ? activeVariant?.title : props.title
+                }`}
+                data-item-custom1-type="hidden"
+                data-item-custom1-name="PrintfulProduct"
+                data-item-custom1-value={printfulProduct}
+              >
                 Add to <AiOutlineShoppingCart size={20} />
-              </Button>
+              </button>
               <Button
                 text="View Details"
                 buttonStyle="white"
@@ -111,9 +141,6 @@ export const ProductCard = (props: ProductCardProps) => {
             </div>
           </>
         )}
-        <p className="price">
-          {toUsCurrency(activeVariant?.price || props.price)}
-        </p>
       </div>
     </>
   )
