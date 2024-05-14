@@ -25,6 +25,7 @@ export const ProductCard = (props: ProductCardProps) => {
 
   useEffect(() => {
     if (props.externalId) setPrintfulProduct(true)
+    /* @ts-expect-error */
     if (props?.variants?.length > 1) setDisableButton(true)
     else setDisableButton(false)
   }, [])

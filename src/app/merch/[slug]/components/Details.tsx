@@ -40,6 +40,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
 
   useEffect(() => {
     if (content.externalId) setPrintfulProduct(true)
+    /* @ts-expect-error */
     if (content?.variants?.length > 1) setDisableButton(true)
     else setDisableButton(false)
     if (typeof window !== 'undefined') {
