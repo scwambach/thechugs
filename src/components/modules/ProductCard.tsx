@@ -25,6 +25,8 @@ export const ProductCard = (props: ProductCardProps) => {
 
   useEffect(() => {
     if (props.externalId) setPrintfulProduct(true)
+    if (props?.variants?.length > 1) setDisableButton(true)
+    else setDisableButton(false)
   }, [])
 
   const removeTitleFromVariantName = (variantName: string) => {

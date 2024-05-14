@@ -40,6 +40,8 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
 
   useEffect(() => {
     if (content.externalId) setPrintfulProduct(true)
+    if (content?.variants?.length > 1) setDisableButton(true)
+    else setDisableButton(false)
     if (typeof window !== 'undefined') {
       if (window.scrollY > 0) {
         window.scrollTo(0, 0)
