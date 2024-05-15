@@ -35,10 +35,10 @@ export const Event = ({
                   {otherBands?.length === 2 && index > 0
                     ? ' and '
                     : otherBands?.length === 1
-                    ? ''
-                    : index + 1 === otherBands?.length
-                    ? ', and '
-                    : index > 0 && ', '}
+                      ? ''
+                      : index + 1 === otherBands?.length
+                        ? ', and '
+                        : index > 0 && ', '}
                   {band.link ? (
                     <a
                       className="band"

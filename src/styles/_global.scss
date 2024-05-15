@@ -228,6 +228,18 @@ ul {
     @media screen and (max-width: ($tablet - 1)) {
       border-width: $mobile-border-size;
     }
+
+    &.pageOrder_1 {
+      padding-top: $size-80;
+
+      @media screen and (min-width: ($tablet-md)) {
+        padding-top: $size-100;
+      }
+
+      @media screen and (min-width: ($tablet-lg)) {
+        padding-top: $size-144;
+      }
+    }
   }
 }
 

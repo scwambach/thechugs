@@ -25,7 +25,7 @@ export const ImageBlock = ({
   priority,
   width = 800,
   height,
-  setImageLoaded,
+  // setImageLoaded,
   desaturate,
 }: ImageBlockProps) => {
   const customBuilder = (imageUrlBuilder: any, _options: any) => {
@@ -57,13 +57,13 @@ export const ImageBlock = ({
     imageBuilder: customBuilder,
   })
 
-  const handleImageLoad = () => {
-    if (setImageLoaded) {
-      setTimeout(() => {
-        setImageLoaded(true)
-      }, 300)
-    }
-  }
+  // const handleImageLoad = () => {
+  //   if (setImageLoaded) {
+  //     setTimeout(() => {
+  //       setImageLoaded(true)
+  //     }, 300)
+  //   }
+  // }
 
   return (
     <Image
@@ -77,7 +77,7 @@ export const ImageBlock = ({
       style={isBackground ? (bgStyles as any) : undefined}
       placeholder="blur"
       blurDataURL={image.lqip}
-      onLoad={handleImageLoad}
+      // onLoad={handleImageLoad}
     />
   )
 }

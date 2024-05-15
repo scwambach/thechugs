@@ -12,6 +12,7 @@ interface PageBlockProps {
   backgroundColor?: string
   backgroundImage?: any
   events?: any[]
+  className?: string
 }
 
 export const PageBlock = (props: PageBlockProps) => {
@@ -31,7 +32,7 @@ export const PageBlock = (props: PageBlockProps) => {
       id={`component_${props._type}_${props._key}`}
       className={`page-component component_${props._type}${
         props.backgroundColor ? ` bg-${props.backgroundColor}` : ' no-bg'
-      }`}
+      }${props.className ? ` ${props.className}` : ''}`}
     >
       {(props.heading || props.subheading) && !isUniqueBlock && (
         <div className="heading-container container wide">

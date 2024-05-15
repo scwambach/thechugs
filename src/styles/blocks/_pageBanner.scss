@@ -5,12 +5,24 @@
   padding: $size-45 0;
   color: $secondary;
 
+  .pageOrder_1 & {
+    padding-top: $size-100;
+  }
+
   @media screen and (min-width: ($tablet-md)) {
     padding: $size-100 0;
+
+    .pageOrder_1 & {
+      padding-top: $size-144;
+    }
   }
 
   @media screen and (min-width: ($tablet-lg)) {
     padding: $size-144 0;
+
+    .pageOrder_1 & {
+      padding-top: $size-180;
+    }
   }
 
   &::before {

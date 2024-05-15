@@ -13,14 +13,10 @@ interface GalleryProps extends PageBlockProps {
 export const Gallery = ({ images }: GalleryProps) => {
   const [activeImage, setActiveImage] = useState<ImageProps>()
   const [open, setOpen] = useState(false)
-  const [imageLoaded, setImageLoaded] = useState(false)
 
   useEffect(() => {
     document.onkeydown = (e) => {
       if (e.key === 'Escape') {
-        setTimeout(() => {
-          setImageLoaded(false)
-        }, 300)
         setOpen(false)
       }
     }
@@ -32,9 +28,6 @@ export const Gallery = ({ images }: GalleryProps) => {
         <button
           className="close"
           onClick={() => {
-            setTimeout(() => {
-              setImageLoaded(false)
-            }, 300)
             setOpen(false)
           }}
         >
@@ -61,13 +54,8 @@ export const Gallery = ({ images }: GalleryProps) => {
         </div>
         <div className="image">
           {activeImage && (
-            <div className={`inner${imageLoaded ? '' : ' mainImgLoading'}`}>
-              <ImageBlock
-                image={activeImage}
-                className="activeImage"
-                setImageLoaded={setImageLoaded}
-              />
-              {!imageLoaded && <Loading />}
+            <div className={`inner`}>
+              <ImageBlock image={activeImage} className="activeImage" />
             </div>
           )}
         </div>
@@ -75,7 +63,6 @@ export const Gallery = ({ images }: GalleryProps) => {
           <button
             onClick={() => {
               setActiveImage(undefined)
-              setImageLoaded(false)
               setTimeout(() => {
                 const index = images.findIndex(
                   (image) => image._key === activeImage?._key
@@ -96,7 +83,7 @@ export const Gallery = ({ images }: GalleryProps) => {
 
       <Container size="wide">
         <div className="items">
-          {images.map((image, index) => (
+          {images.map((image) => (
             <button
               key={image._key}
               onClick={() => {
