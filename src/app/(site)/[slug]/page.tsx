@@ -5,6 +5,44 @@ import { PAGE_QUERY } from '@utils/queries/PAGE_QUERY'
 import { urlFor } from '@utils/urlFor'
 import { notFound } from 'next/navigation'
 
+async function getData(slug: string) {
+  const data = await client.fetch(PAGE_QUERY, {
+    slug,
+  })
+
+  if (!data) {
+    return notFound()
+  }
+
+  return data
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const { slug } = params
+  const data = await client.fetch(PAGE_QUERY, {
+    slug,
+  })
+
+  if (!data) {
+    return notFound()
+  }
+
+  return {
+    title: `${data.title} | The Chugs - The Band... Refreshing!`,
+    description: data.description,
+    openGraph: {
+      images: `${urlFor(data.pageImage).width(600)}`,
+    },
+    icons: {
+      icon: '/favicon.png',
+    },
+  }
+}
+
 export default async function Page({ params }: { params: { slug: string } }) {
   const data = await getData(params.slug)
 
@@ -21,44 +59,4 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <PageFactory components={data.pageBlocks} />
     </PageTemplate>
   )
-}
-
-async function getData(slug: string) {
-  const data = await client.fetch(PAGE_QUERY, {
-    slug,
-  })
-
-  return data
-}
-
-export const revalidate = 0
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  const { slug } = params
-  const data = await client.fetch(PAGE_QUERY, {
-    slug,
-  })
-
-  return {
-    title: `${data.title} | The Chugs - The Band... Refreshing!`,
-    description: data.description,
-    openGraph: {
-      images: `${urlFor(data.pageImage).width(600)}`,
-    },
-    icons: {
-      icon: '/favicon.png',
-    },
-  }
-}
-
-export async function generateStaticParams() {
-  const pageSlugs = await client.fetch(`*[_type == 'page'].slug.current`)
-
-  return pageSlugs.map((slug: string) => ({
-    slug,
-  }))
 }

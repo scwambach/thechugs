@@ -5,6 +5,18 @@ import { ProductPageProps } from '@utils/types/merch'
 import { notFound } from 'next/navigation'
 import { Details } from './components/Details'
 
+async function getData(slug: string) {
+  const data = await client.fetch(PRODUCT_QUERY, {
+    slug,
+  })
+
+  if (!data) {
+    return notFound()
+  }
+
+  return data
+}
+
 export async function generateMetadata({
   params: { slug },
 }: {
@@ -13,6 +25,10 @@ export async function generateMetadata({
   const { page } = await client.fetch(PRODUCT_QUERY, {
     slug,
   })
+
+  if (!page) {
+    return notFound()
+  }
 
   return {
     title: `${page.title} | Merch | The Chugs - The Band... Refreshing!`,
@@ -54,22 +70,4 @@ export default async function ProductPage({
       </div>
     </PageTemplate>
   )
-}
-
-async function getData(slug: string) {
-  const data = await client.fetch(PRODUCT_QUERY, {
-    slug,
-  })
-
-  return data
-}
-
-export const revalidate = 0
-
-export async function generateStaticParams() {
-  const pageSlugs = await client.fetch(`*[_type == 'merch'].slug.current`)
-
-  return pageSlugs.map((slug: string) => ({
-    slug,
-  }))
 }
