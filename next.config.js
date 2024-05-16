@@ -11,6 +11,7 @@ const nextConfig = {
     PRINTFUL_API_KEY: process.env.PRINTFUL_API_KEY,
     NEXT_PUBLIC_SNIPCART_API_KEY: process.env.NEXT_PUBLIC_SNIPCART_API_KEY,
     SITE_URL: process.env.SITE_URL,
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
   }
 }
 
