@@ -1,20 +1,24 @@
 import { PageFactory } from '@components/global/PageFacorty'
 import { PageTemplate } from '@components/global/PageTemplate'
-import { client } from '@utils/client'
-import { PAGE_QUERY } from '@utils/queries/PAGE_QUERY'
 import { urlFor } from '@utils/urlFor'
 import { notFound } from 'next/navigation'
 
 async function getData(slug: string) {
-  const data = await client.fetch(PAGE_QUERY, {
-    slug,
-  })
+  const data: any = await fetch(
+    `${process.env.SITE_URL}/api/pageData?slug=${slug}`,
+    {
+      next: {
+        tags: ['page'],
+      },
+    }
+  )
+  const dataJson = await data.json()
 
-  if (!data) {
+  if (!dataJson) {
     return notFound()
   }
 
-  return data
+  return dataJson
 }
 
 export async function generateMetadata({
@@ -23,19 +27,20 @@ export async function generateMetadata({
   params: { slug: string }
 }) {
   const { slug } = params
-  const data = await client.fetch(PAGE_QUERY, {
-    slug,
-  })
+  const data: any = await fetch(
+    `${process.env.SITE_URL}/api/pageData?slug=${slug}`
+  )
+  const dataJson = await data.json()
 
-  if (!data) {
+  if (!dataJson) {
     return notFound()
   }
 
   return {
-    title: `${data.title} | The Chugs - The Band... Refreshing!`,
-    description: data.description,
+    title: `${dataJson.title} | The Chugs - The Band... Refreshing!`,
+    description: dataJson.description,
     openGraph: {
-      images: `${urlFor(data.pageImage).width(600)}`,
+      images: `${urlFor(dataJson.pageImage).width(600)}`,
     },
     icons: {
       icon: '/favicon.png',

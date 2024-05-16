@@ -1,22 +1,17 @@
 import { PageFactory } from '@components/global/PageFacorty'
 import { PageTemplate } from '@components/global/PageTemplate'
-import { client } from '@utils/client'
-import { HOME_QUERY } from '@utils/queries/HOME_QUERY'
 import { urlFor } from '@utils/urlFor'
 
-async function getData() {
-  const data = await client.fetch(HOME_QUERY)
-  return data
-}
-
 export async function generateMetadata({}) {
-  const data = await client.fetch(HOME_QUERY)
+  const data: any = await fetch(`${process.env.SITE_URL}/api/pageData?slug=/`)
+
+  const dataJson = await data.json()
 
   return {
     title: 'The Chugs - The Band... Refreshing!',
-    description: data.description,
+    description: dataJson.description,
     openGraph: {
-      images: `${urlFor(data.pageImage).width(600)}`,
+      images: `${urlFor(dataJson.pageImage).width(600)}`,
     },
     icons: {
       icon: '/favicon.png',
@@ -25,11 +20,17 @@ export async function generateMetadata({}) {
 }
 
 export default async function Home() {
-  const data = await getData()
+  const data: any = await fetch(`${process.env.SITE_URL}/api/pageData?slug=/`, {
+    next: {
+      tags: ['home', 'page'],
+    },
+  })
+
+  const dataJson = await data.json()
 
   return (
-    <PageTemplate nav={data.nav} global={data.globalInfo}>
-      <PageFactory components={data.pageBlocks} />
+    <PageTemplate nav={dataJson.nav} global={dataJson.globalInfo}>
+      <PageFactory components={dataJson.pageBlocks} />
     </PageTemplate>
   )
 }
