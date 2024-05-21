@@ -6,7 +6,7 @@ import { BackToTop } from '@components/modules/BackToTop'
 import BackgroundImage from '../../media/wood.jpg'
 import { ImageObject } from '@components/modules/ImageObject'
 import { Footer } from './Footer'
-import { GoogleAnalytics } from 'nextjs-google-analytics'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 interface ContextProps {
   nav: NavItemProps[]
@@ -31,7 +31,9 @@ export const PageTemplate = ({
 }) => {
   return (
     <AppContext.Provider value={{ nav, darkMode: darkMode }}>
-      <GoogleAnalytics trackPageViews />
+      <GoogleAnalytics
+        gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string}
+      />
       <ImageObject
         {...BackgroundImage}
         isBackground

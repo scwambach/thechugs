@@ -9,8 +9,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
     slug,
   })
 
-  console.log({ data })
-
   return NextResponse.json({
     status: 200,
     ...data,
