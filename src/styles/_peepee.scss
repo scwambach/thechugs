@@ -1,0 +1,128 @@
+.peepee {
+  width: 75%;
+  margin: 40px auto;
+  text-align: center;
+  min-width: 1000px;
+
+  input {
+    border: 1px solid $black;
+    width: 25%;
+    margin: 5px;
+    cursor: text;
+  }
+
+  button {
+    color: $white;
+    background-color: $primary;
+    border: 1px solid $black;
+    padding: 10px;
+
+    &.prev,
+    &.next {
+      padding: 5px;
+    }
+
+    &:disabled {
+      background-color: $gray;
+    }
+  }
+
+  .results-cont {
+    & > div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .results-item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid $gray;
+      padding: 10px;
+      margin: 10px;
+      overflow: hidden;
+
+      .results-tag {
+        position: absolute;
+        right: -87px;
+        height: 175px;
+        width: 175px;
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        padding: 10px;
+
+        &.pitched {
+          top: -87px;
+          rotate: 45deg;
+          align-items: end;
+          background-color: $quaternary;
+          color: $primary;
+        }
+
+        &.chugged {
+          bottom: -87px;
+          rotate: 315deg;
+          align-items: start;
+          background-color: $primary;
+          color: $quaternary;
+        }
+      }
+
+      .results-img {
+        height: 100px;
+        width: 100px;
+        background-size: contain;
+      }
+
+      .results-data {
+        padding: 10px;
+        margin-right: 60px;
+        width: 100%;
+
+        button {
+          color: $primary;
+          background-color: transparent;
+          border: none;
+          padding: 0;
+
+          svg {
+            margin: 0 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .artist-img {
+    position: absolute;
+    top: 153px;
+    right: 0;
+    height: 100px;
+    width: 100px;
+    background-size: contain;
+    border: 5px solid $primary;
+    cursor: pointer;
+
+    &:after {
+      content: 'i';
+      font-family: monospace;
+      font-size: 24px;
+      color: $white;
+      position: absolute;
+      top: 24px;
+      right: 103px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      right: 70px;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 50px solid $primary;
+      rotate: -90deg;
+    }
+  }
+}
