@@ -39,7 +39,8 @@ const scrapePlaylistsFromURL = async (
       browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.NEXT_PUBLIC_BLESS_TOKEN}`,
     })
   } else {
-    browser = await puppeteer.launch({ headless: 'new' })
+    //ts-ignore
+    browser = await puppeteer.launch({ headless: true })
   }
   const page = await browser.newPage()
   const url = `https://open.spotify.com/artist/${id}/discovered-on`
