@@ -6,8 +6,7 @@ import { NextRequest, NextResponse } from 'next/server'
 const IS_PRODUCTION = process.env.NEXT_PUBLIC_ENV === 'prod'
 
 export async function GET(req: NextRequest) {
-
-  const id = req.url.split('=')[1];
+  const id = req.url.split('=')[1]
 
   console.log(id)
 
@@ -20,12 +19,9 @@ export async function GET(req: NextRequest) {
   try {
     const playlists = await scrapePlaylistsFromURL(id)
     // return res.status(200).json(playlists)
-    return NextResponse.json(
-      playlists,
-      {
-        status: 200,
-      }
-    )
+    return NextResponse.json(playlists, {
+      status: 200,
+    })
   } catch (error) {
     console.log(error)
     return new Response(`Internal Server Error: ${error}`, {
@@ -34,14 +30,16 @@ export async function GET(req: NextRequest) {
   }
 }
 
-const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> => {
+const scrapePlaylistsFromURL = async (
+  id: string
+): Promise<SpotifyPlaylist[]> => {
   let browser
   if (IS_PRODUCTION) {
     browser = await puppeteer.connect({
       browserWSEndpoint: `wss://chrome.browserless.io?token=${process.env.NEXT_PUBLIC_BLESS_TOKEN}`,
     })
   } else {
-    browser = await puppeteer.launch({headless: 'new'})
+    browser = await puppeteer.launch({ headless: 'new' })
   }
   const page = await browser.newPage()
   const url = `https://open.spotify.com/artist/${id}/discovered-on`
@@ -49,20 +47,26 @@ const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> =>
   try {
     await page.goto(url, { waitUntil: 'networkidle2' })
     const playlists = await page.evaluate(() => {
-      const playlistImgs = document.querySelectorAll('section[data-testid="artist-page"] img[data-testid="card-image"]')
-      const playlistLinks = document.querySelectorAll('section[data-testid="artist-page"] a[title][href]')
+      const playlistImgs = document.querySelectorAll(
+        'section[data-testid="artist-page"] img[data-testid="card-image"]'
+      )
+      const playlistLinks = document.querySelectorAll(
+        'section[data-testid="artist-page"] a[title][href]'
+      )
       const playlists: SpotifyPlaylist[] = []
       playlistLinks.forEach((link, i) => {
         const playlistImgUrl = playlistImgs[i].getAttribute('src') || ''
         const playlistName = link.getAttribute('title') || ''
         const playlistUrl = link.getAttribute('href') || ''
-        const playlistId = playlistUrl.replace('/playlist/','') || ''
+        const playlistId = playlistUrl.replace('/playlist/', '') || ''
         if (playlistName) {
           playlists.push({
             name: playlistName,
             id: playlistId,
-            external_urls: { spotify: `https://open.spotify.com${playlistUrl}`},
-            images: [{url: playlistImgUrl}]
+            external_urls: {
+              spotify: `https://open.spotify.com${playlistUrl}`,
+            },
+            images: [{ url: playlistImgUrl }],
           })
         }
       })
@@ -74,4 +78,4 @@ const scrapePlaylistsFromURL = async (id: string): Promise<SpotifyPlaylist[]> =>
   } finally {
     await browser.close()
   }
-};
+}

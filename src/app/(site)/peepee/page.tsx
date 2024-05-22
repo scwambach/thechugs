@@ -1,13 +1,17 @@
-"use client";
+'use client'
 
 import { useEffect, useState } from 'react'
 import fetch from 'node-fetch'
-import { SpotifyArtist, SpotifyPlaylist, gSheetPlaylist } from '@utils/types/spotify'
+import {
+  SpotifyArtist,
+  SpotifyPlaylist,
+  gSheetPlaylist,
+} from '@utils/types/spotify'
 // import { DynamicIcon } from '@components/modules/DynamicIcon'
 // import { colors } from '@utils/settings'
 import Modal from '@components/modules/Modal'
-import { Metadata } from 'next';
-import Head from 'next/head';
+import { Metadata } from 'next'
+import Head from 'next/head'
 
 const clientId = '374d2ce6617f4668835df65099ff14fa'
 const clientSecret = '888e73625ae845968a65d60297ffa5a9'
@@ -41,10 +45,10 @@ const Peepee = () => {
 
   const getGSheet = async () => {
     const response = await fetch('/api/gsheets', { method: 'GET' })
-    const data:any = await response.json()
+    const data: any = await response.json()
     const cleanedGSheetData: any = []
     data.forEach((gSheetPL: string[]) => {
-      const pitchInfo = gSheetPL.splice(2,gSheetPL.length)
+      const pitchInfo = gSheetPL.splice(2, gSheetPL.length)
       const playlistInfo = [gSheetPL[0], gSheetPL[1]]
       const pl: gSheetPlaylist = {
         name: playlistInfo[0],
@@ -52,7 +56,7 @@ const Peepee = () => {
         pitch: {
           song: pitchInfo[1],
           response: pitchInfo[2],
-          placement: pitchInfo[3]
+          placement: pitchInfo[3],
         },
       }
       cleanedGSheetData.push(pl)
@@ -68,37 +72,45 @@ const Peepee = () => {
         body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-        }
+        },
       })
 
-      const data:any = await response.json()
+      const data: any = await response.json()
       setToken(data.access_token)
-    } catch (err:any) {
+    } catch (err: any) {
       console.log(err)
     }
   }
 
   const commitSearch = async (newEndpoint = '') => {
     setLoading(true)
-    let foundArtist;
+    let foundArtist
     if (bandName) {
-      const artistsByNameRes = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(bandName)}&type=artist`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token.toString()}`,
-        },
-      })
+      const artistsByNameRes = await fetch(
+        `https://api.spotify.com/v1/search?q=${encodeURIComponent(bandName)}&type=artist`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token.toString()}`,
+          },
+        }
+      )
       const artistsByName = await artistsByNameRes.json()
-      foundArtist = artistsByName.artists?.items.find((x: any) => x.name.toLowerCase() === bandName.toLowerCase())
+      foundArtist = artistsByName.artists?.items.find(
+        (x: any) => x.name.toLowerCase() === bandName.toLowerCase()
+      )
     }
 
     if (foundArtist) {
-      const artistInfoRes = await fetch(`https://api.spotify.com/v1/artists/${foundArtist.id}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token.toString()}`,
-        },
-      })
+      const artistInfoRes = await fetch(
+        `https://api.spotify.com/v1/artists/${foundArtist.id}`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${token.toString()}`,
+          },
+        }
+      )
       const artistResults = await artistInfoRes.json()
       // const discoveredOn = await getArtistDiscoveredOn(foundArtist.id)
       setArtistInfo({
@@ -136,14 +148,17 @@ const Peepee = () => {
   }
 
   const getPageCount = (href: string) => {
-    const offsetSplit:any = href.split('offset=')[1]
-    const offsetAmount:any = offsetSplit.split('&')[0]*1
-    setPageCount(offsetAmount/50 + 1)
+    const offsetSplit: any = href.split('offset=')[1]
+    const offsetAmount: any = offsetSplit.split('&')[0] * 1
+    setPageCount(offsetAmount / 50 + 1)
   }
 
   const snagData = async (pls: SpotifyPlaylist[]) => {
-    const playlists = pls.filter((x:SpotifyPlaylist) => x.owner?.display_name.toLowerCase() !== 'spotify')
-    const emailRegex = /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\'.+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+    const playlists = pls.filter(
+      (x: SpotifyPlaylist) => x.owner?.display_name.toLowerCase() !== 'spotify'
+    )
+    const emailRegex =
+      /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\'.+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
     for (let i = 0; i < playlists.length; i++) {
       let pl = playlists[i]
       const desc = pl.description
@@ -177,7 +192,9 @@ const Peepee = () => {
 
   const checkForPitch = (pln: string) => {
     const plName = pln.replace(regex, '').toLowerCase()
-    const match = gSheetData.find((x:gSheetPlaylist) => x.name.replace(regex, '').toLowerCase() === plName)
+    const match = gSheetData.find(
+      (x: gSheetPlaylist) => x.name.replace(regex, '').toLowerCase() === plName
+    )
     if (match !== undefined) return match.pitch
     return undefined
   }
@@ -207,23 +224,48 @@ const Peepee = () => {
       <div className="peepee">
         <h2>Spotify Playlist Search</h2>
         {pass !== passWord ? (
-          <><p><input autoFocus type="password" onChange={(e) => setPass(e.target.value)} placeholder={`Password?`} /></p></>
+          <>
+            <p>
+              <input
+                autoFocus
+                type="password"
+                onChange={(e) => setPass(e.target.value)}
+                placeholder={`Password?`}
+              />
+            </p>
+          </>
         ) : (
           <>
-            {!token ? <p>Failed to retrieve spotify token. Try again later</p> : (
+            {!token ? (
+              <p>Failed to retrieve spotify token. Try again later</p>
+            ) : (
               <>
                 <p>
                   <button onClick={() => logout()}>Logout</button>
                 </p>
                 <p>
-                  <input type='text' required onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Term' autoFocus />
-                  <input type='text' required onChange={(e) => setBandName(e.target.value)} placeholder='Exact Band Name' value={bandName} />
+                  <input
+                    type="text"
+                    required
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search Term"
+                    autoFocus
+                  />
+                  <input
+                    type="text"
+                    required
+                    onChange={(e) => setBandName(e.target.value)}
+                    placeholder="Exact Band Name"
+                    value={bandName}
+                  />
                 </p>
                 <p>
-                  <button onClick={() => commitSearch()}>Search Playlists</button>
+                  <button onClick={() => commitSearch()}>
+                    Search Playlists
+                  </button>
                 </p>
-                {loading && (<p>...Searching, OK? Sheesh...</p>)}
-                {!loading && searchResults.length === 0 && (<p>No Results</p>)}
+                {loading && <p>...Searching, OK? Sheesh...</p>}
+                {!loading && searchResults.length === 0 && <p>No Results</p>}
                 {!loading && searchResults.length > 0 && (
                   <div className="results-cont">
                     <div>
@@ -231,7 +273,7 @@ const Peepee = () => {
                         className="prev"
                         disabled={!prevUrl}
                         onClick={() => commitSearch(prevUrl)}
-                        >
+                      >
                         Previous
                       </button>
                       <div>
@@ -242,22 +284,48 @@ const Peepee = () => {
                         className="next"
                         disabled={!nextUrl}
                         onClick={() => commitSearch(nextUrl)}
-                        >
+                      >
                         Next
                       </button>
                     </div>
                     {searchResults.map((pl: SpotifyPlaylist) => (
                       <div key={pl.id} className="results-item">
                         {pl.images && pl.images[0]?.url && (
-                          <div className="results-img" style={{backgroundImage: `url(${pl.images[0].url})`}}></div>
+                          <div
+                            className="results-img"
+                            style={{
+                              backgroundImage: `url(${pl.images[0].url})`,
+                            }}
+                          ></div>
                         )}
                         <div className="results-data">
-                          <h4><a target='_blank' rel='noreferrer' href={pl.external_urls?.spotify}>{pl.name}</a></h4>
-                          <p>Owner: <a target='_blank' rel='noreferrer' href={pl.owner?.external_urls.spotify}>{pl.owner?.display_name}</a></p>
+                          <h4>
+                            <a
+                              target="_blank"
+                              rel="noreferrer"
+                              href={pl.external_urls?.spotify}
+                            >
+                              {pl.name}
+                            </a>
+                          </h4>
+                          <p>
+                            Owner:{' '}
+                            <a
+                              target="_blank"
+                              rel="noreferrer"
+                              href={pl.owner?.external_urls.spotify}
+                            >
+                              {pl.owner?.display_name}
+                            </a>
+                          </p>
                           {pl.email && (
                             <p>
                               Email:
-                              <button onClick={() => navigator.clipboard.writeText(pl.email || '')}>
+                              <button
+                                onClick={() =>
+                                  navigator.clipboard.writeText(pl.email || '')
+                                }
+                              >
                                 copy
                                 {pl.email}
                                 copy
@@ -269,11 +337,19 @@ const Peepee = () => {
                           <p>{pl.description}</p>
                         </div>
                         {pl.pitch !== undefined && (
-                          <div className="results-tag pitched" onClick={() => openModal(pl) }>PITCHED</div>
+                          <div
+                            className="results-tag pitched"
+                            onClick={() => openModal(pl)}
+                          >
+                            PITCHED
+                          </div>
                         )}
-                        {Array.isArray(artistInfo?.discoveredOn) && !!artistInfo?.discoveredOn?.find((x:any) => x.id === pl.id) && (
-                          <div className="results-tag chugged">CHUGGED</div>
-                        )}
+                        {Array.isArray(artistInfo?.discoveredOn) &&
+                          !!artistInfo?.discoveredOn?.find(
+                            (x: any) => x.id === pl.id
+                          ) && (
+                            <div className="results-tag chugged">CHUGGED</div>
+                          )}
                       </div>
                     ))}
                   </div>
@@ -281,7 +357,7 @@ const Peepee = () => {
               </>
             )}
             {showModal && modalPlaylist && (
-              <Modal firstOpen={true} onClose={() => closeModal() }>
+              <Modal firstOpen={true} onClose={() => closeModal()}>
                 <h3>{modalPlaylist.name}</h3>
                 <p>Song: {modalPlaylist.pitch?.song}</p>
                 <p>Response: {modalPlaylist.pitch?.response}</p>
@@ -290,16 +366,28 @@ const Peepee = () => {
             )}
             {artistInfo && (
               <>
-              {artistInfo.images && (
-                <div onClick={() => setShowArtistModal(true) } className="artist-img" style={{backgroundImage: `url(${artistInfo.images[0].url})`}}></div>
-              )}
-              {showArtistModal && (
-                <Modal firstOpen={true} onClose={() => closeModal() }>
-                  <h3>{artistInfo.name}</h3>
-                  <p><b>Followers:</b> {artistInfo.followCount}</p>
-                  <p><b>Popularity:</b> {artistInfo.popularity}</p>
-                  <p><b>Genres:</b> {artistInfo.genres}</p>
-                  {/* <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
+                {artistInfo.images && (
+                  <div
+                    onClick={() => setShowArtistModal(true)}
+                    className="artist-img"
+                    style={{
+                      backgroundImage: `url(${artistInfo.images[0].url})`,
+                    }}
+                  ></div>
+                )}
+                {showArtistModal && (
+                  <Modal firstOpen={true} onClose={() => closeModal()}>
+                    <h3>{artistInfo.name}</h3>
+                    <p>
+                      <b>Followers:</b> {artistInfo.followCount}
+                    </p>
+                    <p>
+                      <b>Popularity:</b> {artistInfo.popularity}
+                    </p>
+                    <p>
+                      <b>Genres:</b> {artistInfo.genres}
+                    </p>
+                    {/* <p><b>Discovered On:</b> {artistInfo.discoveredOn?.length}</p>
                   <div className="playlists-do">
                     {Array.isArray(artistInfo.discoveredOn) && artistInfo.discoveredOn?.map((pl) => (
                       <div className="playlist-item"  key={`${pl.id}-do`}>
@@ -310,8 +398,8 @@ const Peepee = () => {
                       </div>
                     ))}
                   </div> */}
-                </Modal>
-              )}
+                  </Modal>
+                )}
               </>
             )}
           </>
