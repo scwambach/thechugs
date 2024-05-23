@@ -7,10 +7,7 @@ import {
   SpotifyPlaylist,
   gSheetPlaylist,
 } from '@utils/types/spotify'
-// import { DynamicIcon } from '@components/modules/DynamicIcon'
-// import { colors } from '@utils/settings'
 import Modal from '@components/modules/Modal'
-import { Metadata } from 'next'
 import Head from 'next/head'
 
 const clientId = '374d2ce6617f4668835df65099ff14fa'
@@ -217,8 +214,6 @@ const Peepee = () => {
   return (
     <>
       <Head>
-        <title>Client Page Title</title>
-        <meta name="description" content="Description of the client page." />
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <div className="peepee">
@@ -320,15 +315,13 @@ const Peepee = () => {
                           </p>
                           {pl.email && (
                             <p>
-                              Email:
+                              Copy Email:
                               <button
                                 onClick={() =>
                                   navigator.clipboard.writeText(pl.email || '')
                                 }
                               >
-                                copy
                                 {pl.email}
-                                copy
                               </button>
                             </p>
                           )}
