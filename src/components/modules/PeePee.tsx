@@ -250,9 +250,7 @@ const Peepee = () => {
                 />
               </p>
               <p>
-                <button onClick={() => commitSearch()}>
-                  Search Playlists
-                </button>
+                <button onClick={() => commitSearch()}>Search Playlists</button>
               </p>
               {loading && <p>...Searching, OK? Sheesh...</p>}
               {!loading && searchResults.length === 0 && <p>No Results</p>}
@@ -335,9 +333,7 @@ const Peepee = () => {
                       {Array.isArray(artistInfo?.discoveredOn) &&
                         !!artistInfo?.discoveredOn?.find(
                           (x: any) => x.id === pl.id
-                        ) && (
-                          <div className="results-tag chugged">CHUGGED</div>
-                        )}
+                        ) && <div className="results-tag chugged">CHUGGED</div>}
                     </div>
                   ))}
                 </div>
