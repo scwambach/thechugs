@@ -11,6 +11,7 @@ export const PRODUCT_QUERY = `*[_type == 'merch' && slug.current == $slug][0]{
     thumbnail,
     variants,
     price,
+    outOfStockMsg,
     images[] {
       image {
         ${imageQuery}
