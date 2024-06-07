@@ -18,6 +18,7 @@ defined(images) => { "images": images[] {
 }},
 defined(thumbnail) => { thumbnail },
 defined(price) => { price },
+defined(outOfStockMsg) => { outOfStockMsg },
 defined(variants) => { "price": variants[0].price},
 defined(variants) => { variants[] {
   "_id": _key,

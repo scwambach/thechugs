@@ -27,6 +27,7 @@ export const organizeItemsByCategory = (items: ProductCardProps[]) => {
       thumbnail: item.thumbnail,
       category: item.category,
       price: item.price,
+      outOfStockMsg: item.outOfStockMsg,
       tags: item.tags,
       externalId: item.externalId,
       variants: item.variants,

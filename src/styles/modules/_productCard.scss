@@ -80,6 +80,7 @@
   .button-group {
     // @media screen and (min-width: ($tablet-md)) {
     margin-top: $size-16;
+    min-height: 40px;
     // }
 
     @media screen and (max-width: ($tablet-md - 1)) {

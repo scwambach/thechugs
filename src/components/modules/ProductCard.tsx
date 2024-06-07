@@ -14,8 +14,6 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { getTypeOfVariant } from '@utils/getTypeOfVariant'
 import { LinkObject } from './LinkObject'
 
-// TODO: disable "Add to cart" button if no variant is selected
-
 export const ProductCard = (props: ProductCardProps) => {
   const [disableButton, setDisableButton] = useState(true)
   const [printfulProduct, setPrintfulProduct] = useState(false)
@@ -26,7 +24,7 @@ export const ProductCard = (props: ProductCardProps) => {
   useEffect(() => {
     if (props.externalId) setPrintfulProduct(true)
     /* @ts-expect-error */
-    if (props?.variants?.length > 1) setDisableButton(true)
+    if (props?.variants?.length > 1 || props.outOfStockMsg) setDisableButton(true)
     else setDisableButton(false)
   }, [])
 
@@ -115,7 +113,7 @@ export const ProductCard = (props: ProductCardProps) => {
             <div className="button-group">
               <button
                 disabled={disableButton}
-                className="snipcart-add-item button white"
+                className={!props.outOfStockMsg ? `snipcart-add-item button white` : `button white`}
                 data-item-id={
                   printfulProduct ? activeVariant?.externalId : props._id
                 }
@@ -136,7 +134,11 @@ export const ProductCard = (props: ProductCardProps) => {
                 data-item-custom1-name="PrintfulProduct"
                 data-item-custom1-value={printfulProduct}
               >
-                Add to <AiOutlineShoppingCart size={20} />
+              {!props.outOfStockMsg ? (
+                <>Add to <AiOutlineShoppingCart size={20} /></>
+              ) : (
+                <>{props.outOfStockMsg}</>
+              )}
               </button>
               <Button
                 text="View Details"

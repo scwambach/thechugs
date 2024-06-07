@@ -41,7 +41,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
   useEffect(() => {
     if (content.externalId) setPrintfulProduct(true)
     /* @ts-expect-error */
-    if (content?.variants?.length > 1) setDisableButton(true)
+    if (content?.variants?.length > 1 || content.outOfStockMsg) setDisableButton(true)
     else setDisableButton(false)
     if (typeof window !== 'undefined') {
       if (window.scrollY > 0) {
@@ -128,7 +128,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
             )}
             <button
               disabled={disableButton}
-              className="snipcart-add-item button white"
+              className={!content.outOfStockMsg ? `snipcart-add-item button white` : `button white`}
               data-item-id={
                 printfulProduct ? activeVariant?.externalId : content._id
               }
@@ -149,7 +149,11 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
               data-item-custom1-name="PrintfulProduct"
               data-item-custom1-value={printfulProduct}
             >
-              Add to <AiOutlineShoppingCart size={20} />
+              {!content.outOfStockMsg ? (
+                <>Add to <AiOutlineShoppingCart size={20} /></>
+              ) : (
+                <>{content.outOfStockMsg}</>
+              )}
             </button>
           </div>
           {content.description && <Markdown>{content.description}</Markdown>}

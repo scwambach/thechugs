@@ -19,6 +19,7 @@ export interface ProductProps {
   description?: string
   externalId: string
   price?: number
+  outOfStockMsg?: string
   images?: {
     image: ImageProps
   }[]

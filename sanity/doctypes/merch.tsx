@@ -70,6 +70,12 @@ export const merch = defineType({
       hidden: ({ parent }: any) => !!parent.productId,
     }),
     defineField({
+      name: 'outOfStockMsg',
+      title: 'Out of Stock Message',
+      type: 'string',
+      hidden: ({ parent }: any) => !!parent.productId,
+    }),
+    defineField({
       name: 'images',
       title: 'Images',
       type: 'array',

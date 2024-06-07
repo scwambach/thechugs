@@ -23,6 +23,7 @@ export interface ProductCardProps {
   thumbnail?: string
   slug?: string
   price: number
+  outOfStockMsg?: string
   title: string
   variants?: {
     _id: string
