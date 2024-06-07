@@ -34,10 +34,6 @@ export default defineConfig({
           .title('Base')
           .items([
             S.listItem()
-              .title('Home Page')
-              .child(S.document().schemaType('homePage').documentId('homePage'))
-              .icon(AiFillHome),
-            S.listItem()
               .title('Pages')
               .child(S.documentTypeList('page').title('Pages'))
               .icon(GrMultiple),
@@ -54,10 +50,6 @@ export default defineConfig({
               .child(S.documentTypeList('location').title('Locations'))
               .icon(FaMapMarkerAlt),
             S.listItem()
-              .title('Products')
-              .child(S.documentTypeList('product').title('Products'))
-              .icon(AiOutlineShoppingCart),
-            S.listItem()
               .title('Menus')
               .child(S.documentTypeList('menu').title('Menus'))
               .icon(AiOutlineMenu),
@@ -65,10 +57,6 @@ export default defineConfig({
               .title('Merch')
               .child(S.documentTypeList('merch').title('Merch'))
               .icon(AiOutlineShoppingCart),
-            S.listItem()
-              .title('Releases')
-              .child(S.documentTypeList('release').title('Releases'))
-              .icon(BiAlbum),
             S.listItem()
               .title('Articles')
               .child(S.documentTypeList('article').title('Articles'))
