@@ -58,6 +58,8 @@
     left: 0;
     z-index: 1000;
     width: 100%;
+    max-width: none;
+    transform: translateX(0);
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
     display: flex;

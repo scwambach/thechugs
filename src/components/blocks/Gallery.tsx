@@ -55,7 +55,11 @@ export const Gallery = ({ images }: GalleryProps) => {
         <div className="image">
           {activeImage && (
             <div className={`inner`}>
-              <ImageBlock image={activeImage} className="activeImage" />
+              <ImageBlock
+                image={activeImage}
+                className="activeImage"
+                width={1200}
+              />
             </div>
           )}
         </div>
