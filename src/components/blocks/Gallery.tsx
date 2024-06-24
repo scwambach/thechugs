@@ -1,7 +1,6 @@
 'use client'
 import { Container } from '@components/modules/Container'
 import { ImageBlock } from '@components/modules/ImageBlock'
-import { Loading } from '@components/modules/Loading'
 import { ImageProps, PageBlockProps } from '@utils/types'
 import { useEffect, useState } from 'react'
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
