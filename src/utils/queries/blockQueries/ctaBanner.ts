@@ -4,6 +4,7 @@ export const ctaBanner = `_type == 'ctaBanner' => {
   ${commonProps},
   copy,
   contained,
+  paddingBottom,
   darkMode,
   foregroundImage {
     ${imageQuery}

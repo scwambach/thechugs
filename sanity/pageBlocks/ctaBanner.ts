@@ -45,6 +45,11 @@ export const ctaBanner = defineType({
       type: 'boolean',
     }),
     defineField({
+      name: 'paddingBottom',
+      title: 'Padding Bottom',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'foregroundImage',
       title: 'Foreground Image',
       type: 'image',

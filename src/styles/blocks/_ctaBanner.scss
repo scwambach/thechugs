@@ -8,6 +8,12 @@
 
   &.darkMode {
     color: $secondary;
+
+    a {
+      &:not(.button) {
+        color: $secondary;
+      }
+    }
   }
 
   &.contained {
