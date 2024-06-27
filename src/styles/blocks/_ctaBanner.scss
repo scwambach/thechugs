@@ -6,6 +6,10 @@
     padding: $size-32 0;
   }
 
+  &.darkMode {
+    color: $secondary;
+  }
+
   &.contained {
     max-width: $desktop-lg;
     margin: 0 auto $size-64 auto;

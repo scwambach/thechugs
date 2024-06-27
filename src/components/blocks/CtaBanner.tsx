@@ -9,6 +9,7 @@ interface CtaBannerProps extends PageBlockProps {
   backgroundImage: ImageProps
   foregroundImage?: ImageProps
   contained?: boolean
+  darkMode?: boolean
   links?: LinkProps[]
 }
 
@@ -19,6 +20,7 @@ export const CtaBanner = ({
   backgroundImage,
   foregroundImage,
   copy,
+  darkMode,
   contained,
   links,
 }: CtaBannerProps) => {
@@ -28,7 +30,7 @@ export const CtaBanner = ({
     <div
       className={`ctaBanner${contained ? ' contained' : ''}${
         isFeature ? ' feature' : ''
-      }`}
+      }${darkMode ? ' darkMode' : ''}`}
     >
       {!!backgroundImage && <ImageBlock image={backgroundImage} isBackground />}
       <Container>

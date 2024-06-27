@@ -35,6 +35,11 @@ export const ctaBanner = defineType({
       ],
     }),
     defineField({
+      name: 'darkMode',
+      title: 'Dark Mode',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'contained',
       title: 'Contained',
       type: 'boolean',
