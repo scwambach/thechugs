@@ -46,14 +46,16 @@ const createOrder = async ({
     })
   )
 
-  const { result } = await printful.post('orders', {
-    external_id: invoiceNumber,
-    recipient,
-    items: printfulItems,
-    shipping: shippingRateUserDefinedId,
-  })
-
-  return result
+  if (printfulItems.length) {
+    const { result } = await printful.post('orders', {
+      external_id: invoiceNumber,
+      recipient,
+      items: printfulItems,
+      shipping: shippingRateUserDefinedId,
+    })
+  
+    return result
+  }
 }
 
 export default createOrder
