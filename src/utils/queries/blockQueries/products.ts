@@ -8,8 +8,19 @@ export const products = `_type == 'products' => {
     ${product}
   },
   defined(allProducts) => {
-    "products": *[_type == 'merch'] | order(title asc) | order(category->title asc) {
-      ${product}
-    }
+    "products": {
+      "clothing": *[_type == 'merch' && category->title == 'Clothing'] | order(title asc) {
+        ${product}
+      },
+      "music": *[_type == 'merch' && category->title == 'Music'] | order(title asc) {
+        ${product}
+      },
+      "stickers": *[_type == 'merch' && category->title == 'Stickers'] | order(title asc) {
+        ${product}
+      },
+      "accessories": *[_type == 'merch' && category->title == 'Accessories'] | order(title asc) {
+        ${product}
+      },
+    },
   },
 }`

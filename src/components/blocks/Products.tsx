@@ -5,8 +5,15 @@ import { PageBlockProps } from '@utils/types'
 import { ProductCardProps } from '@utils/types/modules/ProductCardProps'
 import { Button } from '@components/modules/Button'
 
+export interface AllProductProps {
+  clothing: ProductCardProps[]
+  music: ProductCardProps[]
+  stickers: ProductCardProps[]
+  accessories: ProductCardProps[]
+}
+
 interface ProductsProps extends PageBlockProps {
-  products: ProductCardProps[]
+  products: ProductCardProps[] | any
   allProducts?: boolean
   noButton?: boolean
   filter?: boolean
@@ -21,11 +28,11 @@ export const Products = ({
     <div className="products">
       <Container size="wide">
         {allProducts ? (
-          <MerchFilter items={products} />
+          <MerchFilter items={products as AllProductProps} />
         ) : (
           <>
             <div className="list">
-              {products.map((product) => (
+              {products.map((product: ProductCardProps) => (
                 <ProductCard {...product} key={product._id} minimal />
               ))}
             </div>

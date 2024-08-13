@@ -1,9 +1,12 @@
+import dayjs from 'dayjs'
+import { AiOutlineCalendar } from 'react-icons/ai'
 import { FaLink } from 'react-icons/fa'
 
 export const event = {
   title: 'Event',
   name: 'event',
   type: 'document',
+  icon: AiOutlineCalendar,
   fields: [
     {
       title: 'Title',
@@ -78,4 +81,18 @@ export const event = {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      dateTime: 'dateTime',
+      location: 'location.title',
+    },
+    prepare(selection: any) {
+      const { title, dateTime, location } = selection
+      return {
+        title: title,
+        subtitle: `${dayjs(dateTime).format('MMM, DD YYYY')} at ${location}`,
+      }
+    },
+  },
 }
