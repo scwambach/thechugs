@@ -1,3 +1,4 @@
+'use client'
 import { Container } from '@components/modules/Container'
 import { MerchFilter } from '@components/blocks/MerchFilter'
 import { ProductCard } from '@components/modules/ProductCard'
