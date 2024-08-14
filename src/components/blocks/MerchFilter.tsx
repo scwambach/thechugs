@@ -1,25 +1,31 @@
-'use client'
-import { ProductCardProps } from '@utils/types/modules/ProductCardProps'
 import { ProductCard } from '../modules/ProductCard'
-import { organizeItemsByCategory } from '@utils/organizeItemsByCategory'
 import { Heading } from '@components/modules/Heading'
 import { slugify } from '@utils/slugify'
+import { Fragment } from 'react'
+import { AllProductProps } from './Products'
 
-interface MerchFilterProps {
-  items: ProductCardProps[]
-}
+export const MerchFilter = ({ items }: { items: AllProductProps }) => {
+  const merchArray = [
+    { title: 'Clothing', products: items.clothing },
+    { title: 'Music', products: items.music },
+    { title: 'Stickers', products: items.stickers },
+    { title: 'Accessories', products: items.accessories },
+  ]
 
-export const MerchFilter = ({ items }: MerchFilterProps) => {
   return (
     <div className="merchFilter">
-      {organizeItemsByCategory(items).map((category) => (
-        <div key={category.title} className="category">
-          <Heading headingId={slugify(category.title)} level="3">
-            {category.title}
-          </Heading>
+      {merchArray?.map((category) => (
+        <div key={category?.title} className="category">
+          {category.title && (
+            <Heading headingId={slugify(category.title)} level="3">
+              {category.title}
+            </Heading>
+          )}
           <div className="list">
-            {category.products.map((product) => (
-              <ProductCard {...product} key={product._id} />
+            {category?.products?.map((product) => (
+              <Fragment key={product._id}>
+                {product && <ProductCard {...product} />}
+              </Fragment>
             ))}
           </div>
         </div>

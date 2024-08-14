@@ -1,28 +1,30 @@
 import { type SchemaTypeDefinition } from 'sanity'
-import { videos } from './pageBlocks/videos'
-import { video } from './doctypes/video'
-import { river } from './pageBlocks/river'
-import { release } from './doctypes/release'
-import { products } from './pageBlocks/products'
-import { product } from './doctypes/product'
-import { pageBanner } from './pageBlocks/pageBanner'
-import { page } from './doctypes/page'
-import { otherBand } from './doctypes/otherBand'
-import { merchCategory } from './doctypes/merchCategory'
-import { merch } from './doctypes/merch'
-import { menu } from './doctypes/menu'
-import { members } from './pageBlocks/members'
-import { location } from './doctypes/location'
-import { homePage } from './doctypes/homePage'
-import { globalInfo } from './doctypes/globalInfo'
-import { gallery } from './pageBlocks/gallery'
-import { form } from './pageBlocks/form'
-import { events } from './pageBlocks/events'
-import { event } from './doctypes/event'
-import { ctaBanner } from './pageBlocks/ctaBanner'
-import { bigBanner } from './pageBlocks/bigBanner'
 import { articles } from './pageBlocks/articles'
+import { bigBanner } from './pageBlocks/bigBanner'
+import { ctaBanner } from './pageBlocks/ctaBanner'
+import { events } from './pageBlocks/events'
+import { form } from './pageBlocks/form'
+import { gallery } from './pageBlocks/gallery'
+import { members } from './pageBlocks/members'
+import { pageBanner } from './pageBlocks/pageBanner'
+import { products } from './pageBlocks/products'
+import { river } from './pageBlocks/river'
+import { videos } from './pageBlocks/videos'
+
 import { article } from './doctypes/article'
+import { event } from './doctypes/event'
+import { globalInfo } from './doctypes/globalInfo'
+import { homePage } from './doctypes/homePage'
+import { location } from './doctypes/location'
+import { menu } from './doctypes/menu'
+import { merch } from './doctypes/merch'
+import { merchCategory } from './doctypes/merchCategory'
+import { otherBand } from './doctypes/otherBand'
+import { page } from './doctypes/page'
+import { product } from './doctypes/product'
+import { release } from './doctypes/release'
+import { video } from './doctypes/video'
+import { garageSaleItem } from './doctypes/garageSaleItem'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -50,5 +52,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     river,
     video,
     videos,
+    garageSaleItem,
   ],
 }

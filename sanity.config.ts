@@ -11,14 +11,14 @@ import { structureTool } from 'sanity/structure'
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { schema } from './sanity/schema'
 import {
-  AiFillHome,
   AiFillVideoCamera,
   AiOutlineCalendar,
   AiOutlineMenu,
   AiOutlineShoppingCart,
 } from 'react-icons/ai'
+import { PiGarageBold } from 'react-icons/pi'
 import { GrArticle, GrMultiple } from 'react-icons/gr'
-import { FaMapMarkerAlt } from 'react-icons/fa'
+import { FaCogs, FaMapMarkerAlt } from 'react-icons/fa'
 import { BsGlobe } from 'react-icons/bs'
 
 export default defineConfig({
@@ -38,33 +38,118 @@ export default defineConfig({
               .child(S.documentTypeList('page').title('Pages'))
               .icon(GrMultiple),
             S.listItem()
+              .title('Events')
+              .child(
+                S.list()
+                  .title('Events')
+                  .items([
+                    S.listItem()
+                      .title('Upcoming Events')
+                      .child(
+                        S.documentTypeList('event')
+                          .title('Events')
+                          .filter(
+                            '_type == "event" && dateTime >= now() && !(_id in path("drafts.**"))'
+                          )
+                          .defaultOrdering([
+                            { field: 'dateTime', direction: 'asc' },
+                          ])
+                      )
+                      .icon(AiOutlineCalendar),
+                    S.listItem()
+                      .title('Past Events')
+                      .child(
+                        S.documentTypeList('event')
+                          .title('Events')
+                          .filter(
+                            '_type == "event" && dateTime < now() && !(_id in path("drafts.**"))'
+                          )
+                          .defaultOrdering([
+                            { field: 'dateTime', direction: 'desc' },
+                          ])
+                      )
+                      .icon(AiOutlineCalendar),
+                    S.listItem()
+                      .title('All Events')
+                      .child(
+                        S.documentTypeList('event')
+                          .title('Events')
+                          .defaultOrdering([
+                            { field: 'dateTime', direction: 'desc' },
+                          ])
+                      )
+                      .icon(AiOutlineCalendar),
+
+                    S.listItem()
+                      .title('Locations')
+                      .child(S.documentTypeList('location').title('Locations'))
+                      .icon(FaMapMarkerAlt),
+                  ])
+              )
+              .icon(AiOutlineCalendar),
+            S.listItem()
               .title('Videos')
               .child(S.documentTypeList('video').title('Videos'))
               .icon(AiFillVideoCamera),
             S.listItem()
-              .title('Events')
-              .child(S.documentTypeList('event').title('Events'))
-              .icon(AiOutlineCalendar),
-            S.listItem()
-              .title('Locations')
-              .child(S.documentTypeList('location').title('Locations'))
-              .icon(FaMapMarkerAlt),
-            S.listItem()
-              .title('Menus')
-              .child(S.documentTypeList('menu').title('Menus'))
-              .icon(AiOutlineMenu),
-            S.listItem()
               .title('Merch')
-              .child(S.documentTypeList('merch').title('Merch'))
+              .child(
+                S.list()
+                  .title('Merch')
+                  .items([
+                    S.listItem()
+                      .title('Chug Merch')
+                      .child(
+                        S.documentTypeList('merch')
+                          .title('Merch')
+                          .filter(
+                            "_type == 'merch' && !references('1b10042f-e887-40cf-a102-77e48b31e58b')"
+                          )
+                      )
+                      .icon(AiOutlineShoppingCart),
+                    S.listItem()
+                      .title('Garage Sale')
+                      .child(
+                        S.documentTypeList('merch')
+                          .title('Merch')
+                          .filter(
+                            "_type == 'merch' && references('1b10042f-e887-40cf-a102-77e48b31e58b')"
+                          )
+                      )
+                      .icon(PiGarageBold),
+                    S.listItem()
+                      .title('Merch Categories')
+                      .child(
+                        S.documentTypeList('merchCategory').title('Categories')
+                      ),
+                  ])
+              )
               .icon(AiOutlineShoppingCart),
+
             S.listItem()
               .title('Articles')
               .child(S.documentTypeList('article').title('Articles'))
               .icon(GrArticle),
             S.listItem()
-              .title('Global Info')
+              .title('Site Wide')
               .child(
-                S.document().schemaType('globalInfo').documentId('globalInfo')
+                S.list()
+                  .title('Site Wide')
+                  .items([
+                    S.listItem()
+                      .title('Site Settings')
+                      .child(
+                        S.document()
+                          .schemaType('globalInfo')
+                          .documentId('globalInfo')
+                      )
+                      .icon(FaCogs),
+
+                    S.listItem()
+                      .title('Menus')
+                      .child(S.documentTypeList('menu').title('Menus'))
+                      .icon(AiOutlineMenu),
+                  ])
               )
               .icon(BsGlobe),
           ]),
