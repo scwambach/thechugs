@@ -9,8 +9,6 @@ async function getData() {
   return data
 }
 
-export const revalidate = 0
-
 export async function generateMetadata({}) {
   const data = await client.fetch(HOME_QUERY)
 
@@ -25,6 +23,8 @@ export async function generateMetadata({}) {
     },
   }
 }
+
+export const revalidate = 0
 
 export default async function Home() {
   const data = await getData()

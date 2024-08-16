@@ -17,7 +17,7 @@ async function getData(slug: string) {
   return data
 }
 
-export const revalidate = 60
+export const revalidate = 0
 
 export async function generateMetadata({
   params,

@@ -5,11 +5,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100svh;
-  max-height: $mobile-md;
+  height: 0;
+  overflow: hidden;
 
-  @media screen and (min-width: ($tablet-md)) {
-    max-height: $desktop;
+  @media screen and (max-width: (2499px)) {
+    padding-bottom: 56.25%;
+  }
+
+  @media screen and (min-width: (2500px)) {
+    height: 100svh;
+    max-height: $widescreen;
   }
 
   img {
