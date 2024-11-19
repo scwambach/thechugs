@@ -39,7 +39,7 @@ const BigBanner = ({
 
   return (
     <div className="bigBanner" id={componentId}>
-      <ImageBlock image={backgroundImage} isBackground={true} width={2000} />
+      <ImageBlock image={backgroundImage} fill width={2000} />
       <span className="sr-only">{screenReaderText}</span>
     </div>
   )

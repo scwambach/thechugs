@@ -1,83 +1,36 @@
 'use client'
-import { bgStyles } from '@utils/bgStyles'
-import { client } from '@utils/client'
-import { ImageProps } from '@utils/types'
-import { useNextSanityImage } from 'next-sanity-image'
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image'
 
 interface ImageBlockProps {
   image: ImageProps
+  fill?: boolean
+  className?: string
+  alt?: string
   width?: number
   height?: number
-  desaturate?: boolean
-  alt?: string
-  priority?: boolean
-  className?: string
-  setImageLoaded?: (isImageLoaded: boolean) => void
-  isBackground?: boolean
 }
 
 export const ImageBlock = ({
-  isBackground,
+  image,
+  fill,
   alt = '',
   className,
-  image,
-  priority,
-  width = 800,
   height,
-  // setImageLoaded,
-  desaturate,
+  width,
 }: ImageBlockProps) => {
-  const customBuilder = (imageUrlBuilder: any, _options: any) => {
-    if (height && desaturate) {
-      return (imageUrlBuilder = imageUrlBuilder
-        .saturation(-100)
-        .width(width)
-        .height(height))
-    }
-
-    if (desaturate && !height) {
-      return (imageUrlBuilder = imageUrlBuilder
-        .saturation(-100)
-        .width(width)
-        .fit('scale'))
-    }
-
-    if (height && !desaturate) {
-      return (imageUrlBuilder = imageUrlBuilder
-        .width(width)
-        .height(height)
-        .fit('scale'))
-    }
-
-    return imageUrlBuilder.width(width).fit('scale')
-  }
-
-  const imageProps = useNextSanityImage(client, image, {
-    imageBuilder: customBuilder,
-  })
-
-  // const handleImageLoad = () => {
-  //   if (setImageLoaded) {
-  //     setTimeout(() => {
-  //       setImageLoaded(true)
-  //     }, 300)
-  //   }
-  // }
-
   return (
     <Image
-      {...imageProps}
-      alt={alt}
-      unoptimized
-      priority={priority}
-      className={`${isBackground ? 'bg-fit' : ''}${
-        isBackground && className ? ' ' : ''
-      }${className ? `${className}` : ''}`}
-      style={isBackground ? (bgStyles as any) : undefined}
+      className={className}
+      src={`${image.src}${width ? `?w=${width}` : height ? `?h=${height}` : ''}`}
       placeholder="blur"
-      blurDataURL={image.lqip}
-      // onLoad={handleImageLoad}
+      blurDataURL={image.blurDataURL}
+      style={{
+        objectFit: fill ? 'cover' : 'contain',
+      }}
+      alt={alt}
+      fill={fill}
+      width={!fill ? image.width : undefined}
+      height={!fill ? image.height : undefined}
     />
   )
 }

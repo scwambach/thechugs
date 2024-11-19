@@ -1,7 +1,8 @@
 'use client'
 import { Container } from '@components/modules/Container'
 import { ImageBlock } from '@components/modules/ImageBlock'
-import { ImageProps, PageBlockProps } from '@utils/types'
+import { PageBlockProps } from '@utils/types'
+import { ImageProps } from 'next/image'
 import { useEffect, useState } from 'react'
 import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
@@ -37,7 +38,7 @@ export const Gallery = ({ images }: GalleryProps) => {
           <button
             onClick={() => {
               const index = images.findIndex(
-                (image) => image._key === activeImage?._key
+                (image) => image.src === activeImage?.src
               )
               if (index === 0) {
                 setActiveImage(images[images.length - 1])
@@ -68,7 +69,7 @@ export const Gallery = ({ images }: GalleryProps) => {
               setActiveImage(undefined)
               setTimeout(() => {
                 const index = images.findIndex(
-                  (image) => image._key === activeImage?._key
+                  (image) => image.src === activeImage?.src
                 )
                 if (index === images.length - 1) {
                   setActiveImage(images[0])
@@ -88,19 +89,13 @@ export const Gallery = ({ images }: GalleryProps) => {
         <div className="items">
           {images.map((image) => (
             <button
-              key={image._key}
+              key={`${image.src}`}
               onClick={() => {
                 setActiveImage(image)
                 setOpen(true)
               }}
             >
-              <ImageBlock
-                image={image}
-                isBackground
-                width={200}
-                height={200}
-                key={image._key}
-              />
+              <ImageBlock image={image} fill width={300} />
             </button>
           ))}
         </div>

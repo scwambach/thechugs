@@ -8,7 +8,7 @@ export const RiverItem = ({ image, heading, copy, links }: RiverItemProps) => {
   return (
     <div className="riverItem">
       <div className="image">
-        <ImageBlock image={image} width={800} isBackground />
+        <ImageBlock image={image} width={800} fill />
       </div>
       <div className="content">
         {heading && <Heading level="3">{heading}</Heading>}

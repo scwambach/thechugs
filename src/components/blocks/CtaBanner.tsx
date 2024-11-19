@@ -3,7 +3,8 @@ import { Container } from '@components/modules/Container'
 import { Heading } from '@components/modules/Heading'
 import { ImageBlock } from '@components/modules/ImageBlock'
 import { PortableText } from '@portabletext/react'
-import { ImageProps, LinkProps, PageBlockProps } from '@utils/types'
+import { LinkProps, PageBlockProps } from '@utils/types'
+import { ImageProps } from 'next/image'
 
 interface CtaBannerProps extends PageBlockProps {
   backgroundImage: ImageProps
@@ -34,10 +35,12 @@ export const CtaBanner = ({
         paddingBottom ? ' feature' : ''
       }${darkMode ? ' darkMode' : ''}`}
     >
-      {!!backgroundImage && <ImageBlock image={backgroundImage} isBackground />}
+      {!!backgroundImage && <ImageBlock image={backgroundImage} fill />}
       <Container>
         <div className={`copy${foregroundImage ? ' flex' : ''}`}>
-          {foregroundImage && <ImageBlock image={foregroundImage} />}
+          {foregroundImage && (
+            <ImageBlock image={foregroundImage} width={600} />
+          )}
           <div>
             {heading && <Heading level={headingLevel}>{heading}</Heading>}
             {subheading && <p className="subheading">{subheading}</p>}

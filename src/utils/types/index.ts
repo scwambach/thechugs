@@ -1,4 +1,5 @@
 import { PortableTextBlock } from '@portabletext/types'
+import { ImageProps } from 'next/image'
 
 export type HeadingLevel = '1' | '2' | '3' | '4' | '5' | '6'
 export type BackgroundColor = 'white' | 'black' | 'blue'
@@ -45,27 +46,6 @@ export type InputTypes =
 export interface AssetProps {
   _ref: string
   _type: string
-}
-
-export interface ImageProps {
-  _type: string
-  _key?: string
-  asset: AssetProps
-  crop?: {
-    top: number
-    left: number
-    bottom: number
-    _type: string
-    right: number
-  }
-  hotspot?: {
-    _type: string
-    width: number
-    x: number
-    y: number
-    height: number
-  }
-  lqip: string
 }
 
 export interface LinkProps {

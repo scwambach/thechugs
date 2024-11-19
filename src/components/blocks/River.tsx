@@ -19,7 +19,7 @@ export const River = ({ items }: RiverProps) => {
           {items.map((item) => (
             <div className="riverItem" key={item._key}>
               <div className="image">
-                <ImageBlock image={item.image} width={800} isBackground />
+                <ImageBlock image={item.image} width={800} fill />
               </div>
               <div className="content">
                 {item.heading && (

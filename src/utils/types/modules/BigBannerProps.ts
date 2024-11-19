@@ -1,4 +1,4 @@
-import { ImageProps } from '..'
+import { ImageProps } from 'next/image'
 
 export interface BigBannerProps {
   componentId?: string

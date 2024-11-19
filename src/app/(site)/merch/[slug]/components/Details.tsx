@@ -83,13 +83,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
             />
           ) : (
             content.images && (
-              <ImageBlock
-                image={content.images[0].image}
-                alt=""
-                priority
-                width={700}
-                height={700}
-              />
+              <ImageBlock image={content.images[0].image} alt="" />
             )
           )}
         </div>

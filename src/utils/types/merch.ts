@@ -1,4 +1,5 @@
-import { GlobalInfoProps, ImageProps, NavItemProps } from '.'
+import { ImageProps } from 'next/image'
+import { GlobalInfoProps, NavItemProps } from '.'
 import { ProductCardProps } from './modules/ProductCardProps'
 
 export interface VariantProps {

@@ -6,13 +6,7 @@ export const Member = ({ image, name, role, links }: MemberProps) => {
   return (
     <div className="member">
       <div className="image-container">
-        <ImageBlock
-          image={image}
-          width={368}
-          height={368}
-          alt={name}
-          isBackground
-        />
+        <ImageBlock image={image} width={368} alt={name} fill />
       </div>
 
       <p>
