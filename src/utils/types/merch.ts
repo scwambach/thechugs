@@ -22,6 +22,7 @@ export interface ProductProps {
   price?: number
   outOfStockMsg?: string
   images?: {
+    _key: string
     image: ImageProps
   }[]
   productId?: number

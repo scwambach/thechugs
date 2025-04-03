@@ -13,6 +13,7 @@ export const PRODUCT_QUERY = `*[_type == 'merch' && slug.current == $slug][0]{
     price,
     outOfStockMsg,
     images[] {
+      _key,
       image {
         ${imageQuery}
       }
