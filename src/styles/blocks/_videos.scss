@@ -1,7 +1,9 @@
+@use '../settings' as s;
+
 .videos {
   .inner {
     display: flex;
     flex-direction: column;
-    gap: $size-100;
+    gap: s.$size-100;
   }
 }

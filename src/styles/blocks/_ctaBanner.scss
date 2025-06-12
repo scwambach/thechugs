@@ -1,31 +1,33 @@
+@use '../settings' as s;
+
 .ctaBanner {
   position: relative;
-  padding: $size-64 0;
+  padding: s.$size-64 0;
 
   @media screen and (max-width: ($tablet-md - 1)) {
-    padding: $size-32 0;
+    padding: s.$size-32 0;
   }
 
   &.darkMode {
-    color: $secondary;
+    color: s.$secondary;
 
     a {
       &:not(.button) {
-        color: $secondary;
+        color: s.$secondary;
       }
     }
   }
 
   &.contained {
-    max-width: $desktop-lg;
-    margin: 0 auto $size-64 auto;
-    border-radius: $size-52;
+    max-width: s.$desktop-lg;
+    margin: 0 auto s.$size-64 auto;
+    border-radius: s.$size-52;
     overflow: hidden;
-    padding: $size-60 $size-100;
+    padding: s.$size-60 s.$size-100;
 
     @media screen and (max-width: ($tablet-md - 1)) {
-      margin: 0 auto $size-100 auto;
-      padding: $size-60 $size-32;
+      margin: 0 auto s.$size-100 auto;
+      padding: s.$size-60 s.$size-32;
     }
 
     @media screen and (max-width: ($desktop-lg - 1)) {
@@ -34,34 +36,34 @@
     }
 
     @media screen and (min-width: ($tablet-md)) {
-      padding: $size-144 $size-100;
+      padding: s.$size-144 s.$size-100;
     }
 
     .container {
       padding: 0;
-      max-width: $desktop-md;
+      max-width: s.$desktop-md;
     }
 
     &.feature {
-      padding-top: $size-60;
-      padding-bottom: $size-230;
+      padding-top: s.$size-60;
+      padding-bottom: s.$size-230;
 
       @media screen and (min-width: ($tablet-md)) {
-        padding-top: $size-100;
-        padding-left: $size-100;
-        padding-right: $size-100;
+        padding-top: s.$size-100;
+        padding-left: s.$size-100;
+        padding-right: s.$size-100;
       }
 
       @media screen and (max-width: ($desktop-lg - 1)) {
-        padding-left: $size-32;
-        padding-right: $size-32;
+        padding-left: s.$size-32;
+        padding-right: s.$size-32;
       }
 
       .headingTag {
-        font-size: $size-45;
+        font-size: s.$size-45;
 
         @media screen and (max-width: ($tablet-lg - 1)) {
-          font-size: $size-36;
+          font-size: s.$size-36;
         }
       }
     }
@@ -77,18 +79,18 @@
 
   .subheading {
     text-transform: uppercase;
-    letter-spacing: $size-2;
+    letter-spacing: s.$size-2;
 
     @media screen and (max-width: ($tablet-md - 1)) {
-      font-size: $size-14;
+      font-size: s.$size-14;
     }
   }
 
   .message {
-    margin: $size-16 0 $size-24;
+    margin: s.$size-16 0 s.$size-24;
 
     @media screen and (min-width: ($tablet-md)) {
-      max-width: $size-416;
+      max-width: s.$size-416;
     }
   }
 
@@ -97,14 +99,14 @@
     z-index: 2;
 
     @media screen and (min-width: ($tablet-md)) {
-      max-width: $size-640;
+      max-width: s.$size-640;
     }
 
     &.flex {
       display: flex;
       max-width: none;
       align-items: flex-start;
-      gap: $size-32;
+      gap: s.$size-32;
       flex-direction: column;
 
       @media screen and (min-width: ($tablet-md)) {

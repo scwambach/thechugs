@@ -1,27 +1,29 @@
+@use '../settings' as s;
+
 .pageBanner {
   position: relative;
-  color: $white;
+  color: s.$white;
   text-align: center;
-  padding: $size-45 0;
-  color: $secondary;
+  padding: s.$size-45 0;
+  color: s.$secondary;
 
   .pageOrder_1 & {
-    padding-top: $size-100;
+    padding-top: s.$size-100;
   }
 
   @media screen and (min-width: ($tablet-md)) {
-    padding: $size-100 0;
+    padding: s.$size-100 0;
 
     .pageOrder_1 & {
-      padding-top: $size-144;
+      padding-top: s.$size-144;
     }
   }
 
   @media screen and (min-width: ($tablet-lg)) {
-    padding: $size-144 0;
+    padding: s.$size-144 0;
 
     .pageOrder_1 & {
-      padding-top: $size-180;
+      padding-top: s.$size-180;
     }
   }
 
@@ -49,16 +51,16 @@
   }
 
   .subheading {
-    margin: 0 0 $size-16;
+    margin: 0 0 s.$size-16;
     text-transform: uppercase;
     font-weight: bold;
   }
   .copy {
-    margin-top: $size-32;
+    margin-top: s.$size-32;
   }
 
   .buttonList {
-    margin-top: $size-32;
+    margin-top: s.$size-32;
     justify-content: center;
 
     @media screen and (max-width: ($mobile-lg - 1)) {

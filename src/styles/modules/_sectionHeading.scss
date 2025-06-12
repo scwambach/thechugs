@@ -1,5 +1,7 @@
+@use '../settings' as s;
+
 .sectionHeading {
-  margin-bottom: $size-32;
+  margin-bottom: s.$size-32;
 
   .headingTag {
     margin: 0;

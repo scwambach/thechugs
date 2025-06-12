@@ -1,3 +1,5 @@
+@use './settings' as s;
+
 .peepee {
   width: 75%;
   margin: 40px auto;
@@ -5,16 +7,16 @@
   min-width: 1000px;
 
   input {
-    border: 1px solid $black;
+    border: 1px solid s.$black;
     width: 25%;
     margin: 5px;
     cursor: text;
   }
 
   button {
-    color: $white;
-    background-color: $primary;
-    border: 1px solid $black;
+    color: s.$white;
+    background-color: s.$primary;
+    border: 1px solid s.$black;
     padding: 10px;
 
     &.prev,
@@ -23,7 +25,7 @@
     }
 
     &:disabled {
-      background-color: $gray;
+      background-color: s.$gray;
     }
   }
 
@@ -37,7 +39,7 @@
       position: relative;
       display: flex;
       justify-content: space-between;
-      border: 1px solid $gray;
+      border: 1px solid s.$gray;
       padding: 10px;
       margin: 10px;
       overflow: hidden;
@@ -56,16 +58,16 @@
           top: -87px;
           rotate: 45deg;
           align-items: end;
-          background-color: $quaternary;
-          color: $primary;
+          background-color: s.$quaternary;
+          color: s.$primary;
         }
 
         &.chugged {
           bottom: -87px;
           rotate: 315deg;
           align-items: start;
-          background-color: $primary;
-          color: $quaternary;
+          background-color: s.$primary;
+          color: s.$quaternary;
         }
       }
 
@@ -81,7 +83,7 @@
         width: 100%;
 
         button {
-          color: $primary;
+          color: s.$primary;
           background-color: transparent;
           border: none;
           padding: 0 0 0 5px;
@@ -101,14 +103,14 @@
     height: 100px;
     width: 100px;
     background-size: contain;
-    border: 5px solid $primary;
+    border: 5px solid s.$primary;
     cursor: pointer;
 
     &:after {
       content: 'i';
       font-family: monospace;
       font-size: 24px;
-      color: $white;
+      color: s.$white;
       position: absolute;
       top: 24px;
       right: 103px;
@@ -121,7 +123,7 @@
       right: 70px;
       border-left: 50px solid transparent;
       border-right: 50px solid transparent;
-      border-bottom: 50px solid $primary;
+      border-bottom: 50px solid s.$primary;
       rotate: -90deg;
     }
   }

@@ -1,6 +1,8 @@
+@use '../settings' as s;
+
 .videoItem {
   .headingTag {
-    margin-bottom: $size-16;
+    margin-bottom: s.$size-16;
   }
 
   > div {
@@ -9,7 +11,7 @@
     overflow: hidden;
     padding-bottom: 56.25% !important;
     position: relative;
-    border-radius: $size-20;
+    border-radius: s.$size-20;
     overflow: hidden;
     @include outlineBox;
 

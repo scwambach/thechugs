@@ -1,48 +1,50 @@
+@use '../settings' as s;
+
 .form {
   .title {
     @include headingFive;
-    font-family: $heading-family;
+    font-family: s.$heading-family;
   }
 
   .description,
   .beforeSubmit {
-    margin-bottom: $size-16;
-    max-width: $size-512;
+    margin-bottom: s.$size-16;
+    max-width: s.$size-512;
   }
 
   .fields {
     display: flex;
     flex-direction: column;
-    gap: $size-16;
+    gap: s.$size-16;
   }
 
   .required {
-    color: $danger;
+    color: s.$danger;
   }
 
   .response {
-    max-width: $size-704;
+    max-width: s.$size-704;
 
     p {
-      font-family: $heading-family;
+      font-family: s.$heading-family;
       line-height: 1.2;
-      font-size: $size-32;
+      font-size: s.$size-32;
 
       @media screen and (max-width: ($tablet-md - 1)) {
-        font-size: $size-24;
+        font-size: s.$size-24;
       }
     }
 
     .error {
-      color: $danger;
+      color: s.$danger;
     }
 
     .success {
-      color: $success;
+      color: s.$success;
     }
   }
 
   button[type='submit'] {
-    margin-top: $size-32;
+    margin-top: s.$size-32;
   }
 }

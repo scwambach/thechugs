@@ -1,3 +1,5 @@
+@use '../settings' as s;
+
 .modal-bg,
 .modal-close {
   top: 0;
@@ -15,7 +17,7 @@
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: $white;
+  background-color: s.$white;
   position: fixed;
   max-width: 700px;
   min-width: 320px;
@@ -33,7 +35,7 @@
   }
 
   .playlist-item {
-    border: 1px solid $gray;
+    border: 1px solid s.$gray;
     flex: 1 1 0;
     width: 150px;
     padding: 5px;
