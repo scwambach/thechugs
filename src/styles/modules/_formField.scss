@@ -1,3 +1,5 @@
+@use '../settings' as s;
+
 .formField {
   p {
     margin: 0;
@@ -5,8 +7,8 @@
 
   .labelTag {
     @include headingSix;
-    font-family: $font-bold;
-    margin-bottom: $size-8;
+    font-family: s.$font-bold;
+    margin-bottom: s.$size-8;
     display: block;
 
     &.hidden {
@@ -18,14 +20,14 @@
   }
 
   .description {
-    margin-bottom: $size-16;
-    max-width: $size-640;
+    margin-bottom: s.$size-16;
+    max-width: s.$size-640;
   }
 
   .choices {
     display: flex;
     flex-direction: column;
-    gap: $size-8;
+    gap: s.$size-8;
   }
 
   .radio,
@@ -33,7 +35,7 @@
     label {
       display: flex;
       align-items: center;
-      gap: $size-8;
+      gap: s.$size-8;
       cursor: pointer;
       width: 100%;
     }
@@ -42,12 +44,12 @@
 
 .select {
   position: relative;
-  color: $black;
+  color: s.$black;
   display: block;
 
   svg {
     position: absolute;
-    bottom: $size-10;
-    right: $size-16;
+    bottom: s.$size-10;
+    right: s.$size-16;
   }
 }

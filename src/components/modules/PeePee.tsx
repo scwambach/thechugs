@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import fetch from 'node-fetch'
+
 import {
   SpotifyArtist,
   SpotifyPlaylist,

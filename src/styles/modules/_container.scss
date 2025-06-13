@@ -1,22 +1,24 @@
+@use '../settings' as s;
+
 .container {
-  max-width: $desktop;
+  max-width: s.$desktop;
   margin: 0 auto;
-  padding: 0 $size-32;
+  padding: 0 s.$size-32;
 
   &.narrow {
-    max-width: $tablet-md;
+    max-width: s.$tablet-md;
   }
 
   &.narrower {
-    max-width: $mobile-lg;
+    max-width: s.$mobile-lg;
   }
 
   &.wide {
-    max-width: $desktop-lg;
+    max-width: s.$desktop-lg;
   }
 
   &.wider {
-    max-width: $widescreen;
+    max-width: s.$widescreen;
   }
 
   &.full {

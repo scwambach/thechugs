@@ -1,3 +1,5 @@
+@use '../settings' as s;
+
 .bigBanner {
   position: relative;
   overflow: hidden;
@@ -14,7 +16,7 @@
 
   @media screen and (min-width: (2500px)) {
     height: 100svh;
-    max-height: $widescreen;
+    max-height: s.$widescreen;
   }
 
   img {
@@ -41,7 +43,7 @@
 .component_bigBanner {
   + section {
     &.component_ctaBanner {
-      padding-bottom: $size-100;
+      padding-bottom: s.$size-100;
 
       .contained {
         @media screen and (min-width: ($desktop-lg)) {

@@ -1,3 +1,5 @@
+@use './settings' as s;
+
 body {
   margin: 0;
   padding: 0;
@@ -9,29 +11,29 @@ body {
 
 * {
   &:focus {
-    outline: $size-4 solid $primary !important;
-    outline-offset: $size-4 !important;
+    outline: s.$size-4 solid s.$primary !important;
+    outline-offset: s.$size-4 !important;
   }
 }
 
 main {
-  font-family: $font-family;
+  font-family: s.$font-family;
   position: relative;
-  color: $black;
+  color: s.$black;
 }
 
 *::selection {
-  background: $quaternary;
-  color: $white;
+  background: s.$quaternary;
+  color: s.$white;
 }
 
 a {
-  color: $tertiary;
-  transition-duration: $animation-speed;
+  color: s.$tertiary;
+  transition-duration: s.$animation-speed;
 
   &:hover {
     @media screen and (min-width: ($tablet-md)) {
-      color: $tertiary-light;
+      color: s.$tertiary-light;
     }
 
     .zoom-image {
@@ -44,7 +46,7 @@ a {
   .zoom-image {
     position: relative;
     transform: scale(1) rotate(0deg);
-    transition-duration: $animation-speed;
+    transition-duration: s.$animation-speed;
     transition-timing-function: ease-in-out;
     height: 100%;
     width: 100%;
@@ -74,7 +76,7 @@ ul {
 
 .flex-row {
   display: flex;
-  gap: $size-32;
+  gap: s.$size-32;
 
   @media screen and (max-width: ($tablet-md - 1)) {
     flex-direction: column;
@@ -109,42 +111,42 @@ ul {
 }
 
 .bg-white {
-  background-color: $secondary;
-  color: $black;
-  border-color: $black;
+  background-color: s.$secondary;
+  color: s.$black;
+  border-color: s.$black;
 
   a:not(.button) {
-    color: $black;
+    color: s.$black;
   }
 }
 
 .bg-blue {
-  background-color: $tertiary;
-  color: $secondary;
-  border-color: $secondary;
+  background-color: s.$tertiary;
+  color: s.$secondary;
+  border-color: s.$secondary;
 
   a:not(.button) {
-    color: $secondary;
+    color: s.$secondary;
   }
 }
 
 .bg-black {
-  background-color: $black;
-  color: $secondary;
-  border-color: $secondary;
+  background-color: s.$black;
+  color: s.$secondary;
+  border-color: s.$secondary;
 
   a:not(.button) {
-    color: $secondary;
+    color: s.$secondary;
   }
 }
 
 .no-bg {
   background-color: transparent;
-  color: $secondary;
-  border-color: $secondary;
+  color: s.$secondary;
+  border-color: s.$secondary;
 
   a:not(.button) {
-    color: $secondary;
+    color: s.$secondary;
   }
 }
 
@@ -171,7 +173,7 @@ ul {
 
   .button {
     width: 100%;
-    padding: $size-8;
+    padding: s.$size-8;
     border-radius: 0;
     display: flex;
     align-items: center;
@@ -179,11 +181,11 @@ ul {
 
     &:first-child {
       border-right: 0;
-      border-radius: $size-5 0 0 $size-5;
+      border-radius: s.$size-5 0 0 s.$size-5;
     }
 
     &:last-child {
-      border-radius: 0 $size-5 $size-5 0;
+      border-radius: 0 s.$size-5 s.$size-5 0;
     }
   }
 }
@@ -192,21 +194,21 @@ ul {
   text-align: center;
 
   .headingTag {
-    font-size: $size-60;
+    font-size: s.$size-60;
 
     @media screen and (max-width: ($tablet-md - 1)) {
-      font-size: $size-45;
+      font-size: s.$size-45;
     }
   }
 
   .inner {
-    max-width: $desktop;
-    margin: 0 auto $size-48;
+    max-width: s.$desktop;
+    margin: 0 auto s.$size-48;
   }
 }
 
 .page-component {
-  border-top: $border-size solid $black;
+  border-top: s.$border-size solid s.$black;
 
   &.bg-white + .bg-white,
   &.bg-blue + .bg-blue,
@@ -219,25 +221,25 @@ ul {
   }
 
   &:not(.component_bigBanner, .component_ctaBanner, .component_pageBanner) {
-    padding: $size-100 0;
+    padding: s.$size-100 0;
 
     @media screen and (max-width: ($tablet-md - 1)) {
-      padding: $size-48 0;
+      padding: s.$size-48 0;
     }
 
     @media screen and (max-width: ($tablet - 1)) {
-      border-width: $mobile-border-size;
+      border-width: s.$mobile-border-size;
     }
 
     &.pageOrder_1 {
-      padding-top: $size-80;
+      padding-top: s.$size-80;
 
       @media screen and (min-width: ($tablet-md)) {
-        padding-top: $size-100;
+        padding-top: s.$size-100;
       }
 
       @media screen and (min-width: ($tablet-lg)) {
-        padding-top: $size-144;
+        padding-top: s.$size-144;
       }
     }
   }
@@ -276,5 +278,5 @@ ul {
 }
 
 .innerPage {
-  min-height: calc(100svh - $size-144);
+  min-height: calc(100svh - s.$size-144);
 }

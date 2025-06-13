@@ -1,31 +1,33 @@
+@use '../settings' as s;
+
 .mediaCard {
   width: 100%;
   display: block;
   position: relative;
   z-index: 1;
-  color: $black;
+  color: s.$black;
 
   &:hover {
     @media screen and (min-width: ($tablet-md)) {
-      color: $tertiary;
+      color: s.$tertiary;
       text-decoration: underline;
     }
   }
 
   .image {
     position: relative;
-    height: $size-256;
+    height: s.$size-256;
     width: 100%;
-    border-radius: $size-10;
+    border-radius: s.$size-10;
     overflow: hidden;
     @include outlineBox;
   }
 
   .meta {
     display: flex;
-    gap: $size-12;
+    gap: s.$size-12;
     flex-direction: column;
-    padding: $size-16 0 0;
+    padding: s.$size-16 0 0;
 
     .title {
       @extend .heading;

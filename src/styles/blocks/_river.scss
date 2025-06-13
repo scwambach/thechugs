@@ -1,8 +1,10 @@
+@use '../settings' as s;
+
 .river {
   .inner {
     display: flex;
     flex-direction: column;
-    gap: $size-32;
+    gap: s.$size-32;
   }
 }
 .riverItem {
@@ -10,7 +12,7 @@
   flex-direction: column;
 
   @media screen and (min-width: ($tablet-md)) {
-    gap: $size-32;
+    gap: s.$size-32;
     flex-direction: row-reverse;
   }
 
@@ -26,7 +28,7 @@
 
   .image {
     position: relative;
-    border-radius: $size-20;
+    border-radius: s.$size-20;
     overflow: hidden;
     @include outlineBox;
 
@@ -44,9 +46,9 @@
   }
 
   .content {
-    padding: $size-52 0;
+    padding: s.$size-52 0;
     @media screen and (max-width: ($tablet-md - 1)) {
-      padding: $size-32 0 $size-52;
+      padding: s.$size-32 0 s.$size-52;
     }
   }
 }

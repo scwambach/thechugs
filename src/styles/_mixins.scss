@@ -1,57 +1,59 @@
+@use './settings' as s;
+
 @mixin headingOne {
-  font-size: $heading-1;
+  font-size: s.$heading-1;
 
   @media screen and (max-width: ($tablet-lg - 1)) {
-    font-size: $heading-2;
+    font-size: s.$heading-2;
   }
 
   @media screen and (max-width: ($tablet - 1)) {
-    font-size: $heading-3;
+    font-size: s.$heading-3;
   }
 }
 
 @mixin headingTwo {
-  font-size: $heading-2;
+  font-size: s.$heading-2;
 
   @media screen and (max-width: ($tablet-lg - 1)) {
-    font-size: $heading-3;
+    font-size: s.$heading-3;
   }
 
   @media screen and (max-width: ($tablet - 1)) {
-    font-size: $heading-4;
+    font-size: s.$heading-4;
   }
 }
 
 @mixin headingThree {
-  font-size: $heading-3;
+  font-size: s.$heading-3;
 
   @media screen and (max-width: ($tablet-lg - 1)) {
-    font-size: $heading-4;
+    font-size: s.$heading-4;
   }
 
   @media screen and (max-width: ($tablet - 1)) {
-    font-size: $heading-5;
+    font-size: s.$heading-5;
   }
 }
 
 @mixin headingFour {
-  font-size: $heading-4;
+  font-size: s.$heading-4;
 
   @media screen and (max-width: ($tablet-lg - 1)) {
-    font-size: $heading-5;
+    font-size: s.$heading-5;
   }
 }
 
 @mixin headingFive {
-  font-size: $heading-5;
+  font-size: s.$heading-5;
 
   @media screen and (max-width: ($tablet-lg - 1)) {
-    font-size: $heading-6;
+    font-size: s.$heading-6;
   }
 }
 
 @mixin headingSix {
-  font-size: $heading-6;
+  font-size: s.$heading-6;
 }
 
 @mixin absoluteOverlay {
@@ -63,15 +65,15 @@
 }
 
 @mixin outlineBox {
-  border: $border-size solid $black;
+  border: s.$border-size solid s.$black;
 
   @media screen and (max-width: ($tablet - 1)) {
-    border-width: $mobile-border-size;
+    border-width: s.$mobile-border-size;
   }
 
   .bg-blue &,
   .bg-black &,
   .bg-image & {
-    border-color: $white;
+    border-color: s.$white;
   }
 }
