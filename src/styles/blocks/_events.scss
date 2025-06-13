@@ -1,12 +1,13 @@
 @use '../settings' as s;
+@use '../mixins' as m;
 
 .events {
   .list {
-    @media screen and (max-width: ($tablet-xl - 1)) {
+    @media screen and (max-width: (s.$tablet-xl - 1)) {
       width: 100%;
     }
 
-    @media screen and (min-width: ($tablet-xl - 1)) {
+    @media screen and (min-width: (s.$tablet-xl - 1)) {
       width: calc(100% - s.$size-448);
     }
   }
@@ -19,18 +20,18 @@
     width: 100%;
     max-width: s.$size-416;
     height: s.$size-320;
-    @include outlineBox;
+    @include m.outlineBox;
 
-    @media screen and (min-width: ($tablet-md - 1)) {
+    @media screen and (min-width: (s.$tablet-md - 1)) {
       height: 0;
       padding-bottom: 30%;
       width: s.$size-448;
     }
-    @media (max-width: ($tablet-lg - 1)) and (min-width: ($tablet-md - 1)) {
+    @media (max-width: (s.$tablet-lg - 1)) and (min-width: (s.$tablet-md - 1)) {
       width: s.$size-256;
     }
 
-    @media screen and (max-width: ($tablet-xl - 1)) {
+    @media screen and (max-width: (s.$tablet-xl - 1)) {
       display: none;
     }
   }

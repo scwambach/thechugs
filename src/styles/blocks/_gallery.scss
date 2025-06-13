@@ -1,4 +1,5 @@
 @use '../settings' as s;
+@use '../mixins' as m;
 
 .gallery {
   button {
@@ -9,24 +10,24 @@
     height: s.$size-200;
     width: calc(20% - s.$size-16);
 
-    @media screen and (max-width: ($desktop - 1)) {
+    @media screen and (max-width: (s.$desktop - 1)) {
       width: calc(25% - s.$size-16);
     }
 
-    @media screen and (max-width: ($tablet-lg - 1)) {
+    @media screen and (max-width: (s.$tablet-lg - 1)) {
       width: calc(33.333% - s.$size-16);
     }
 
-    @media screen and (max-width: ($tablet - 1)) {
+    @media screen and (max-width: (s.$tablet - 1)) {
       width: calc(50% - s.$size-8);
     }
 
-    @media screen and (max-width: ($mobile-md - 1)) {
+    @media screen and (max-width: (s.$mobile-md - 1)) {
       height: s.$size-128;
     }
 
     &:not(.close) {
-      @include outlineBox;
+      @include m.outlineBox;
     }
   }
 
@@ -126,13 +127,10 @@
 
     .inner,
     .image {
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      img {
+        max-width: 80dvw;
+        max-height: 80dvh;
+      }
     }
 
     .inner {

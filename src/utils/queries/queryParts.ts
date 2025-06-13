@@ -1,5 +1,7 @@
-export const imageQuery = `...,
-"lqip": asset -> metadata.lqip`
+export const imageQuery = `"src": asset->url,
+  "height": asset -> metadata.dimensions.height,
+  "width": asset -> metadata.dimensions.width,
+  "blurDataURL": asset-> metadata.lqip`
 
 export const slugQuery = `"slug": slug.current`
 

@@ -1,8 +1,9 @@
 @use '../settings' as s;
+@use '../mixins' as m;
 
 .form {
   .title {
-    @include headingFive;
+    @include m.headingFive;
     font-family: s.$heading-family;
   }
 
@@ -30,7 +31,7 @@
       line-height: 1.2;
       font-size: s.$size-32;
 
-      @media screen and (max-width: ($tablet-md - 1)) {
+      @media screen and (max-width: (s.$tablet-md - 1)) {
         font-size: s.$size-24;
       }
     }

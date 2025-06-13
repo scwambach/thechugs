@@ -4,9 +4,10 @@ import { ReactNode, createContext } from 'react'
 import { Header } from './Header'
 import { BackToTop } from '@components/modules/BackToTop'
 import BackgroundImage from '../../media/wood.jpg'
-import { ImageObject } from '@components/modules/ImageObject'
 import { Footer } from './Footer'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { ImageProps } from 'next/image'
+import { ImageBlock } from '@components/modules/ImageBlock'
 
 interface ContextProps {
   nav: NavItemProps[]
@@ -34,16 +35,12 @@ export const PageTemplate = ({
       <GoogleAnalytics
         gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string}
       />
-      <ImageObject
-        {...BackgroundImage}
-        isBackground
-        alt=""
-        className="mainBg"
-      />
+      <div className="imageObject mainBg" data-label="background-container">
+        <ImageBlock image={BackgroundImage as ImageProps} fill />
+      </div>
       <main>
         <Header />
         {children}
-
         <Footer socials={global?.contactInfo?.socials} />
         <BackToTop />
       </main>

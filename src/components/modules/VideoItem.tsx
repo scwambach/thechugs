@@ -3,7 +3,6 @@ import { VideoItemProps } from '@utils/types/modules/VideoItemProps'
 import ReactPlayer from 'react-player'
 import { Heading } from './Heading'
 import { BsPlayCircleFill } from 'react-icons/bs'
-import { urlFor } from '@utils/urlFor'
 import { useEffect, useState } from 'react'
 
 export const VideoItem = ({ title, video, image }: VideoItemProps) => {
@@ -19,18 +18,26 @@ export const VideoItem = ({ title, video, image }: VideoItemProps) => {
   return (
     <div className="videoItem">
       <Heading level="3">{title}</Heading>
-      {hasWindow && (
-        <ReactPlayer
-          url={video}
-          controls
-          playing={isPlaying}
-          playIcon={<BsPlayCircleFill size={80} color="#dea211" />}
-          light={urlFor(image).width(600).url()}
-          onClickPreview={() => {
-            setIsPlaying(true)
-          }}
-        />
-      )}
+      <div
+        style={{
+          overflow: 'hidden',
+          height: 0,
+          paddingBottom: `56.5%`,
+        }}
+      >
+        {hasWindow && (
+          <ReactPlayer
+            url={video}
+            controls
+            playing={isPlaying}
+            playIcon={<BsPlayCircleFill size={80} color="#dea211" />}
+            light={typeof image.src === 'string' ? image.src : undefined}
+            onClickPreview={() => {
+              setIsPlaying(true)
+            }}
+          />
+        )}
+      </div>
     </div>
   )
 }

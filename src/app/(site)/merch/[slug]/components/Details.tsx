@@ -7,7 +7,7 @@ import { getTypeOfVariant } from '@utils/getTypeOfVariant'
 import { slugify } from '@utils/slugify'
 import { toUsCurrency } from '@utils/toUsCurrency'
 import { ProductPageProps, VariantProps } from '@utils/types/merch'
-import Image from 'next/image'
+import Image, { ImageProps } from 'next/image'
 import { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
@@ -23,6 +23,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
   const [activeVariant, setActiveVariant] = useState<VariantProps | undefined>(
     content.variants ? content.variants[0] : undefined
   )
+  const [activeImage, setActiveImage] = useState<ImageProps | undefined>()
 
   const removeTitleFromVariantName = (variantName: string) => {
     return variantName.replace(`${content.title} - `, '')
@@ -52,6 +53,12 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
   }, [])
 
   useEffect(() => {
+    if (!activeVariant && content.images) {
+      setActiveImage(content.images[0].image as ImageProps)
+    }
+  }, [activeVariant])
+
+  useEffect(() => {
     if (initialVariantId) {
       const variant = content.variants?.find(
         (variant) => variant.externalId === initialVariantId
@@ -63,11 +70,18 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
     }
   }, [initialVariantId])
 
+  const isGarageSale =
+    content.category._id === '1b10042f-e887-40cf-a102-77e48b31e58b'
+
   return (
     <div className="container">
-      <Button className="back" url="/merch" tagType="a">
+      <Button
+        className="back"
+        url={isGarageSale ? '/garage-sale' : '/merch'}
+        tagType="a"
+      >
         <BsArrowLeft />
-        Back to Store
+        Back to {isGarageSale ? 'the Garage' : 'Store'}
       </Button>
       <h1>{content.title}</h1>
 
@@ -83,13 +97,30 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
             />
           ) : (
             content.images && (
-              <ImageBlock
-                image={content.images[0].image}
-                alt=""
-                priority
-                width={700}
-                height={700}
-              />
+              <>
+                {activeImage && <ImageBlock image={activeImage} alt="" />}
+                {content.images.length > 1 && (
+                  <div className="image-thumbnails">
+                    {content.images.map(({ _key, image }) => (
+                      <button
+                        key={_key}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          setActiveImage(image)
+                        }}
+                      >
+                        <Image
+                          priority
+                          src={image.src}
+                          alt=""
+                          width={100}
+                          height={100}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </>
             )
           )}
         </div>

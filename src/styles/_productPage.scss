@@ -7,7 +7,7 @@
   h1 {
     margin: s.$size-16 0 s.$size-48;
 
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       font-size: s.$size-40;
     }
   }
@@ -29,19 +29,42 @@
       &:first-child {
         width: s.$size-416;
 
-        @media screen and (max-width: ($desktop-lg - 1)) {
+        @media screen and (max-width: (s.$desktop-lg - 1)) {
           width: 50%;
         }
 
-        @media screen and (max-width: ($tablet-md - 1)) {
+        @media screen and (max-width: (s.$tablet-md - 1)) {
           width: 100%;
         }
 
-        > * {
+        > *:not(.image-thumbnails) {
           width: 100%;
           height: auto;
           background-color: s.$white;
           border-radius: s.$size-10;
+        }
+
+        .image-thumbnails {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: s.$size-8;
+
+          button {
+            border-radius: s.$size-10;
+            overflow: hidden;
+            padding: 0;
+            background: none;
+            height: s.$size-100;
+            width: 100%;
+            position: relative;
+
+            img {
+              display: block;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
         }
       }
 
@@ -51,11 +74,11 @@
         display: flex;
         flex-direction: column;
         gap: s.$size-28;
-        @media screen and (max-width: ($desktop-lg - 1)) {
+        @media screen and (max-width: (s.$desktop-lg - 1)) {
           width: 50%;
         }
 
-        @media screen and (max-width: ($tablet-md - 1)) {
+        @media screen and (max-width: (s.$tablet-md - 1)) {
           width: 100%;
         }
       }
@@ -80,7 +103,7 @@
     align-items: center;
     gap: s.$size-32;
 
-    @media screen and (max-width: ($desktop-lg - 1)) {
+    @media screen and (max-width: (s.$desktop-lg - 1)) {
       flex-direction: column;
       align-items: stretch;
       gap: s.$size-16;
@@ -88,7 +111,7 @@
   }
 
   .formField {
-    @media screen and (min-width: ($desktop-lg)) {
+    @media screen and (min-width: (s.$desktop-lg)) {
       width: calc(100% - s.$size-230);
     }
   }

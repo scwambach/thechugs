@@ -32,12 +32,12 @@ a {
   transition-duration: s.$animation-speed;
 
   &:hover {
-    @media screen and (min-width: ($tablet-md)) {
+    @media screen and (min-width: (s.$tablet-md)) {
       color: s.$tertiary-light;
     }
 
     .zoom-image {
-      @media screen and (min-width: ($tablet-md)) {
+      @media screen and (min-width: (s.$tablet-md)) {
         transform: scale(1);
       }
     }
@@ -63,13 +63,13 @@ ul {
 }
 
 .mobile-only {
-  @media screen and (min-width: ($tablet-md)) {
+  @media screen and (min-width: (s.$tablet-md)) {
     display: none;
   }
 }
 
 .desktop-only {
-  @media screen and (max-width: ($tablet-md - 1)) {
+  @media screen and (max-width: (s.$tablet-md - 1)) {
     display: none;
   }
 }
@@ -78,12 +78,12 @@ ul {
   display: flex;
   gap: s.$size-32;
 
-  @media screen and (max-width: ($tablet-md - 1)) {
+  @media screen and (max-width: (s.$tablet-md - 1)) {
     flex-direction: column;
   }
 
   &.reverse {
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       flex-direction: column-reverse;
     }
   }
@@ -101,7 +101,7 @@ ul {
     &.social {
       a {
         &:hover {
-          @media screen and (min-width: ($tablet-md)) {
+          @media screen and (min-width: (s.$tablet-md)) {
             opacity: 0.6;
           }
         }
@@ -196,7 +196,7 @@ ul {
   .headingTag {
     font-size: s.$size-60;
 
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       font-size: s.$size-45;
     }
   }
@@ -223,22 +223,22 @@ ul {
   &:not(.component_bigBanner, .component_ctaBanner, .component_pageBanner) {
     padding: s.$size-100 0;
 
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       padding: s.$size-48 0;
     }
 
-    @media screen and (max-width: ($tablet - 1)) {
+    @media screen and (max-width: (s.$tablet - 1)) {
       border-width: s.$mobile-border-size;
     }
 
     &.pageOrder_1 {
       padding-top: s.$size-80;
 
-      @media screen and (min-width: ($tablet-md)) {
+      @media screen and (min-width: (s.$tablet-md)) {
         padding-top: s.$size-100;
       }
 
-      @media screen and (min-width: ($tablet-lg)) {
+      @media screen and (min-width: (s.$tablet-lg)) {
         padding-top: s.$size-144;
       }
     }

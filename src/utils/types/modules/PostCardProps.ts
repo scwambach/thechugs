@@ -1,5 +1,4 @@
-import { PortableTextBlock } from '@portabletext/types'
-import { ImageProps } from '..'
+import { ImageProps } from 'next/image'
 
 export interface PostCardProps {
   _id: string

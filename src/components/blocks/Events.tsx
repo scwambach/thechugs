@@ -2,9 +2,10 @@
 import { Container } from '@components/modules/Container'
 import { Event as EventItem } from '@components/modules/Event'
 import { ImageBlock } from '@components/modules/ImageBlock'
-import { ImageProps, PageBlockProps } from '@utils/types'
+import { PageBlockProps } from '@utils/types'
 import { EventProps } from '@utils/types/modules/EventProps'
 import dayjs from 'dayjs'
+import { ImageProps } from 'next/image'
 import { useEffect } from 'react'
 
 interface EventsProps extends PageBlockProps {
@@ -90,7 +91,7 @@ export const Events = ({ events, image }: EventsProps) => {
             ))}
           </div>
           <div className="image">
-            <ImageBlock image={image} isBackground />
+            <ImageBlock image={image} fill />
           </div>
         </div>
       </Container>

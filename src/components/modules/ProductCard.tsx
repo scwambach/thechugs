@@ -53,7 +53,12 @@ export const ProductCard = (props: ProductCardProps) => {
         )
       )}
       {props.images && !props.thumbnail && !activeVariant && (
-        <ImageBlock image={props.images[0].image} height={300} width={300} />
+        <ImageBlock
+          image={props.images[0].image}
+          height={300}
+          width={300}
+          fill
+        />
       )}
     </>
   )

@@ -1,4 +1,5 @@
-import { ImageProps, LinkProps } from '..'
+import { ImageProps } from 'next/image'
+import { LinkProps } from '..'
 
 export interface EventProps {
   _id: string

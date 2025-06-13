@@ -1,15 +1,16 @@
 @use '../settings' as s;
+@use '../mixins' as m;
 
 .members {
   .inner {
     display: flex;
     gap: s.$size-32;
 
-    @media screen and (max-width: ($tablet-xl - 1)) {
+    @media screen and (max-width: (s.$tablet-xl - 1)) {
       gap: s.$size-16;
     }
 
-    @media screen and (max-width: ($tablet - 1)) {
+    @media screen and (max-width: (s.$tablet - 1)) {
       flex-wrap: wrap;
     }
   }
@@ -20,7 +21,7 @@
 }
 
 .member {
-  @media screen and (max-width: ($tablet - 1)) {
+  @media screen and (max-width: (s.$tablet - 1)) {
     text-align: center;
   }
 
@@ -29,11 +30,11 @@
     width: 100%;
     height: s.$size-368;
 
-    @media screen and (max-width: ($tablet-xl - 1)) {
+    @media screen and (max-width: (s.$tablet-xl - 1)) {
       height: s.$size-200;
     }
 
-    @media screen and (max-width: ($tablet - 1)) {
+    @media screen and (max-width: (s.$tablet - 1)) {
       max-width: s.$size-288;
       margin: 0 auto;
     }
@@ -43,7 +44,7 @@
     border-radius: s.$size-10;
     overflow: hidden;
     display: block;
-    @include outlineBox;
+    @include m.outlineBox;
   }
 
   p {
@@ -52,14 +53,14 @@
     strong {
       font-size: s.$size-20;
 
-      @media screen and (min-width: ($tablet-md)) {
+      @media screen and (min-width: (s.$tablet-md)) {
         font-size: s.$size-24;
       }
     }
   }
 
   .buttonList {
-    @media screen and (max-width: ($tablet - 1)) {
+    @media screen and (max-width: (s.$tablet - 1)) {
       justify-content: center;
     }
     .social {

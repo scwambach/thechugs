@@ -3,7 +3,8 @@ import { Container } from '@components/modules/Container'
 import { Heading } from '@components/modules/Heading'
 import { ImageBlock } from '@components/modules/ImageBlock'
 import { PortableText } from '@portabletext/react'
-import { ImageProps, LinkProps, PageBlockProps } from '@utils/types'
+import { LinkProps, PageBlockProps } from '@utils/types'
+import { ImageProps } from 'next/image'
 
 interface PageBannerProps extends PageBlockProps {
   image: ImageProps
@@ -19,7 +20,7 @@ export const PageBanner = ({
 }: PageBannerProps) => {
   return (
     <div className="pageBanner">
-      <ImageBlock image={image} isBackground width={2000} />
+      <ImageBlock image={image} fill />
       <Container size="wide">
         {subheading && <p className="subheading">{subheading}</p>}
         <Heading level="1">{heading}</Heading>

@@ -13,7 +13,7 @@ export const MediaCard = ({
     <LinkObject href={link} className="mediaCard">
       <div className="image">
         <div className="zoom-image">
-          <ImageBlock isBackground image={image} width={800} />
+          <ImageBlock fill image={image} width={800} />
         </div>
       </div>
       <div className="meta">

@@ -14,7 +14,7 @@
   transition-timing-function: ease-in-out;
   border: s.$size-2 solid s.$black;
 
-  @media screen and (max-width: ($tablet-md - 1)) {
+  @media screen and (max-width: (s.$tablet-md - 1)) {
     padding: s.$size-4;
     height: s.$size-48;
     width: s.$size-48;

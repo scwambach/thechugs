@@ -23,7 +23,7 @@
       background-color: s.$secondary;
       color: s.$black;
 
-      @media screen and (max-width: ($tablet-md - 1)) {
+      @media screen and (max-width: (s.$tablet-md - 1)) {
         font-size: s.$size-28;
       }
     }

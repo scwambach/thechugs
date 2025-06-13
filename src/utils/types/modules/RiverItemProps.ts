@@ -1,5 +1,6 @@
 import { PortableTextBlock } from '@portabletext/types'
-import { ImageProps, LinkProps } from '..'
+import { LinkProps } from '..'
+import { ImageProps } from 'next/image'
 
 export interface RiverItemProps {
   _key: string
