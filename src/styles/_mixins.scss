@@ -3,11 +3,11 @@
 @mixin headingOne {
   font-size: s.$heading-1;
 
-  @media screen and (max-width: ($tablet-lg - 1)) {
+  @media screen and (max-width: (s.$tablet-lg - 1)) {
     font-size: s.$heading-2;
   }
 
-  @media screen and (max-width: ($tablet - 1)) {
+  @media screen and (max-width: (s.$tablet - 1)) {
     font-size: s.$heading-3;
   }
 }
@@ -15,11 +15,11 @@
 @mixin headingTwo {
   font-size: s.$heading-2;
 
-  @media screen and (max-width: ($tablet-lg - 1)) {
+  @media screen and (max-width: (s.$tablet-lg - 1)) {
     font-size: s.$heading-3;
   }
 
-  @media screen and (max-width: ($tablet - 1)) {
+  @media screen and (max-width: (s.$tablet - 1)) {
     font-size: s.$heading-4;
   }
 }
@@ -27,11 +27,11 @@
 @mixin headingThree {
   font-size: s.$heading-3;
 
-  @media screen and (max-width: ($tablet-lg - 1)) {
+  @media screen and (max-width: (s.$tablet-lg - 1)) {
     font-size: s.$heading-4;
   }
 
-  @media screen and (max-width: ($tablet - 1)) {
+  @media screen and (max-width: (s.$tablet - 1)) {
     font-size: s.$heading-5;
   }
 }
@@ -39,7 +39,7 @@
 @mixin headingFour {
   font-size: s.$heading-4;
 
-  @media screen and (max-width: ($tablet-lg - 1)) {
+  @media screen and (max-width: (s.$tablet-lg - 1)) {
     font-size: s.$heading-5;
   }
 }
@@ -47,7 +47,7 @@
 @mixin headingFive {
   font-size: s.$heading-5;
 
-  @media screen and (max-width: ($tablet-lg - 1)) {
+  @media screen and (max-width: (s.$tablet-lg - 1)) {
     font-size: s.$heading-6;
   }
 }
@@ -67,7 +67,7 @@
 @mixin outlineBox {
   border: s.$border-size solid s.$black;
 
-  @media screen and (max-width: ($tablet - 1)) {
+  @media screen and (max-width: (s.$tablet - 1)) {
     border-width: s.$mobile-border-size;
   }
 

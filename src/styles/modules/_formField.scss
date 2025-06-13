@@ -1,4 +1,5 @@
 @use '../settings' as s;
+@use '../mixins' as m;
 
 .formField {
   p {
@@ -6,7 +7,7 @@
   }
 
   .labelTag {
-    @include headingSix;
+    @include m.headingSix;
     font-family: s.$font-bold;
     margin-bottom: s.$size-8;
     display: block;

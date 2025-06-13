@@ -1,4 +1,5 @@
 @use '../settings' as s;
+@use '../mixins' as m;
 
 .productCard {
   &:not(.minimal) {
@@ -49,7 +50,7 @@
     margin: 0 auto;
     background-color: s.$white;
     border-radius: s.$size-10;
-    @include outlineBox;
+    @include m.outlineBox;
 
     img {
       position: absolute;
@@ -80,12 +81,12 @@
   }
 
   .button-group {
-    // @media screen and (min-width: ($tablet-md)) {
+    // @media screen and (min-width: (s.$tablet-md)) {
     margin-top: s.$size-16;
     min-height: 40px;
     // }
 
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       margin-top: s.$size-8;
       flex-direction: column;
       gap: s.$size-8;
@@ -97,7 +98,7 @@
       border: s.$size-1 solid s.$black;
       background: s.$secondary;
 
-      @media screen and (max-width: ($tablet-md - 1)) {
+      @media screen and (max-width: (s.$tablet-md - 1)) {
         &:first-child {
           border-right: s.$size-1 solid s.$black;
           border-radius: s.$size-5;
@@ -116,7 +117,7 @@
   }
 
   .formField {
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       // display: none;
       font-size: s.$size-14;
 
@@ -128,7 +129,7 @@
   }
 
   .spacer {
-    @media screen and (min-width: ($mobile-lg)) {
+    @media screen and (min-width: (s.$mobile-lg)) {
       height: 47px;
     }
   }

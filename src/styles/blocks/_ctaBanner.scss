@@ -1,10 +1,11 @@
 @use '../settings' as s;
+@use '../mixins' as m;
 
 .ctaBanner {
   position: relative;
   padding: s.$size-64 0;
 
-  @media screen and (max-width: ($tablet-md - 1)) {
+  @media screen and (max-width: (s.$tablet-md - 1)) {
     padding: s.$size-32 0;
   }
 
@@ -25,17 +26,17 @@
     overflow: hidden;
     padding: s.$size-60 s.$size-100;
 
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       margin: 0 auto s.$size-100 auto;
       padding: s.$size-60 s.$size-32;
     }
 
-    @media screen and (max-width: ($desktop-lg - 1)) {
+    @media screen and (max-width: (s.$desktop-lg - 1)) {
       border-radius: 0;
       margin-bottom: 0;
     }
 
-    @media screen and (min-width: ($tablet-md)) {
+    @media screen and (min-width: (s.$tablet-md)) {
       padding: s.$size-144 s.$size-100;
     }
 
@@ -48,13 +49,13 @@
       padding-top: s.$size-60;
       padding-bottom: s.$size-230;
 
-      @media screen and (min-width: ($tablet-md)) {
+      @media screen and (min-width: (s.$tablet-md)) {
         padding-top: s.$size-100;
         padding-left: s.$size-100;
         padding-right: s.$size-100;
       }
 
-      @media screen and (max-width: ($desktop-lg - 1)) {
+      @media screen and (max-width: (s.$desktop-lg - 1)) {
         padding-left: s.$size-32;
         padding-right: s.$size-32;
       }
@@ -62,7 +63,7 @@
       .headingTag {
         font-size: s.$size-45;
 
-        @media screen and (max-width: ($tablet-lg - 1)) {
+        @media screen and (max-width: (s.$tablet-lg - 1)) {
           font-size: s.$size-36;
         }
       }
@@ -74,14 +75,14 @@
   }
 
   .headingTag {
-    @include headingFour;
+    @include m.headingFour;
   }
 
   .subheading {
     text-transform: uppercase;
     letter-spacing: s.$size-2;
 
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       font-size: s.$size-14;
     }
   }
@@ -89,7 +90,7 @@
   .message {
     margin: s.$size-16 0 s.$size-24;
 
-    @media screen and (min-width: ($tablet-md)) {
+    @media screen and (min-width: (s.$tablet-md)) {
       max-width: s.$size-416;
     }
   }
@@ -98,7 +99,7 @@
     position: relative;
     z-index: 2;
 
-    @media screen and (min-width: ($tablet-md)) {
+    @media screen and (min-width: (s.$tablet-md)) {
       max-width: s.$size-640;
     }
 
@@ -109,7 +110,7 @@
       gap: s.$size-32;
       flex-direction: column;
 
-      @media screen and (min-width: ($tablet-md)) {
+      @media screen and (min-width: (s.$tablet-md)) {
         flex-direction: row-reverse;
       }
 
@@ -120,13 +121,13 @@
       }
 
       > div {
-        @media screen and (min-width: ($tablet-md)) {
+        @media screen and (min-width: (s.$tablet-md)) {
           width: 45%;
         }
       }
 
       > img {
-        @media screen and (min-width: ($tablet-md)) {
+        @media screen and (min-width: (s.$tablet-md)) {
           width: 55%;
         }
       }

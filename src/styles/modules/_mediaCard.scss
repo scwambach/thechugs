@@ -1,4 +1,5 @@
 @use '../settings' as s;
+@use '../mixins' as m;
 
 .mediaCard {
   width: 100%;
@@ -8,7 +9,7 @@
   color: s.$black;
 
   &:hover {
-    @media screen and (min-width: ($tablet-md)) {
+    @media screen and (min-width: (s.$tablet-md)) {
       color: s.$tertiary;
       text-decoration: underline;
     }
@@ -20,7 +21,7 @@
     width: 100%;
     border-radius: s.$size-10;
     overflow: hidden;
-    @include outlineBox;
+    @include m.outlineBox;
   }
 
   .meta {
@@ -30,8 +31,20 @@
     padding: s.$size-16 0 0;
 
     .title {
-      @extend .heading;
-      @include headingSix;
+      margin: s.$size-32 0 s.$size-16;
+      font-weight: normal;
+      line-height: 1.1;
+      font-family: s.$heading-family;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @include m.headingSix;
     }
 
     p {

@@ -6,15 +6,15 @@
     grid-template-columns: repeat(4, 1fr);
     gap: s.$size-24;
 
-    @media screen and (max-width: ($tablet-xl - 1)) {
+    @media screen and (max-width: (s.$tablet-xl - 1)) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media screen and (max-width: ($tablet-md - 1)) {
+    @media screen and (max-width: (s.$tablet-md - 1)) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media screen and (max-width: ($mobile - 1)) {
+    @media screen and (max-width: (s.$mobile - 1)) {
       grid-template-columns: repeat(1, 1fr);
     }
   }
@@ -28,7 +28,7 @@
     border-bottom: s.$border-size solid s.$secondary-dark;
     padding-bottom: s.$size-24;
 
-    @media screen and (max-width: ($tablet - 1)) {
+    @media screen and (max-width: (s.$tablet - 1)) {
       border-width: s.$mobile-border-size;
     }
   }

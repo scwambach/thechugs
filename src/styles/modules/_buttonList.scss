@@ -23,7 +23,7 @@
   }
 
   .button {
-    @media screen and (max-width: ($mobile-lg - 1)) {
+    @media screen and (max-width: (s.$mobile-lg - 1)) {
       display: block;
       width: 100%;
     }
