@@ -1,25 +1,27 @@
+@use '../settings' as s;
+
 .backToTop {
   position: fixed;
-  width: $size-60;
-  height: $size-60;
+  width: s.$size-60;
+  height: s.$size-60;
   text-align: center;
   line-height: 1;
-  padding: $size-8;
+  padding: s.$size-8;
   z-index: 10;
-  bottom: $size-16;
-  right: $size-16;
-  transition-duration: $animation-speed;
+  bottom: s.$size-16;
+  right: s.$size-16;
+  transition-duration: s.$animation-speed;
   transition-timing-function: ease-in-out;
-  border: $size-2 solid $black;
+  border: s.$size-2 solid s.$black;
 
   @media screen and (max-width: ($tablet-md - 1)) {
-    padding: $size-4;
-    height: $size-48;
-    width: $size-48;
+    padding: s.$size-4;
+    height: s.$size-48;
+    width: s.$size-48;
 
     svg {
-      width: $size-24;
-      height: $size-24;
+      width: s.$size-24;
+      height: s.$size-24;
     }
   }
 

@@ -3,7 +3,7 @@
   "extends": [
     "next/core-web-vitals"
   ],
-  "ignorePatterns": ["_studio", "cypress", ".storybook", "storybook-static", ".*", "*.config.js", "*.setup.js"],
+  "ignorePatterns": ["_studio", "cypress", ".*", "*.config.js", "*.setup.js"],
   "rules": {
     "@next/next/no-img-element": "off",
     "@typescript-eslint/ban-ts-comment": "off",

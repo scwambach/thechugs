@@ -1,23 +1,25 @@
+@use './settings' as s;
+
 .productPage {
-  background-color: $secondary;
-  padding: $size-100 0;
+  background-color: s.$secondary;
+  padding: s.$size-100 0;
 
   h1 {
-    margin: $size-16 0 $size-48;
+    margin: s.$size-16 0 s.$size-48;
 
     @media screen and (max-width: ($tablet-md - 1)) {
-      font-size: $size-40;
+      font-size: s.$size-40;
     }
   }
 
   .disclaimer {
     text-align: center;
-    margin-top: $size-52;
+    margin-top: s.$size-52;
   }
 
   .price {
-    font-size: $size-32;
-    font-family: $font-bold;
+    font-size: s.$size-32;
+    font-family: s.$font-bold;
   }
 
   .flex-row {
@@ -25,7 +27,7 @@
 
     > div {
       &:first-child {
-        width: $size-416;
+        width: s.$size-416;
 
         @media screen and (max-width: ($desktop-lg - 1)) {
           width: 50%;
@@ -38,8 +40,8 @@
         > *:not(.image-thumbnails) {
           width: 100%;
           height: auto;
-          background-color: $white;
-          border-radius: $size-10;
+          background-color: s.$white;
+          border-radius: s.$size-10;
         }
 
         .image-thumbnails {
@@ -67,11 +69,11 @@
       }
 
       &:last-child {
-        width: calc(100% - $size-416);
+        width: calc(100% - s.$size-416);
 
         display: flex;
         flex-direction: column;
-        gap: $size-28;
+        gap: s.$size-28;
         @media screen and (max-width: ($desktop-lg - 1)) {
           width: 50%;
         }
@@ -86,12 +88,12 @@
   .button {
     align-items: center;
     display: inline-flex;
-    gap: $size-8;
+    gap: s.$size-8;
     justify-content: center;
 
     &.back {
-      padding: $size-4 $size-12;
-      font-size: $size-12;
+      padding: s.$size-4 s.$size-12;
+      font-size: s.$size-12;
     }
   }
 
@@ -99,18 +101,18 @@
     display: flex;
     width: 100%;
     align-items: center;
-    gap: $size-32;
+    gap: s.$size-32;
 
     @media screen and (max-width: ($desktop-lg - 1)) {
       flex-direction: column;
       align-items: stretch;
-      gap: $size-16;
+      gap: s.$size-16;
     }
   }
 
   .formField {
     @media screen and (min-width: ($desktop-lg)) {
-      width: calc(100% - $size-230);
+      width: calc(100% - s.$size-230);
     }
   }
 }

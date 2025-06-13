@@ -1,33 +1,35 @@
+@use '../settings' as s;
+
 .button,
 button,
 input[type='submit'],
 input[type='reset'],
 input[type='button'] {
-  background-color: $primary;
-  border-radius: $size-52;
+  background-color: s.$primary;
+  border-radius: s.$size-52;
   border: none;
-  color: $secondary;
+  color: s.$secondary;
   cursor: pointer;
   display: inline-block;
-  font-family: $font-bold;
-  font-size: $size-16;
+  font-family: s.$font-bold;
+  font-size: s.$size-16;
   text-transform: uppercase;
-  letter-spacing: $size-1;
-  padding: $size-16 $size-32;
+  letter-spacing: s.$size-1;
+  padding: s.$size-16 s.$size-32;
   text-align: center;
   text-decoration: none;
-  transition-duration: $animation-speed;
+  transition-duration: s.$animation-speed;
   @include outlineBox;
 
   @media screen and (max-width: ($tablet-md - 1)) {
-    font-size: $size-14;
-    padding: $size-8 $size-16;
+    font-size: s.$size-14;
+    padding: s.$size-8 s.$size-16;
   }
 
   &:hover {
     @media screen and (min-width: ($tablet-md)) {
-      background-color: $primary-light;
-      color: $secondary;
+      background-color: s.$primary-light;
+      color: s.$secondary;
     }
   }
 
@@ -36,220 +38,220 @@ input[type='button'] {
   }
 
   &:disabled {
-    background-color: $primary-light;
+    background-color: s.$primary-light;
     cursor: not-allowed;
   }
 
   &[class$='-outline'] {
-    border-width: $size-2;
+    border-width: s.$size-2;
     border-style: solid;
   }
 
   &.primary-outline {
     background-color: transparent;
-    color: $primary;
-    border-color: $primary;
+    color: s.$primary;
+    border-color: s.$primary;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $primary;
-        color: $secondary;
+        background-color: s.$primary;
+        color: s.$secondary;
       }
     }
 
     &:disabled {
-      background-color: $primary-light;
-      color: $gray-dark;
-      border-color: $gray-dark;
+      background-color: s.$primary-light;
+      color: s.$gray-dark;
+      border-color: s.$gray-dark;
     }
   }
 
   &.secondary {
-    background-color: $secondary;
-    color: $black;
+    background-color: s.$secondary;
+    color: s.$black;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $secondary-dark;
+        background-color: s.$secondary-dark;
       }
     }
 
     &:disabled {
-      background-color: $gray-light;
+      background-color: s.$gray-light;
     }
   }
 
   &.secondary-outline {
     background-color: transparent;
-    color: $secondary;
-    border-color: $secondary;
+    color: s.$secondary;
+    border-color: s.$secondary;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $secondary;
-        color: $black;
+        background-color: s.$secondary;
+        color: s.$black;
       }
     }
 
     &:disabled {
-      background-color: $gray-light;
-      color: $gray;
-      border-color: $gray;
+      background-color: s.$gray-light;
+      color: s.$gray;
+      border-color: s.$gray;
     }
   }
 
   &.tertiary {
-    background-color: $tertiary;
+    background-color: s.$tertiary;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $tertiary-dark;
+        background-color: s.$tertiary-dark;
       }
     }
 
     &:disabled {
-      background-color: $tertiary-light;
-      color: $gray-dark;
+      background-color: s.$tertiary-light;
+      color: s.$gray-dark;
     }
   }
 
   &.tertiary-outline {
     background-color: transparent;
-    color: $tertiary;
-    border-color: $tertiary;
+    color: s.$tertiary;
+    border-color: s.$tertiary;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $tertiary;
-        color: $secondary;
+        background-color: s.$tertiary;
+        color: s.$secondary;
       }
     }
 
     &:disabled {
-      background-color: $tertiary-light;
-      color: $gray-dark;
-      border-color: $gray-dark;
+      background-color: s.$tertiary-light;
+      color: s.$gray-dark;
+      border-color: s.$gray-dark;
     }
   }
 
   &.quaternary {
-    background-color: $quaternary;
-    color: $black;
+    background-color: s.$quaternary;
+    color: s.$black;
 
     &::selection {
-      background: $quaternary-dark;
-      color: $white;
+      background: s.$quaternary-dark;
+      color: s.$white;
     }
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $quaternary-dark;
+        background-color: s.$quaternary-dark;
       }
     }
 
     &:disabled {
-      background-color: $quaternary-light;
-      color: $gray-dark;
+      background-color: s.$quaternary-light;
+      color: s.$gray-dark;
     }
   }
 
   &.quaternary-outline {
     background-color: transparent;
-    color: $quaternary;
-    border-color: $quaternary;
+    color: s.$quaternary;
+    border-color: s.$quaternary;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $quaternary;
-        color: $secondary;
+        background-color: s.$quaternary;
+        color: s.$secondary;
 
         &::selection {
-          background: $quaternary-dark;
-          color: $white;
+          background: s.$quaternary-dark;
+          color: s.$white;
         }
       }
     }
 
     &:disabled {
-      background-color: $quaternary-light;
-      color: $gray-dark;
-      border-color: $gray-dark;
+      background-color: s.$quaternary-light;
+      color: s.$gray-dark;
+      border-color: s.$gray-dark;
     }
   }
 
   &.black {
-    background-color: $black;
-    color: $white;
+    background-color: s.$black;
+    color: s.$white;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $white;
-        color: $black;
+        background-color: s.$white;
+        color: s.$black;
       }
     }
 
     &:disabled {
-      background-color: $gray-light;
-      color: $gray-dark;
+      background-color: s.$gray-light;
+      color: s.$gray-dark;
     }
   }
 
   &.black-outline {
     background-color: transparent;
-    border-color: $black;
-    color: $black;
+    border-color: s.$black;
+    color: s.$black;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $black;
-        color: $white;
+        background-color: s.$black;
+        color: s.$white;
       }
     }
 
     &:disabled {
-      background-color: $gray-light;
-      color: $gray-dark;
-      border-color: $gray-dark;
+      background-color: s.$gray-light;
+      color: s.$gray-dark;
+      border-color: s.$gray-dark;
     }
   }
 
   &.white {
-    background-color: $white;
-    color: $black;
+    background-color: s.$white;
+    color: s.$black;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $black;
-        color: $white;
+        background-color: s.$black;
+        color: s.$white;
       }
     }
 
     &:disabled {
-      background-color: $gray-light;
-      color: $gray-dark;
+      background-color: s.$gray-light;
+      color: s.$gray-dark;
     }
   }
 
   &.white-outline {
     background-color: transparent;
-    border-color: $white;
-    color: $white;
+    border-color: s.$white;
+    color: s.$white;
 
     &:hover {
       @media screen and (min-width: ($tablet-md)) {
-        background-color: $white;
-        color: $black;
+        background-color: s.$white;
+        color: s.$black;
       }
     }
 
     &:disabled {
-      background-color: $gray-light;
-      color: $gray-dark;
-      border-color: $gray-dark;
+      background-color: s.$gray-light;
+      color: s.$gray-dark;
+      border-color: s.$gray-dark;
     }
   }
 
   &.lessPadding {
-    padding: $size-16 $size-8;
+    padding: s.$size-16 s.$size-8;
   }
 }

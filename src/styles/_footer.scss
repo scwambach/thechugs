@@ -1,9 +1,11 @@
+@use './settings' as s;
+
 footer {
-  background-color: $black;
-  color: $white;
-  padding: $size-20;
+  background-color: s.$black;
+  color: s.$white;
+  padding: s.$size-20;
   text-align: center;
-  min-height: $size-144;
+  min-height: s.$size-144;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,7 +14,7 @@ footer {
     justify-content: center;
 
     a {
-      color: $white;
+      color: s.$white;
     }
   }
 }

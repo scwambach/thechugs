@@ -1,10 +1,12 @@
+@use '../settings' as s;
+
 .merchFilter {
   display: flex;
   flex-direction: column;
-  gap: $size-64;
+  gap: s.$size-64;
 
   .headingTag {
-    margin-bottom: $size-48;
+    margin-bottom: s.$size-48;
   }
 
   .category {
@@ -13,16 +15,16 @@
 
     .headingTag {
       position: sticky;
-      font-size: $size-60;
+      font-size: s.$size-60;
       top: 0;
       text-align: center;
-      padding: $size-8 $size-16;
+      padding: s.$size-8 s.$size-16;
       z-index: 4;
-      background-color: $secondary;
-      color: $black;
+      background-color: s.$secondary;
+      color: s.$black;
 
       @media screen and (max-width: ($tablet-md - 1)) {
-        font-size: $size-28;
+        font-size: s.$size-28;
       }
     }
   }

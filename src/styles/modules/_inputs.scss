@@ -1,10 +1,12 @@
+@use '../settings' as s;
+
 input:not([type='checkbox']):not([type='radio']),
 textarea {
   display: block;
   width: 100%;
-  padding: $size-8 $size-8;
+  padding: s.$size-8 s.$size-8;
   background-color: transparent;
-  border-radius: $size-5;
+  border-radius: s.$size-5;
   border: 1px solid;
 
   &::placeholder {
@@ -16,11 +18,11 @@ select {
   appearance: none;
   display: block;
   cursor: pointer;
-  border-radius: $size-5;
-  padding: $size-8 $size-8;
+  border-radius: s.$size-5;
+  padding: s.$size-8 s.$size-8;
   width: 100%;
   background-color: transparent;
-  border: 1px solid $black;
+  border: 1px solid s.$black;
 }
 
 input[type='radio'],
@@ -32,12 +34,12 @@ input[type='checkbox'] {
 
   + [class$='-indicator'] {
     overflow: hidden;
-    height: $size-24;
-    width: $size-24;
+    height: s.$size-24;
+    width: s.$size-24;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid $black;
+    border: 1px solid s.$black;
   }
 
   + .radio-indicator {
@@ -45,15 +47,15 @@ input[type='checkbox'] {
   }
 
   + .checkbox-indicator {
-    border-radius: $size-3;
+    border-radius: s.$size-3;
   }
 
   &:checked + [class$='-indicator'] {
-    background-color: $primary;
-    color: $secondary;
+    background-color: s.$primary;
+    color: s.$secondary;
   }
 }
 
 label {
-  font-family: $font-bold;
+  font-family: s.$font-bold;
 }

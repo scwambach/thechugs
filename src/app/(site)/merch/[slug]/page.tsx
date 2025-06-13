@@ -49,13 +49,11 @@ export default async function ProductPage({
   searchParams,
   params,
 }: {
-  searchParams: Promise<{
-    variant: string
-  }>
+  searchParams: Promise<{ variant: string }>
   params: Promise<{ slug: string }>
 }) {
-  const { slug } = await params
   const { variant } = await searchParams
+  const { slug } = await params
   const { page, nav, globalInfo } = (await getData(slug)) as ProductPageProps
 
   if (!page) {

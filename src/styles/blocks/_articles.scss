@@ -1,9 +1,11 @@
+@use '../settings' as s;
+
 .articles {
   .list {
     // grid but just 2 per row on desktop
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: $size-24;
+    gap: s.$size-24;
 
     @media screen and (max-width: ($tablet-md - 1)) {
       grid-template-columns: repeat(1, 1fr);

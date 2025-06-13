@@ -1,17 +1,19 @@
+@use '../settings' as s;
+
 .event {
   display: flex;
-  gap: $size-32;
+  gap: s.$size-32;
   width: 100%;
   justify-content: space-between;
-  border-top: $size-2 solid $black;
-  padding-top: $size-32;
+  border-top: s.$size-2 solid s.$black;
+  padding-top: s.$size-32;
 
   @media screen and (max-width: ($tablet - 1)) {
     flex-direction: column;
   }
 
   + .event {
-    margin-top: $size-32;
+    margin-top: s.$size-32;
   }
 
   p {
@@ -19,19 +21,19 @@
   }
 
   .title {
-    font-size: $size-24;
-    font-family: $font-extra;
+    font-size: s.$size-24;
+    font-family: s.$font-extra;
   }
 
   .date {
-    font-size: $size-20;
-    font-family: $font-extra;
-    width: $size-104;
+    font-size: s.$size-20;
+    font-family: s.$font-extra;
+    width: s.$size-104;
     line-height: 1;
 
     @media screen and (max-width: ($tablet-md - 1)) {
-      width: $size-72;
-      font-size: $size-24;
+      width: s.$size-72;
+      font-size: s.$size-24;
     }
 
     @media screen and (max-width: ($tablet - 1)) {
@@ -40,13 +42,13 @@
   }
 
   .links {
-    width: $size-200;
+    width: s.$size-200;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
     @media screen and (max-width: ($tablet-md - 1)) {
-      width: $size-160;
+      width: s.$size-160;
     }
 
     @media screen and (max-width: ($tablet - 1)) {
@@ -55,11 +57,11 @@
 
     a {
       width: 100%;
-      padding: $size-16 $size-8;
+      padding: s.$size-16 s.$size-8;
 
       @media screen and (max-width: ($tablet-md - 1)) {
-        font-size: $size-14;
-        padding: $size-8;
+        font-size: s.$size-14;
+        padding: s.$size-8;
       }
 
       @media screen and (max-width: ($tablet - 1)) {
@@ -70,22 +72,22 @@
   }
 
   .button {
-    min-width: $size-100;
+    min-width: s.$size-100;
   }
 
   .location {
-    width: calc(100% - $size-320);
-    font-size: $size-12;
+    width: calc(100% - s.$size-320);
+    font-size: s.$size-12;
     display: flex;
     flex-direction: column;
-    gap: $size-10;
+    gap: s.$size-10;
     a {
-      color: $black;
+      color: s.$black;
 
       .bg-blue &,
       .bg-image &,
       .bg-black & {
-        color: $white;
+        color: s.$white;
       }
 
       &:hover {
@@ -96,7 +98,7 @@
     }
 
     @media screen and (max-width: ($tablet-md - 1)) {
-      width: calc(100% - $size-230);
+      width: calc(100% - s.$size-230);
     }
 
     @media screen and (max-width: ($tablet - 1)) {
@@ -104,7 +106,7 @@
     }
 
     span {
-      font-size: $size-20;
+      font-size: s.$size-20;
       line-height: 1;
 
       &.otherBands {

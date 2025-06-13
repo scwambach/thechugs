@@ -1,6 +1,8 @@
+@use '../settings' as s;
+
 .buttonList {
   display: flex;
-  gap: $size-16;
+  gap: s.$size-16;
   flex-wrap: wrap;
   align-items: center;
 
@@ -9,8 +11,8 @@
 
     &.social {
       a {
-        width: $size-32;
-        height: $size-32;
+        width: s.$size-32;
+        height: s.$size-32;
         display: flex;
         justify-content: center;
         align-items: center;

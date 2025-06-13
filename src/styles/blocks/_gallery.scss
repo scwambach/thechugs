@@ -1,30 +1,33 @@
+@use '../settings' as s;
+@use '../mixins' as m;
+
 .gallery {
   button {
     padding: 0;
     border: none;
     background: none;
     position: relative;
-    height: $size-200;
-    width: calc(20% - $size-16);
+    height: s.$size-200;
+    width: calc(20% - s.$size-16);
 
-    @media screen and (max-width: ($desktop - 1)) {
-      width: calc(25% - $size-16);
+    @media screen and (max-width: (s.$desktop - 1)) {
+      width: calc(25% - s.$size-16);
     }
 
-    @media screen and (max-width: ($tablet-lg - 1)) {
-      width: calc(33.333% - $size-16);
+    @media screen and (max-width: (s.$tablet-lg - 1)) {
+      width: calc(33.333% - s.$size-16);
     }
 
-    @media screen and (max-width: ($tablet - 1)) {
-      width: calc(50% - $size-8);
+    @media screen and (max-width: (s.$tablet - 1)) {
+      width: calc(50% - s.$size-8);
     }
 
-    @media screen and (max-width: ($mobile-md - 1)) {
-      height: $size-128;
+    @media screen and (max-width: (s.$mobile-md - 1)) {
+      height: s.$size-128;
     }
 
     &:not(.close) {
-      @include outlineBox;
+      @include m.outlineBox;
     }
   }
 
@@ -44,10 +47,10 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: $size-16;
+    gap: s.$size-16;
 
     button {
-      border-radius: $size-8;
+      border-radius: s.$size-8;
       overflow: hidden;
     }
   }
@@ -66,7 +69,7 @@
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    transition-duration: $animation-speed;
+    transition-duration: s.$animation-speed;
     transition-timing-function: ease-in-out;
     opacity: 0;
 
@@ -77,38 +80,38 @@
 
     button {
       &.close {
-        color: $white;
+        color: s.$white;
         position: absolute;
-        width: $size-48;
-        height: $size-48;
+        width: s.$size-48;
+        height: s.$size-48;
         display: flex;
         align-items: center;
         justify-content: center;
-        top: $size-16;
-        right: $size-16;
+        top: s.$size-16;
+        right: s.$size-16;
         z-index: 1001;
       }
     }
 
     .prev {
-      left: $size-16;
+      left: s.$size-16;
     }
 
     .next {
-      right: $size-16;
+      right: s.$size-16;
     }
 
     .prev,
     .next {
       background: none;
       border: none;
-      color: $white;
+      color: s.$white;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       z-index: 1001;
       cursor: pointer;
-      transition-duration: $animation-speed;
+      transition-duration: s.$animation-speed;
       transition-timing-function: ease-in-out;
       opacity: 0.5;
 
@@ -131,6 +134,15 @@
     }
 
     .inner {
+      .activeImage {
+        opacity: 1;
+        transition-duration: s.$animation-speed;
+        transition-timing-function: ease-in-out;
+        object-fit: contain;
+        max-width: 90%;
+        max-height: 90%;
+      }
+
       &.mainImgLoading {
         .activeImage {
           opacity: 0;

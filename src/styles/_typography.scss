@@ -1,3 +1,5 @@
+@use './settings' as s;
+
 @font-face {
   font-family: 'Jost';
   src: url('/fonts/Jost.ttf') format('truetype');
@@ -43,10 +45,10 @@ figure,
 hr,
 table,
 fieldset {
-  margin: $size-16 0;
-  font-family: $font-family;
+  margin: s.$size-16 0;
+  font-family: s.$font-family;
   line-height: 1.2;
-  font-size: $size-16;
+  font-size: s.$size-16;
 
   &:first-child {
     margin-top: 0;
@@ -58,10 +60,10 @@ fieldset {
 }
 
 .heading {
-  margin: $size-32 0 $size-16;
+  margin: s.$size-32 0 s.$size-16;
   font-weight: normal;
   line-height: 1.1;
-  font-family: $heading-family;
+  font-family: s.$heading-family;
 
   &:first-child {
     margin-top: 0;
@@ -83,37 +85,37 @@ h6 {
 
 h1,
 .h1 {
-  font-size: $size-52;
+  font-size: s.$size-52;
 }
 
 h2,
 .h2 {
-  font-size: $size-45;
+  font-size: s.$size-45;
 }
 
 h3,
 .h3 {
-  font-size: $size-40;
+  font-size: s.$size-40;
 }
 
 h4,
 .h4 {
-  font-size: $size-32;
+  font-size: s.$size-32;
 }
 
 h5,
 .h5 {
-  font-size: $size-24;
+  font-size: s.$size-24;
 }
 
 h6,
 .h6 {
-  font-size: $size-16;
+  font-size: s.$size-16;
 }
 
 strong,
 b {
-  font-family: $font-bold;
+  font-family: s.$font-bold;
 }
 
 em,
@@ -128,11 +130,11 @@ s {
 
 code {
   font-family: monospace;
-  font-size: $size-14;
+  font-size: s.$size-14;
   line-height: 1.4;
-  background-color: $black;
-  color: $white;
-  padding: $size-4 $size-8;
+  background-color: s.$black;
+  color: s.$white;
+  padding: s.$size-4 s.$size-8;
 }
 
 sup {
@@ -149,16 +151,16 @@ sub {
 
 ul {
   list-style: disc;
-  padding-left: $size-18;
+  padding-left: s.$size-18;
 }
 
 ol {
   list-style: decimal;
-  padding-left: $size-18;
+  padding-left: s.$size-18;
 }
 
 li {
-  margin: $size-5 0;
+  margin: s.$size-5 0;
 
   &:last-child {
     margin-bottom: 0;
@@ -177,7 +179,7 @@ dl {
   }
 
   dd {
-    margin: 0 0 $size-16 $size-18;
+    margin: 0 0 s.$size-16 s.$size-18;
 
     &:last-child {
       margin-bottom: 0;

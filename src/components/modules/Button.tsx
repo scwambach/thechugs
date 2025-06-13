@@ -11,10 +11,7 @@ export const Button = ({
   text,
   url,
 }: ButtonProps) => {
-  const ButtonTag =
-    tagType === 'a'
-      ? ('a' as keyof JSX.IntrinsicElements)
-      : ('button' as keyof JSX.IntrinsicElements)
+  const ButtonTag = tagType === 'a' ? ('a' as any) : ('button' as any)
 
   const isExternal = url?.startsWith('http')
 
