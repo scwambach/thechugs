@@ -22,9 +22,9 @@ export const revalidate = 0
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const { slug } = params
+  const { slug } = await params
   const data = await client.fetch(PAGE_QUERY, {
     slug,
   })
@@ -45,8 +45,13 @@ export async function generateMetadata({
   }
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const data = await getData(params.slug)
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const data = await getData(slug)
 
   if (!data) {
     return notFound()

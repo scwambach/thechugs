@@ -20,10 +20,11 @@ async function getData(slug: string) {
 export const revalidate = 0
 
 export async function generateMetadata({
-  params: { slug },
+  params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
+  const { slug } = await params
   const { page } = await client.fetch(PRODUCT_QUERY, {
     slug,
   })
@@ -48,16 +49,12 @@ export default async function ProductPage({
   searchParams,
   params,
 }: {
-  searchParams: {
-    variant: string
-  }
-  params: {
-    slug: string
-  }
+  searchParams: Promise<{ variant: string }>
+  params: Promise<{ slug: string }>
 }) {
-  const { page, nav, globalInfo } = (await getData(
-    params.slug
-  )) as ProductPageProps
+  const { variant } = await searchParams
+  const { slug } = await params
+  const { page, nav, globalInfo } = (await getData(slug)) as ProductPageProps
 
   if (!page) {
     return notFound()
@@ -66,9 +63,7 @@ export default async function ProductPage({
   return (
     <PageTemplate nav={nav} global={globalInfo} darkMode>
       <div className="innerPage productPage">
-        {page && (
-          <Details content={page} initialVariantId={searchParams.variant} />
-        )}
+        {page && <Details content={page} initialVariantId={variant} />}
       </div>
     </PageTemplate>
   )
