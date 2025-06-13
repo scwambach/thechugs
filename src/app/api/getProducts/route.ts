@@ -23,6 +23,8 @@ export async function GET() {
   // Parse the JSON response from the Printful API.
   const newItemData = await printRes.json()
 
+  console.log('newItemData', newItemData)
+
   // Check if newItemData is falsy, and return an error response if it is.
   if (!newItemData) {
     return NextResponse.json({
