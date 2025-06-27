@@ -56,6 +56,9 @@
       position: absolute;
       top: 5px;
       left: 5px;
+      display: flex;
+      align-items: center;
+      gap: s.$size-4;
       background-color: s.$primary;
       color: s.$white;
       padding: s.$size-4 s.$size-8;
