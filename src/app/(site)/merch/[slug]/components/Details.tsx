@@ -158,41 +158,56 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
                 label=""
               />
             )}
-            <button
-              disabled={disableButton}
-              className={
-                !content.outOfStockMsg
-                  ? `snipcart-add-item button white`
-                  : `button white`
-              }
-              data-item-id={
-                printfulProduct ? activeVariant?.externalId : content._id
-              }
-              data-item-price={
-                printfulProduct ? activeVariant?.price : content.price
-              }
-              data-item-url={`/api/products/${
-                printfulProduct ? activeVariant?.externalId : content._id
-              }`}
-              data-item-description={
-                printfulProduct ? activeVariant?.title : content.title
-              }
-              data-item-image={activeVariant?.image || undefined}
-              data-item-name={`${
-                printfulProduct ? activeVariant?.title : content.title
-              }`}
-              data-item-custom1-type="hidden"
-              data-item-custom1-name="PrintfulProduct"
-              data-item-custom1-value={printfulProduct}
-            >
-              {!content.outOfStockMsg ? (
-                <>
-                  Add to <AiOutlineShoppingCart size={20} />
-                </>
-              ) : (
-                <>{content.outOfStockMsg}</>
-              )}
-            </button>
+            {content.localOnly ? (
+              <a
+                href={`mailto:thechugsband@gmail.com?subject=Interested in ${content.title}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={
+                  !content.outOfStockMsg
+                    ? `snipcart-add-item button white`
+                    : `button white`
+                }
+              >
+                Contact Us About This Item
+              </a>
+            ) : (
+              <button
+                disabled={disableButton}
+                className={
+                  !content.outOfStockMsg
+                    ? `snipcart-add-item button white`
+                    : `button white`
+                }
+                data-item-id={
+                  printfulProduct ? activeVariant?.externalId : content._id
+                }
+                data-item-price={
+                  printfulProduct ? activeVariant?.price : content.price
+                }
+                data-item-url={`/api/products/${
+                  printfulProduct ? activeVariant?.externalId : content._id
+                }`}
+                data-item-description={
+                  printfulProduct ? activeVariant?.title : content.title
+                }
+                data-item-image={activeVariant?.image || undefined}
+                data-item-name={`${
+                  printfulProduct ? activeVariant?.title : content.title
+                }`}
+                data-item-custom1-type="hidden"
+                data-item-custom1-name="PrintfulProduct"
+                data-item-custom1-value={printfulProduct}
+              >
+                {!content.outOfStockMsg ? (
+                  <>
+                    Add to <AiOutlineShoppingCart size={20} />
+                  </>
+                ) : (
+                  <>{content.outOfStockMsg}</>
+                )}
+              </button>
+            )}
           </div>
           {content.description && <Markdown>{content.description}</Markdown>}
         </div>

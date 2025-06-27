@@ -31,6 +31,7 @@ export const ImageBlock = ({
       fill={fill}
       width={!fill ? image.width : undefined}
       height={!fill ? image.height : undefined}
+      unoptimized
     />
   )
 }

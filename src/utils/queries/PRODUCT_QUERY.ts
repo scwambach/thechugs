@@ -8,6 +8,7 @@ export const PRODUCT_QUERY = `*[_type == 'merch' && slug.current == $slug][0]{
     description,
     externalId,
     productId,
+    localOnly,
     thumbnail,
     variants,
     price,

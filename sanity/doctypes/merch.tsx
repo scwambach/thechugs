@@ -76,6 +76,16 @@ export const merch = defineType({
       hidden: ({ parent }: any) => !!parent.productId,
     }),
     defineField({
+      name: 'localOnly',
+      title: 'Local Only',
+      type: 'boolean',
+      initialValue: false,
+      hidden: ({ parent }: any) => {
+        console.log('parent', parent.category)
+        return parent.category?._ref !== '1b10042f-e887-40cf-a102-77e48b31e58b'
+      },
+    }),
+    defineField({
       name: 'images',
       title: 'Images',
       type: 'array',
