@@ -6,6 +6,7 @@ title,
 ${slugQuery},
 tags,
 externalId,
+localOnly,
 category -> {
   _id,
   title,

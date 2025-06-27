@@ -14,6 +14,7 @@ export interface ProductCardProps {
   description?: string
   minimal?: boolean
   tags?: string[]
+  localOnly?: boolean
   category: {
     _id: string
     title: string

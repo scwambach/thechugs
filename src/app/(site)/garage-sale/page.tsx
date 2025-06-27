@@ -35,6 +35,7 @@ export default async function Home() {
             </p>
           </div>
         </div>
+
         <Products products={data.items} _key="0" _type="block" noButton />
       </section>
     </PageTemplate>

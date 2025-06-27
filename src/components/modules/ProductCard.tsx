@@ -10,7 +10,7 @@ import { FormField } from './FormField'
 import { toUsCurrency } from '@utils/toUsCurrency'
 import { slugify } from '@utils/slugify'
 import { Button } from './Button'
-import { AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiFillStar, AiOutlineShoppingCart } from 'react-icons/ai'
 import { getTypeOfVariant } from '@utils/getTypeOfVariant'
 import { LinkObject } from './LinkObject'
 
@@ -46,10 +46,22 @@ export const ProductCard = (props: ProductCardProps) => {
   const imageLogic = (
     <>
       {props.thumbnail && !activeVariant ? (
-        <Image src={props.thumbnail} alt="" width={300} height={300} />
+        <Image
+          src={props.thumbnail}
+          alt=""
+          width={300}
+          height={300}
+          unoptimized
+        />
       ) : (
         activeVariant && (
-          <Image src={activeVariant?.image} alt="" width={300} height={300} />
+          <Image
+            src={activeVariant?.image}
+            alt=""
+            width={300}
+            height={300}
+            unoptimized
+          />
         )
       )}
       {props.images && !props.thumbnail && !activeVariant && (
@@ -66,6 +78,11 @@ export const ProductCard = (props: ProductCardProps) => {
   const content = (
     <>
       <div className="image">
+        {props.localOnly && (
+          <span className="local-only">
+            <AiFillStar /> Local Only
+          </span>
+        )}
         {props.minimal ? (
           imageLogic
         ) : (

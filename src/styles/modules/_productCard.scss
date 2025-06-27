@@ -52,6 +52,19 @@
     border-radius: s.$size-10;
     @include m.outlineBox;
 
+    .local-only {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background-color: s.$primary;
+      color: s.$white;
+      padding: s.$size-4 s.$size-8;
+      font-size: s.$size-12;
+      font-family: s.$font-bold;
+      border-radius: s.$size-5;
+      z-index: 2;
+    }
+
     img {
       position: absolute;
       border-radius: s.$size-10;
