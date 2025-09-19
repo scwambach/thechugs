@@ -94,9 +94,9 @@ export const ProductScanner = (props: ProductCardProps) => {
       imageLogic
     )
   ) : showQRNow ? (
-    <LinkObject href={targetHref}>{qrLogic}</LinkObject>
+    <div>{qrLogic}</div>
   ) : (
-    <LinkObject href={targetHref}>{imageLogic}</LinkObject>
+    <div>{imageLogic}</div>
   )
 
   const content = (
@@ -109,35 +109,6 @@ export const ProductScanner = (props: ProductCardProps) => {
         )}
 
         {visualBlock}
-
-        {/* Toggle shows only after a manual selection */}
-        {wasManuallySelected && (
-          <div className="view-toggle" style={{ marginTop: 8 }}>
-            {showQR ? (
-              <button
-                type="button"
-                onClick={() => setShowQR(false)}
-                aria-label="Show product image"
-              >
-                View Image
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setShowQR(true)}
-                aria-label="Show QR code"
-                disabled={!activeVariant?.externalId}
-                title={
-                  !activeVariant?.externalId
-                    ? 'Select a variant first'
-                    : undefined
-                }
-              >
-                View QR
-              </button>
-            )}
-          </div>
-        )}
       </div>
 
       <div className="content">
