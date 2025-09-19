@@ -3,8 +3,8 @@
 
 .form {
   .title {
-    @include m.headingFive;
     font-family: s.$heading-family;
+    @include m.headingFive;
   }
 
   .description,

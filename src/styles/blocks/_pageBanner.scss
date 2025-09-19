@@ -29,16 +29,16 @@
   }
 
   &::before {
-    @include m.absoluteOverlay;
     content: '';
     background-color: rgba(s.$black, 0.3);
+    @include m.absoluteOverlay;
   }
 
   &::after {
-    @include m.absoluteOverlay;
     content: '';
     mix-blend-mode: color;
     background-color: rgba(s.$black, 0.3);
+    @include m.absoluteOverlay;
   }
 
   .container {
@@ -47,8 +47,8 @@
   }
 
   .headingTag {
-    @include m.headingOne;
     margin: 0;
+    @include m.headingOne;
   }
 
   .subheading {

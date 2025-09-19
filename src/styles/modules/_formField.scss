@@ -7,10 +7,10 @@
   }
 
   .labelTag {
-    @include m.headingSix;
     font-family: s.$font-bold;
     margin-bottom: s.$size-8;
     display: block;
+    @include m.headingSix;
 
     &.hidden {
       height: 0;
