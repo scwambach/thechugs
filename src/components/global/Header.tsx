@@ -3,6 +3,7 @@
 import { useContext } from 'react'
 import { AppContext } from './PageTemplate'
 import { LinkObject } from '@components/modules/LinkObject'
+import { IoCartSharp } from 'react-icons/io5'
 
 export const Header = () => {
   const { nav, darkMode } = useContext(AppContext)
@@ -16,7 +17,7 @@ export const Header = () => {
         ))}
         <li>
           <a className="snipcart-checkout" href="#">
-            Cart
+            <IoCartSharp fontWeight={700} />
           </a>
         </li>
       </ul>

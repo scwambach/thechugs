@@ -6,8 +6,8 @@ import { AllProductProps } from './Products'
 
 export const MerchFilter = ({ items }: { items: AllProductProps }) => {
   const merchArray = [
-    { title: 'Clothing', products: items.clothing },
     { title: 'Music', products: items.music },
+    { title: 'Clothing', products: items.clothing },
     { title: 'Stickers', products: items.stickers },
     { title: 'Accessories', products: items.accessories },
   ]

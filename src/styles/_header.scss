@@ -32,4 +32,18 @@ header {
   li {
     margin: 0;
   }
+
+  .snipcart-checkout {
+    position: absolute;
+    top: s.$size-16;
+    right: s.$size-16;
+    padding: s.$size-10 s.$size-16 s.$size-8 s.$size-16;
+    background-color: s.$white;
+    color: s.$black !important;
+    font-family: s.$font-bold;
+    font-size: s.$size-16;
+    border-radius: s.$size-10;
+    text-decoration: none;
+    z-index: 2;
+  }
 }
