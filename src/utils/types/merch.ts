@@ -31,6 +31,7 @@ export interface ProductProps {
   }
   thumbnail?: string
   title: string
+  merchBooth?: boolean
   variants?: VariantProps[]
 }
 

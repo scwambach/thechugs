@@ -1,0 +1,18 @@
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 32px;
+
+  select {
+    font-size: 14px;
+    padding-right: 24px;
+  }
+
+  .qr-wrapper {
+    svg {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+}

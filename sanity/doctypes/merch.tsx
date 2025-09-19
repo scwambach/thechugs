@@ -31,6 +31,11 @@ export const merch = defineType({
       validation: (Rule: any) => Rule.required(),
     }),
     defineField({
+      title: 'merchBooth',
+      name: 'merchBooth',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'slug',
       validation: (Rule: any) => Rule.required(),
       title: 'Slug',

@@ -3,6 +3,7 @@ import { imageQuery, slugQuery } from './queryParts'
 export const product = `
 _id,
 title,
+merchBooth,
 ${slugQuery},
 tags,
 externalId,

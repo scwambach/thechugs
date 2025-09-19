@@ -25,6 +25,7 @@ export interface ProductCardProps {
   slug?: string
   price: number
   outOfStockMsg?: string
+  merchBooth?: boolean
   title: string
   variants?: {
     _id: string
