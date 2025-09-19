@@ -65,7 +65,7 @@ export const FormField = ({
               name={fieldId}
               onChange={onChangeSelect}
               id={fieldId}
-              value={initialValue || ''}
+              defaultValue={initialValue || ''}
             >
               {placeholder && (
                 <option value="">
