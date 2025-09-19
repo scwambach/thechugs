@@ -61,7 +61,12 @@ export const FormField = ({
             )}
             <AiFillCaretDown />
             {description && <p className="description">{description}</p>}
-            <select name={fieldId} onChange={onChangeSelect} id={fieldId}>
+            <select
+              name={fieldId}
+              onChange={onChangeSelect}
+              id={fieldId}
+              value={initialValue || ''}
+            >
               {placeholder && (
                 <option value="">
                   -{' '}

@@ -11,6 +11,7 @@ import Image, { ImageProps } from 'next/image'
 import { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
+import { FaSpinner } from 'react-icons/fa'
 
 interface DetailsProps {
   content: ProductPageProps['page']
@@ -20,6 +21,7 @@ interface DetailsProps {
 export const Details = ({ content, initialVariantId }: DetailsProps) => {
   const [disableButton, setDisableButton] = useState(true)
   const [printfulProduct, setPrintfulProduct] = useState(false)
+  const [loading, setLoading] = useState(!!initialVariantId)
   const [activeVariant, setActiveVariant] = useState<VariantProps | undefined>(
     content.variants ? content.variants[0] : undefined
   )
@@ -66,9 +68,11 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
 
       if (variant) {
         setActiveVariant(variant)
+        setDisableButton(false) // Enable button when variant is set from URL
       }
+      setLoading(false) // Set loading to false after processing variant
     }
-  }, [initialVariantId])
+  }, [initialVariantId, content.variants])
 
   const isGarageSale =
     content.category._id === '1b10042f-e887-40cf-a102-77e48b31e58b'
@@ -124,92 +128,106 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
             )
           )}
         </div>
-        <div>
-          {activeVariant && <span>PRODUCT ID: #{activeVariant.variantId}</span>}
-          <span className="price">
-            {toUsCurrency(activeVariant?.price || content.price || 0)}
-          </span>
 
-          <div className="field-group">
-            {content.variants && content.variants.length > 1 && (
-              <FormField
-                type="select"
-                choices={[
-                  {
-                    _key: `${slugify(content.title)}-select-variant`,
-                    label: `Select ${getTypeOfVariant(
-                      content.variants.map((v) => v.title)
-                    )}`,
-                    value: '',
-                  },
-                  ...variantKeyValuePair,
-                ]}
-                onChangeSelect={(e) => {
-                  setDisableButton(true)
-                  if (e.target.value) setDisableButton(false)
-                  const variant = content.variants?.find(
-                    (variant) => variant.externalId === e.target.value
-                  )
-                  setActiveVariant(
-                    variant || (content.variants && content.variants[0])
-                  )
-                }}
-                _key="jneklfvbhwo3409n"
-                label=""
-              />
-            )}
-            {content.localOnly ? (
-              <a
-                href={`mailto:thechugsband@gmail.com?subject=Interested in ${content.title}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={
-                  !content.outOfStockMsg
-                    ? `snipcart-add-item button white`
-                    : `button white`
-                }
-              >
-                Contact Us About This Item
-              </a>
-            ) : (
-              <button
-                disabled={disableButton}
-                className={
-                  !content.outOfStockMsg
-                    ? `snipcart-add-item button white`
-                    : `button white`
-                }
-                data-item-id={
-                  printfulProduct ? activeVariant?.externalId : content._id
-                }
-                data-item-price={
-                  printfulProduct ? activeVariant?.price : content.price
-                }
-                data-item-url={`/api/products/${
-                  printfulProduct ? activeVariant?.externalId : content._id
-                }`}
-                data-item-description={
-                  printfulProduct ? activeVariant?.title : content.title
-                }
-                data-item-image={activeVariant?.image || undefined}
-                data-item-name={`${
-                  printfulProduct ? activeVariant?.title : content.title
-                }`}
-                data-item-custom1-type="hidden"
-                data-item-custom1-name="PrintfulProduct"
-                data-item-custom1-value={printfulProduct}
-              >
-                {!content.outOfStockMsg ? (
-                  <>
-                    Add to <AiOutlineShoppingCart size={20} />
-                  </>
-                ) : (
-                  <>{content.outOfStockMsg}</>
+        <div>
+          {loading ? (
+            <div className="loading relative">
+              <FaSpinner />
+            </div>
+          ) : (
+            <>
+              {activeVariant && (
+                <span>PRODUCT ID: #{activeVariant.variantId}</span>
+              )}
+              <span className="price">
+                {toUsCurrency(activeVariant?.price || content.price || 0)}
+              </span>
+
+              <div className="field-group">
+                {content.variants && content.variants.length > 1 && (
+                  <FormField
+                    type="select"
+                    choices={[
+                      {
+                        _key: `${slugify(content.title)}-select-variant`,
+                        label: `Select ${getTypeOfVariant(
+                          content.variants.map((v) => v.title)
+                        )}`,
+                        value: '',
+                      },
+                      ...variantKeyValuePair,
+                    ]}
+                    initialValue={activeVariant?.externalId || ''}
+                    onChangeSelect={(e) => {
+                      setDisableButton(true)
+                      if (e.target.value) setDisableButton(false)
+                      const variant = content.variants?.find(
+                        (variant) => variant.externalId === e.target.value
+                      )
+                      setActiveVariant(
+                        variant || (content.variants && content.variants[0])
+                      )
+                    }}
+                    _key="jneklfvbhwo3409n"
+                    label=""
+                  />
                 )}
-              </button>
-            )}
-          </div>
-          {content.description && <Markdown>{content.description}</Markdown>}
+                {content.localOnly ? (
+                  <a
+                    href={`mailto:thechugsband@gmail.com?subject=Interested in ${content.title}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={
+                      !content.outOfStockMsg
+                        ? `snipcart-add-item button white`
+                        : `button white`
+                    }
+                  >
+                    Contact Us About This Item
+                  </a>
+                ) : (
+                  <button
+                    disabled={disableButton}
+                    className={
+                      !content.outOfStockMsg
+                        ? `snipcart-add-item button white`
+                        : `button white`
+                    }
+                    data-item-id={
+                      printfulProduct ? activeVariant?.externalId : content._id
+                    }
+                    data-item-price={
+                      printfulProduct ? activeVariant?.price : content.price
+                    }
+                    data-item-url={`/api/products/${
+                      printfulProduct ? activeVariant?.externalId : content._id
+                    }`}
+                    data-item-description={
+                      printfulProduct ? activeVariant?.title : content.title
+                    }
+                    data-item-image={activeVariant?.image || undefined}
+                    data-item-name={`${
+                      printfulProduct ? activeVariant?.title : content.title
+                    }`}
+                    data-item-custom1-type="hidden"
+                    data-item-custom1-name="PrintfulProduct"
+                    data-item-custom1-value={printfulProduct}
+                  >
+                    {!content.outOfStockMsg ? (
+                      <>
+                        Add to <AiOutlineShoppingCart size={20} />
+                      </>
+                    ) : (
+                      <>{content.outOfStockMsg}</>
+                    )}
+                  </button>
+                )}
+              </div>
+              {content.description && (
+                <Markdown>{content.description}</Markdown>
+              )}
+            </>
+          )}
         </div>
       </div>
       {content.category.title === 'Clothing' && (

@@ -26,6 +26,8 @@
     display: flex;
 
     > div {
+      position: relative;
+
       &:first-child {
         width: s.$size-416;
 
