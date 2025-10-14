@@ -1,11 +1,11 @@
 import { ProductScanner } from '@components/modules/ProductScanner'
 import { client } from '@utils/client'
-import { GARAGE_SALE_QUERY } from '@utils/queries/GARAGE_SALE_QUERY'
+import { POS_QUERY } from '@utils/queries/POS_QUERY'
 import { ProductCardProps } from '@utils/types/modules/ProductCardProps'
 import { Fragment } from 'react'
 
 async function getData() {
-  const data = await client.fetch(GARAGE_SALE_QUERY)
+  const data = await client.fetch(POS_QUERY)
   return data
 }
 
