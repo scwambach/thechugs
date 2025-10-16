@@ -16,11 +16,13 @@ export const Header = () => {
           </li>
         ))}
         <li>
-          <a className="snipcart-checkout" href="#">
-            <IoCartSharp fontWeight={700} />
-          </a>
+          <LinkObject href="/garage-sale">Garage</LinkObject>
         </li>
       </ul>
+
+      <a className="snipcart-checkout" href="#">
+        <IoCartSharp fontWeight={700} />
+      </a>
     </header>
   )
 }
