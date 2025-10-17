@@ -17,7 +17,7 @@ export const VideoItem = ({ title, video, image }: VideoItemProps) => {
 
   return (
     <div className="videoItem">
-      <Heading level="3">{title}</Heading>
+      {title && <Heading level="3">{title}</Heading>}
       <div
         style={{
           overflow: 'hidden',

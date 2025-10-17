@@ -1,8 +1,8 @@
 import { Products } from '@components/blocks'
 import { PageTemplate } from '@components/global/PageTemplate'
 import { Heading } from '@components/modules/Heading'
-import { client } from '@utils/client'
 import { GARAGE_SALE_QUERY } from '@utils/queries/GARAGE_SALE_QUERY'
+import { client } from '@utils/client'
 
 async function getData() {
   const data = await client.fetch(GARAGE_SALE_QUERY)
@@ -23,6 +23,14 @@ export async function generateMetadata({}) {
 export default async function Home() {
   const data = await getData()
 
+  const graveFirst = data.items.sort(
+    (a: { title: string }, b: { title: string }) => {
+      if (a.title === 'Grave Plot') return -1
+      if (b.title === 'Grave Plot') return 1
+      return 0
+    }
+  )
+
   return (
     <PageTemplate nav={data.nav} global={data.globalInfo} darkMode>
       <section className="page-component bg-white">
@@ -35,8 +43,7 @@ export default async function Home() {
             </p>
           </div>
         </div>
-
-        <Products products={data.items} _key="0" _type="block" noButton />
+        <Products products={graveFirst} _key="0" _type="block" noButton />
       </section>
     </PageTemplate>
   )

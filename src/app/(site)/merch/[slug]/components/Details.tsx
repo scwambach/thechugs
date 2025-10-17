@@ -3,6 +3,8 @@ import { Button } from '@components/modules/Button'
 import { FormField } from '@components/modules/FormField'
 import { ImageBlock } from '@components/modules/ImageBlock'
 import { Markdown } from '@components/modules/Markdown'
+import { VideoItem } from '@components/modules/VideoItem'
+import { ContactModal } from '@components/modules/ContactModal'
 import { getTypeOfVariant } from '@utils/getTypeOfVariant'
 import { slugify } from '@utils/slugify'
 import { toUsCurrency } from '@utils/toUsCurrency'
@@ -12,6 +14,7 @@ import { useEffect, useState } from 'react'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FaSpinner } from 'react-icons/fa'
+import Poster from '../../../../../media/gravePoster.jpg'
 
 interface DetailsProps {
   content: ProductPageProps['page']
@@ -22,10 +25,13 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
   const [disableButton, setDisableButton] = useState(true)
   const [printfulProduct, setPrintfulProduct] = useState(false)
   const [loading, setLoading] = useState(!!initialVariantId)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [activeVariant, setActiveVariant] = useState<VariantProps | undefined>(
     content.variants ? content.variants[0] : undefined
   )
   const [activeImage, setActiveImage] = useState<ImageProps | undefined>()
+
+  const isGragePlot = content.title === 'Grave Plot'
 
   const removeTitleFromVariantName = (variantName: string) => {
     return variantName.replace(`${content.title} - `, '')
@@ -88,6 +94,27 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
         Back to {isGarageSale ? 'the Garage' : 'Store'}
       </Button>
       <h1>{content.title}</h1>
+
+      {isGragePlot && (
+        <div
+          style={{
+            marginBottom: '2rem',
+          }}
+        >
+          <VideoItem
+            _id="video1"
+            releaseDate="2025-10-17"
+            video="https://www.youtube.com/watch?v=QaGf8Odi9xM"
+            image={{
+              src: Poster.src,
+              alt: 'The Chugs Sell A Grave Plot',
+              width: Poster.width,
+              height: Poster.height,
+              blurDataURL: Poster.blurDataURL,
+            }}
+          />
+        </div>
+      )}
 
       <div className="flex-row">
         <div>
@@ -172,19 +199,15 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
                     label=""
                   />
                 )}
-                {content.localOnly ? (
-                  <a
-                    href={`mailto:thechugsband@gmail.com?subject=Interested in ${content.title}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {content.localOnly || isGragePlot ? (
+                  <button
+                    onClick={() => setIsContactModalOpen(true)}
                     className={
-                      !content.outOfStockMsg
-                        ? `snipcart-add-item button white`
-                        : `button white`
+                      !content.outOfStockMsg ? `button white` : `button white`
                     }
                   >
                     Contact Us About This Item
-                  </a>
+                  </button>
                 ) : (
                   <button
                     disabled={disableButton}
@@ -235,6 +258,12 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
           <p>* All clothing is made to order and time varies for shipping</p>
         </div>
       )}
+
+      <ContactModal
+        isOpen={isContactModalOpen}
+        onCloseAction={() => setIsContactModalOpen(false)}
+        productTitle={content.title}
+      />
     </div>
   )
 }
