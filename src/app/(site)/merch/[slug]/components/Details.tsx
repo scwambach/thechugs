@@ -31,7 +31,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
   )
   const [activeImage, setActiveImage] = useState<ImageProps | undefined>()
 
-  const isGragePlot = content.title === 'Grave Plot'
+  const isGravePlot = content.title === 'Grave Plot'
 
   const removeTitleFromVariantName = (variantName: string) => {
     return variantName.replace(`${content.title} - `, '')
@@ -95,7 +95,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
       </Button>
       <h1>{content.title}</h1>
 
-      {isGragePlot && (
+      {isGravePlot && (
         <div
           style={{
             marginBottom: '2rem',
@@ -199,7 +199,7 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
                     label=""
                   />
                 )}
-                {content.localOnly || isGragePlot ? (
+                {content.localOnly || isGravePlot ? (
                   <button
                     onClick={() => setIsContactModalOpen(true)}
                     className={
@@ -246,6 +246,17 @@ export const Details = ({ content, initialVariantId }: DetailsProps) => {
                   </button>
                 )}
               </div>
+              {isGravePlot && (
+                <iframe
+                  style={{ border: 0, width: '100%', height: '120px' }}
+                  src="https://bandcamp.com/EmbeddedPlayer/album=4124245722/size=large/bgcol=333333/linkcol=e99708/tracklist=false/artwork=small/transparent=true/"
+                  seamless
+                >
+                  <a href="https://thechugs.bandcamp.com/album/here-lie-the-chugs">
+                    Here Lie The Chugs by The Chugs
+                  </a>
+                </iframe>
+              )}
               {content.description && (
                 <Markdown>{content.description}</Markdown>
               )}
