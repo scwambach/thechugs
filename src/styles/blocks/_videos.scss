@@ -15,7 +15,7 @@
 
   .videoItem {
     @media screen and (min-width: (s.$tablet-lg)) {
-      width: calc(50% - s.$size-52);
+      width: calc(50% - s.$size-26);
     }
   }
 }
