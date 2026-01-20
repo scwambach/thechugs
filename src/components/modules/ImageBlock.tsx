@@ -8,6 +8,7 @@ interface ImageBlockProps {
   alt?: string
   width?: number
   height?: number
+  onLoad?: () => void
 }
 
 export const ImageBlock = ({
@@ -17,6 +18,7 @@ export const ImageBlock = ({
   className,
   height,
   width,
+  onLoad,
 }: ImageBlockProps) => {
   return (
     <Image
@@ -32,6 +34,7 @@ export const ImageBlock = ({
       width={!fill ? image.width : undefined}
       height={!fill ? image.height : undefined}
       unoptimized
+      onLoad={onLoad}
     />
   )
 }

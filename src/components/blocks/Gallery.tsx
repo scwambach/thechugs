@@ -4,7 +4,12 @@ import { ImageBlock } from '@components/modules/ImageBlock'
 import { PageBlockProps } from '@utils/types'
 import { ImageProps } from 'next/image'
 import { useEffect, useState } from 'react'
-import { AiOutlineClose, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import {
+  AiOutlineClose,
+  AiOutlineLeft,
+  AiOutlineRight,
+  AiOutlineLoading3Quarters,
+} from 'react-icons/ai'
 
 interface GalleryProps extends PageBlockProps {
   images: ImageProps[]
@@ -13,6 +18,7 @@ interface GalleryProps extends PageBlockProps {
 export const Gallery = ({ images }: GalleryProps) => {
   const [activeImage, setActiveImage] = useState<ImageProps>()
   const [open, setOpen] = useState(false)
+  const [isOpening, setIsOpening] = useState(false)
 
   useEffect(() => {
     document.onkeydown = (e) => {
@@ -29,6 +35,8 @@ export const Gallery = ({ images }: GalleryProps) => {
           className="close"
           onClick={() => {
             setOpen(false)
+            setActiveImage(undefined)
+            setIsOpening(false)
           }}
         >
           <span className="sr-only">Close</span>
@@ -37,6 +45,7 @@ export const Gallery = ({ images }: GalleryProps) => {
         <div className="prev">
           <button
             onClick={() => {
+              setIsOpening(false)
               const index = images.findIndex(
                 (image) => image.src === activeImage?.src
               )
@@ -53,12 +62,18 @@ export const Gallery = ({ images }: GalleryProps) => {
           </button>
         </div>
         <div className="image">
+          {isOpening && (
+            <div className="loading-spinner">
+              <AiOutlineLoading3Quarters size={48} />
+            </div>
+          )}
           {activeImage && (
-            <div className={`inner`}>
+            <div className={`inner${isOpening ? ' mainImgLoading' : ''}`}>
               <ImageBlock
                 image={activeImage}
                 className="activeImage"
                 width={1200}
+                onLoad={() => setIsOpening(false)}
               />
             </div>
           )}
@@ -66,17 +81,15 @@ export const Gallery = ({ images }: GalleryProps) => {
         <div className="next">
           <button
             onClick={() => {
-              setActiveImage(undefined)
-              setTimeout(() => {
-                const index = images.findIndex(
-                  (image) => image.src === activeImage?.src
-                )
-                if (index === images.length - 1) {
-                  setActiveImage(images[0])
-                } else {
-                  setActiveImage(images[index + 1])
-                }
-              }, 10)
+              setIsOpening(false)
+              const index = images.findIndex(
+                (image) => image.src === activeImage?.src
+              )
+              if (index === images.length - 1) {
+                setActiveImage(images[0])
+              } else {
+                setActiveImage(images[index + 1])
+              }
             }}
           >
             <AiOutlineRight size={40} />
@@ -91,6 +104,7 @@ export const Gallery = ({ images }: GalleryProps) => {
             <button
               key={`${image.src}`}
               onClick={() => {
+                setIsOpening(true)
                 setActiveImage(image)
                 setOpen(true)
               }}
