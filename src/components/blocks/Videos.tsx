@@ -10,7 +10,7 @@ interface VideosProps extends PageBlockProps {
 export const Videos = ({ items }: VideosProps) => {
   return (
     <div className="videos">
-      <Container>
+      <Container size="wider">
         <div className="inner">
           {items.map((item) => (
             <VideoItem key={item._id} {...item} />

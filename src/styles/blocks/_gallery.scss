@@ -2,13 +2,19 @@
 @use '../mixins' as m;
 
 .gallery {
+  padding: 0 s.$size-16;
+
   button {
     padding: 0;
     border: none;
     background: none;
     position: relative;
     height: s.$size-200;
-    width: calc(20% - s.$size-16);
+    width: calc(10% - s.$size-16);
+
+    @media screen and (max-width: (s.$widescreen-lg - 1)) {
+      width: calc(20% - s.$size-16);
+    }
 
     @media screen and (max-width: (s.$desktop - 1)) {
       width: calc(25% - s.$size-16);
@@ -134,6 +140,9 @@
     }
 
     .inner {
+      height: 100%;
+      width: 100%;
+
       .activeImage {
         opacity: 1;
         transition-duration: s.$animation-speed;
@@ -141,6 +150,8 @@
         object-fit: contain;
         max-width: 90%;
         max-height: 90%;
+        height: 100%;
+        width: 100%;
       }
 
       &.mainImgLoading {

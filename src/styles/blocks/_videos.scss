@@ -4,6 +4,18 @@
   .inner {
     display: flex;
     flex-direction: column;
-    gap: s.$size-100;
+    gap: s.$size-52;
+
+    @media screen and (min-width: (s.$tablet-lg)) {
+      flex-wrap: wrap;
+      align-items: flex-end;
+      flex-direction: row;
+    }
+  }
+
+  .videoItem {
+    @media screen and (min-width: (s.$tablet-lg)) {
+      width: calc(50% - s.$size-52);
+    }
   }
 }

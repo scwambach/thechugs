@@ -85,7 +85,7 @@ export const Gallery = ({ images }: GalleryProps) => {
         </div>
       </div>
 
-      <Container size="wide">
+      <div>
         <div className="items">
           {images.map((image) => (
             <button
@@ -99,7 +99,7 @@ export const Gallery = ({ images }: GalleryProps) => {
             </button>
           ))}
         </div>
-      </Container>
+      </div>
     </div>
   )
 }

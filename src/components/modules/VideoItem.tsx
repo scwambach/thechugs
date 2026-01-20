@@ -27,7 +27,7 @@ export const VideoItem = ({ title, video, image }: VideoItemProps) => {
       >
         {hasWindow && (
           <ReactPlayer
-            url={video}
+            src={video}
             controls
             playing={isPlaying}
             playIcon={<BsPlayCircleFill size={80} color="#dea211" />}
