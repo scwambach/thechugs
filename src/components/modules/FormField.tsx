@@ -49,6 +49,7 @@ export const FormField = ({
                   : placeholder
               }
               defaultValue={initialValue}
+              suppressHydrationWarning
             />
           </label>
         ) : type === 'select' ? (
@@ -66,6 +67,7 @@ export const FormField = ({
               onChange={onChangeSelect}
               id={fieldId}
               defaultValue={initialValue || ''}
+              suppressHydrationWarning
             >
               {placeholder && (
                 <option value="">
@@ -110,6 +112,7 @@ export const FormField = ({
                         name={fieldId}
                         onChange={onChange}
                         value={choice.value}
+                        suppressHydrationWarning
                       />
                       <div className={`${type}-indicator`}>
                         {type === 'radio' && <GoDotFill size={15} />}
@@ -145,6 +148,7 @@ export const FormField = ({
                   : placeholder
               }
               defaultValue={initialValue}
+              suppressHydrationWarning
             />
           </label>
         )}
