@@ -17,5 +17,6 @@ export const globalInfoQuery = `"globalInfo": *[_type == 'globalInfo'][0] {
   title,
   contactInfo,
   description,
-  siteImage
+  siteImage,
+  affiliatedFooterLinks
 }`

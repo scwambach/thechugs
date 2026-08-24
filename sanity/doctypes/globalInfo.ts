@@ -1,3 +1,4 @@
+import { AiOutlineLink } from 'react-icons/ai'
 import { links } from '../common/links'
 
 export const globalInfo = {
@@ -87,6 +88,76 @@ export const globalInfo = {
               validation: (Rule: any) => Rule.required(),
             },
             ...links,
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Affiliated Footer Links',
+      name: 'affiliatedFooterLinks',
+      description:
+        'Links to friends and affiliated sites. Each group renders as its own list in the footer.',
+      type: 'array',
+      of: [
+        {
+          title: 'Link Group',
+          name: 'linkGroup',
+          type: 'object',
+          icon: AiOutlineLink,
+          preview: {
+            select: {
+              heading: 'heading',
+              links: 'links',
+            },
+            prepare({ heading, links: groupLinks }: any) {
+              const count = groupLinks?.length ?? 0
+
+              return {
+                title: heading || 'Untitled group',
+                subtitle: `${count} link${count === 1 ? '' : 's'}`,
+              }
+            },
+          },
+          fields: [
+            {
+              title: 'Heading',
+              name: 'heading',
+              description: 'Optional. Only shown in the footer when filled in.',
+              type: 'string',
+            },
+            {
+              title: 'Links',
+              name: 'links',
+              type: 'array',
+              validation: (Rule: any) => Rule.min(1),
+              of: [
+                {
+                  title: 'Link',
+                  name: 'affiliatedLink',
+                  type: 'object',
+                  preview: {
+                    select: {
+                      title: 'text',
+                      subtitle: 'url',
+                    },
+                  },
+                  fields: [
+                    {
+                      title: 'Text',
+                      name: 'text',
+                      type: 'string',
+                      validation: (Rule: any) => Rule.required(),
+                    },
+                    {
+                      title: 'URL',
+                      name: 'url',
+                      type: 'url',
+                      validation: (Rule: any) => Rule.required(),
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
       ],

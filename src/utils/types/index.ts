@@ -156,6 +156,18 @@ export interface NavItemProps {
   subItems?: NavItemProps[]
 }
 
+export interface AffiliatedLinkProps {
+  _key: string
+  text: string
+  url: string
+}
+
+export interface AffiliatedLinkGroupProps {
+  _key: string
+  heading?: string
+  links?: AffiliatedLinkProps[]
+}
+
 export interface GlobalInfoProps {
   title?: string
   description?: string
@@ -164,4 +176,5 @@ export interface GlobalInfoProps {
     email?: string
   }
   siteImage?: ImageProps
+  affiliatedFooterLinks?: AffiliatedLinkGroupProps[]
 }
