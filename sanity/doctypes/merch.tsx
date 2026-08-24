@@ -1,5 +1,50 @@
 import React from 'react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import { AiOutlineSync } from 'react-icons/ai'
+
+// Kicks off the Printful to Sanity sync handled by /api/getProducts
+let syncInFlight = false
+
+const syncFromPrintful = async () => {
+  if (syncInFlight) return
+  syncInFlight = true
+
+  try {
+    const res = await fetch('/api/getProducts')
+    const data = await res.json()
+
+    if (!res.ok || data?.status !== 200) {
+      throw new Error(
+        typeof data?.body === 'string'
+          ? data.body
+          : `Request failed (${res.status})`
+      )
+    }
+
+    const added = Array.isArray(data.body) ? data.body.length : 0
+
+    window.alert(
+      added > 0
+        ? `Synced ${added} new product${added === 1 ? '' : 's'} from Printful. Reload the studio to see them.`
+        : 'Printful is already in sync — no new products found.'
+    )
+  } catch (error: any) {
+    window.alert(`Printful sync failed: ${error?.message ?? 'Unknown error'}`)
+  } finally {
+    syncInFlight = false
+  }
+}
+
+// Adds a "Sync from Printful" button to a merch doc
+export const withPrintfulSync = (S: any, list: any) =>
+  list.menuItems([
+    ...(list.getMenuItems() ?? []),
+    S.menuItem()
+      .title('Sync from Printful')
+      .icon(AiOutlineSync)
+      .showAsAction(true)
+      .action(syncFromPrintful),
+  ])
 
 export const merch = defineType({
   name: 'merch',

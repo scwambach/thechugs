@@ -20,6 +20,7 @@ import { PiGarageBold } from 'react-icons/pi'
 import { GrArticle, GrMultiple } from 'react-icons/gr'
 import { FaCogs, FaMapMarkerAlt } from 'react-icons/fa'
 import { BsGlobe } from 'react-icons/bs'
+import { withPrintfulSync } from './sanity/doctypes/merch'
 
 export default defineConfig({
   basePath: '/studio',
@@ -100,11 +101,14 @@ export default defineConfig({
                     S.listItem()
                       .title('Chug Merch')
                       .child(
-                        S.documentTypeList('merch')
-                          .title('Merch')
-                          .filter(
-                            "_type == 'merch' && !references('1b10042f-e887-40cf-a102-77e48b31e58b')"
-                          )
+                        withPrintfulSync(
+                          S,
+                          S.documentTypeList('merch')
+                            .title('Merch')
+                            .filter(
+                              "_type == 'merch' && !references('1b10042f-e887-40cf-a102-77e48b31e58b')"
+                            )
+                        )
                       )
                       .icon(AiOutlineShoppingCart),
                     S.listItem()

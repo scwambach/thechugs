@@ -12,6 +12,18 @@ export async function GET() {
 
   const sanityMerchData = await sanityMerch.json()
 
+  if (!Array.isArray(sanityMerchData?.result)) {
+    return NextResponse.json(
+      {
+        status: 502,
+        body: `Error fetching existing merch from Sanity: ${
+          sanityMerchData?.error?.description ?? `HTTP ${sanityMerch.status}`
+        }`,
+      },
+      { status: 502 }
+    )
+  }
+
   // Fetch data from the Printful API.
   const printRes = await fetch(`https://api.printful.com/store/products`, {
     headers: {
@@ -23,14 +35,21 @@ export async function GET() {
   // Parse the JSON response from the Printful API.
   const newItemData = await printRes.json()
 
-  console.log('newItemData', newItemData)
+  if (!printRes.ok || !Array.isArray(newItemData?.result)) {
+    const reason =
+      newItemData?.error?.message ??
+      (typeof newItemData?.result === 'string' ? newItemData.result : null) ??
+      `HTTP ${printRes.status}`
 
-  // Check if newItemData is falsy, and return an error response if it is.
-  if (!newItemData) {
-    return NextResponse.json({
-      status: 500,
-      body: 'Error fetching all products',
-    })
+    console.error('Printful store/products failed:', printRes.status, reason)
+
+    return NextResponse.json(
+      {
+        status: printRes.status || 502,
+        body: `Error fetching products from Printful: ${reason}`,
+      },
+      { status: printRes.status || 502 }
+    )
   }
 
   // Only show the items that are not in the Sanity database.
@@ -61,7 +80,27 @@ export async function GET() {
     })
   )
 
-  const mutations = newArray.map(({ result: item }) => {
+  // Pick the generated mockup image for a variant
+  const getVariantImage = (variant: any, productThumbnail: string) => {
+    const files = variant.files ?? []
+    const mockup = files.find(
+      (file: any) => file.type === 'preview' || file.type === 'mockup'
+    )
+
+    return mockup?.preview_url ?? productThumbnail ?? files[0]?.preview_url
+  }
+
+  const products = newArray.filter(
+    (entry: any) => entry?.result?.sync_product && entry?.result?.sync_variants
+  )
+
+  if (products.length < newArray.length) {
+    console.error(
+      `Skipped ${newArray.length - products.length} product(s) with a failed detail fetch`
+    )
+  }
+
+  const mutations = products.map(({ result: item }: any) => {
     return {
       createOrReplace: {
         _type: 'merch',
@@ -83,11 +122,10 @@ export async function GET() {
             sku: variant.sku,
             externalId: `${variant.external_id}`,
             syncProductId: variant.sync_product_id,
-            image: `${
-              variant.files[1]
-                ? variant.files[1].preview_url
-                : item.sync_product.thumbnail_url
-            }`,
+            image: `${getVariantImage(
+              variant,
+              item.sync_product.thumbnail_url
+            )}`,
             price: parseInt(variant.retail_price),
           }
         }),
@@ -95,29 +133,44 @@ export async function GET() {
     }
   })
 
-  fetch(
-    `https://${process.env.SANITY_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}`,
-    {
-      next: { revalidate: 0 }, // Set revalidation options for caching.
-      method: 'post',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: `Bearer ${process.env.SANITY_TOKEN}`,
-      },
-      body: JSON.stringify({ mutations }),
+  // Only write when there is something to write
+  if (mutations.length > 0) {
+    const mutateRes = await fetch(
+      `https://${process.env.SANITY_ID}.api.sanity.io/v2021-06-07/data/mutate/${process.env.SANITY_DATASET}`,
+      {
+        next: { revalidate: 0 }, // Set revalidation options for caching.
+        method: 'post',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${process.env.SANITY_TOKEN}`,
+        },
+        body: JSON.stringify({ mutations }),
+      }
+    )
+
+    const mutateData = await mutateRes.json()
+
+    if (!mutateRes.ok) {
+      const reason =
+        mutateData?.error?.description ??
+        mutateData?.message ??
+        `HTTP ${mutateRes.status}`
+
+      console.error('Sanity mutate failed:', mutateRes.status, reason)
+
+      return NextResponse.json(
+        {
+          status: 502,
+          body: `Error writing products to Sanity: ${reason}`,
+        },
+        { status: 502 }
+      )
     }
-  )
-    .then((res) => res.json())
-    .then((json) => json)
-    .catch((err) => err)
+  }
 
   // Construct a response in ndJSON format to be used in Sanity.
   return NextResponse.json({
     status: 200,
     body: mutations.length > 0 ? mutations : 'No new items to add',
   })
-  // return NextResponse.json({
-  //   status: 200,
-  //   body: 'ignore this for now',
-  // })
 }

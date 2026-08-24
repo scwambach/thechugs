@@ -1,4 +1,5 @@
 @use './settings' as s;
+@use './mixins' as m;
 
 footer {
   background-color: s.$black;
@@ -10,11 +11,61 @@ footer {
   flex-direction: column;
   justify-content: center;
 
+  .copyright {
+    margin-bottom: s.$size-32;
+  }
+
   .buttonList {
     justify-content: center;
 
     a {
       color: s.$white;
+    }
+  }
+
+  .footerLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: s.$size-20;
+    margin: s.$size-32;
+
+    &__heading {
+      @include m.headingSix;
+      margin-bottom: s.$size-8;
+      color: s.$secondary-dark;
+    }
+
+    &__group {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: s.$size-8 s.$size-24;
+
+        li {
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      a {
+        color: s.$white;
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:hover,
+        &:focus-visible {
+          text-decoration: underline;
+        }
+      }
+
+      @media screen and (max-width: (s.$tablet-md - 1)) {
+        ul {
+          flex-direction: column;
+          gap: s.$size-4;
+        }
+      }
     }
   }
 }

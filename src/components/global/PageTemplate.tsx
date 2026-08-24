@@ -41,7 +41,10 @@ export const PageTemplate = ({
       <main>
         <Header />
         {children}
-        <Footer socials={global?.contactInfo?.socials} />
+        <Footer
+          socials={global?.contactInfo?.socials}
+          affiliatedLinks={global?.affiliatedFooterLinks}
+        />
         <BackToTop />
       </main>
     </AppContext.Provider>

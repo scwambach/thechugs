@@ -23,25 +23,24 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./src",
     "paths": {
       "@components/*": [
-        "./components/*"
+        "./src/components/*"
       ],
       "@utils/*": [
-        "./utils/*"
+        "./src/utils/*"
       ],
       "@data/*": [
-        "./data/*"
+        "./src/data/*"
       ],
       "@styles/*": [
-        "./styles/*"
+        "./src/styles/*"
       ],
       "@lib/*": [
-        "./lib/*"
+        "./src/lib/*"
       ],
       "@hooks/*": [
-        "./hooks/*"
+        "./src/hooks/*"
       ]
     }
   },
@@ -57,6 +56,8 @@
     "_studio",
     "./cypress.config.ts",
     "cypress",
-    "**/*.cy.tsx"
+    "**/*.cy.tsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
   ]
 }
