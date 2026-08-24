@@ -1,6 +1,10 @@
 import React from 'react'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { AiOutlineSync } from 'react-icons/ai'
+import {
+  orderRankField,
+  orderRankOrdering,
+} from '@sanity/orderable-document-list'
 
 // Kicks off the Printful to Sanity sync handled by /api/getProducts
 let syncInFlight = false
@@ -35,21 +39,21 @@ const syncFromPrintful = async () => {
   }
 }
 
-// Adds a "Sync from Printful" button to a merch doc
-export const withPrintfulSync = (S: any, list: any) =>
-  list.menuItems([
-    ...(list.getMenuItems() ?? []),
-    S.menuItem()
-      .title('Sync from Printful')
-      .icon(AiOutlineSync)
-      .showAsAction(true)
-      .action(syncFromPrintful),
-  ])
+// "Sync from Printful" pane button. showAsAction promotes it out of the
+// overflow menu so it renders beside the "+" create button, with the title as
+// its tooltip.
+export const printfulSyncMenuItem = (S: any) =>
+  S.menuItem()
+    .title('Sync from Printful')
+    .icon(AiOutlineSync)
+    .showAsAction(true)
+    .action(syncFromPrintful)
 
 export const merch = defineType({
   name: 'merch',
   title: 'Merch',
   type: 'document',
+  orderings: [orderRankOrdering],
   preview: {
     select: {
       title: 'title',
@@ -69,6 +73,9 @@ export const merch = defineType({
     },
   },
   fields: [
+    // Hidden, read-only string the orderable list pane drags around.
+    // newItemPosition 'before' puts studio-created merch at the top.
+    orderRankField({ type: 'merch', newItemPosition: 'before' }),
     defineField({
       title: 'Title',
       name: 'title',
