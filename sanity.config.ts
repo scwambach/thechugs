@@ -20,7 +20,8 @@ import { PiGarageBold } from 'react-icons/pi'
 import { GrArticle, GrMultiple } from 'react-icons/gr'
 import { FaCogs, FaMapMarkerAlt } from 'react-icons/fa'
 import { BsGlobe } from 'react-icons/bs'
-import { withPrintfulSync } from './sanity/doctypes/merch'
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
+import { printfulSyncMenuItem } from './sanity/doctypes/merch'
 
 export default defineConfig({
   basePath: '/studio',
@@ -30,7 +31,7 @@ export default defineConfig({
   schema,
   plugins: [
     structureTool({
-      structure: (S: any) =>
+      structure: (S: any, context: any) =>
         S.list()
           .title('Base')
           .items([
@@ -98,19 +99,19 @@ export default defineConfig({
                 S.list()
                   .title('Merch')
                   .items([
-                    S.listItem()
-                      .title('Chug Merch')
-                      .child(
-                        withPrintfulSync(
-                          S,
-                          S.documentTypeList('merch')
-                            .title('Merch')
-                            .filter(
-                              "_type == 'merch' && !references('1b10042f-e887-40cf-a102-77e48b31e58b')"
-                            )
-                        )
-                      )
-                      .icon(AiOutlineShoppingCart),
+                    // Drag-and-drop orderable list. The rank it writes is what
+                    // the merch queries sort by, so pane order is site order.
+                    orderableDocumentListDeskItem({
+                      type: 'merch',
+                      id: 'orderable-chug-merch',
+                      title: 'Chug Merch',
+                      icon: AiOutlineShoppingCart,
+                      filter:
+                        "!references('1b10042f-e887-40cf-a102-77e48b31e58b')",
+                      menuItems: [printfulSyncMenuItem(S).serialize()],
+                      S,
+                      context,
+                    }),
                     S.listItem()
                       .title('Garage Sale')
                       .child(
