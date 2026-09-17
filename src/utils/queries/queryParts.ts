@@ -1,3 +1,5 @@
+import { beerFundQuery } from '@utils/beerFund'
+
 export const imageQuery = `"src": asset->url,
   "height": asset -> metadata.dimensions.height,
   "width": asset -> metadata.dimensions.width,
@@ -18,5 +20,6 @@ export const globalInfoQuery = `"globalInfo": *[_type == 'globalInfo'][0] {
   contactInfo,
   description,
   siteImage,
-  affiliatedFooterLinks
+  affiliatedFooterLinks,
+  ${beerFundQuery}
 }`

@@ -8,15 +8,18 @@ import { Footer } from './Footer'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { ImageProps } from 'next/image'
 import { ImageBlock } from '@components/modules/ImageBlock'
+import { BeerFundConfig, resolveBeerFund } from '@utils/beerFund'
 
 interface ContextProps {
   nav: NavItemProps[]
   darkMode: boolean
+  beerFund: BeerFundConfig
 }
 
 export const AppContext = createContext<ContextProps>({
   nav: [],
   darkMode: false,
+  beerFund: resolveBeerFund(undefined),
 })
 
 export const PageTemplate = ({
@@ -30,8 +33,10 @@ export const PageTemplate = ({
   children: ReactNode
   global: GlobalInfoProps
 }) => {
+  const beerFund = resolveBeerFund(global?.beerFund)
+
   return (
-    <AppContext.Provider value={{ nav, darkMode: darkMode }}>
+    <AppContext.Provider value={{ nav, darkMode: darkMode, beerFund }}>
       <GoogleAnalytics
         gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string}
       />

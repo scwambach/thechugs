@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { printful } from '@lib/printful-client'
 import type { SnipcartTaxItem, PrintfulShippingItem } from '@utils/storeTypes'
+import { isBeerFundItem } from '@utils/beerFund'
 import { NextRequest, NextResponse } from 'next/server'
 
 interface SnipcartRequest extends NextApiRequest {
@@ -63,12 +64,25 @@ export async function POST(req: Request) {
     ...(phone && { phone }),
   }
 
-  const items: PrintfulShippingItem[] = cartItems.map(
-    (item: any): PrintfulShippingItem => ({
+  // orders/estimate-costs only knows Printful variants — tips and other
+  // non-Printful items would break it with an unknown variant id.
+  const items: PrintfulShippingItem[] = cartItems
+    .filter(
+      (item: any) =>
+        !isBeerFundItem(item.id) &&
+        !item?.customFields?.some(
+          (field: any) =>
+            field.name === 'PrintfulProduct' && field.value === 'false'
+        )
+    )
+    .map((item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,
-    })
-  )
+    }))
+
+  if (items.length === 0) {
+    return NextResponse.json({ taxes: [] }, { status: 200 })
+  }
 
   try {
     const { result } = await printful.post('orders/estimate-costs', {

@@ -4,6 +4,7 @@ import type {
   SnipcartWebhookContent,
   PrintfulShippingItem,
 } from '@utils/storeTypes'
+import { isBeerFundItem } from '@utils/beerFund'
 
 const createOrder = async ({
   invoiceNumber,
@@ -26,20 +27,16 @@ const createOrder = async ({
     email,
   }
 
-  items.forEach((item: any) => {
-    item?.customFields?.forEach((field: any) => {
-      if (field.name === 'PrintfulProduct') {
-        if (field.value === 'false') {
-          const index = items.indexOf(item)
-          if (index > -1) {
-            items.splice(index, 1)
-          }
-        }
-      }
-    })
-  })
+  const printfulOnlyItems = items.filter(
+    (item: any) =>
+      !isBeerFundItem(item.id) &&
+      !item?.customFields?.some(
+        (field: any) =>
+          field.name === 'PrintfulProduct' && field.value === 'false'
+      )
+  )
 
-  const printfulItems: PrintfulShippingItem[] = items.map(
+  const printfulItems: PrintfulShippingItem[] = printfulOnlyItems.map(
     (item: any): PrintfulShippingItem => ({
       external_variant_id: item.id,
       quantity: item.quantity,

@@ -1,5 +1,6 @@
 import { PortableTextBlock } from '@portabletext/types'
 import { ImageProps } from 'next/image'
+import { BeerFundSettings } from '@utils/beerFund'
 
 export type HeadingLevel = '1' | '2' | '3' | '4' | '5' | '6'
 export type BackgroundColor = 'white' | 'black' | 'blue'
@@ -177,4 +178,5 @@ export interface GlobalInfoProps {
   }
   siteImage?: ImageProps
   affiliatedFooterLinks?: AffiliatedLinkGroupProps[]
+  beerFund?: BeerFundSettings
 }

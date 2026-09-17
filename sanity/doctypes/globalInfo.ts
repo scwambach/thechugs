@@ -162,5 +162,59 @@ export const globalInfo = {
         },
       ],
     },
+    {
+      title: 'Buy Us A Beer',
+      name: 'beerFund',
+      description:
+        'Tip jar items. Prices left blank fall back to the code defaults.',
+      type: 'object',
+      fields: [
+        {
+          title: 'Enabled',
+          name: 'enabled',
+          description:
+            'Shows the Buy Us A Beer buttons in the header and inside the cart.',
+          type: 'boolean',
+          initialValue: true,
+        },
+        {
+          title: 'Heading',
+          name: 'heading',
+          type: 'string',
+          initialValue: 'Buy Us A Beer',
+        },
+        {
+          title: 'Single Label',
+          name: 'singleLabel',
+          type: 'string',
+        },
+        {
+          title: 'Single Price',
+          name: 'singlePrice',
+          type: 'number',
+          validation: (Rule: any) => Rule.min(0),
+        },
+        {
+          title: '30 Pack Label',
+          name: 'thirtyPackLabel',
+          type: 'string',
+        },
+        {
+          title: '30 Pack Price',
+          name: 'thirtyPackPrice',
+          type: 'number',
+          validation: (Rule: any) => Rule.min(0),
+        },
+        {
+          title: 'Image',
+          name: 'image',
+          description: 'Optional. Used as the cart line item thumbnail.',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    },
   ],
 }

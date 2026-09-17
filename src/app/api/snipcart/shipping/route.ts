@@ -2,6 +2,7 @@ import type { NextApiRequest } from 'next'
 
 import { printful } from '@lib/printful-client'
 import type { PrintfulShippingItem } from '@utils/storeTypes'
+import { isBeerFundItem } from '@utils/beerFund'
 import { NextResponse } from 'next/server'
 
 const physicalItemShippingCosts: any = 6.99
@@ -44,10 +45,30 @@ export async function POST(req: Request) {
     ...(shippingAddressPhone && { phone: shippingAddressPhone }),
   }
 
+  // Tip items never ship, so they must not flag the cart as physical.
+  const shippableItems = cartItems.filter(
+    (item: any) => !isBeerFundItem(item.id)
+  )
+
+  if (shippableItems.length === 0) {
+    return NextResponse.json(
+      {
+        rates: [
+          {
+            cost: 0,
+            description: 'No shipping required',
+            userDefinedId: 'NOSHIP',
+          },
+        ],
+      },
+      { status: 200 }
+    )
+  }
+
   const printfulItems: any[] = []
   let hasPhysicalItems = false
 
-  cartItems.forEach((item: any) => {
+  shippableItems.forEach((item: any) => {
     item?.customFields?.forEach((field: any) => {
       if (field.name === 'PrintfulProduct') {
         if (field.value === 'true') printfulItems.push(item)
