@@ -92,14 +92,16 @@
 // Injected into the Snipcart cart via the `cart` component's header section,
 // so it sits above the cart title and has to supply its own gutters — nothing
 // in the Snipcart layout pads it for us.
+// Injected into the cart between the item list and the totals. Snipcart's cart
+// content is full-bleed and gets very wide in the detailed cart view, so the
+// options row is capped and centred rather than stretching edge to edge.
 .beer-fund-cart {
-  padding: s.$size-16;
-  background-color: s.$white;
-  border-bottom: s.$size-1 solid s.$gray-light;
+  padding: s.$size-24 s.$size-16;
+  border-top: s.$size-1 solid s.$gray-light;
   text-transform: uppercase;
 
   .beer-fund-cart__heading {
-    margin: 0 0 s.$size-12 0;
+    margin: 0 0 s.$size-16 0;
     color: s.$black;
     font-family: s.$font-bold;
     font-size: s.$size-16;
@@ -109,7 +111,9 @@
   .beer-fund-cart__options {
     display: flex;
     flex-direction: column;
-    gap: s.$size-8;
+    gap: s.$size-12;
+    max-width: s.$size-480;
+    margin: 0 auto;
 
     @media screen and (min-width: s.$tablet-md) {
       flex-direction: row;
@@ -119,15 +123,14 @@
   .beer-fund-cart__button {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: s.$size-16;
+    justify-content: center;
     flex: 1;
     padding: s.$size-12 s.$size-16;
     background-color: s.$gray-lighter;
     color: s.$black;
     font-family: s.$font-bold;
     font-size: s.$size-14;
-    text-align: left;
+    text-align: center;
     border: s.$size-1 solid s.$gray-light;
     border-radius: s.$size-10;
     cursor: pointer;
@@ -141,9 +144,5 @@
       border-color: s.$primary;
       color: s.$white;
     }
-  }
-
-  .beer-fund-cart__price {
-    white-space: nowrap;
   }
 }

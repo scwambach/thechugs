@@ -56,27 +56,89 @@ const addItemButton = (item: BeerFundItem) => `<button
 
 // The side cart is rendered by the `cart` component, not `cart-summary` —
 // `cart-summary` only backs the checkout-page summary, so an override there
-// never reaches the sidebar. `section="header"` is the cheapest safe hook: a
-// section override replaces its default content, and this one only has to
-// re-include `cart-header`. Overriding the cart's default section instead would
-// mean freezing a copy of the whole item-list/footer block and silently missing
-// any upstream theme change.
-const cartHeaderOverride = (beerFund: BeerFundConfig) => `
-      <cart section="header">
-        <div>
-          <cart-header
-            title="header.title_cart_summary"
-            :show-items-count="true"
-            :show-account-menu="true"
-            v-if="!editingCart"
-          ></cart-header>
+// never reaches the sidebar.
+//
+// This overrides the cart's default section rather than `section="header"`.
+// The header section sits above Snipcart's own chrome, and in the side cart
+// `cart-header` is skipped entirely (`v-if="!editingCart"`), so anything put
+// there lands at the very top of the panel and crowds the close control. The
+// default section is the only hook that can place the block after the item
+// list, so the cost is carrying a copy of Snipcart's markup below: if the
+// default theme changes this section, update it here to match.
+//
+// Note the `v-if="hasItems"` on the original overridable — an empty cart
+// renders `empty-cart` instead, so the upsell only shows once something is in
+// the cart. The header button covers the empty case.
+const cartContentOverride = (beerFund: BeerFundConfig) => `
+      <cart>
+        <section class="snipcart-cart__content">
+          <item-list
+            item-template="item-line"
+            class="snipcart-item-list--no-shadow"
+            :show-description="!isSideCart"
+          >
+            <template
+              v-slot:footer
+              v-if="isSideCart && hasActiveDiscountsTriggerableByCode"
+            >
+              <li class="snipcart-item-line snipcart-item-line--cart-edit">
+                <div class="snipcart-item-line__container">
+                  <discount-box class="snipcart-cart__discount-box"></discount-box>
+                </div>
+              </li>
+            </template>
+          </item-list>
+
           <div class="beer-fund-cart">
             <h2 class="beer-fund-cart__heading">${escapeHtml(beerFund.heading)}</h2>
             <div class="beer-fund-cart__options">
               ${beerFund.items.map(addItemButton).join('\n              ')}
             </div>
           </div>
-        </div>
+
+          <div class="snipcart-cart__footer">
+            <div class="snipcart-cart__footer-col cart__footer-discount-box snipcart-cart__actions">
+              <discount-box
+                v-if="!isSideCart && hasActiveDiscountsTriggerableByCode"
+                class="snipcart-cart__discount-box"
+              ></discount-box>
+            </div>
+
+            <div class="snipcart-cart__footer-col">
+              <summary-fees
+                class="snipcart-cart-summary-fees--reverse"
+                :summary-data="summaryFeesProvider"
+              >
+                {{ $localize('cart.shipping_taxes_calculated_at_checkout')}}
+              </summary-fees>
+
+              <footer v-if="!editingCart || isSideCart" class="snipcart-cart__footer-buttons">
+                <flash-message
+                  type="error"
+                  v-if="errors != null"
+                  :title="$localize('errors.order_validation.custom_fields_validation.title')"
+                >
+                  {{$localize('errors.order_validation.custom_fields_validation.description')}}
+                </flash-message>
+                <button-primary
+                  label="actions.checkout"
+                  icon="continue-arrow"
+                  :state="checkoutDisabled ? 'disabled' : undefined"
+                  @click="checkout"
+                ></button-primary>
+                <button-link
+                  v-if="isSideCart"
+                  label="cart.view_detailed_cart"
+                  @click="viewDetailedCart"
+                ></button-link>
+              </footer>
+
+              <div class="snipcart-cart__featured-payment-methods-container">
+                <featured-payment-methods v-if="!editingCart"></featured-payment-methods>
+              </div>
+            </div>
+          </div>
+        </section>
       </cart>
 `
 
@@ -84,7 +146,7 @@ const templatesDocument = (beerFund: BeerFundConfig) => `<!DOCTYPE html>
 <html>
   <body>
     <div id="snipcart-templates">${
-      beerFund.enabled ? cartHeaderOverride(beerFund) : ''
+      beerFund.enabled ? cartContentOverride(beerFund) : ''
     }</div>
   </body>
 </html>
