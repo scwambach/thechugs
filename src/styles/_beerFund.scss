@@ -1,0 +1,148 @@
+@use './settings' as s;
+
+// Header trigger + popover. Sits at the right edge, with `.snipcart-checkout`
+// offset to its left. The trigger's box rules mirror `.snipcart-checkout` in
+// _header.scss so the two icon buttons match; change them together.
+.beer-fund {
+  position: absolute;
+  top: s.$size-16;
+  right: s.$size-16;
+  z-index: 1001;
+  text-transform: uppercase;
+
+  .beer-fund__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: s.$size-40;
+    height: s.$size-40;
+    padding: 0;
+    background-color: s.$white;
+    color: s.$black;
+    font-size: s.$size-18;
+    line-height: 1;
+    border: none;
+    border-radius: s.$size-10;
+    cursor: pointer;
+    transition: opacity s.$animation-speed ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .beer-fund__popover {
+    position: absolute;
+    top: calc(100% + #{s.$size-8});
+    right: 0;
+    z-index: 1002;
+    min-width: s.$size-230;
+    padding: s.$size-16;
+    background-color: s.$white;
+    border-radius: s.$size-10;
+    box-shadow: 0 s.$size-4 s.$size-16 rgba(0, 0, 0, 0.25);
+  }
+
+  .beer-fund__heading {
+    margin: 0 0 s.$size-12 0;
+    color: s.$black;
+    font-family: s.$font-bold;
+    font-size: s.$size-14;
+    text-align: center;
+  }
+
+  .beer-fund__options {
+    display: flex;
+    flex-direction: column;
+    gap: s.$size-8;
+  }
+
+  .beer-fund__option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: s.$size-16;
+    width: 100%;
+    padding: s.$size-10 s.$size-12;
+    background-color: s.$gray-lighter;
+    color: s.$black;
+    font-family: s.$font-bold;
+    font-size: s.$size-14;
+    text-align: left;
+    border: none;
+    border-radius: s.$size-8;
+    cursor: pointer;
+    transition:
+      background-color s.$animation-speed ease,
+      color s.$animation-speed ease;
+
+    &:hover {
+      background-color: s.$primary;
+      color: s.$white;
+    }
+  }
+
+  .beer-fund__option-price {
+    white-space: nowrap;
+  }
+}
+
+// In-cart upsell. Snipcart v3 renders its cart into the normal document DOM,
+// so this is styled globally rather than scoped to the header.
+// Injected into the Snipcart cart via the `cart` component's header section,
+// so it sits above the cart title and has to supply its own gutters — nothing
+// in the Snipcart layout pads it for us.
+// Injected into the cart between the item list and the totals. Snipcart's cart
+// content is full-bleed and gets very wide in the detailed cart view, so the
+// options row is capped and centred rather than stretching edge to edge.
+.beer-fund-cart {
+  padding: s.$size-24 s.$size-16;
+  border-top: s.$size-1 solid s.$gray-light;
+  text-transform: uppercase;
+
+  .beer-fund-cart__heading {
+    margin: 0 0 s.$size-16 0;
+    color: s.$black;
+    font-family: s.$font-bold;
+    font-size: s.$size-16;
+    text-align: center;
+  }
+
+  .beer-fund-cart__options {
+    display: flex;
+    flex-direction: column;
+    gap: s.$size-12;
+    max-width: s.$size-480;
+    margin: 0 auto;
+
+    @media screen and (min-width: s.$tablet-md) {
+      flex-direction: row;
+    }
+  }
+
+  .beer-fund-cart__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: s.$size-12 s.$size-16;
+    background-color: s.$gray-lighter;
+    color: s.$black;
+    font-family: s.$font-bold;
+    font-size: s.$size-14;
+    text-align: center;
+    border: s.$size-1 solid s.$gray-light;
+    border-radius: s.$size-10;
+    cursor: pointer;
+    transition:
+      background-color s.$animation-speed ease,
+      border-color s.$animation-speed ease,
+      color s.$animation-speed ease;
+
+    &:hover {
+      background-color: s.$primary;
+      border-color: s.$primary;
+      color: s.$white;
+    }
+  }
+}
