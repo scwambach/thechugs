@@ -1,13 +1,30 @@
 // "Buy Us A Beer" tip items.
 //
-// These are deliberately NOT Sanity `merch` documents. Keeping them out of that
-// type means they can never leak into the /merch category lists, the POS query
-// or the garage sale, and it keeps their ids stable constants — which is what
-// lets /api/products/[id] validate them for Snipcart without a Studio round
-// trip. Prices are still editable in the studio via globalInfo.beerFund.
+// These are ordinary `merch` documents, so the studio owns the title, price and
+// image, and /api/products/[id] already validates them through its normal merch
+// lookup. They carry no category, which is what keeps them out of the /merch
+// category lists, the POS query and the garage sale.
+//
+// The ids stay in code because the Snipcart webhooks (shipping, taxes, order
+// creation) need to recognise a tip item synchronously, from nothing but the
+// cart line's id, without a Sanity round trip on a payment-critical path.
 
-export const BEER_FUND_SINGLE_ID = 'buy-us-a-beer-single'
-export const BEER_FUND_THIRTY_PACK_ID = 'buy-us-a-beer-30-pack'
+export const BEER_FUND_SINGLE_ID = '44e08c4f-65a8-4b34-8712-0b0491e7fffc'
+export const BEER_FUND_CASE_ID = '6ef8a6e6-4e2b-4039-8a2e-b601c1a95965'
+
+/** Render order in the header popover and the cart. */
+export const BEER_FUND_ITEM_IDS = [BEER_FUND_SINGLE_ID, BEER_FUND_CASE_ID]
+
+export const BEER_FUND_HEADING = 'Buy Us A Beer'
+
+/** The merch fields the beer fund reads. */
+export interface BeerFundDoc {
+  _id: string
+  title?: string
+  price?: number
+  outOfStockMsg?: string | null
+  image?: string
+}
 
 export interface BeerFundItem {
   id: string
@@ -20,84 +37,58 @@ export interface BeerFundItem {
 export interface BeerFundConfig {
   enabled: boolean
   heading: string
-  single: BeerFundItem
-  thirtyPack: BeerFundItem
-}
-
-/** Shape of the optional `beerFund` object on the globalInfo document. */
-export interface BeerFundSettings {
-  enabled?: boolean
-  heading?: string
-  singleLabel?: string
-  singlePrice?: number
-  thirtyPackLabel?: string
-  thirtyPackPrice?: number
-  image?: { src?: string }
-}
-
-export const BEER_FUND_DEFAULTS: BeerFundConfig = {
-  enabled: true,
-  heading: 'Buy Us A Beer',
-  single: {
-    id: BEER_FUND_SINGLE_ID,
-    name: 'Buy Us A Beer',
-    description: 'One cold one for the band. Thanks, legend.',
-    price: 6,
-  },
-  thirtyPack: {
-    id: BEER_FUND_THIRTY_PACK_ID,
-    name: 'Buy Us A 30 Pack',
-    description: 'Thirty cold ones for the band. You absolute hero.',
-    price: 30,
-  },
+  items: BeerFundItem[]
 }
 
 /** True for the tip items, which never ship and never go to Printful. */
 export const isBeerFundItem = (id?: string | number | null): boolean =>
-  id === BEER_FUND_SINGLE_ID || id === BEER_FUND_THIRTY_PACK_ID
+  typeof id === 'string' && BEER_FUND_ITEM_IDS.includes(id)
 
 /** Snipcart validates every cart item against this URL. */
 export const beerFundItemUrl = (id: string) => `/api/products/${id}`
 
-/** GROQ projection for the beerFund object on globalInfo. */
-export const beerFundQuery = `beerFund {
-    enabled,
-    heading,
-    singleLabel,
-    singlePrice,
-    thirtyPackLabel,
-    thirtyPackPrice,
-    image { "src": asset->url }
+const beerFundProjection = `{
+    _id,
+    title,
+    price,
+    outOfStockMsg,
+    "image": images[0].image.asset->url
   }`
 
+/** Standalone query for server routes that need the items on their own. */
+export const beerFundDocsQuery = `*[_id in ${JSON.stringify(
+  BEER_FUND_ITEM_IDS
+)}] ${beerFundProjection}`
+
+/** Sub-projection so pages pick the items up with their existing global fetch. */
+export const beerFundQuery = `"beerFund": ${beerFundDocsQuery}`
+
 /**
- * Merge whatever the studio has set over the code defaults, so the feature
- * works on a fresh dataset with no globalInfo.beerFund filled in at all.
+ * An unpublished or out-of-stock document simply drops out, so the studio can
+ * pull a tip item without a deploy. `description` mirrors the title to match how
+ * the rest of the store fills data-item-description for non-Printful products.
  */
 export const resolveBeerFund = (
-  settings?: BeerFundSettings
+  docs?: BeerFundDoc[] | null
 ): BeerFundConfig => {
-  const image = settings?.image?.src
+  const items = BEER_FUND_ITEM_IDS.map((id) =>
+    docs?.find((doc) => doc?._id === id)
+  )
+    .filter(
+      (doc): doc is BeerFundDoc =>
+        !!doc && typeof doc.price === 'number' && !doc.outOfStockMsg
+    )
+    .map((doc) => ({
+      id: doc._id,
+      name: doc.title || BEER_FUND_HEADING,
+      description: doc.title || BEER_FUND_HEADING,
+      price: doc.price as number,
+      ...(doc.image && { image: doc.image }),
+    }))
 
   return {
-    enabled: settings?.enabled ?? BEER_FUND_DEFAULTS.enabled,
-    heading: settings?.heading || BEER_FUND_DEFAULTS.heading,
-    single: {
-      ...BEER_FUND_DEFAULTS.single,
-      name: settings?.singleLabel || BEER_FUND_DEFAULTS.single.name,
-      price: settings?.singlePrice ?? BEER_FUND_DEFAULTS.single.price,
-      ...(image && { image }),
-    },
-    thirtyPack: {
-      ...BEER_FUND_DEFAULTS.thirtyPack,
-      name: settings?.thirtyPackLabel || BEER_FUND_DEFAULTS.thirtyPack.name,
-      price: settings?.thirtyPackPrice ?? BEER_FUND_DEFAULTS.thirtyPack.price,
-      ...(image && { image }),
-    },
+    enabled: items.length > 0,
+    heading: BEER_FUND_HEADING,
+    items,
   }
 }
-
-/** Fetches + resolves the beer fund config for server components / routes. */
-export const beerFundSettingsQuery = `*[_type == 'globalInfo'][0] {
-  ${beerFundQuery}
-}.beerFund`

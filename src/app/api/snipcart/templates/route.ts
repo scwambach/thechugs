@@ -1,14 +1,10 @@
 import { client } from '@utils/client'
 import {
+  beerFundDocsQuery,
   beerFundItemUrl,
-  beerFundSettingsQuery,
   resolveBeerFund,
 } from '@utils/beerFund'
-import type {
-  BeerFundConfig,
-  BeerFundItem,
-  BeerFundSettings,
-} from '@utils/beerFund'
+import type { BeerFundConfig, BeerFundDoc, BeerFundItem } from '@utils/beerFund'
 
 // The studio can change the copy/prices at any time, but this document is
 // fetched by every cart open — cache it for five minutes rather than hitting
@@ -75,8 +71,7 @@ const cartHeaderOverride = (beerFund: BeerFundConfig) => `
           <div class="beer-fund-cart">
             <h2 class="beer-fund-cart__heading">${escapeHtml(beerFund.heading)}</h2>
             <div class="beer-fund-cart__options">
-              ${addItemButton(beerFund.single)}
-              ${addItemButton(beerFund.thirtyPack)}
+              ${beerFund.items.map(addItemButton).join('\n              ')}
             </div>
           </div>
         </div>
@@ -94,16 +89,16 @@ const templatesDocument = (beerFund: BeerFundConfig) => `<!DOCTYPE html>
 `
 
 export async function GET() {
-  // A Sanity outage must never take the cart down with it — fall back to the
-  // code defaults, which are the same ones /api/products/[id] validates against.
-  let settings: BeerFundSettings | undefined
+  // A Sanity outage must never take the cart down with it — with no docs the
+  // beer fund simply resolves to disabled and the cart renders untouched.
+  let docs: BeerFundDoc[] | undefined
   try {
-    settings = await client.fetch(beerFundSettingsQuery)
+    docs = await client.fetch(beerFundDocsQuery)
   } catch (error: any) {
     console.log(error)
   }
 
-  const beerFund = resolveBeerFund(settings)
+  const beerFund = resolveBeerFund(docs)
 
   return new Response(templatesDocument(beerFund), {
     status: 200,

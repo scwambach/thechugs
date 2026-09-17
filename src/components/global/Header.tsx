@@ -163,8 +163,7 @@ export const Header = () => {
             <div className="beer-fund__popover">
               <p className="beer-fund__heading">{beerFund.heading}</p>
               <div className="beer-fund__options">
-                {renderBeerFundOption(beerFund.single)}
-                {renderBeerFundOption(beerFund.thirtyPack)}
+                {beerFund.items.map((item) => renderBeerFundOption(item))}
               </div>
             </div>
           )}
