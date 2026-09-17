@@ -6,10 +6,12 @@ import {
 } from '@utils/beerFund'
 import type { BeerFundConfig, BeerFundDoc, BeerFundItem } from '@utils/beerFund'
 
-// The studio can change the copy/prices at any time, but this document is
-// fetched by every cart open — cache it for five minutes rather than hitting
-// Sanity on each request.
-export const revalidate = 300
+// Always fresh, deliberately. Snipcart validates each add against
+// /api/products/[id], which is dynamic and reads the current Sanity price — so
+// a cached copy of this document would keep serving a stale data-item-price
+// after a studio edit and Snipcart would reject the add as a price mismatch.
+// One Sanity query per cart open is the cost of the two staying in agreement.
+export const dynamic = 'force-dynamic'
 
 /**
  * Snipcart compiles this document as a Vue template, so every CMS string has to

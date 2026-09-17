@@ -1,23 +1,25 @@
 @use './settings' as s;
 
-// Header trigger + popover. Sits to the left of `.snipcart-checkout`, which is
-// pinned to top/right s.$size-16 and is roughly s.$size-48 wide.
+// Header trigger + popover. Sits at the right edge, with `.snipcart-checkout`
+// offset to its left. The trigger's box rules mirror `.snipcart-checkout` in
+// _header.scss so the two icon buttons match; change them together.
 .beer-fund {
   position: absolute;
   top: s.$size-16;
-  right: s.$size-72;
+  right: s.$size-16;
   z-index: 1001;
   text-transform: uppercase;
 
   .beer-fund__trigger {
     display: flex;
     align-items: center;
-    gap: s.$size-8;
-    padding: s.$size-10 s.$size-16 s.$size-8 s.$size-16;
+    justify-content: center;
+    width: s.$size-40;
+    height: s.$size-40;
+    padding: 0;
     background-color: s.$white;
     color: s.$black;
-    font-family: s.$font-bold;
-    font-size: s.$size-16;
+    font-size: s.$size-18;
     line-height: 1;
     border: none;
     border-radius: s.$size-10;
@@ -26,12 +28,6 @@
 
     &:hover {
       opacity: 0.8;
-    }
-  }
-
-  .beer-fund__trigger-label {
-    @media screen and (max-width: (s.$mobile-md - 1)) {
-      display: none;
     }
   }
 

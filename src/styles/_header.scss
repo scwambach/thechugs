@@ -127,15 +127,21 @@ header {
     }
   }
 
+  // Square icon button. `.beer-fund__trigger` mirrors these box rules so the
+  // two sit side by side at matching size; keep them in step.
   .snipcart-checkout {
     position: absolute;
     top: s.$size-16;
-    right: s.$size-16;
-    padding: s.$size-10 s.$size-16 s.$size-8 s.$size-16;
+    // Offset one button plus a gutter, leaving the right edge to the beer button.
+    right: s.$size-72;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: s.$size-40;
+    height: s.$size-40;
     background-color: s.$white;
     color: s.$black !important;
-    font-family: s.$font-bold;
-    font-size: s.$size-16;
+    font-size: s.$size-18;
     border-radius: s.$size-10;
     text-decoration: none;
     z-index: 1001;

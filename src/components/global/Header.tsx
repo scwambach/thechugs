@@ -145,6 +145,10 @@ export const Header = () => {
         </nav>
       </div>
 
+      <a className="snipcart-checkout" href="#">
+        <IoCartSharp fontWeight={700} />
+      </a>
+
       {beerFund.enabled && (
         <div className="beer-fund" ref={beerFundRef}>
           <button
@@ -156,7 +160,6 @@ export const Header = () => {
             aria-haspopup="true"
           >
             <FaBeer />
-            <span className="beer-fund__trigger-label">Beer</span>
           </button>
 
           {isBeerFundOpen && (
@@ -169,10 +172,6 @@ export const Header = () => {
           )}
         </div>
       )}
-
-      <a className="snipcart-checkout" href="#">
-        <IoCartSharp fontWeight={700} />
-      </a>
     </header>
   )
 }
